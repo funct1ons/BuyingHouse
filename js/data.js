@@ -96,5 +96,5 @@
     normal:{name:'一般新闻', description:'事件观察，影响大小仍有不确定性'},
     rumor:{name:'市场传闻', description:'未经核实，不驱动市场，不应作为保证'}
   };
-  H.defaultSettings = {autoSave:true, sound:true, music:false, animation:'normal', numberFormat:'decimal'};
+  H.defaultSettings = {autoSave:true, sound:true, music:true, animation:'normal', numberFormat:'decimal'};
 })(window);

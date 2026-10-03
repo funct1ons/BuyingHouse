@@ -193,6 +193,13 @@
         assert(op(e,'end').ok);H.validate(e.snapshot());
       }
     });
+    test('新用户默认开启音乐且已有关闭偏好保持不变',()=>{
+      assert(H.defaultSettings.music===true);
+      const map=new Map(),saves=new H.SaveAdapter({getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)});
+      assert(saves.loadSettings().settings.music===true);
+      map.set(saves.settingsKey,JSON.stringify({...H.defaultSettings,music:false}));
+      assert(saves.loadSettings().settings.music===false);
+    });
     return {passed:log.filter(x=>x.startsWith('PASS')).length,failed:log.filter(x=>x.startsWith('FAIL')).length,log};
   };
 })(window);

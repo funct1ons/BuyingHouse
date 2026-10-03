@@ -159,39 +159,39 @@
   "performance": [
     {
       "operation": "cold navigation",
-      "ms": 89
+      "ms": 230
     },
     {
       "operation": "next DOM roundtrip (includes260ms pacing)",
-      "ms": 277
-    },
-    {
-      "operation": "next DOM roundtrip (includes260ms pacing)",
-      "ms": 278
-    },
-    {
-      "operation": "next DOM roundtrip (includes260ms pacing)",
-      "ms": 276
-    },
-    {
-      "operation": "next DOM roundtrip (includes260ms pacing)",
-      "ms": 265
+      "ms": 280
     },
     {
       "operation": "next DOM roundtrip (includes260ms pacing)",
       "ms": 279
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 282
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 266
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 281
     }
   ],
   "fixtures": "Public JSON import; cash grants are non-natural economy",
-  "started": "2026-10-03T12:08:40.575Z",
+  "started": "2026-10-03T13:11:47.800Z",
   "browser": {
     "Browser": "Edg/154.0.4258.53",
     "Protocol-Version": "1.3",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
     "V8-Version": "15.4.11.7",
     "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
-    "webSocketDebuggerUrl": "ws://127.0.0.1:53744/devtools/browser/3efe18cd-e869-43b4-a609-1169db449298"
+    "webSocketDebuggerUrl": "ws://127.0.0.1:57960/devtools/browser/c92094b2-5215-405b-a5e4-cd7f6080eb86"
   },
   "node": "v24.14.1",
-  "finished": "2026-10-03T12:10:00.188Z"
+  "finished": "2026-10-03T13:13:07.562Z"
 }

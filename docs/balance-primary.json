@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "createdAt": "2026-10-03T11:42:58.478Z",
+  "createdAt": "2026-10-03T13:09:34.016Z",
   "command": "node simulation/run.cjs --seeds 1000 --prefix balance-v3-primary --out docs/balance-primary.json",
   "seeds": 1000,
   "prefix": "balance-v3-primary",
@@ -8,7 +8,7 @@
   "model": "same shipped Engine; no alternate economic model",
   "information": "Engine.visible() only, public product guide (basePrice/category/volatility/size); policy RNG independent of engine",
   "sourceHashes": {
-    "data": "a57b35a4d14bd74d1e312d0d44c4041df0193aedd364010ffa446577319953b3",
+    "data": "ecaa6ee3770a333e66287f0f28a176b3498c84af4799219c21dbd97ed2fa8a81",
     "math": "b71e8fe0cdf475007ce2124b58528b6c26fda847d694b5cce9d02d51fd46ba0c",
     "market": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
     "trading": "339ec784de4119dcc421596892e9318a6aa201cadfe79142e5788bf47fb7652c",
@@ -465865,5 +465865,5 @@
       ]
     }
   ],
-  "elapsedSeconds": 54.84
+  "elapsedSeconds": 55.463
 }
