@@ -27,7 +27,7 @@
     {
       "name": "menu no DC offset",
       "pass": true,
-      "detail": -0.00000516
+      "detail": -0.00000511
     },
     {
       "name": "menu plays A/B/A2/C in 64 bars and loops",
@@ -52,7 +52,7 @@
     {
       "name": "early no DC offset",
       "pass": true,
-      "detail": -0.00000457
+      "detail": -0.0000046
     },
     {
       "name": "early plays A/B/A2/C in 64 bars and loops",
@@ -77,7 +77,7 @@
     {
       "name": "development no DC offset",
       "pass": true,
-      "detail": -0.00000806
+      "detail": -0.0000081
     },
     {
       "name": "development plays A/B/A2/C in 64 bars and loops",
@@ -102,7 +102,7 @@
     {
       "name": "sprint no DC offset",
       "pass": true,
-      "detail": 0.00000172
+      "detail": 0.00000169
     },
     {
       "name": "sprint plays A/B/A2/C in 64 bars and loops",
@@ -127,7 +127,7 @@
     {
       "name": "sprint-final no DC offset",
       "pass": true,
-      "detail": 0.0000061
+      "detail": 0.00000612
     },
     {
       "name": "ending-home peak <= -1 dBFS",
@@ -142,7 +142,7 @@
     {
       "name": "ending-home no DC offset",
       "pass": true,
-      "detail": -0.0000047
+      "detail": -0.00000465
     },
     {
       "name": "ending-home reaches tail after full form",
@@ -168,7 +168,7 @@
     {
       "name": "ending-rent no DC offset",
       "pass": true,
-      "detail": -0.00000421
+      "detail": -0.00000425
     },
     {
       "name": "ending-rent reaches tail after full form",
@@ -190,6 +190,62 @@
         -21.4,
         -18.8
       ]
+    },
+    {
+      "name": "ending coda: form A/B/A2/C plays once, then the 8-bar T coda repeats (form never replays)",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C",
+        "T"
+      ]
+    },
+    {
+      "name": "ending coda: engine reports the held coda (inTail true; loop counts coda laps, not form repeats)",
+      "pass": true,
+      "detail": {
+        "inTail": true,
+        "loop": 2,
+        "formRepeats": 1
+      }
+    },
+    {
+      "name": "ending coda: second coda lap is still playing at a similar level (no fade-out, no restart)",
+      "pass": true,
+      "detail": {
+        "seconds": 180,
+        "formSeconds": 120,
+        "sections": [
+          "A",
+          "B",
+          "A2",
+          "C",
+          "T"
+        ],
+        "codaLap1Db": -21.2,
+        "codaLap2Db": -24.1,
+        "lastSection": "T",
+        "lastCue": "ending-rent",
+        "inTail": true,
+        "loop": 2
+      }
+    },
+    {
+      "name": "non-looping cue without a tail stays inside its sections (no undefined section, no crash)",
+      "pass": true,
+      "detail": {
+        "maxSec": 3,
+        "distinct": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "inTail": false,
+        "lastSection": "C"
+      }
     },
     {
       "name": "six cues with distinct chord sequences, melodies and instrument sets",
@@ -538,14 +594,24 @@
       }
     },
     {
-      "name": "untrusted unlock: suspended context reports playing=false, legacy musicRunning=true, no notes queued",
+      "name": "untrusted unlock: no running context, no idle scheduler, no notes queued, needsGesture set",
       "pass": true,
       "detail": {
         "state": "suspended",
+        "musicRunning": false,
         "playing": false,
-        "musicRunning": true,
-        "queued": 0,
-        "needsGesture": true
+        "needsGesture": true,
+        "timers": 1,
+        "cue": null
+      }
+    },
+    {
+      "name": "blocked context still remembers that music is wanted (recovery path exists)",
+      "pass": true,
+      "detail": {
+        "musicWanted": true,
+        "needsGesture": true,
+        "timers": 1
       }
     },
     {
@@ -560,7 +626,7 @@
       "name": "trusted click: running, one scheduler timer, real signal",
       "pass": true,
       "detail": {
-        "peak": 0.1956,
+        "peak": 0.2177,
         "timers": 2,
         "cue": "early"
       }
@@ -578,7 +644,7 @@
       "name": "return to tab: music resumes from A2 (not from the top)",
       "pass": true,
       "detail": {
-        "peak": 0.1987,
+        "peak": 0.2053,
         "section": "A2"
       }
     },
@@ -594,7 +660,7 @@
       "name": "music on again: single timer, signal back",
       "pass": true,
       "detail": {
-        "peak": 0.2189,
+        "peak": 0.2133,
         "timers": 2
       }
     },
@@ -609,7 +675,7 @@
     {
       "name": "volume restored: signal back",
       "pass": true,
-      "detail": 0.156
+      "detail": 0.1503
     },
     {
       "name": "dialogOpen applies duck snapshot without switching cue",
@@ -639,12 +705,12 @@
       "pass": true,
       "detail": {
         "before": {
-          "created": 183,
+          "created": 179,
           "live": 11
         },
         "after": {
-          "created": 231,
-          "live": 11
+          "created": 226,
+          "live": 15
         }
       }
     },
@@ -653,7 +719,7 @@
       "pass": true,
       "detail": {
         "nodes": {
-          "created": 231,
+          "created": 226,
           "live": 0
         },
         "retiring": 0
@@ -673,7 +739,7 @@
       "rmsMedianDb": -18.9,
       "rmsP10Db": -22.7,
       "rmsP90Db": -16.6,
-      "dc": -0.00000516,
+      "dc": -0.00000511,
       "sections": [
         "A",
         "B",
@@ -681,7 +747,7 @@
         "C"
       ],
       "maxJump": 0.125,
-      "renderMs": 10993,
+      "renderMs": 10939,
       "stolen": 0
     },
     "early": {
@@ -691,7 +757,7 @@
       "rmsMedianDb": -21.1,
       "rmsP10Db": -24.6,
       "rmsP90Db": -18.7,
-      "dc": -0.00000457,
+      "dc": -0.0000046,
       "sections": [
         "A",
         "B",
@@ -699,7 +765,7 @@
         "C"
       ],
       "maxJump": 0.176,
-      "renderMs": 8884,
+      "renderMs": 6265,
       "stolen": 0
     },
     "development": {
@@ -709,7 +775,7 @@
       "rmsMedianDb": -20.7,
       "rmsP10Db": -24.1,
       "rmsP90Db": -17.5,
-      "dc": -0.00000806,
+      "dc": -0.0000081,
       "sections": [
         "A",
         "B",
@@ -717,7 +783,7 @@
         "C"
       ],
       "maxJump": 0.106,
-      "renderMs": 8781,
+      "renderMs": 7028,
       "stolen": 0
     },
     "sprint": {
@@ -727,7 +793,7 @@
       "rmsMedianDb": -21.4,
       "rmsP10Db": -25.3,
       "rmsP90Db": -19.4,
-      "dc": 0.00000172,
+      "dc": 0.00000169,
       "sections": [
         "A",
         "B",
@@ -735,7 +801,7 @@
         "C"
       ],
       "maxJump": 0.048,
-      "renderMs": 6476,
+      "renderMs": 6348,
       "stolen": 0
     },
     "sprint-final": {
@@ -745,13 +811,13 @@
       "rmsMedianDb": -21.1,
       "rmsP10Db": -24.3,
       "rmsP90Db": -19.2,
-      "dc": 0.0000061,
+      "dc": 0.00000612,
       "sections": [
         "A",
         "B"
       ],
       "maxJump": 0.109,
-      "renderMs": 1341,
+      "renderMs": 1421,
       "stolen": 0
     },
     "ending-home": {
@@ -761,7 +827,7 @@
       "rmsMedianDb": -18.8,
       "rmsP10Db": -21.9,
       "rmsP90Db": -16.7,
-      "dc": -0.0000047,
+      "dc": -0.00000465,
       "sections": [
         "A",
         "B",
@@ -770,7 +836,7 @@
         "T"
       ],
       "maxJump": 0.169,
-      "renderMs": 7511,
+      "renderMs": 7518,
       "stolen": 0
     },
     "ending-rent": {
@@ -780,7 +846,7 @@
       "rmsMedianDb": -19.1,
       "rmsP10Db": -22.5,
       "rmsP90Db": -16.4,
-      "dc": -0.00000421,
+      "dc": -0.00000425,
       "sections": [
         "A",
         "B",
@@ -789,7 +855,7 @@
         "T"
       ],
       "maxJump": 0.143,
-      "renderMs": 8634,
+      "renderMs": 8663,
       "stolen": 0
     }
   },
@@ -881,6 +947,36 @@
   ],
   "errors": [],
   "browser": "Edg/154.0.4258.53",
+  "endingCoda": {
+    "seconds": 180,
+    "formSeconds": 120,
+    "sections": [
+      "A",
+      "B",
+      "A2",
+      "C",
+      "T"
+    ],
+    "codaLap1Db": -21.2,
+    "codaLap2Db": -24.1,
+    "lastSection": "T",
+    "lastCue": "ending-rent",
+    "inTail": true,
+    "loop": 2
+  },
+  "guards": {
+    "noTailCue": {
+      "maxSec": 3,
+      "distinct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "inTail": false,
+      "lastSection": "C"
+    }
+  },
   "sfx": {
     "buy": -13.3,
     "sell": -14.7,

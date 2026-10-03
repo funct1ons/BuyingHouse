@@ -3,7 +3,7 @@
   // Public-state music director. Consumes only the setScene fields; never reads engine/core state.
   const H = g.HomeYear = g.HomeYear || {};
   const SEASONS = ['冬', '春', '夏', '秋'], SEASON_EN = {winter:'冬', spring:'春', summer:'夏', autumn:'秋'}, CLIMATE = {hot:'hot', steady:'steady', cold:'cold', '偏热':'hot', '平稳':'steady', '偏冷':'cold'};
-  const URGENT = new Set(['menu', 'ending-home', 'ending-rent']);
+  const URGENT = new Set(['menu', 'ending-home', 'ending-rent']), PHASES = ['menu', 'early', 'development', 'sprint', 'ending-home', 'ending-rent'];
   const RULES = Object.freeze({devWeek:18, sprintWeek:45, finalWeek:51, upAt:.90, downAt:.80, dwellSeconds:24, phraseBars:4});
 
   function normalize(scene) {
@@ -36,9 +36,11 @@
   }
 
   // Stateful wrapper: requests merge (latest wins); switching is only granted at musical boundaries.
-  function createDirector(rules) {
+  // initialPhase seeds the hysteresis memory so an engine created late (music enabled after the player
+  // already crossed the 0.90 line) still agrees with the phase UI has been showing.
+  function createDirector(rules, initialPhase) {
     const R = Object.assign({}, RULES, rules || {});
-    let scene = normalize(null), target = 'menu', requests = 0;
+    let scene = normalize(null), target = PHASES.indexOf(initialPhase) >= 0 ? initialPhase : 'menu', requests = 0;
     return {
       request(next) { requests++; scene = normalize(next); target = phaseOf(scene, target); return target; },
       scene:() => Object.assign({}, scene), target:() => target, requests:() => requests, layers:() => layers(scene),

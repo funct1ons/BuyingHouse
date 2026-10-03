@@ -8,8 +8,8 @@
 
 | 命令 | 结果 | 环境 |
 |---|---|---|
-| `node tests/av-audio-director.cjs` | **14/14 通过** | Node，加载真实游戏脚本，跑真实 Engine |
-| `node tests/av-audio.cjs` | **91/91 通过**（试听样本来自之前 90 项版本的 `--samples` 运行；新增的那一项不影响音频内容） | Microsoft Edge headless，file://，临时配置目录 |
+| `node tests/av-audio-director.cjs` | **14/14 通过**（0.3 收尾后为 17/17） | Node，加载真实游戏脚本，跑真实 Engine |
+| `node tests/av-audio.cjs` | **91/91 通过**（0.3 收尾后为 95/95；试听样本已用 `--samples` 重新生成） | Microsoft Edge headless，file://，临时配置目录 |
 
 `av-audio.cjs` 驱动的是真实的调度器：离线渲染通过 `OfflineAudioContext.suspend()` 按 50 ms 步长调用同一个 `AudioEngine.tick()`；实时用例使用 CDP 的可信鼠标点击，并在真实 AudioContext 的 master 输出上挂 AnalyserNode 旁路采样。
 
@@ -68,14 +68,23 @@
 
 ## 被挂起状态（视觉 worker 反馈后修正）
 
+> **本节在 0.3 收尾时已被修订，请以 `docs/av-closeout.md` 为准。** 下面是当时的记录，其中 `musicRunning` 与 season 两项的最终处置已经改变（见本节末尾）。
+
 视觉 worker 指出：resume 被浏览器拒绝时，`status()` 显示 `state:'suspended'`，`musicRunning` 却是 true，调度器一直在空转。我实测确认了这一点：旧测试用 `element.click()`（不算可信手势）打开音乐后，就会进入这个状态。
 
-修正：
+当时的修正：
 - 上下文不是 running 时，`tick()` 直接返回，不排音、不空耗。
 - 新增 `status().playing`，表示真的在出声。
 - `musicRunning` **保留原义**（音乐设置开启且定时器存在），没有改成随 running 变化，也没有改成 resume 成功后才启动定时器。原因是 `ui-interaction` 的“music enabled starts loop”和 `acceptance-supplement` 的“只有一个定时器”都在这种 suspended 状态下断言，改了会让旧测试失败。这与 av-direction 3.6 的写法有出入，以本报告为准，请主审确认。
 - 新增测试：不可信解锁时 `playing=false`、`musicRunning=true`、没有排任何音、`needsGesture=true`，已通过。
 - 季节字段：ui.js 传的是英文 `winter/spring/summer/autumn`，现在 normalize 也接受英文。目前音乐还没有用到季节。
+
+### 0.3 收尾修订（2026-10-03，独立审计 M1–M3 / L1–L2 处置）
+
+- `musicRunning` 改为 av-direction 3.6 的语义：**只有音乐设置开启且调度器真的在运行时才为 true**。恢复被拒或上下文 suspended 时不再创建空转定时器，开启音乐的请求由 `status().musicWanted` 记录，恢复成功后只启动一次。原先“不可信解锁时 `musicRunning=true`”的断言是错误语义，已改写为“无空转定时器 + 请求被记住”，判定没有放宽。
+- 季节：`normalize()` 接受英文季节（`winter/spring/summer/autumn`），与 UI 实际发送的值一致；当前音乐实现仍未使用 season。
+- 结局曲尾声：`av-direction.md` 的原始设计是 T 尾声循环，`audio.md` 的“不循环”措辞已改正；主段 A/B/A′/C 只播一次，之后停在 T，不停音（A/B 追踪确认实现本来就如此，本轮把条件写显式并新增断言）。结算 dialog 不再压暗结局 BGM，晚创建 Engine 保留迟滞记忆。详见 `docs/av-closeout.md`。
+- 收尾后 `node tests/av-audio.cjs --samples` 为 95/95（新增尾声与受阻恢复用例）；`--samples` 重新生成的 `docs/av-samples/*.wav` 与提交版本逐采样差异 ≤16/32768、RMS 相同。
 
 ## 整合冒烟（本分支外，只读验证）
 
@@ -96,6 +105,6 @@
 1. **听感未经人工验证**。合成钢琴、弦乐、铜管只是用多振荡器加滤波包络模拟，质感和采样乐器有差距；在笔记本小扬声器上，低音部分（sub、kick）可能听不到。需要有人用真实设备听一遍并记录结果。
 2. 测试测的是采样峰值和窗口 RMS，**不是 true-peak 或 LUFS**。
 3. 离线渲染在 headless 下比实时快 7–10 倍（例如 menu 的 108 s 用 11.9 s 渲染完），所以没有测出低端设备上实时运行的 CPU 余量。48 音上限和卷积混响在低端机上可能偏重。
-4. 1 s 后检查是否 running 的逻辑，在页面隐藏时不会提示；从隐藏返回后如果浏览器拒绝 resume，依赖 `homeyear:audio-blocked` 事件，而 UI 是否处理这个事件由视觉 worker 决定，我没有测到 UI 上的提示。
-5. 原有全部测试（ui-interaction、acceptance-supplement、audio-diagnostic 等）本轮没有运行，由最终整合者回归。我自己做了兼容性设计：`musicRunning` 立即反映状态，`setInterval` 只有一个，`status().gain` 保留，但没有用原测试跑过验证。
+4. 1 s 后检查是否 running 的逻辑，在页面隐藏时不会提示；从隐藏返回后如果浏览器拒绝 resume，依赖 `homeyear:audio-blocked` 事件，而 UI 是否处理这个事件由视觉 worker 决定。0.3 收尾已用 `tests/av-integration.cjs` 的真实受阻/恢复用例覆盖这条路径。
+5. 原有全部测试（ui-interaction、acceptance-supplement 等）本轮没有运行，由最终整合者回归；0.3 收尾已全部补跑（见 `docs/av-closeout.md`）。**注意**：我当时设计的兼容点“`musicRunning` 立即反映状态”在收尾时被有意改掉了——独立审计与 av-direction 3.6 都要求它只在调度器真的运行时为 true，`acceptance-supplement` / `ui-interaction` 的合成点击改为 CDP `userGesture` 后，这两条旧断言按原文字通过。
 6. 本轮不是新修复的问题：原版的 `configure()` 里已经有 resume，这一版沿用了它，并加上被拒绝时的提示。

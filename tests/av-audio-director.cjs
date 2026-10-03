@@ -30,6 +30,13 @@ const leaky=D.normalize({screen:'game',week:3,status:'playing',progress:.1,macro
 check('normalize drops non-public fields (macro/rng/trend)',!('macro' in leaky)&&!('rng' in leaky)&&!('trend' in leaky),Object.keys(leaky));
 
 check('season accepts Chinese and English names',D.normalize({season:'autumn'}).season==='秋'&&D.normalize({season:'春'}).season==='春'&&D.normalize({season:'x'}).season===null);
+// A director created late (music switched on after the player crossed 0.90 and fell back to 0.85) must keep the
+// same hysteresis memory the module already used for the visual phase, so sound and picture never disagree.
+const late=D.createDirector(null,'development'),fresh=D.createDirector();
+const lateSeq=[.92,.85,.75,.85].map(p=>late.request(g(p)));
+check('createDirector(initialPhase) keeps hysteresis memory for a late engine',JSON.stringify(lateSeq)===JSON.stringify(['development','development','early','early']),lateSeq);
+check('createDirector without initialPhase still starts at menu',fresh.target()==='menu'&&D.phaseOf({screen:'game',week:10,status:'playing',progress:.85},'development')==='development'&&D.phaseOf({screen:'game',week:10,status:'playing',progress:.85},'early')==='early');
+check('invalid initialPhase is ignored (falls back to menu)',D.createDirector(null,'nonsense').target()==='menu');
 // A real 52-week standard game with a fixed "buy rice then sell" routine: record the phase per week.
 const e=new H.Engine('CITY-AUDIO-RUN','standard');let prev,weeks=[];
 for(let w=1;w<=52;w++){const s=e.visible();prev=D.phaseOf(sceneOf(s),prev);weeks.push(prev);e.dispatch({type:w===52?'end':'next',revision:s.revision,token:'av-'+w});}

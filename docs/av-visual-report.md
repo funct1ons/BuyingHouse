@@ -20,7 +20,7 @@ Windows 11，Node v24.14.1，Edge 154.0.4258.53（headless，`--disable-gpu`）�
 
 现有测试文件、核心 JS、`css/main.css`、`simulation/`、平衡 JSON 都没有改动（`git diff --quiet` 确认）。旧测试会照常重写自己的截图与报告（`docs/ui-evidence/`、`docs/acceptance-evidence/`）。
 
-**注意**：音频 worker 之后如果再修改 `js/audio*.js`，上面的旧回归需要在最终整合时重跑。本表只代表上述时间点的工作树。
+**注意**：音频 worker 之后如果再修改 `js/audio*.js`，上面的旧回归需要在最终整合时重跑。本表只代表上述时间点的工作树。**0.3 收尾（同日 18:25 UTC 起）确实改了 `js/audio*.js` 与 `js/ui.js` 的一行，并已按顺序重跑全部套件，结果见 `docs/av-closeout.md`：核心 18、smoke、UI 交互、系统浏览器 10/10、补充 5/5、director 17/17、av-audio 95/95、整合 24/24、视觉 93/93 全部通过。**
 
 ## `tests/av-visual.cjs` 覆盖内容
 
@@ -53,7 +53,7 @@ Windows 11，Node v24.14.1，Edge 154.0.4258.53（headless，`--disable-gpu`）�
 - **停止**：模拟页面隐藏会停止调度器；在设置中真实点击关闭音乐后，调度器停止，interval 数为 0，也没有残留提示。
 - 无运行时异常。
 
-**发现的问题（属于音频文件，未修改，已报告）**：声音受阻时 `status()` 为 `state:"suspended"` 但 `musicRunning:true`，即上下文没在运行，调度定时器却在跑。用户看得到提示，不会静默，但与 av-direction 3.6 中“musicRunning 只在设置开启且调度器运行时为 true”的语义有出入，也会在受阻期间空转定时器。
+**发现的问题（属于音频文件，未修改，已报告，0.3 收尾已修复）**：声音受阻时 `status()` 为 `state:"suspended"` 但 `musicRunning:true`，即上下文没在运行，调度定时器却在跑。用户看得到提示，不会静默，但与 av-direction 3.6 中“musicRunning 只在设置开启且调度器运行时为 true”的语义有出入，也会在受阻期间空转定时器。**收尾处置**：改成受阻时不创建调度定时器，`musicRunning` 只在真正运行时为 true；`tests/av-integration.cjs` 现在断言受阻时定时器为 0、`musicWanted=true`，放行后真实点击提示恰好启动 1 个定时器。
 
 **音频信号不代表听感**：以上与音频 worker 的 13+90 项测试都只证明浏览器内的数字信号与调度状态，不证明扬声器发声、音量合适或好听。人工听感没有验证。
 
@@ -86,7 +86,7 @@ Windows 11，Node v24.14.1，Edge 154.0.4258.53（headless，`--disable-gpu`）�
 
 `av-visual.cjs` 新增实测：在第 10 周依次导入 p = 0.50 → 0.92 → 0.85 → 0.75 → 0.85，画面阶段为 early → development → development → early → early，与一个新建的 `HomeYear.AudioDirector` 喂同一序列得到的结果完全一致。
 
-**协议对齐**：climate 统一为 `hot/steady/cold`（与 `audio-director.js` 一致；此前 UI 发送 `neutral`，由 director 兜底为 steady，结果相同，现已改为直接发送 `steady`）。season 由 UI 以 `winter/spring/summer/autumn` 发送，director 的 `normalize()` 只识别中文季节，所以音频侧 season 为 null；当前音频实现没有任何地方使用 season，所以没有听感影响。将来如果音频要按季节变化，需要在 normalize 中接受英文值。
+**协议对齐**：climate 统一为 `hot/steady/cold`（与 `audio-director.js` 一致；此前 UI 发送 `neutral`，由 director 兜底为 steady，结果相同，现已改为直接发送 `steady`）。season 由 UI 以 `winter/spring/summer/autumn` 发送；**0.3 收尾后 director 的 `normalize()` 已接受英文季节**，音频侧 season 不再为 null（当前音频实现没有地方使用 season，所以没有听感影响）。此外，年度结算的绘本对话框现在发送 `dialogOpen:false`（`dialog` 字段仍为 `'result'`），避免结局曲被对话框低通压暗；普通弹窗仍发送 `dialogOpen:true`。
 
 ## 未完成与局限
 

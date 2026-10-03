@@ -19,8 +19,8 @@
 
 - `unlock()`、`configure(settings)`、`volume()`、`setVolume(v)`、`play(kind)`：签名和含义与原版一致。`play` 支持 buy/sell/next/news/error/click/house，其中 house 是购房 stinger。
 - `setScene({screen,week,status,house,progress,season,climate,dialogOpen})` 返回当前阶段名，不会创建或恢复 AudioContext。未知字段直接丢弃。`season` 接受 `冬/春/夏/秋` 或 `winter/spring/summer/autumn`。`climate` 接受 `hot/steady/cold` 或 `偏热/平稳/偏冷`，其他值按 steady 处理。
-- `status()`：原有的 `volume, gain, state, musicRunning` 不变，`musicRunning` 仍表示“音乐设置开启且调度定时器存在”（旧测试依赖这一点）。新增 `playing`，只有定时器存在且 AudioContext 为 running 时才是 true，表示真的在出声，界面应以它为准。上下文被浏览器挂起时，tick 直接返回，不会排任何音。新增的其他只读字段：`needsGesture, engine, cue, section, bar, bpm, chord, target, pendingCue, lastSwitchAt, switches, requests, layers, queued, voices, stolen, retiring, nodes{created,live}`。
-- 浏览器拒绝恢复音频时（resume 失败，或 1 秒后仍不是 running），`needsGesture=true`，并在 window 上派发 `homeyear:audio-blocked`。
+- `status()`：原有的 `volume, gain, state, musicRunning` 字段都在。`musicRunning` 表示“音乐设置开启且调度器真的在运行”——恢复被拒或上下文挂起时调度器不启动，所以它是 false，不会再出现空转的定时器。新增 `playing`，只有定时器存在且 AudioContext 为 running 时才是 true，表示真的在出声，界面以它为准。`musicWanted` 表示“用户开了音乐但还没能出声”（用于恢复路径）。新增的其他只读字段：`needsGesture, engine, cue, section, bar, bpm, chord, target, pendingCue, lastSwitchAt, switches, requests, layers, queued, voices, stolen, retiring, nodes{created,live}`。
+- 浏览器拒绝恢复音频时（resume 失败，或 1 秒后仍不是 running），`needsGesture=true`，并在 window 上派发 `homeyear:audio-blocked`；音乐的开启请求被记住（`musicWanted=true`），下次恢复成功或真实点击“点击启用声音”提示时再启动调度器，只启动一次。
 
 ## 阶段规则（实现以此为准）
 
@@ -28,7 +28,7 @@
 
 - 进度迟滞：进入 development 需要 progress ≥ 0.90，退回 early 需要 < 0.80。按这套规则，三种难度开局都是 early（轻松 0.769、标准 0.462、挑战 0.308，已在真实引擎上验证）。
 - 纵向层：progress ≥ 0.6 加一层，≥ 0.85 再加一层；已购房至少一层；第 45 周起至少一层，第 49 周起满层；第 51–52 周加定音鼓滚奏；景气“偏冷”时打击乐减一层，景气“偏热/偏冷”时音色亮度 ±20%。
-- 对话框打开时不换曲，只切混音快照：音乐低通到 2.5 kHz，约 −4 dB，时间常数 0.1 s。
+- 对话框打开时不换曲，只切混音快照：音乐低通到 2.5 kHz，约 −4 dB，时间常数 0.1 s。**例外：年度结算的绘本对话框不算**，因为两首结局曲只在结算框里播放，压暗会让玩家从头到尾听不到原本音色（普通交易/住房/设置/确认框仍然 duck）。实现上 `dialogOpen` 只对非 `result` 的对话框为 true。
 
 ## 切换规则
 
@@ -47,8 +47,10 @@
 | early | 出租屋的早晨 | F 大调 92，摇摆 0.58 | 马林巴旋律、FM 电钢琴切分、拨弦贝斯、沙锤、底鼓/边击（随层级）、长笛导音、垫音 | 32 小节循环 |
 | development | 街区在发光 | A♭ 大调 100 | 长笛旋律、钢琴 charleston、弦乐、步进贝斯、鼓组 3 件、钟琴应答 | 32 小节循环 |
 | sprint | 最后的几周 | C 小调 116，C 段转 E♭ 大调 | 铜管旋律、拨弦八分音型、切分贝斯、木鱼“钟表”、鼓组、弦乐渐强、垫音、定音鼓（第 51 周起） | 32 小节循环 |
-| ending-home | 钥匙 | E♭ 大调 84 | 钢琴、钢琴分解和弦、弦乐、sub、钟琴、长笛 | A/B/A′/C 后接 8 小节尾声 T，不循环 |
-| ending-rent | 还是那间小屋 | D 大调 66（借用 ♭VI/iv） | 钢琴、钢琴和弦、垫音、sub、底噪 | A/B/A′/C 后接尾声 T，不循环 |
+| ending-home | 钥匙 | E♭ 大调 84 | 钢琴、钢琴分解和弦、弦乐、sub、钟琴、长笛 | A/B/A′/C（32 小节）后接 8 小节柔和尾声 T；T 循环，主段不再重播，也不静音 |
+| ending-rent | 还是那间小屋 | D 大调 66（借用 ♭VI/iv） | 钢琴、钢琴和弦、垫音、sub、底噪 | 同上：A/B/A′/C 后接尾声 T，T 循环 |
+
+结局曲的 T 尾声按 `docs/av-direction.md` 的原始设计反复循环（结算框会一直开着，音乐不能停）：主段 A/B/A′/C 只播放一次，之后停留在 T 段，由 PRNG 逐轮换变奏，不回到 A，也不淡出。`Engine.advance` 对 `loop:false` 的曲目在 T 结束后留在 T，不再从 A 重新开始。曲终仍由关闭音乐、页面隐藏、切到别的曲目或音量 0 结束。
 
 六首共用“家”动机（音级 3–5–6–5–1′），每首按自己的调式和节奏变形。每轮循环由 PRNG 选择变奏：伴奏型、经过音或倚音装饰、鼓过门、开放或密集排列。第一轮的 A 段固定不加变奏。和弦按声部进行规则选最近的转位。所有带音高的声部有 ±10 ms 时间和 ±6% 力度的微小人性化处理。
 

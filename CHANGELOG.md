@@ -10,6 +10,15 @@
 
 - 新用户首次打开设置时默认开启原创暖调音乐；已有 `homeyear.settings.v1` 中明确保存的关闭偏好继续保留。音乐仍只在首次用户交互后解锁，且从音效和音乐均关闭状态开启音乐时会先恢复 AudioContext 再启动旋律。
 
+### 0.3 收尾修复（独立审计 M1–M3、L1–L2）
+- **`musicRunning` 语义修正**：恢复被拒或上下文 suspended 时不再启动空转的调度定时器，`musicRunning` 只在调度器真的运行时为 true（与 `docs/av-direction.md` 3.6 一致）。开启音乐的请求被记住（`status().musicWanted`），恢复成功后只启动一次；`tests/av-audio.cjs` 中原先断言“受阻时 musicRunning=true”的新测试已按正确语义改写，判定条件没有放宽。
+- **结局曲尾声（原始设计定案）**：结局曲的 T 尾声持续柔和循环——主段 A/B/A′/C 只播一次，之后停留在 T 段，不回到 A 重播，也不静音（`docs/av-direction.md` 原本就这么写，`docs/audio.md` 的“不循环”措辞已改正）。A/B 追踪确认 HEAD 的实际行为与之一致（`c.loop` 是曲目循环开关而非轮回计数），本轮把该条件写成显式判断、为“非循环且无尾段”的曲谱补上防御分支，并在 `status()` 暴露 `inTail/loop` 供断言。
+- **结算弹窗不再压暗结局 BGM**：`dialogOpen` 只对交易/住房/设置/确认这类临时对话框为 true，年度结算绘本不触发 2.5 kHz/−4 dB 的对话框混音。
+- **晚创建 Engine 保留迟滞**：`createDirector(rules, initialPhase)` 接受初始阶段，`audio.js` 用模块自己的 `lastPhase` 初始化，避免“声音关闭期间跨过 0.90 再回落”后音乐与画面阶段不一致。
+- **director 季节兼容**：`normalize()` 同时接受 `winter/spring/summer/autumn`，与 UI 实际发送的值一致。
+- **测试**：`av-audio.cjs` 增补尾声循环与受阻恢复；`av-integration.cjs` 增补真实结算 dialog、受阻恢复、晚创建 Engine 迟滞，并收紧“返回到 A2”断言（只接受 `A2`）；`acceptance-supplement.cjs` / `ui-interaction.cjs` 的合成点击改用 CDP `userGesture`，使页面看到与真实鼠标一致的用户激活（断言未改）。
+- 收尾实测：核心 18、smoke、UI 交互、系统浏览器 28/28、补充 5/5、director 17/17、av-audio 95/95（补一条防御断言后复跑 96/96）、整合 24/24、视觉 93/93 全部通过；详见 `docs/av-closeout.md`。
+
 ## 0.2 — 正式界面与最终审核修复（经济规则版本不变）
 - 修复对话框Tab/ShiftTab逃逸：动态可见enabled焦点列表、无控件聚焦本体，保留Esc关闭及焦点返回。
 - 补全0–100%音量滑块/百分比，音乐与音效共用masterGain，0静音；独立音量偏好键与严格范围校验/存储异常保护，旧settings及save协议不变。调音不重复开循环，音乐关闭仍停止。

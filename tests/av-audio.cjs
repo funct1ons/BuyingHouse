@@ -43,6 +43,34 @@ try{
   const game=['early','development','sprint','ending-home'].map(k=>rep.cues[k].rmsMedianDb);
   check('in-game cue RMS medians within '+LIMITS.spreadDb+' dB',Math.max(...game)-Math.min(...game)<=LIMITS.spreadDb,game);
 
+  // 1b. Ending coda: the main form A/B/A2/C plays exactly once, then the soft 8-bar coda T keeps repeating
+  // (the original design in av-direction.md) without restarting the form and without falling silent.
+  {
+    const q=await c.evaluate(`(()=>{const q=HomeYear.AudioScore.cues['ending-rent'];return {bpm:q.bpm,order:q.order.length}})()`);
+    const barDur=4*60/q.bpm,formBars=q.order*8,t0=(1+formBars)*barDur,secs=Math.ceil(t0+2*8*barDur+1);
+    const r=await render({sampleRate:22050,seconds:secs,scene:SC['ending-rent'],seed:9});
+    const seq=r.timeline.map(x=>x.section).filter(Boolean),win=r.rms.length/Math.max(1,secs);
+    const cyc=(a,b)=>median(r.rms.slice(Math.floor(a*win),Math.floor(b*win)).filter(x=>x>1e-6));
+    const c1=cyc(t0,t0+8*barDur),c2=cyc(t0+8*barDur,t0+16*barDur);
+    const info={seconds:secs,formSeconds:r1(t0),sections:seq,codaLap1Db:r1(db(c1)),codaLap2Db:r1(db(c2)),lastSection:r.status.section,lastCue:r.status.cue,inTail:r.status.inTail,loop:r.status.loop};
+    rep.endingCoda=info;
+    check('ending coda: form A/B/A2/C plays once, then the 8-bar T coda repeats (form never replays)',JSON.stringify(seq)===JSON.stringify(['A','B','A2','C','T']),seq);
+    check('ending coda: engine reports the held coda (inTail true; loop counts coda laps, not form repeats)',r.status.inTail===true&&r.status.loop>=2&&seq.filter(s=>s==='A').length===1,{inTail:r.status.inTail,loop:r.status.loop,formRepeats:seq.filter(s=>s==='A').length});
+    check('ending coda: second coda lap is still playing at a similar level (no fade-out, no restart)',c2>1e-5&&Math.abs(db(c2)-db(c1))<=6&&r.status.cue==='ending-rent'&&r.status.section==='T',info);
+  }
+
+  // 1c. Defensive branch: a non-looping cue WITHOUT a tail must not walk past its last section.
+  // (No shipped cue is in that shape; this pins the guard so a future one cannot index an undefined section.)
+  {
+    const r=await c.evaluate(`(()=>{const S=HomeYear.AudioScore,q=S.cues.early,save={loop:q.loop,tail:q.tail};q.loop=false;delete q.tail;
+      const ac=new OfflineAudioContext(1,11025,11025),e=new HomeYear.AudioEngine(ac,ac.destination,{seed:3});let out;
+      try{const inst=e.instance('early',0,{});const secs=[];for(let i=0;i<60;i++){e.advance(inst);secs.push(inst.sec);}out={maxSec:Math.max(...secs),distinct:[...new Set(secs)].sort((a,b)=>a-b),inTail:inst.inTail,lastSection:e.sectionId(inst)};}
+      catch(err){out={error:String(err&&err.message||err)};}
+      q.loop=save.loop;q.tail=save.tail;return out})()`);
+    rep.guards=Object.assign(rep.guards||{},{noTailCue:r});
+    check('non-looping cue without a tail stays inside its sections (no undefined section, no crash)',r.error===undefined&&r.maxSec===3&&r.lastSection==='C'&&r.inTail===false,r);
+  }
+
   // 2. Distinct material: compare harmony/tempo/instrumentation from the real scores.
   const diff=await c.evaluate(`(()=>{const S=HomeYear.AudioScore;return S.cueIds.map(id=>{const q=S.cues[id];return {id,bpm:q.bpm,key:q.key,mode:q.mode,insts:[...new Set(q.tracks.map(t=>t.inst))].sort().join('+'),chords:Object.values(q.sections).map(s=>s.chords.join(' ')).join('|'),melody:Object.values(q.sections).map(s=>s.melody).join('|'),tracks:q.tracks.length}})})()`);
   const uniq=k=>new Set(diff.map(d=>d[k])).size===diff.length;
@@ -104,7 +132,13 @@ try{
   const sample=()=>ev(`(async()=>{let peak=0,s=0,n=0;for(let i=0;i<60;i++){for(const a of audioProbe.branches){const b=new Float32Array(a.fftSize);a.getFloatTimeDomainData(b);for(const x of b){peak=Math.max(peak,Math.abs(x));s+=x*x;n++;}}await new Promise(r=>setTimeout(r,10));}return {peak,rms:n?Math.sqrt(s/n):0,status:HomeYear.Audio.status(),timers:qaIntervals.size}})()`);
   await ev("HomeYear.Audio.configure({autoSave:true,sound:true,music:true,animation:'normal',numberFormat:'decimal'});document.getElementById('volume').dispatchEvent(new Event('click',{bubbles:true}))");
   await ev('HomeYear.Audio.unlock()');await delay(1300);const blk=await ev('({...HomeYear.Audio.status(),timers:qaIntervals.size})');
-  check('untrusted unlock: suspended context reports playing=false, legacy musicRunning=true, no notes queued',blk.state!=='running'?(!blk.playing&&blk.musicRunning&&blk.queued===0&&blk.needsGesture):true,{state:blk.state,playing:blk.playing,musicRunning:blk.musicRunning,queued:blk.queued,needsGesture:blk.needsGesture});
+  check('untrusted unlock: no running context, no idle scheduler, no notes queued, needsGesture set',blk.state!=='running'?(!blk.musicRunning&&!blk.playing&&!blk.queued&&blk.needsGesture&&blk.timers===1&&blk.cue===null):true,{state:blk.state,musicRunning:blk.musicRunning,playing:blk.playing,queued:blk.queued,needsGesture:blk.needsGesture,timers:blk.timers,cue:blk.cue});
+  // Blocked recovery: the request is remembered; after the context is allowed to run, a trusted click on the
+  // "enable sound" prompt (index.html) or a real gesture starts the loop exactly once.
+  if(blk.state!=='running'){
+    const rec=await ev('({musicWanted:HomeYear.Audio.status().musicWanted,needsGesture:HomeYear.Audio.status().needsGesture,timers:qaIntervals.size})');
+    check('blocked context still remembers that music is wanted (recovery path exists)',rec.musicWanted===true&&rec.needsGesture===true&&rec.timers===1,rec);
+  }
   await c.send('Page.navigate',{url:pathToFileURL(path.resolve(__dirname,'av-preview.html')).href});await delay(900);
   check('before any gesture: no AudioContext',(await ev('HomeYear.Audio.status().state'))==='uncreated');
   await ev("HomeYear.Audio.setScene({screen:'start'})");check('setScene before gesture still does not create context',(await ev('HomeYear.Audio.status().state'))==='uncreated');
@@ -114,7 +148,7 @@ try{
   const target=await c.send('Target.createTarget',{url:'about:blank'});await c.send('Target.activateTarget',{targetId:target.targetId});await delay(600);s=await sample();
   check('hidden tab: silent, scheduler stopped',s.peak===0&&!s.status.musicRunning&&!s.status.playing&&s.timers===1,{peak:s.peak,timers:s.timers,cue:s.status.cue});
   await c.send('Page.bringToFront');await delay(2200);s=await sample();
-  check('return to tab: music resumes from A2 (not from the top)',s.peak>0.01&&s.status.musicRunning&&s.timers===2&&['A2','C','A'].includes(s.status.section),{peak:+s.peak.toFixed(4),section:s.status.section});
+  check('return to tab: music resumes from A2 (not from the top)',s.peak>0.01&&s.status.musicRunning&&s.timers===2&&s.status.section==='A2',{peak:+s.peak.toFixed(4),section:s.status.section});
   await c.send('Target.closeTarget',{targetId:target.targetId});
   await click('#musicToggle');await delay(600);s=await sample();
   check('music off: silent within 600 ms, timer cleared, musicRunning false',s.peak===0&&!s.status.musicRunning&&s.timers===1,{peak:s.peak,timers:s.timers});

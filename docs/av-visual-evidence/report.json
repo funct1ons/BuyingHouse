@@ -1,14 +1,13 @@
 {
   "kind": "real Edge headless file:// DOM automation of index.html; screenshots are machine captures, not manual review",
-  "started": "2026-10-03T16:28:26.691Z",
+  "started": "2026-10-03T18:30:50.837Z",
   "checks": [
     {
       "name": "file:// start page painted < 1000ms (headless baseline)",
       "pass": true,
       "detail": {
-        "ms": 105.8999999910593,
-        "source": "double-rAF after load (no paint entry in headless)",
-        "domContentLoaded": 56.3999999910593
+        "ms": 32,
+        "source": "first-paint"
       }
     },
     {
@@ -117,7 +116,7 @@
         "celebrating": true,
         "confetti": true,
         "rafActive": true,
-        "frames": 58
+        "frames": 70
       }
     },
     {
@@ -127,7 +126,7 @@
         "celebrating": false,
         "confetti": false,
         "rafActive": false,
-        "frames": 133
+        "frames": 153
       }
     },
     {
@@ -218,7 +217,7 @@
         "celebrating": true,
         "confetti": true,
         "rafActive": true,
-        "frames": 70
+        "frames": 69
       }
     },
     {
@@ -319,7 +318,7 @@
         "celebrating": true,
         "confetti": true,
         "rafActive": true,
-        "frames": 69
+        "frames": 71
       }
     },
     {
@@ -421,7 +420,7 @@
         "celebrating": false,
         "confetti": false,
         "rafActive": false,
-        "frames": 147
+        "frames": 146
       }
     },
     {
@@ -503,7 +502,7 @@
         "celebrating": true,
         "confetti": true,
         "rafActive": true,
-        "frames": 54
+        "frames": 69
       }
     },
     {
@@ -513,7 +512,7 @@
         "celebrating": false,
         "confetti": false,
         "rafActive": false,
-        "frames": 107
+        "frames": 146
       }
     },
     {
@@ -604,7 +603,7 @@
         "celebrating": true,
         "confetti": true,
         "rafActive": true,
-        "frames": 53
+        "frames": 71
       }
     },
     {
@@ -614,7 +613,7 @@
         "celebrating": false,
         "confetti": false,
         "rafActive": false,
-        "frames": 103
+        "frames": 147
       }
     },
     {
@@ -750,7 +749,7 @@
       "pass": true,
       "detail": {
         "median": 1.5999999940395355,
-        "p90": 2
+        "p90": 1.7999999970197678
       }
     },
     {
@@ -862,7 +861,7 @@
           "celebrating": false,
           "confetti": false,
           "rafActive": false,
-          "frames": 20
+          "frames": 24
         },
         "overlay": false
       }
@@ -871,9 +870,9 @@
       "name": "idle 60s TaskDuration < 3% of wall time (headless baseline)",
       "pass": true,
       "detail": {
-        "seconds": 60.014,
-        "taskDurationSeconds": 0.2712,
-        "percent": 0.452,
+        "seconds": 60.001,
+        "taskDurationSeconds": 0.04,
+        "percent": 0.067,
         "screen": "game",
         "music": true,
         "audioState": "suspended"
@@ -892,11 +891,10 @@
   ],
   "metrics": {
     "firstContentfulPaintMs": {
-      "ms": 105.8999999910593,
-      "source": "double-rAF after load (no paint entry in headless)",
-      "domContentLoaded": 56.3999999910593
+      "ms": 32,
+      "source": "first-paint"
     },
-    "coldLoadWallMs": 111,
+    "coldLoadWallMs": 93,
     "audioSetSceneNative": true,
     "svgElements 1366x768": 1659,
     "svgElements 1600x900": 1659,
@@ -948,12 +946,12 @@
       ]
     },
     "renderGameMedianMs": 1.6,
-    "renderGameP90Ms": 2,
+    "renderGameP90Ms": 1.8,
     "setSceneCalls": 254,
     "idle": {
-      "seconds": 60.014,
-      "taskDurationSeconds": 0.2712,
-      "percent": 0.452,
+      "seconds": 60.001,
+      "taskDurationSeconds": 0.04,
+      "percent": 0.067,
       "screen": "game",
       "music": true,
       "audioState": "suspended"
@@ -1225,7 +1223,7 @@
   ],
   "browser": "Edg/154.0.4258.53",
   "node": "v24.14.1",
-  "finished": "2026-10-03T16:31:17.604Z",
+  "finished": "2026-10-03T18:33:36.933Z",
   "summary": {
     "passed": 93,
     "failed": 0

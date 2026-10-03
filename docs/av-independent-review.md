@@ -10,6 +10,8 @@
 
 找到 3 个中等问题（2 个功能问题、1 个测试缺口，测试缺口让前两个都没被发现），另有 2 个测试偏松的低优先级问题。没有发现严重问题。
 
+**0.3 收尾处置（2026-10-03，逐项，详见 `docs/av-closeout.md`）**：M1 按原始设计定案——结局曲的 T 尾声持续柔和循环、主段 A/B/A′/C 只播一次且不停音，两份文档统一到 `av-direction.md` 的写法，并新增“T 循环不重播主段”的断言；A/B 追踪确认 HEAD 的实际段落序列与之一致（`c.loop` 是曲目循环开关，不是轮回计数），本轮把条件写显式并为“非循环且无尾段”的曲谱补防御分支；M2 结算绘本不再发送 `dialogOpen:true`，结局 BGM 不再被压暗，普通弹窗仍 duck；M3 结局检查改为渲染主段 + 两轮尾声并断言 A 只出现一次；L1 返回标签页断言收紧为只接受 `A2`；L2 `createDirector(rules, initialPhase)` + `audio.js` 传入 `lastPhase`，晚创建引擎不再丢失迟滞。另修：受阻/suspended 时不再启动空转定时器（`musicRunning` 只在真正运行时为 true），`normalize()` 接受英文季节。
+
 已确认没问题的部分：
 - 调度定时器只有一个：`timer` 有 null 保护，`stopMusic` 会 clear。
 - 退役的曲目实例会被 `sweep` 断开。关闭音乐、或 context 挂起后，也会由 `sweepLater` 用 `Infinity` 清空。
@@ -94,3 +96,10 @@
 - 没有实际听音频，也没有测扬声器输出。本报告的结论只基于代码和数字信号层面的诊断。
 - 没有重跑完整的 `av-visual.cjs` 和 `av-audio.cjs`：前者会覆盖 `docs/av-visual-evidence/`，后者会覆盖 `docs/av-samples/report.json`。
 - `art-scenes.js` 只用 grep 检查了 RNG 和网络引用，没有审查绘制逻辑本身。
+
+## 修复后的复验（0.3 收尾补记）
+
+- M1/M2/M3/L1/L2 每条都有对应断言：`tests/av-audio.cjs`（尾声循环、受阻恢复、A2）与 `tests/av-audio-director.cjs`（`initialPhase`）/`tests/av-integration.cjs`（真实结算 dialog、晚启用迟滞）。
+- 按顺序实跑：核心 18、smoke、UI 交互、系统浏览器 10/10、补充 5/5、director 17/17、av-audio 95/95、整合 24/24、视觉 93/93，全部通过；命令与数字见 `docs/av-closeout.md`。
+- 审计中“已确认没问题”的项（单一调度定时器、实例清扫、voice 断开、隐藏页停止、手势前不创建 AudioContext、旧 API 语义）在修复后仍由原断言覆盖并通过。
+- 仍未做：人工听感、真实扬声器、真实标签页切换、真实 GPU 目视检查。

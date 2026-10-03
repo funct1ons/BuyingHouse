@@ -1,5 +1,7 @@
 # 音频只读诊断
 
+> **0.3 收尾补记（2026-10-03）**：本文记录的是**改造前**的基线与根因分析，其中的复现代码故障（第 2 条：suspended + `musicRunning=true` 的空转定时器）已经修复：受阻/挂起时不再创建调度定时器，`musicRunning` 只在调度器真的运行时为 true，开启音乐的请求由 `status().musicWanted` 记录并在恢复成功后启动一次；`normalize()` 也已接受英文季节。本文的 `audio-diagnostic-report.json` 保留为修复前的证据，本轮未覆写。修复与复验见 `docs/av-closeout.md`。
+
 执行：`node tests/audio-diagnostic.cjs`；完整数据：`audio-diagnostic-report.json`。
 
 真实 Microsoft Edge 140.0.3485.54、headless、file://、独立临时浏览器配置，未修改产品文件或用户浏览器设置。音乐复选框使用 CDP Input.dispatchMouseEvent 实际可信鼠标点击，非 element.click()。页面脚本运行前包装 AudioNode.connect：保留原连接，仅对 master gain → destination 增加未连接到扬声器的 AnalyserNode 分支。每场景采样150次、每次2048样本、间隔约10ms；RMS为这些窗口的汇总而非整段连续录音。采样观察有重叠，窗口位置使RMS略变。只能证明浏览器数字音频，不证明用户扬声器实际发声。
@@ -30,4 +32,4 @@
 
 立即操作：设置→勾选原创暖调音乐→再点击页面一次（关闭设置也可）；音量调到50%至100%，保持游戏标签页在前台。仍无声时由用户自行检查系统音量混合器、浏览器标签页静音与输出设备。
 
-若批准修复：在音频设置change更新设置并configure后，在该可信交互内调用unlock；对resume失败提示“点击启用声音”，不要把timer当作有声状态；独立调整音乐增益并试听校准。不要修改经济data默认值或平衡哈希。此次未实施修复。
+若批准修复：在音频设置change更新设置并configure后，在该可信交互内调用unlock；对resume失败提示“点击启用声音”，不要把timer当作有声状态；独立调整音乐增益并试听校准。不要修改经济data默认值或平衡哈希。此次未实施修复。（**0.3 收尾已实施**：可信交互内的 unlock/configure 顺序、受阻提示、`timer` 与“有声”分离都已完成；“独立调整音乐增益并试听校准”**未完成**，仍需要人工听感。）
