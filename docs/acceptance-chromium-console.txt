@@ -1,0 +1,197 @@
+﻿{
+  "kind": "real Edge headless file:// DOM automation; not manual play",
+  "checks": [
+    {
+      "name": "clean start and disabled continue",
+      "pass": true
+    },
+    {
+      "name": "help and four-step tutorial",
+      "pass": true
+    },
+    {
+      "name": "new difficulty easy",
+      "pass": true
+    },
+    {
+      "name": "new difficulty standard",
+      "pass": true
+    },
+    {
+      "name": "new difficulty challenge",
+      "pass": true
+    },
+    {
+      "name": "seed reproducible initial market",
+      "pass": true
+    },
+    {
+      "name": "buy1 buy5 sell1 sell5 exact cash cost",
+      "pass": true
+    },
+    {
+      "name": "buy maximum fills capacity and sell all",
+      "pass": true
+    },
+    {
+      "name": "multi-price weighted total cost",
+      "pass": true
+    },
+    {
+      "name": "input isolation and repeated held key",
+      "pass": true
+    },
+    {
+      "name": "advance actual UI to20",
+      "pass": true
+    },
+    {
+      "name": "full browser shutdown same profile restart and continue deterministic future",
+      "pass": true
+    },
+    {
+      "name": "invalid JSON missing fields future version atomic rejection",
+      "pass": true
+    },
+    {
+      "name": "auto save off and manual save",
+      "pass": true
+    },
+    {
+      "name": "storage refusal preserves game and reports failure",
+      "pass": true
+    },
+    {
+      "name": "natural no-house complete52 and no53 duplicate",
+      "pass": true
+    },
+    {
+      "name": "five houses four warehouses render and upgrade",
+      "pass": true
+    },
+    {
+      "name": "fixture owned house week52 trading and settlement",
+      "pass": true
+    },
+    {
+      "name": "zero cash and empty holdings reject buy sell",
+      "pass": true
+    },
+    {
+      "name": "viewport 1366",
+      "pass": true
+    },
+    {
+      "name": "viewport 1600",
+      "pass": true
+    },
+    {
+      "name": "viewport 1920",
+      "pass": true
+    },
+    {
+      "name": "viewport 2560",
+      "pass": true
+    },
+    {
+      "name": "viewport 125-equivalent",
+      "pass": true
+    },
+    {
+      "name": "viewport 150-equivalent",
+      "pass": true
+    },
+    {
+      "name": "dialog Esc focus return",
+      "pass": true
+    },
+    {
+      "name": "corrupt original preserved until explicit overwrite",
+      "pass": true
+    },
+    {
+      "name": "no external page requests and no runtime console errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "file:///C:/files/code/BuyingHouse/index.html",
+    "file:///C:/files/code/BuyingHouse/css/main.css",
+    "file:///C:/files/code/BuyingHouse/js/data.js",
+    "file:///C:/files/code/BuyingHouse/js/math.js",
+    "file:///C:/files/code/BuyingHouse/js/market.js",
+    "file:///C:/files/code/BuyingHouse/js/trading.js",
+    "file:///C:/files/code/BuyingHouse/js/statistics.js",
+    "file:///C:/files/code/BuyingHouse/js/validation.js",
+    "file:///C:/files/code/BuyingHouse/js/game.js",
+    "file:///C:/files/code/BuyingHouse/js/save.js",
+    "file:///C:/files/code/BuyingHouse/js/art.js",
+    "file:///C:/files/code/BuyingHouse/js/audio.js",
+    "file:///C:/files/code/BuyingHouse/js/ui.js",
+    "file:///C:/files/code/BuyingHouse/index.html",
+    "file:///C:/files/code/BuyingHouse/css/main.css",
+    "file:///C:/files/code/BuyingHouse/js/data.js",
+    "file:///C:/files/code/BuyingHouse/js/math.js",
+    "file:///C:/files/code/BuyingHouse/js/market.js",
+    "file:///C:/files/code/BuyingHouse/js/trading.js",
+    "file:///C:/files/code/BuyingHouse/js/statistics.js",
+    "file:///C:/files/code/BuyingHouse/js/validation.js",
+    "file:///C:/files/code/BuyingHouse/js/game.js",
+    "file:///C:/files/code/BuyingHouse/js/save.js",
+    "file:///C:/files/code/BuyingHouse/js/art.js",
+    "file:///C:/files/code/BuyingHouse/js/audio.js",
+    "file:///C:/files/code/BuyingHouse/js/ui.js",
+    "file:///C:/files/code/BuyingHouse/index.html",
+    "file:///C:/files/code/BuyingHouse/css/main.css",
+    "file:///C:/files/code/BuyingHouse/js/data.js",
+    "file:///C:/files/code/BuyingHouse/js/math.js",
+    "file:///C:/files/code/BuyingHouse/js/market.js",
+    "file:///C:/files/code/BuyingHouse/js/trading.js",
+    "file:///C:/files/code/BuyingHouse/js/statistics.js",
+    "file:///C:/files/code/BuyingHouse/js/validation.js",
+    "file:///C:/files/code/BuyingHouse/js/game.js",
+    "file:///C:/files/code/BuyingHouse/js/save.js",
+    "file:///C:/files/code/BuyingHouse/js/art.js",
+    "file:///C:/files/code/BuyingHouse/js/audio.js",
+    "file:///C:/files/code/BuyingHouse/js/ui.js"
+  ],
+  "performance": [
+    {
+      "operation": "cold navigation",
+      "ms": 73
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 265
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 280
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 279
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 274
+    },
+    {
+      "operation": "next DOM roundtrip (includes260ms pacing)",
+      "ms": 276
+    }
+  ],
+  "fixtures": "Public JSON import; cash grants are non-natural economy",
+  "started": "2026-10-03T11:52:30.080Z",
+  "browser": {
+    "Browser": "Chrome/153.0.8010.12",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "V8-Version": "15.3.76.4",
+    "WebKit-Version": "537.36 (@971a7443b0c9b0a9b2860529b33331b76077ec62)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:50247/devtools/browser/779e8a50-9fc1-4a7e-9da6-fafa73846a41"
+  },
+  "node": "v24.14.1",
+  "finished": "2026-10-03T11:53:53.215Z"
+}

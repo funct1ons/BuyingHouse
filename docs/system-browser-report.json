@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-10-03T11:23:17.227Z",
+  "checks": [
+    {
+      "name": "UI buy and key transaction auto-save",
+      "passed": true
+    },
+    {
+      "name": "UI advance to week20",
+      "passed": true
+    },
+    {
+      "name": "file reload restores week20 and holding",
+      "passed": true
+    },
+    {
+      "name": "auto-save off preserves existing save; manual save remains",
+      "passed": true
+    },
+    {
+      "name": "invalid import does not mutate current state",
+      "passed": true
+    },
+    {
+      "name": "valid fixture import, housing, warehouse and full week52 UI settlement",
+      "passed": true
+    },
+    {
+      "name": "duplicate settlement UI stays stable",
+      "passed": true
+    },
+    {
+      "name": "corrupt original quarantined through automatic and manual attempts",
+      "passed": true
+    },
+    {
+      "name": "explicit damaged replacement succeeds",
+      "passed": true
+    },
+    {
+      "name": "storage refusal does not stop game or JSON export",
+      "passed": true
+    }
+  ],
+  "exceptions": [],
+  "kind": "automated file:// system interaction; not final UI acceptance",
+  "browser": "Edg/154.0.4258.53",
+  "result": "passed",
+  "finishedAt": "2026-10-03T11:23:18.442Z"
+}

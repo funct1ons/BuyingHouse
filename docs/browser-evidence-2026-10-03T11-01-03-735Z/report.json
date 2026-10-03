@@ -1,0 +1,256 @@
+{
+  "startedAt": "2026-10-03T11:01:03.736Z",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\files\\code\\BuyingHouse\\tests\\cdp-smoke.cjs"
+  ],
+  "root": "C:\\files\\code\\BuyingHouse",
+  "output": "C:\\files\\code\\BuyingHouse\\docs\\browser-evidence-2026-10-03T11-01-03-735Z",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "phase": "stage-1 prototype; not a final acceptance gate",
+  "pages": [
+    {
+      "file": "index.html",
+      "url": "file:///C:/files/code/BuyingHouse/index.html",
+      "console": [],
+      "runtimeExceptions": [
+        {
+          "timestamp": 1791025264270.624,
+          "exceptionDetails": {
+            "exceptionId": 1,
+            "text": "Uncaught Error: 存档版本不兼容",
+            "lineNumber": 1,
+            "columnNumber": 98,
+            "scriptId": "8",
+            "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "H.validate",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 1,
+                  "columnNumber": 98
+                },
+                {
+                  "functionName": "H.create",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 3,
+                  "columnNumber": 725
+                },
+                {
+                  "functionName": "H.Engine",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 4,
+                  "columnNumber": 36
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+                  "lineNumber": 0,
+                  "columnNumber": 39
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+                  "lineNumber": 2,
+                  "columnNumber": 103
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        }
+      ],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "这一年，安个家 · 核心原型",
+        "url": "file:///C:/files/code/BuyingHouse/index.html",
+        "homeYear": {
+          "present": true,
+          "type": "object",
+          "keys": [
+            "Engine",
+            "add",
+            "assets",
+            "buyHouse",
+            "clone",
+            "create",
+            "defaultSettings",
+            "difficulties",
+            "difficulty",
+            "drawEvents",
+            "environment",
+            "events",
+            "fee",
+            "housePrice",
+            "houseValue",
+            "houses",
+            "int",
+            "inventoryValue",
+            "mul",
+            "news",
+            "personal",
+            "prices",
+            "product",
+            "products",
+            "random",
+            "record",
+            "reliability",
+            "rules",
+            "seasonAt",
+            "seed",
+            "trade",
+            "trends",
+            "upgradeWarehouse",
+            "used",
+            "validate",
+            "warehousePrice",
+            "warehouses"
+          ]
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1280,
+          "height": 800,
+          "clientWidth": 1280,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": false,
+        "overflowElements": [],
+        "coreSuite": null,
+        "bodyText": "这一年，安个家\n\n阶段1核心调试原型 · 未经经济平衡\n\n本周行情\n住房\n新闻\n\n进入下一周\n\n浏览器核心测试"
+      },
+      "screenshot": "index-html.png"
+    },
+    {
+      "file": "tests/browser.html",
+      "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+      "console": [],
+      "runtimeExceptions": [],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "核心自动测试",
+        "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+        "homeYear": {
+          "present": true,
+          "type": "object",
+          "keys": [
+            "Engine",
+            "add",
+            "assets",
+            "buyHouse",
+            "clone",
+            "create",
+            "defaultSettings",
+            "difficulties",
+            "difficulty",
+            "drawEvents",
+            "environment",
+            "events",
+            "fee",
+            "housePrice",
+            "houseValue",
+            "houses",
+            "int",
+            "inventoryValue",
+            "mul",
+            "news",
+            "personal",
+            "prices",
+            "product",
+            "products",
+            "random",
+            "record",
+            "reliability",
+            "rules",
+            "seasonAt",
+            "seed",
+            "trade",
+            "trends",
+            "upgradeWarehouse",
+            "used",
+            "validate",
+            "warehousePrice",
+            "warehouses"
+          ]
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1280,
+          "height": 800,
+          "clientWidth": 1280,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": false,
+        "overflowElements": [],
+        "coreSuite": {
+          "passed": 0,
+          "failed": 8,
+          "log": [
+            "FAIL 买入、部分卖出成本、清仓余数: 存档版本不兼容",
+            "FAIL 满仓与资金不足原子拒绝: 存档版本不兼容",
+            "FAIL 非法输入和安全整数: 存档版本不兼容",
+            "FAIL 同种子同操作与随机流隔离: 存档版本不兼容",
+            "FAIL 第52周交易购房、幂等结算、52点历史: 存档版本不兼容",
+            "FAIL 快照恢复、重复提交、存档异常不回滚: 存档版本不兼容",
+            "FAIL 负面事件现金不足、赠款不混交易利润: 存档版本不兼容",
+            "FAIL 多种子52周不变式: 存档版本不兼容"
+          ]
+        },
+        "bodyText": "核心自动测试（不含视觉与持久化验收）\nFAIL 买入、部分卖出成本、清仓余数: 存档版本不兼容\nFAIL 满仓与资金不足原子拒绝: 存档版本不兼容\nFAIL 非法输入和安全整数: 存档版本不兼容\nFAIL 同种子同操作与随机流隔离: 存档版本不兼容\nFAIL 第52周交易购房、幂等结算、52点历史: 存档版本不兼容\nFAIL 快照恢复、重复提交、存档异常不回滚: 存档版本不兼容\nFAIL 负面事件现金不足、赠款不混交易利润: 存档版本不兼容\nFAIL 多种子52周不变式: 存档版本不兼容\n0 passed, 8 failed"
+      },
+      "screenshot": "tests-browser-html.png"
+    }
+  ],
+  "unverified": [
+    "Final UI and multi-resolution layout",
+    "Save/load and complete playthrough",
+    "Persistent browser storage",
+    "External requests from browser internals (page Network events only)"
+  ],
+  "failures": [
+    "index.html: runtime/console errors",
+    "Core suite absent or failed"
+  ],
+  "version": {
+    "indexSha256": "c9268fb47820d8d9384a4b16bebd6c53031ff5fcd151a06af4a86f1460444142",
+    "indexMtime": "2026-10-03T10:51:27.945Z",
+    "git": "No git repository available at initial inspection; page loaded from live working tree"
+  },
+  "browser": {
+    "Browser": "Edg/154.0.4258.53",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "V8-Version": "15.4.11.7",
+    "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:54845/devtools/browser/7d30bf56-03ad-4afc-972a-41d0494dd9a8",
+    "pid": 36868,
+    "port": 54845,
+    "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "profile": "C:\\Users\\admin\\AppData\\Local\\Temp\\buyinghouse-cdp-WglRIY"
+  },
+  "browserStderr": "\r\nDevTools listening on ws://127.0.0.1:54845/devtools/browser/7d30bf56-03ad-4afc-972a-41d0494dd9a8\r\n[36868:42828:1003/190104.108:ERROR:chrome\\browser\\importer\\edge_china_browsers\\edge_qqbrowser_importer_utils_win.cc:165] QQBrowser user data path not found.\r\n",
+  "cleanup": "owned browser closed and temporary profile removed",
+  "finishedAt": "2026-10-03T11:01:07.342Z",
+  "result": "observed failures"
+}

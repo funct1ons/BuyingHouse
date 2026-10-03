@@ -1,0 +1,335 @@
+{
+  "startedAt": "2026-10-03T12:10:08.045Z",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\files\\code\\BuyingHouse\\tests\\cdp-smoke.cjs"
+  ],
+  "root": "C:\\files\\code\\BuyingHouse",
+  "output": "C:\\files\\code\\BuyingHouse\\docs\\browser-evidence-2026-10-03T12-10-08-043Z",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "phase": "stage-1 prototype; not a final acceptance gate",
+  "pages": [
+    {
+      "file": "index.html",
+      "url": "file:///C:/files/code/BuyingHouse/index.html",
+      "console": [],
+      "runtimeExceptions": [],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "这一年，安个家",
+        "url": "file:///C:/files/code/BuyingHouse/index.html",
+        "homeYear": {
+          "present": true,
+          "type": "object",
+          "keys": [
+            "Art",
+            "Audio",
+            "Engine",
+            "SaveAdapter",
+            "UI",
+            "add",
+            "assets",
+            "buyHouse",
+            "clone",
+            "create",
+            "defaultSettings",
+            "difficulties",
+            "difficulty",
+            "drawEvents",
+            "environment",
+            "events",
+            "fee",
+            "housePrice",
+            "houseValue",
+            "houses",
+            "int",
+            "inventoryValue",
+            "mul",
+            "news",
+            "personal",
+            "prices",
+            "product",
+            "products",
+            "random",
+            "record",
+            "reliability",
+            "rules",
+            "seasonAt",
+            "seed",
+            "statFields",
+            "summary",
+            "trade",
+            "trends",
+            "upgradeWarehouse",
+            "used",
+            "validate",
+            "validateSettings",
+            "warehousePrice",
+            "warehouses"
+          ]
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1280,
+          "height": 800,
+          "clientWidth": 1280,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": false,
+        "overflowElements": [],
+        "coreSuite": null,
+        "bodyText": "这一年，安个家\n\n从出租屋的一角，到一扇属于自己的门。\n\n距离拥有自己的家，还有 52 周。\n\n城市生活 · 轻策略经营\n你的新生活，从这里开始\n这一局的种子\n生活节奏\n轻松 · 初始 ¥4,000.00\n标准 · 初始 ¥3,000.00\n挑战 · 初始 ¥2,500.00\n开始新的一年\n继续我的生活\n继续不可用：还没有本地存档\n玩法与帮助\n设置与存档\n暂无存档 · 完全离线，无账号"
+      },
+      "loadedFiles": [
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+          "sha256": "a57b35a4d14bd74d1e312d0d44c4041df0193aedd364010ffa446577319953b3",
+          "mtime": "2026-10-03T11:22:55.623Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+          "sha256": "b71e8fe0cdf475007ce2124b58528b6c26fda847d694b5cce9d02d51fd46ba0c",
+          "mtime": "2026-10-03T11:40:40.675Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+          "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+          "mtime": "2026-10-03T11:00:27.735Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+          "sha256": "339ec784de4119dcc421596892e9318a6aa201cadfe79142e5788bf47fb7652c",
+          "mtime": "2026-10-03T11:40:45.938Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+          "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+          "mtime": "2026-10-03T11:01:14.922Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+          "sha256": "d67aea06741b193a16471a779feb2044a2c6a5a5058b657968f810fec9de364c",
+          "mtime": "2026-10-03T11:42:20.434Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+          "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+          "mtime": "2026-10-03T11:03:07.472Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+          "sha256": "01af67dbe592087a1e9b9aac06b4dcfeef4058b66f4f855fe5b07109d9c37b3a",
+          "mtime": "2026-10-03T11:03:47.679Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/art.js",
+          "sha256": "e8a88e8654d2a4b592a9f12653a37945a89ec1fee2d65d0d4b6c1bddc5f6df88",
+          "mtime": "2026-10-03T11:36:49.620Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/audio.js",
+          "sha256": "7e37bffa15ef8da6500832659d2c450a5f5fe5ce1b363521974d485d6dd4947e",
+          "mtime": "2026-10-03T12:02:33.634Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+          "sha256": "b7d037a0a835ba2ec6aff9bf1900bc4a8a968dc498ac1e61461b83f29667aafd",
+          "mtime": "2026-10-03T11:59:22.925Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/css/main.css",
+          "sha256": "8f597c6e53f09a0344e4d5d11ad26b24533abb370d1e904a52969abfa3c97b7b",
+          "mtime": "2026-10-03T11:31:38.970Z"
+        }
+      ],
+      "screenshot": "index-html.png"
+    },
+    {
+      "file": "tests/browser.html",
+      "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+      "console": [],
+      "runtimeExceptions": [],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "核心自动测试",
+        "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+        "homeYear": {
+          "present": true,
+          "type": "object",
+          "keys": [
+            "Engine",
+            "SaveAdapter",
+            "add",
+            "assets",
+            "buyHouse",
+            "clone",
+            "create",
+            "defaultSettings",
+            "difficulties",
+            "difficulty",
+            "drawEvents",
+            "environment",
+            "events",
+            "fee",
+            "housePrice",
+            "houseValue",
+            "houses",
+            "int",
+            "inventoryValue",
+            "mul",
+            "news",
+            "personal",
+            "prices",
+            "product",
+            "products",
+            "random",
+            "record",
+            "reliability",
+            "rules",
+            "seasonAt",
+            "seed",
+            "statFields",
+            "summary",
+            "trade",
+            "trends",
+            "upgradeWarehouse",
+            "used",
+            "validate",
+            "validateSettings",
+            "warehousePrice",
+            "warehouses"
+          ]
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1280,
+          "height": 800,
+          "clientWidth": 1280,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": false,
+        "overflowElements": [],
+        "coreSuite": {
+          "passed": 17,
+          "failed": 0,
+          "log": [
+            "PASS 20商品/40数据事件/5住房/4仓储/三难度与字段差异",
+            "PASS 不同价买入、多次部分卖出、费用与清仓精确整数",
+            "PASS 资金不足/满仓/空仓/非法商品均原子拒绝",
+            "PASS 整数边界和非有限数不可交易或恢复",
+            "PASS 严格必需字段、库存等级、历史、季节、事件和未来版本校验",
+            "PASS 统计关系、零交易、费用溢出与操作级峰值",
+            "PASS 不可能持仓成本拒绝，BigInt部分分摊不溢出",
+            "PASS UTF16种子兼容ASCII/BMP，非BMP低位参与且旧RNG可恢复",
+            "PASS 同种子同操作、restore后未来轨迹与视觉随机流隔离",
+            "PASS 第52周交易购房、升级抵扣、幂等结算和结算一致性",
+            "PASS 仓储升级累计成本、容量与档级",
+            "PASS 重复/过期操作、快照隔离、保存拒绝不回滚",
+            "PASS 负面事件现金不足、生活收支不混交易利润",
+            "PASS 持续事件到期与季节、新闻可靠性和可见信息隔离",
+            "PASS 存档自动/手动接口、设置分离、异常JSON/导入原子失败",
+            "PASS 损坏原档隔离且不自动覆盖，明确恢复/删除与存储拒绝可导出",
+            "PASS 100种子52周交易、统计和全部不变式"
+          ]
+        },
+        "bodyText": "核心自动测试（不含人工试玩与最终视觉验收）\nPASS 20商品/40数据事件/5住房/4仓储/三难度与字段差异\nPASS 不同价买入、多次部分卖出、费用与清仓精确整数\nPASS 资金不足/满仓/空仓/非法商品均原子拒绝\nPASS 整数边界和非有限数不可交易或恢复\nPASS 严格必需字段、库存等级、历史、季节、事件和未来版本校验\nPASS 统计关系、零交易、费用溢出与操作级峰值\nPASS 不可能持仓成本拒绝，BigInt部分分摊不溢出\nPASS UTF16种子兼容ASCII/BMP，非BMP低位参与且旧RNG可恢复\nPASS 同种子同操作、restore后未来轨迹与视觉随机流隔离\nPASS 第52周交易购房、升级抵扣、幂等结算和结算一致性\nPASS 仓储升级累计成本、容量与档级\nPASS 重复/过期操作、快照隔离、保存拒绝不回滚\nPASS 负面事件现金不足、生活收支不混交易利润\nPASS 持续事件到期与季节、新闻可靠性和可见信息隔离\nPASS 存档自动/手动接口、设置分离、异常JSON/导入原子失败\nPASS 损坏原档隔离且不自动覆盖，明确恢复/删除与存储拒绝可导出\nPASS 100种子52周交易、统计和全部不变式\n17 passed, 0 failed"
+      },
+      "loadedFiles": [
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+          "sha256": "a57b35a4d14bd74d1e312d0d44c4041df0193aedd364010ffa446577319953b3",
+          "mtime": "2026-10-03T11:22:55.623Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+          "sha256": "b71e8fe0cdf475007ce2124b58528b6c26fda847d694b5cce9d02d51fd46ba0c",
+          "mtime": "2026-10-03T11:40:40.675Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+          "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+          "mtime": "2026-10-03T11:00:27.735Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+          "sha256": "339ec784de4119dcc421596892e9318a6aa201cadfe79142e5788bf47fb7652c",
+          "mtime": "2026-10-03T11:40:45.938Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+          "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+          "mtime": "2026-10-03T11:01:14.922Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+          "sha256": "d67aea06741b193a16471a779feb2044a2c6a5a5058b657968f810fec9de364c",
+          "mtime": "2026-10-03T11:42:20.434Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+          "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+          "mtime": "2026-10-03T11:03:07.472Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+          "sha256": "01af67dbe592087a1e9b9aac06b4dcfeef4058b66f4f855fe5b07109d9c37b3a",
+          "mtime": "2026-10-03T11:03:47.679Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/tests/suite.js",
+          "sha256": "35070cfc2c1806aeb28364c2345980f68baae4a110dd1820018dcac931fd7409",
+          "mtime": "2026-10-03T11:41:51.159Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/tests/browser.js",
+          "sha256": "fd6fee99bf3b4a00b195841ba226e9009278b24992cd81842c68e21635812d53",
+          "mtime": "2026-10-03T10:53:05.034Z"
+        }
+      ],
+      "screenshot": "tests-browser-html.png"
+    }
+  ],
+  "unverified": [
+    "Final UI and multi-resolution layout",
+    "Save/load and complete playthrough",
+    "Persistent browser storage",
+    "External requests from browser internals (page Network events only)"
+  ],
+  "failures": [],
+  "version": {
+    "indexSha256": "e43429bd7496ae3c102d062473d13735b785814a0a94d539d2d2213a60bf8a42",
+    "indexMtime": "2026-10-03T11:30:09.766Z",
+    "git": "No git repository available at initial inspection; page loaded from live working tree"
+  },
+  "browser": {
+    "Browser": "Edg/154.0.4258.53",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "V8-Version": "15.4.11.7",
+    "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:64234/devtools/browser/f0f99ae7-d56e-49e8-96fe-e3e624070f07",
+    "pid": 43432,
+    "port": 64234,
+    "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "profile": "C:\\Users\\admin\\AppData\\Local\\Temp\\buyinghouse-cdp-zGBB3A"
+  },
+  "browserStderr": "\r\nDevTools listening on ws://127.0.0.1:64234/devtools/browser/f0f99ae7-d56e-49e8-96fe-e3e624070f07\r\n[43432:39852:1003/201008.348:ERROR:chrome\\browser\\importer\\edge_china_browsers\\edge_qqbrowser_importer_utils_win.cc:165] QQBrowser user data path not found.\r\n",
+  "cleanup": "owned browser closed and temporary profile removed",
+  "finishedAt": "2026-10-03T12:10:12.325Z",
+  "result": "smoke observations passed (NOT final gate)"
+}

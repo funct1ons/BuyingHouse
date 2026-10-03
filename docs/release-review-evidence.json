@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-03T12:13:00.820Z",
+  "hashes": {
+    "balance-primary.json": [
+      {
+        "file": "data",
+        "sha256": "a57b35a4d14bd74d1e312d0d44c4041df0193aedd364010ffa446577319953b3",
+        "match": true
+      },
+      {
+        "file": "math",
+        "sha256": "b71e8fe0cdf475007ce2124b58528b6c26fda847d694b5cce9d02d51fd46ba0c",
+        "match": true
+      },
+      {
+        "file": "market",
+        "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+        "match": true
+      },
+      {
+        "file": "trading",
+        "sha256": "339ec784de4119dcc421596892e9318a6aa201cadfe79142e5788bf47fb7652c",
+        "match": true
+      },
+      {
+        "file": "statistics",
+        "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+        "match": true
+      },
+      {
+        "file": "validation",
+        "sha256": "d67aea06741b193a16471a779feb2044a2c6a5a5058b657968f810fec9de364c",
+        "match": true
+      },
+      {
+        "file": "game",
+        "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+        "match": true
+      }
+    ],
+    "balance-holdout.json": [
+      {
+        "file": "data",
+        "sha256": "a57b35a4d14bd74d1e312d0d44c4041df0193aedd364010ffa446577319953b3",
+        "match": true
+      },
+      {
+        "file": "math",
+        "sha256": "b71e8fe0cdf475007ce2124b58528b6c26fda847d694b5cce9d02d51fd46ba0c",
+        "match": true
+      },
+      {
+        "file": "market",
+        "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+        "match": true
+      },
+      {
+        "file": "trading",
+        "sha256": "339ec784de4119dcc421596892e9318a6aa201cadfe79142e5788bf47fb7652c",
+        "match": true
+      },
+      {
+        "file": "statistics",
+        "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+        "match": true
+      },
+      {
+        "file": "validation",
+        "sha256": "d67aea06741b193a16471a779feb2044a2c6a5a5058b657968f810fec9de364c",
+        "match": true
+      },
+      {
+        "file": "game",
+        "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+        "match": true
+      }
+    ]
+  },
+  "audio": [
+    "missing/corrupt/non-number/out-of-range stored volume defaults to 0.5",
+    "invalid volume rejected without exception; denied read/write tolerated; gain updates; 20 unlocks yield one master connection and one music interval",
+    "existing settings v1 remains valid without volume field; independent volume key does not change save/settings schema"
+  ],
+  "counts": {
+    "ui": 74,
+    "edgeSystem": 28,
+    "edgeSupplement": 5,
+    "chromiumSystem": 28,
+    "chromiumSupplement": 5
+  }
+}

@@ -1,0 +1,1 @@
+const result=window.runCoreTests();document.getElementById('output').textContent=result.log.join('\n')+'\n'+result.passed+' passed, '+result.failed+' failed';window.testResult=result;

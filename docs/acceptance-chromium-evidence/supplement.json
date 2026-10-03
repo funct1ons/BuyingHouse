@@ -1,0 +1,157 @@
+{
+  "checks": [
+    {
+      "name": "music starts one repeating timer",
+      "pass": true
+    },
+    {
+      "name": "music off clears timer",
+      "pass": true
+    },
+    {
+      "name": "sound off setting",
+      "pass": true
+    },
+    {
+      "name": "rapid submit triplet commits once",
+      "pass": true
+    },
+    {
+      "name": "native dialog Tab focus contained22 steps",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "focusTrace": [
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "qty",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "submit-trade",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "close",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "qty",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "submit-trade",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "close",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "trade-mode",
+      "inDialog": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "qty",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "action": "quantity",
+      "inDialog": true
+    }
+  ],
+  "browser": "Chrome/153.0.8010.12"
+}

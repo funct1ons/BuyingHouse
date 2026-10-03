@@ -1,0 +1,23 @@
+(function (H) {
+  'use strict';
+  H.statFields = ['bought','sold','profit','grants','expenses','hardship','trades','best','worst','peak','fees','turnover',
+    'houseWeek','warehouseSpent','upgrades','maxDrawdown'];
+  H.record = s => {
+    const point = {week:s.week, cash:s.cash, inventory:H.inventoryValue(s), house:H.houseValue(s), assets:H.assets(s)};
+    s.history[s.week-1] = point;
+    s.stats.peak = Math.max(s.stats.peak,point.assets);
+    const drawdown = s.stats.peak ? Math.round((s.stats.peak-point.assets)/s.stats.peak*1000000) : 0;
+    s.stats.maxDrawdown = Math.max(s.stats.maxDrawdown,drawdown);
+  };
+  H.summary = s => {
+    const ranked = H.products.map(p => ({id:p.id,profit:s.stats.byProduct[p.id]})).sort((a,b) => b.profit-a.profit);
+    const h = H.houses.find(h => h.id === s.house);
+    return {ending:h ? h.ending : '仍在租房', assets:H.assets(s), cash:s.cash, house:s.house,
+      inventoryValue:H.inventoryValue(s), houseValue:H.houseValue(s), profit:s.stats.profit,
+      unrealized:H.products.reduce((n,p) => n+s.inventory[p.id].qty*s.market[p.id].price-s.inventory[p.id].cost,0),
+      turnover:s.stats.turnover, bought:s.stats.bought, sold:s.stats.sold, fees:s.stats.fees,
+      best:s.stats.best, worst:s.stats.worst, bestProduct:ranked[0].id, worstProduct:ranked[ranked.length-1].id,
+      peak:s.stats.peak, trades:s.stats.trades, houseWeek:s.stats.houseWeek, upgrades:s.stats.upgrades,
+      maxDrawdown:s.stats.maxDrawdown, byProduct:H.clone(s.stats.byProduct), history:H.clone(s.history)};
+  };
+})(window.HomeYear);

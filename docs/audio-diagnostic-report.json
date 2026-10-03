@@ -1,0 +1,257 @@
+{
+  "scope": "Real Edge headless file://, fresh temporary profile, trusted CDP mouse clicks. Digital output only; no loudspeaker claim.",
+  "cases": [
+    {
+      "name": "default startup",
+      "status": {
+        "volume": 0.5,
+        "gain": null,
+        "state": "uncreated",
+        "musicRunning": false
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": true,
+        "music": false,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0,
+      "rms": 0,
+      "count": 0,
+      "nonzero": 0
+    },
+    {
+      "name": "music enabled with default sound on",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": true,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0.00899476744234562,
+      "rms": 0.0017983938405663055,
+      "count": 307200,
+      "nonzero": 212857
+    },
+    {
+      "name": "both off",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "suspended",
+        "musicRunning": false
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": false,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0,
+      "rms": 0,
+      "count": 307200,
+      "nonzero": 0
+    },
+    {
+      "name": "music on from both off",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "suspended",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0,
+      "rms": 0,
+      "count": 307200,
+      "nonzero": 0
+    },
+    {
+      "name": "additional click recovers",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0.008950050920248032,
+      "rms": 0.0018895407888726973,
+      "count": 307200,
+      "nonzero": 295480
+    },
+    {
+      "name": "other tab active",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": false
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": true,
+      "peak": 0,
+      "rms": 0,
+      "count": 307200,
+      "nonzero": 0
+    },
+    {
+      "name": "return to game tab",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0.00896141491830349,
+      "rms": 0.0017414682500739784,
+      "count": 307200,
+      "nonzero": 229624
+    },
+    {
+      "name": "volume zero via DOM input (150ms analyser buffer flush)",
+      "status": {
+        "volume": 0,
+        "gain": 0,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0,
+      "rms": 0,
+      "count": 307200,
+      "nonzero": 0
+    },
+    {
+      "name": "volume restored via DOM input",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0.00899476744234562,
+      "rms": 0.0020917244350891176,
+      "count": 307200,
+      "nonzero": 286006
+    },
+    {
+      "name": "saved settings reopened before interaction",
+      "status": {
+        "volume": 0.5,
+        "gain": null,
+        "state": "uncreated",
+        "musicRunning": false
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0,
+      "rms": 0,
+      "count": 0,
+      "nonzero": 0
+    },
+    {
+      "name": "saved settings first trusted interaction",
+      "status": {
+        "volume": 0.5,
+        "gain": 0.5,
+        "state": "running",
+        "musicRunning": true
+      },
+      "settings": {
+        "autoSave": true,
+        "sound": false,
+        "music": true,
+        "animation": "normal",
+        "numberFormat": "decimal"
+      },
+      "hidden": false,
+      "peak": 0.00899476744234562,
+      "rms": 0.001817304226189924,
+      "count": 307200,
+      "nonzero": 212024
+    }
+  ],
+  "browser": {
+    "Browser": "Edg/154.0.4258.53",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "V8-Version": "15.4.11.7",
+    "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:61815/devtools/browser/400c5467-a648-4f16-9020-9cd34f2bffef"
+  },
+  "events": [
+    {
+      "type": "click",
+      "trusted": true,
+      "hidden": false,
+      "status": {
+        "volume": 0.5,
+        "gain": null,
+        "state": "uncreated",
+        "musicRunning": false
+      }
+    }
+  ]
+}

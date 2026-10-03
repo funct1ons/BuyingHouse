@@ -1,0 +1,716 @@
+{
+  "startedAt": "2026-10-03T11:22:27.013Z",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\files\\code\\BuyingHouse\\tests\\cdp-smoke.cjs"
+  ],
+  "root": "C:\\files\\code\\BuyingHouse",
+  "output": "C:\\files\\code\\BuyingHouse\\docs\\browser-evidence-2026-10-03T11-22-27-011Z",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "phase": "stage-1 prototype; not a final acceptance gate",
+  "pages": [
+    {
+      "file": "index.html",
+      "url": "file:///C:/files/code/BuyingHouse/index.html",
+      "console": [],
+      "runtimeExceptions": [
+        {
+          "timestamp": 1791026547562.566,
+          "exceptionDetails": {
+            "exceptionId": 1,
+            "text": "Uncaught SyntaxError: Unexpected token ':'",
+            "lineNumber": 41,
+            "columnNumber": 54,
+            "scriptId": "4",
+            "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547563.113,
+          "exceptionDetails": {
+            "exceptionId": 2,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'int')",
+            "lineNumber": 2,
+            "columnNumber": 8,
+            "scriptId": "5",
+            "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "5",
+                  "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+                  "lineNumber": 2,
+                  "columnNumber": 8
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "5",
+                  "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+                  "lineNumber": 42,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547563.49,
+          "exceptionDetails": {
+            "exceptionId": 3,
+            "text": "Uncaught TypeError: Cannot read properties of undefined (reading 'events')",
+            "lineNumber": 2,
+            "columnNumber": 25,
+            "scriptId": "6",
+            "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "6",
+                  "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+                  "lineNumber": 2,
+                  "columnNumber": 25
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "6",
+                  "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+                  "lineNumber": 82,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547563.778,
+          "exceptionDetails": {
+            "exceptionId": 4,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'trade')",
+            "lineNumber": 2,
+            "columnNumber": 10,
+            "scriptId": "7",
+            "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "7",
+                  "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+                  "lineNumber": 2,
+                  "columnNumber": 10
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "7",
+                  "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+                  "lineNumber": 52,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547564.043,
+          "exceptionDetails": {
+            "exceptionId": 5,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'statFields')",
+            "lineNumber": 2,
+            "columnNumber": 15,
+            "scriptId": "8",
+            "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+                  "lineNumber": 2,
+                  "columnNumber": 15
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+                  "lineNumber": 22,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547564.629,
+          "exceptionDetails": {
+            "exceptionId": 6,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'validateSettings')",
+            "lineNumber": 21,
+            "columnNumber": 21,
+            "scriptId": "9",
+            "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+                  "lineNumber": 21,
+                  "columnNumber": 21
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+                  "lineNumber": 105,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547564.997,
+          "exceptionDetails": {
+            "exceptionId": 7,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'create')",
+            "lineNumber": 2,
+            "columnNumber": 11,
+            "scriptId": "10",
+            "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "10",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 2,
+                  "columnNumber": 11
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "10",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 71,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547565.212,
+          "exceptionDetails": {
+            "exceptionId": 8,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'SaveAdapter')",
+            "lineNumber": 2,
+            "columnNumber": 16,
+            "scriptId": "11",
+            "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "11",
+                  "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+                  "lineNumber": 2,
+                  "columnNumber": 16
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "11",
+                  "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+                  "lineNumber": 79,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        },
+        {
+          "timestamp": 1791026547566.108,
+          "exceptionDetails": {
+            "exceptionId": 9,
+            "text": "Uncaught TypeError: Cannot read properties of undefined (reading 'SaveAdapter')",
+            "lineNumber": 3,
+            "columnNumber": 20,
+            "scriptId": "12",
+            "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "12",
+                  "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+                  "lineNumber": 3,
+                  "columnNumber": 20
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "12",
+                  "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+                  "lineNumber": 131,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 2
+          }
+        }
+      ],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "这一年，安个家 · 系统调试",
+        "url": "file:///C:/files/code/BuyingHouse/index.html",
+        "homeYear": {
+          "present": false,
+          "type": "undefined",
+          "keys": []
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1265,
+          "height": 1035,
+          "clientWidth": 1265,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": true,
+        "overflowElements": [],
+        "coreSuite": null,
+        "bodyText": "这一年，安个家\n\n阶段2–3系统调试界面 · 非最终美术\n\n种子  难度 \n轻松\n标准\n挑战\n 新游戏读取存档\n本周行情\n住房\n仓储\n新闻\n统计 / 结算\n存档与设置\n自动保存 手动保存导出JSON导出损坏原文 明确覆盖隔离原档删除存档\n\n导入文件  或粘贴JSON\n导入（先校验）\n进入下一周\n\n浏览器核心测试"
+      },
+      "loadedFiles": [
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+          "sha256": "55fce94f0cf7ebc23c8871da27d4e718daa2aa57381435f159919d50a35a8218",
+          "mtime": "2026-10-03T11:16:30.894Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+          "sha256": "7ca00ffb070a273ec6ac469f8811f905a339bae1066c5e70977b819d1ad3e90d",
+          "mtime": "2026-10-03T10:59:51.699Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+          "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+          "mtime": "2026-10-03T11:00:27.735Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+          "sha256": "4bae52211228dce9be29dd6564c87021682b2e3d059569684726a99915a9555d",
+          "mtime": "2026-10-03T11:00:55.892Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+          "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+          "mtime": "2026-10-03T11:01:14.922Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+          "sha256": "f647094389069e02eb48cba4370cda01d3a9c1eb91719e13af742da07c7bcb95",
+          "mtime": "2026-10-03T11:02:27.614Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+          "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+          "mtime": "2026-10-03T11:03:07.472Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+          "sha256": "01af67dbe592087a1e9b9aac06b4dcfeef4058b66f4f855fe5b07109d9c37b3a",
+          "mtime": "2026-10-03T11:03:47.679Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+          "sha256": "e874461c83a5d67c59a78eada8efb41d463e601a8000d4c805e435ffcb5b9913",
+          "mtime": "2026-10-03T11:18:49.386Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/css/main.css",
+          "sha256": "a8587c6267e29a7507d2a3729b751127c3dff5ef23d5b1b28b29021247544f5d",
+          "mtime": "2026-10-03T11:06:05.953Z"
+        }
+      ],
+      "screenshot": "index-html.png"
+    },
+    {
+      "file": "tests/browser.html",
+      "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+      "console": [],
+      "runtimeExceptions": [
+        {
+          "timestamp": 1791026548878.666,
+          "exceptionDetails": {
+            "exceptionId": 10,
+            "text": "Uncaught SyntaxError: Unexpected token ':'",
+            "lineNumber": 41,
+            "columnNumber": 54,
+            "scriptId": "16",
+            "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.358,
+          "exceptionDetails": {
+            "exceptionId": 11,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'int')",
+            "lineNumber": 2,
+            "columnNumber": 8,
+            "scriptId": "5",
+            "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "5",
+                  "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+                  "lineNumber": 2,
+                  "columnNumber": 8
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "5",
+                  "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+                  "lineNumber": 42,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.58,
+          "exceptionDetails": {
+            "exceptionId": 12,
+            "text": "Uncaught TypeError: Cannot read properties of undefined (reading 'events')",
+            "lineNumber": 2,
+            "columnNumber": 25,
+            "scriptId": "6",
+            "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "6",
+                  "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+                  "lineNumber": 2,
+                  "columnNumber": 25
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "6",
+                  "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+                  "lineNumber": 82,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.654,
+          "exceptionDetails": {
+            "exceptionId": 13,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'trade')",
+            "lineNumber": 2,
+            "columnNumber": 10,
+            "scriptId": "7",
+            "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "7",
+                  "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+                  "lineNumber": 2,
+                  "columnNumber": 10
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "7",
+                  "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+                  "lineNumber": 52,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.716,
+          "exceptionDetails": {
+            "exceptionId": 14,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'statFields')",
+            "lineNumber": 2,
+            "columnNumber": 15,
+            "scriptId": "8",
+            "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+                  "lineNumber": 2,
+                  "columnNumber": 15
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "8",
+                  "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+                  "lineNumber": 22,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.772,
+          "exceptionDetails": {
+            "exceptionId": 15,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'validateSettings')",
+            "lineNumber": 21,
+            "columnNumber": 21,
+            "scriptId": "9",
+            "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+                  "lineNumber": 21,
+                  "columnNumber": 21
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "9",
+                  "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+                  "lineNumber": 105,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.827,
+          "exceptionDetails": {
+            "exceptionId": 16,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'create')",
+            "lineNumber": 2,
+            "columnNumber": 11,
+            "scriptId": "10",
+            "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "10",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 2,
+                  "columnNumber": 11
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "10",
+                  "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+                  "lineNumber": 71,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        },
+        {
+          "timestamp": 1791026548891.889,
+          "exceptionDetails": {
+            "exceptionId": 17,
+            "text": "Uncaught TypeError: Cannot set properties of undefined (setting 'SaveAdapter')",
+            "lineNumber": 2,
+            "columnNumber": 16,
+            "scriptId": "11",
+            "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "11",
+                  "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+                  "lineNumber": 2,
+                  "columnNumber": 16
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "11",
+                  "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+                  "lineNumber": 79,
+                  "columnNumber": 2
+                }
+              ]
+            },
+            "executionContextId": 3
+          }
+        }
+      ],
+      "log": [],
+      "externalRequests": [],
+      "networkFailures": [],
+      "inspection": {
+        "title": "核心自动测试",
+        "url": "file:///C:/files/code/BuyingHouse/tests/browser.html",
+        "homeYear": {
+          "present": false,
+          "type": "undefined",
+          "keys": []
+        },
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "document": {
+          "width": 1280,
+          "height": 800,
+          "clientWidth": 1280,
+          "clientHeight": 800
+        },
+        "horizontalOverflow": false,
+        "verticalOverflow": false,
+        "overflowElements": [],
+        "coreSuite": {
+          "passed": 0,
+          "failed": 14,
+          "log": [
+            "FAIL 20商品/40数据事件/5住房/4仓储/三难度与字段差异: Cannot read properties of undefined (reading 'products')",
+            "FAIL 不同价买入、多次部分卖出、费用与清仓精确整数: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 资金不足/满仓/空仓/非法商品均原子拒绝: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 整数边界和非有限数不可交易或恢复: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 严格必需字段、库存等级、历史、季节、事件和未来版本校验: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 同种子同操作、restore后未来轨迹与视觉随机流隔离: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 第52周交易购房、升级抵扣、幂等结算和结算一致性: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 仓储升级累计成本、容量与档级: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 重复/过期操作、快照隔离、保存拒绝不回滚: Cannot read properties of undefined (reading 'Engine')",
+            "FAIL 负面事件现金不足、生活收支不混交易利润: Cannot read properties of undefined (reading 'create')",
+            "FAIL 持续事件到期与季节、新闻可靠性和可见信息隔离: Cannot read properties of undefined (reading 'create')",
+            "FAIL 存档自动/手动接口、设置分离、异常JSON/导入原子失败: Cannot read properties of undefined (reading 'SaveAdapter')",
+            "FAIL 损坏原档隔离且不自动覆盖，明确恢复/删除与存储拒绝可导出: Cannot read properties of undefined (reading 'SaveAdapter')",
+            "FAIL 100种子52周交易、统计和全部不变式: Cannot read properties of undefined (reading 'Engine')"
+          ]
+        },
+        "bodyText": "核心自动测试（不含人工试玩与最终视觉验收）\nFAIL 20商品/40数据事件/5住房/4仓储/三难度与字段差异: Cannot read properties of undefined (reading 'products')\nFAIL 不同价买入、多次部分卖出、费用与清仓精确整数: Cannot read properties of undefined (reading 'Engine')\nFAIL 资金不足/满仓/空仓/非法商品均原子拒绝: Cannot read properties of undefined (reading 'Engine')\nFAIL 整数边界和非有限数不可交易或恢复: Cannot read properties of undefined (reading 'Engine')\nFAIL 严格必需字段、库存等级、历史、季节、事件和未来版本校验: Cannot read properties of undefined (reading 'Engine')\nFAIL 同种子同操作、restore后未来轨迹与视觉随机流隔离: Cannot read properties of undefined (reading 'Engine')\nFAIL 第52周交易购房、升级抵扣、幂等结算和结算一致性: Cannot read properties of undefined (reading 'Engine')\nFAIL 仓储升级累计成本、容量与档级: Cannot read properties of undefined (reading 'Engine')\nFAIL 重复/过期操作、快照隔离、保存拒绝不回滚: Cannot read properties of undefined (reading 'Engine')\nFAIL 负面事件现金不足、生活收支不混交易利润: Cannot read properties of undefined (reading 'create')\nFAIL 持续事件到期与季节、新闻可靠性和可见信息隔离: Cannot read properties of undefined (reading 'create')\nFAIL 存档自动/手动接口、设置分离、异常JSON/导入原子失败: Cannot read properties of undefined (reading 'SaveAdapter')\nFAIL 损坏原档隔离且不自动覆盖，明确恢复/删除与存储拒绝可导出: Cannot read properties of undefined (reading 'SaveAdapter')\nFAIL 100种子52周交易、统计和全部不变式: Cannot read properties of undefined (reading 'Engine')\n0 passed, 14 failed"
+      },
+      "loadedFiles": [
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/data.js",
+          "sha256": "55fce94f0cf7ebc23c8871da27d4e718daa2aa57381435f159919d50a35a8218",
+          "mtime": "2026-10-03T11:16:30.894Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/math.js",
+          "sha256": "7ca00ffb070a273ec6ac469f8811f905a339bae1066c5e70977b819d1ad3e90d",
+          "mtime": "2026-10-03T10:59:51.699Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/market.js",
+          "sha256": "eb8a8ac2bf1540725d4b746ce2cb055df362f83f444efb8474b10afa2532106b",
+          "mtime": "2026-10-03T11:00:27.735Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/trading.js",
+          "sha256": "4bae52211228dce9be29dd6564c87021682b2e3d059569684726a99915a9555d",
+          "mtime": "2026-10-03T11:00:55.892Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/statistics.js",
+          "sha256": "0b4f1bfea3e2435a1c9e6c03d68fb1fda721f8a45dbf658e341f3a94c51a3cff",
+          "mtime": "2026-10-03T11:01:14.922Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/validation.js",
+          "sha256": "f647094389069e02eb48cba4370cda01d3a9c1eb91719e13af742da07c7bcb95",
+          "mtime": "2026-10-03T11:02:27.614Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/game.js",
+          "sha256": "22d3662aebb070fa9ff1e6408415a91722b5b450a04570c000f39438d7d03bb1",
+          "mtime": "2026-10-03T11:03:07.472Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/js/save.js",
+          "sha256": "01af67dbe592087a1e9b9aac06b4dcfeef4058b66f4f855fe5b07109d9c37b3a",
+          "mtime": "2026-10-03T11:03:47.679Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/tests/suite.js",
+          "sha256": "44707c59d34792d343962a1242cc7fa744bf80b3ea409021366289105f3a28d3",
+          "mtime": "2026-10-03T11:16:41.018Z"
+        },
+        {
+          "url": "file:///C:/files/code/BuyingHouse/tests/browser.js",
+          "sha256": "fd6fee99bf3b4a00b195841ba226e9009278b24992cd81842c68e21635812d53",
+          "mtime": "2026-10-03T10:53:05.034Z"
+        }
+      ],
+      "screenshot": "tests-browser-html.png"
+    }
+  ],
+  "unverified": [
+    "Final UI and multi-resolution layout",
+    "Save/load and complete playthrough",
+    "Persistent browser storage",
+    "External requests from browser internals (page Network events only)"
+  ],
+  "failures": [
+    "index.html: runtime/console errors",
+    "index.html: window.HomeYear absent",
+    "tests/browser.html: runtime/console errors",
+    "Core suite absent or failed"
+  ],
+  "version": {
+    "indexSha256": "1d10a7a5aba05c202bbe340fcf8fbb02b28290c88e157191561b24a1ae9cd2da",
+    "indexMtime": "2026-10-03T11:04:24.030Z",
+    "git": "No git repository available at initial inspection; page loaded from live working tree"
+  },
+  "browser": {
+    "Browser": "Edg/154.0.4258.53",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+    "V8-Version": "15.4.11.7",
+    "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:65101/devtools/browser/416519b9-cdbe-43db-a4a7-1ea26ac248fa",
+    "pid": 40408,
+    "port": 65101,
+    "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "profile": "C:\\Users\\admin\\AppData\\Local\\Temp\\buyinghouse-cdp-ECHCTk"
+  },
+  "browserStderr": "\r\nDevTools listening on ws://127.0.0.1:65101/devtools/browser/416519b9-cdbe-43db-a4a7-1ea26ac248fa\r\n[40408:43192:1003/192227.365:ERROR:chrome\\browser\\importer\\edge_china_browsers\\edge_qqbrowser_importer_utils_win.cc:165] QQBrowser user data path not found.\r\n",
+  "cleanup": "owned browser closed and temporary profile removed",
+  "finishedAt": "2026-10-03T11:22:30.661Z",
+  "result": "observed failures"
+}
