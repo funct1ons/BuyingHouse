@@ -1,0 +1,6 @@
+'use strict';
+// Development helper: screenshot tests/av-visual-gallery.html views into a temp folder for art review.
+const {launchEdge,delay}=require('./cdp-helper.cjs');const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),{pathToFileURL}=require('node:url');
+(async()=>{let e;const out=process.argv[2]||path.join(os.tmpdir(),'hy-gallery');await fs.mkdir(out,{recursive:true});const views=process.argv.slice(3);try{e=await launchEdge();const c=e.cdp;await c.send('Page.enable');await c.send('Runtime.enable');const errs=[];c.on('Runtime.exceptionThrown',x=>errs.push(x.exceptionDetails));
+for(const v of views.length?views:['view=houses','view=icons','view=city']){await c.send('Emulation.setDeviceMetricsOverride',{width:1600,height:v.includes('icons')?600:900,deviceScaleFactor:1,mobile:false});await c.send('Page.navigate',{url:pathToFileURL(path.resolve(__dirname,'av-visual-gallery.html')).href+'?'+v});await delay(700);const s=await c.send('Page.captureScreenshot',{format:'png'});const f=path.join(out,v.replace(/[^a-z0-9-]+/gi,'_')+'.png');await fs.writeFile(f,Buffer.from(s.data,'base64'));console.log(f);}
+if(errs.length)console.log('ERRORS',JSON.stringify(errs,null,1));}finally{if(e)await e.cleanup();}})().catch(x=>{console.error(x);process.exitCode=1;});

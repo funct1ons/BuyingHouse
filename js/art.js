@@ -1,118 +1,81 @@
 (function (g) {
   'use strict';
-  // Original path art, drawn for HomeYear. No external assets or SVG fragment IDs.
+  // Original path art, drawn for HomeYear. Icons: three tones + fine warm ink line + upper-left light.
+  // Scenes come from art-scenes.js; shared gradients/patterns from art-kit.js (ids prefixed hy-).
   const H = g.HomeYear = g.HomeYear || {};
-  const C = {ink:'#234c50',paper:'#fbf4e6',cream:'#e9dcc4',orange:'#ed9b53',coral:'#d97562',mint:'#8db6a0',blue:'#83a6ae',light:'#ffe3a0'};
-  const p = (d,fill=C.paper,extra='') => `<path d="${d}" fill="${fill}" ${extra}/>`;
-  const r = (x,y,w,h,fill,rx=0) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
-  const circle = (x,y,rad,fill) => `<circle cx="${x}" cy="${y}" r="${rad}" fill="${fill}"/>`;
-  const line = (x,y,x2,y2,color=C.ink,width=2) => `<path d="M${x} ${y}L${x2} ${y2}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
-  const icons = {
-    rice:p('M18 16Q32 22 46 16L49 47Q32 55 15 47Z',C.cream)+p('M18 16L22 9H42L46 16',C.mint)+p('M25 29Q32 21 39 29L37 42H27Z',C.paper)+line(32,27,32,39)+line(27,31,32,34)+line(37,31,32,36),
-    oil:r(24,7,16,8,C.ink,2)+p('M24 15H40V23L46 29V51H18V29L24 23Z',C.orange)+r(20,31,24,15,C.paper,3)+p('M32 33Q21 43 32 44Q43 43 32 33Z',C.mint),
-    pork:p('M12 27Q10 12 27 14Q42 11 51 27Q55 41 39 49Q23 54 14 41Z',C.coral)+p('M16 26Q17 17 29 20Q42 17 46 29Q49 40 35 44Q22 47 18 38Z',C.paper)+p('M20 28Q26 22 36 26Q45 29 40 37Q33 44 24 38Z',C.coral)+circle(31,32,4,C.cream),
-    eggs:p('M9 37H55L50 51H14Z',C.cream)+p('M13 35C13 14 28 10 29 33Q29 43 20 43Q13 43 13 35Z',C.paper)+p('M31 35C31 8 49 9 51 34Q52 44 42 44Q31 44 31 35Z',C.orange)+line(14,47,50,47,C.ink,2),
-    fruit:p('M32 22C13 11 7 30 16 45Q24 58 32 49Q44 58 51 40Q59 18 39 20Z',C.coral)+p('M33 20Q34 6 49 11Q45 23 33 20Z',C.mint)+line(32,23,30,13)+p('M18 30Q16 36 20 40','none',`stroke="${C.paper}" stroke-width="3" stroke-linecap="round"`),
-    milk:p('M20 9H39L47 21V53H17V21Z',C.paper)+p('M20 9L27 20H47L39 9Z',C.blue)+p('M17 21H27V53H17Z',C.mint)+r(30,28,13,17,C.blue,3)+p('M36 30Q28 40 36 42Q44 40 36 30Z',C.paper),
-    phone:r(18,7,28,50,C.ink,6)+r(21,11,22,38,C.blue,3)+p('M21 41L43 19V49H21Z',C.mint)+r(28,12,9,3,C.ink,2)+circle(32,53,2,C.paper),
-    gpu:r(8,19,48,28,C.mint,3)+r(8,16,3,36,C.ink)+circle(29,33,11,C.ink)+circle(29,33,4,C.blue)+p('M29 23L33 28L29 29L25 26Z',C.paper)+p('M39 33L34 37L33 33L36 29Z',C.paper)+p('M29 43L25 38L29 37L33 40Z',C.paper)+r(43,24,9,5,C.ink)+r(43,35,9,5,C.ink)+r(18,47,25,4,C.orange),
-    console:r(21,7,23,29,C.paper,4)+p('M23 7L30 10V36H23Z',C.blue)+r(34,13,5,18,C.ink,2)+p('M17 33Q9 34 8 48Q7 57 16 52L25 45H39L48 52Q57 57 56 47Q53 31 46 33Z',C.ink)+line(17,38,17,46,C.paper)+line(13,42,21,42,C.paper)+circle(44,40,2,C.coral)+circle(48,44,2,C.orange),
-    camera:r(8,21,48,31,C.ink,5)+p('M18 21L22 13H37L42 21Z',C.ink)+circle(33,36,13,C.blue)+circle(33,36,9,C.paper)+circle(33,36,6,C.ink)+circle(30,33,2,C.blue)+r(12,25,7,4,C.orange,1),
-    gold:p('M20 18Q32 4 44 18L49 34Q32 61 15 34Z','none',`stroke="${C.orange}" stroke-width="7"`)+p('M24 33L32 23L40 33L32 43Z',C.orange)+p('M24 33H40L32 38Z',C.light)+line(32,23,32,38,C.paper),
-    watch:r(24,5,16,54,C.coral,5)+r(21,20,22,25,C.orange,6)+circle(32,32,10,C.paper)+line(32,25,32,32)+line(32,32,38,35)+r(27,8,10,5,C.ink,1),
-    collectible:r(12,49,40,7,C.ink,2)+r(17,44,30,5,C.cream)+p('M23 43V26H18L32 10L46 26H41V43Z',C.orange)+r(28,30,8,13,C.ink,2)+circle(32,22,3,C.paper)+line(45,10,45,18,C.mint)+line(41,14,49,14,C.mint),
-    coat:p('M23 11L15 16L7 35L16 40L21 29V54H43V29L48 40L57 35L49 16L41 11L32 17Z',C.coral)+p('M23 11L27 7H37L41 11L32 21Z',C.cream)+line(32,21,32,54,C.paper)+line(23,30,41,30,C.orange)+line(23,39,41,39,C.orange)+line(23,48,41,48,C.orange),
-    ac:r(6,13,52,25,C.paper,5)+r(10,28,44,6,C.ink,2)+r(45,18,7,3,C.mint,1)+line(14,42,14,51,C.blue)+p('M29 42Q24 48 29 54M43 42Q38 48 43 54','none',`stroke="${C.blue}" stroke-width="3" stroke-linecap="round"`),
-    umbrella:p('M7 31Q9 9 32 9Q55 9 57 31Q50 25 44 31Q38 25 32 31Q26 25 20 31Q13 25 7 31Z',C.coral)+p('M20 31Q23 12 32 9Q41 12 44 31Q38 25 32 31Q26 25 20 31Z',C.orange)+p('M32 31V49Q32 59 42 54V49','none',`stroke="${C.ink}" stroke-width="3" stroke-linecap="round"`),
-    mask:p('M15 24Q1 17 6 38Q10 46 16 38M49 24Q63 17 58 38Q54 46 48 38','none',`stroke="${C.ink}" stroke-width="2"`)+p('M15 20Q32 27 49 20V41Q32 54 15 41Z',C.blue)+line(21,30,43,30,C.paper)+line(21,36,43,36,C.paper)+line(23,42,41,42,C.paper),
-    medicine:r(12,11,28,43,C.paper,4)+r(11,8,30,9,C.mint,2)+r(18,28,16,5,C.coral)+r(24,22,5,17,C.coral)+p('M39 39Q46 29 53 38Q61 44 52 52Q44 60 38 51Q33 46 39 39Z',C.orange)+line(39,39,52,52,C.paper),
-    battery:r(14,17,34,37,C.mint,5)+r(23,10,16,7,C.ink,2)+p('M34 22L23 37H31L28 49L41 32H33Z',C.light)+r(18,21,5,4,C.paper,1),
-    food:r(9,26,25,29,C.orange,3)+r(9,23,25,5,C.ink,2)+r(12,35,19,11,C.paper,2)+p('M19 39L25 39L22 44Z',C.mint)+p('M37 10H52L55 54H34Z',C.cream)+r(38,24,13,20,C.mint,2)+line(38,15,51,15),
-    cash:r(7,20,48,29,C.mint,4)+r(10,16,43,27,C.paper,3)+circle(32,30,9,C.orange)+line(32,24,32,36,C.paper)+line(27,28,37,28,C.paper)+line(27,32,37,32,C.paper),
-    assets:r(10,36,10,17,C.mint,2)+r(27,25,10,28,C.blue,2)+r(44,11,10,42,C.orange,2)+p('M10 27L29 14L38 19L53 6','none',`stroke="${C.ink}" stroke-width="3"`),
-    warehouse:p('M7 27L32 9L57 27V53H7Z',C.mint)+r(17,30,30,23,C.paper,2)+line(20,37,44,37)+line(20,43,44,43)+p('M5 27L32 7L59 27','none',`stroke="${C.ink}" stroke-width="4"`),
-    home:p('M12 29L32 12L52 29V54H12Z',C.paper)+p('M7 29L32 8L57 29','none',`stroke="${C.coral}" stroke-width="6" stroke-linejoin="round"`)+r(27,35,12,19,C.mint,2)+r(16,32,8,9,C.orange,1),
-    news:r(10,12,39,42,C.paper,3)+p('M49 21H55V49Q55 54 49 54Z',C.mint)+r(16,19,26,5,C.ink,1)+r(16,29,11,13,C.coral,1)+line(32,30,43,30)+line(32,37,43,37)+line(16,47,43,47),
-    calendar:r(10,13,44,42,C.paper,4)+r(10,13,44,12,C.coral,4)+line(22,9,22,18)+line(42,9,42,18)+r(18,31,7,7,C.mint,1)+r(29,31,7,7,C.orange,1)+r(40,31,7,7,C.mint,1)+r(18,42,7,7,C.mint,1)+r(29,42,7,7,C.mint,1),
-    sound:p('M10 25H21L36 13V51L21 39H10Z',C.mint)+p('M43 22Q55 32 43 42M48 14Q66 32 48 50','none',`stroke="${C.ink}" stroke-width="3" stroke-linecap="round"`),
-    settings:p('M26 7H38L40 16L48 19L56 16L61 27L53 32L52 40L56 48L46 55L39 49L31 50L25 57L15 51L18 42L13 35L5 31L9 20L19 21L24 16Z',C.mint)+circle(33,32,11,C.paper)+circle(33,32,5,C.ink),
-    help:circle(32,32,24,C.mint)+p('M24 24Q25 14 35 18Q46 22 37 31L32 35V39','none',`stroke="${C.paper}" stroke-width="4" stroke-linecap="round"`)+circle(32,46,2.5,C.paper),
-    buy:r(9,34,46,20,C.mint,4)+p('M32 8V39M21 28L32 39L43 28','none',`stroke="${C.ink}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
-    sell:r(9,34,46,20,C.orange,4)+p('M32 39V8M21 19L32 8L43 19','none',`stroke="${C.ink}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
-    arrow:p('M10 32H53M36 15L53 32L36 49','none',`stroke="${C.ink}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
-    close:p('M17 17L47 47M47 17L17 47','none',`stroke="${C.ink}" stroke-width="4" stroke-linecap="round"`),
-    star:p('M32 7L39 23L57 25L44 38L47 56L32 47L17 56L20 38L7 25L25 23Z',C.orange),
-    search:circle(27,27,17,C.paper)+`<circle cx="27" cy="27" r="17" fill="none" stroke="${C.ink}" stroke-width="4"/>`+line(40,40,55,55,C.ink,5)
+  const K = H.ArtKit, S = H.ArtScenes;
+  if (!K || !S) throw Error('art-kit.js and art-scenes.js must load before art.js');
+  const C = {ink:'#3a2e2a',paper:'#fbf4e6',cream:'#e9dcc4',orange:'#e0913f',coral:'#c95a48',mint:'#6f9a84',blue:'#5f8fb4',light:'#ffe3a0',brass:'#b88a4a',teal:'#2f7a68'};
+  const INK = C.ink;
+  const F = (d, fill, w = 1.5) => `<path d="${d}" fill="${fill}" stroke="${INK}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"/>`;
+  const R = (x, y, w, h, fill, rx = 0, sw = 1.5) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" stroke="${INK}" stroke-width="${sw}"/>`;
+  const O = (x, y, r, fill, sw = 1.5) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${INK}" stroke-width="${sw}"/>`;
+  const E = (x, y, rx, ry, fill, sw = 1.5) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${fill}" stroke="${INK}" stroke-width="${sw}"/>`;
+  const sh = (d, op = .2) => `<path d="${d}" fill="${INK}" opacity="${op}"/>`;
+  const hl = (d, op = .5) => `<path d="${d}" fill="#fff" opacity="${op}"/>`;
+  const ln = (d, c = INK, w = 1.5) => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const dot = (x, y, r, fill, op = 1) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"${op < 1 ? ` opacity="${op}"` : ''}/>`;
+  const shadow = (cx = 32, w = 22) => `<ellipse cx="${cx}" cy="57.5" rx="${w}" ry="3" fill="#2a3a44" opacity=".18"/>`;
+  const p = (d, fill = C.paper, extra = '') => `<path d="${d}" fill="${fill}" ${extra}/>`;
+  const r = (x, y, w, h, fill, rx = 0) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
+  const circle = (x, y, rad, fill) => `<circle cx="${x}" cy="${y}" r="${rad}" fill="${fill}"/>`;
+  const line = (x, y, x2, y2, color = INK, width = 2) => `<path d="M${x} ${y}L${x2} ${y2}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
+
+  const products = {
+    rice: shadow(32, 20) + F('M16 22Q14 40 15 50Q16 55 22 55H42Q48 55 49 50Q50 40 48 22Q40 25 32 24Q24 25 16 22Z', '#e8d6b0') + sh('M40 24Q46 24 48 22Q50 40 49 50Q48 55 42 55H39Q44 40 40 24Z', .16) + F('M18 22Q19 13 24 9Q32 14 40 9Q45 13 46 22Q38 25 32 24Q26 25 18 22Z', '#f3e6c6') + ln('M21 20Q32 23 43 20', '#a2794a', 2.4) + O(32, 21.5, 2.2, '#a2794a', 1) + R(22, 31, 20, 15, '#c6533d', 2) + ln('M32 44V34', '#f6e6c4', 1.4) + `<g fill="#f6e6c4">${[[29.5, 36], [34.5, 37], [29.5, 40], [34.5, 41]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="1.6" ry="1" transform="rotate(${x < 32 ? -35 : 35} ${x} ${y})"/>`).join('')}</g>` + hl('M19 26Q18 38 19.5 49Q21.5 40 22 27Z', .45) + `<g fill="#f6ecd2" stroke="${INK}" stroke-width=".8">${[[10, 54], [13, 56], [53, 55]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="1.8" ry="1.1"/>`).join('')}</g>`,
+    oil: shadow(32, 14) + R(27, 5, 10, 7, C.teal, 1.5) + F('M28 12H36V18L42 25V52Q42 55 39 55H25Q22 55 22 52V25L28 18Z', '#f0b73e') + sh('M37 25H42V52Q42 55 39 55H37Z', .2) + hl('M24.5 24V50Q27 40 27 25Z', .55) + R(22, 31, 20, 15, '#f7efdc', 0, 1.2) + F('M32 34Q26.5 40.5 32 43Q37.5 40.5 32 34Z', '#6f9a5a', 1.1) + ln('M28 15H36', INK, 1.2) + dot(46, 50, 2.2, '#f0b73e') + ln('M46 47.8Q45 49 46 50', '#fff', .8),
+    pork: shadow(32, 25) + F('M7 45Q7 41 11 41H53Q57 41 57 45V49Q57 53 53 53H11Q7 53 7 49Z', '#c08a56') + sh('M7 48H57V49Q57 53 53 53H11Q7 53 7 49Z', .2) + ln('M14 45H34M38 47H50', '#8f6036', 1) + O(51, 45.5, 1.6, '#8f6036', 1) + F('M13 40Q10 25 25 20Q40 15 50 25Q55 34 46 40Q32 45 13 40Z', '#d4675a') + F('M13 40Q11 30 17 25Q15 33 19 38Q32 42 46 40Q32 45 13 40Z', '#f6e1cf', 1.2) + ln('M19 31Q30 26 44 30', '#f6dccb', 2.6) + ln('M23 36Q33 33 44 35', '#f6dccb', 1.8) + sh('M44 22Q53 28 50 36Q47 40 40 41Q49 33 44 22Z', .18) + O(40, 28.5, 3.2, '#f6efe0', 1.2) + O(40, 28.5, 1.2, '#d9c8b0', .6) + hl('M20 24Q28 20 36 20Q28 23 22 28Z', .45),
+    eggs: shadow(32, 25) + F('M10 38L14 20H50L54 38Z', '#b8936a') + sh('M44 20H50L54 38H48Z', .18) + E(20, 33, 7, 9, '#f4e6cf') + E(32, 31, 7, 9.5, '#e8b98a') + E(44, 33, 7, 9, '#f7ecd9') + hl('M16.5 28Q18 25 20.5 25Q17.5 28 17.5 31Z', .7) + hl('M28.5 26Q30 23 32.5 22.5Q29.5 26 29.5 29Z', .6) + hl('M40.5 28Q42 25 44.5 25Q41.5 28 41.5 31Z', .7) + sh('M25 36Q27 41 22 42Q25 38 25 36Z', .14) + sh('M38 34Q40 40 34 40Q37 37 38 34Z', .14) + F('M8 38H56L52 53H12Z', '#d2b088') + ln('M16 38Q20 44 24 38Q28 44 32 38Q36 44 40 38Q44 44 48 38', '#9f7c55', 1.1) + sh('M46 38H56L52 53H44Z', .14) + ln('M14 48H50', '#9f7c55', 1),
+    fruit: shadow(32, 24) + O(42, 39, 13, '#ef9a3d') + sh('M48 30Q56 38 51 48Q45 53 37 51Q49 46 48 30Z', .18) + `<g fill="#c46b22" opacity=".5">${[[38, 35], [44, 33], [47, 40], [40, 44], [44, 47]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r=".8"/>`).join('')}</g>` + hl('M33 34Q35 29 40 28Q36 32 35 37Z', .55) + F('M24 23Q12 19 10 33Q9 46 18 52Q23 55 26 52Q29 55 34 52Q42 46 40 33Q38 19 26 23Z', '#c9453a') + sh('M33 24Q41 28 40 38Q39 48 32 53Q38 42 33 24Z', .2) + hl('M14 30Q16 24 21 24Q17 28 16 36Z', .55) + ln('M25.5 23Q25 16 28 12', '#5a3a2a', 1.8) + F('M27 16Q34 9 41 13Q34 20 27 16Z', '#6f9a5a', 1.2) + ln('M29 15.5Q34 13.5 38 13.5', '#4f7a42', .8),
+    milk: shadow(32, 22) + F('M44 20L48 15V49L44 54Z', '#d9d1c2') + F('M16 20L22 12H38L44 20V54H16Z', '#f6f1e6') + F('M22 12L25 6H35L38 12Z', '#e6ded0') + F('M38 12L44 20L48 15L42 9Z', '#cfc6b6', 1.2) + R(16, 30, 28, 14, '#5f8fb4', 0, 1.2) + F('M30 33Q25 39 30 41.5Q35 39 30 33Z', '#fff', 1) + hl('M18 22H21V52H18Z', .5) + sh('M40 20H44V54H40Z', .12) + F('M47 34H57L55 54H49Z', 'rgba(233,241,244,.9)') + `<path d="M47.9 41H56.2L55 54H49Z" fill="#fbfaf4"/>` + ln('M47 34H57L55 54H49Z', INK, 1.3) + hl('M49 36H50.5L51 52H50Z', .8),
+    phone: shadow(32, 16) + `<g transform="rotate(-10 32 32)">${R(18, 5, 28, 52, '#2c3036', 6)}${`<rect x="20.5" y="9" width="23" height="42" rx="3" fill="#3c6f8a"/>`}${p('M20.5 38Q30 30 43.5 35V48Q43.5 51 40.5 51H23.5Q20.5 51 20.5 48Z', '#f0a85a')}${p('M20.5 44Q28 38 43.5 42V48Q43.5 51 40.5 51H23.5Q20.5 51 20.5 48Z', '#c95a48')}${circle(37, 18, 4, '#ffe3a0')}${p('M20.5 9H33L20.5 30Z', '#fff', 'opacity=".22"')}${r(28, 6.5, 8, 2, '#111', 1)}${circle(32, 54, 1.2, '#596068')}${sh('M44 8Q46 10 46 13V51Q46 55 42 57H40Q44 54 44 50Z', .3)}</g>`,
+    gpu: shadow(32, 27) + R(4, 18, 4, 32, '#b9bec2', 1, 1.2) + R(7, 20, 51, 26, '#3d4650', 2) + R(10, 22, 45, 20, '#5e6b75', 2) + ln('M10 39H55', '#e0703d', 2.4) + O(22, 31, 8, '#2a3138') + O(42, 31, 8, '#2a3138') + [22, 42].map(x => `<g fill="#7d8a94">${[0, 72, 144, 216, 288].map(a => `<path d="M${x} 31l1.5 -6.6q2.5 1.4 2.1 4.2z" transform="rotate(${a} ${x} 31)"/>`).join('')}</g>` + O(x, 31, 2, '#c4ccd2', 1)).join('') + hl('M10 22H55V25H10Z', .25) + R(18, 46, 24, 4.5, '#e1b24c', 0, 1) + ln('M21 46.5V50M25 46.5V50M29 46.5V50M33 46.5V50M37 46.5V50', '#a8822e', .8) + sh('M50 20H58V46H50Z', .15),
+    console: shadow(32, 26) + R(17, 6, 30, 22, '#efe7d8', 3) + ln('M21 12H34', '#b8ad98', 1.4) + O(41, 11, 1.4, '#5fb3a4', .8) + sh('M41 6H44Q47 6 47 9V25Q47 28 44 28H41Z', .14) + F('M13 29Q5 29 5 42Q5 55 13 53L22 45H42L51 53Q59 55 59 42Q59 29 51 29Z', '#3f4a57') + hl('M8 36Q10 31 16 31H30Q16 33 10 41Z', .25) + sh('M50 30Q59 31 59 42Q59 55 51 53L46 48Q57 48 50 30Z', .25) + p('M14 33h4v4h4v4h-4v4h-4v-4h-4v-4h4z', '#e9e2d3') + O(46, 35, 2.3, '#e0703d', 1) + O(51, 39, 2.3, '#f0b73e', 1) + O(41, 39, 2.3, '#5f8fb4', 1) + O(46, 43, 2.3, '#6f9a5a', 1) + O(26, 45, 3, '#2a3138', 1) + O(38, 45, 3, '#2a3138', 1),
+    camera: shadow(32, 26) + F('M19 22L23 14H39L43 22Z', '#2c3137') + R(7, 21, 50, 32, '#353b42', 5) + R(7, 38, 50, 15, '#5a4a3e', 0, 1.2) + `<rect x="7" y="38" width="50" height="15" fill="url(#hy-hatch)"/>` + O(33, 37, 13, '#22272c') + O(33, 37, 9.5, '#4a5560', 1.2) + O(33, 37, 6.5, '#3c5a72', 1.2) + p('M28.5 33.5Q31 31 34 31.5Q30 33 29.5 36Z', '#fff', 'opacity=".75"') + O(36.5, 40, 1.4, '#8fb6cf', .6) + R(11, 25, 8, 4, '#f0e6c8', 1, 1) + O(48, 18, 2.6, '#c9553d', 1.1) + hl('M10 23H54V26Q30 25 10 28Z', .2) + sh('M50 21H52Q57 21 57 26V48Q57 53 52 53H50Z', .22),
+    gold: shadow(32, 25) + F('M10 40L14 24H50L54 40Z', '#8e3a46') + sh('M44 24H50L54 40H47Z', .2) + `<ellipse cx="32" cy="34" rx="15" ry="6.5" fill="none" stroke="${INK}" stroke-width="8"/><ellipse cx="32" cy="34" rx="15" ry="6.5" fill="none" stroke="#e2b24a" stroke-width="5.5"/><path d="M19 32Q24 28.5 32 28.5" fill="none" stroke="#fff3c4" stroke-width="1.6" stroke-linecap="round"/>` + F('M8 40H56V54H8Z', '#7a2e3a') + `<rect x="8" y="40" width="48" height="14" fill="url(#hy-hatch)"/>` + hl('M8 40H56V42.5H8Z', .25) + O(32, 44, 4.2, 'none', 2.6) + `<circle cx="32" cy="44" r="4.2" fill="none" stroke="#e8bd52" stroke-width="1.6"/>` + F('M32 37l2 2.6-2 2.6-2-2.6z', '#cfe7f2', 1) + ln('M50 12v6M47 15h6', '#ffe3a0', 1.6) + ln('M14 16v4M12 18h4', '#ffe3a0', 1.2),
+    watch: shadow(32, 12) + F('M24 4H40L38 20H26Z', '#8a5a3a') + F('M26 44H38L40 60H24Z', '#8a5a3a') + ln('M26.5 9H37.5M26.5 14H37.5M26.5 50H37.5M26 55H38', '#6b4229', 1) + R(45, 29, 4, 6, '#c9a24c', 1, 1) + O(32, 32, 14, '#d9b65e') + O(32, 32, 10.5, '#f7f0de', 1.2) + `<g stroke="${INK}" stroke-width="1.2" stroke-linecap="round">${[0, 90, 180, 270].map(a => `<path d="M32 22.6V24.6" transform="rotate(${a} 32 32)"/>`).join('')}</g>` + ln('M32 32V25.5', INK, 1.6) + ln('M32 32L37 34.5', INK, 1.4) + dot(32, 32, 1.2, '#c9453a') + hl('M22 28Q25 20 32 19.5Q26 23 24 31Z', .55) + sh('M41 22Q46 30 43 39Q39 45 32 46Q42 39 41 22Z', .18),
+    collectible: shadow(32, 18) + F('M26 8H38V12Q46 18 46 32Q46 43 38 48H26Q18 43 18 32Q18 18 26 12Z', '#eef0ee') + R(25, 6, 14, 4, '#e3e6e3', 1, 1.2) + ln('M23 18H41', '#3d5fa0', 1.4) + ln('M19.5 26Q24 23 28 26T36 26T44.5 26', '#3d5fa0', 1.4) + `<g fill="#3d5fa0">${[[32, 34, 3.2], [25, 36, 2], [39, 36, 2]].map(([x, y, rr]) => `<circle cx="${x}" cy="${y}" r="${rr}"/>`).join('')}</g>` + ln('M32 34Q27 39 22 39M32 34Q37 39 42 39', '#3d5fa0', 1) + ln('M21 43H43', '#3d5fa0', 1.2) + hl('M22 22Q20 32 23 42Q24 30 25 21Z', .65) + sh('M40 16Q47 24 46 33Q45 43 38 48H35Q44 38 40 16Z', .14) + F('M16 48H48L50 55H14Z', '#6b3f2a') + hl('M17 48.5H47V50H17Z', .25),
+    coat: shadow(32, 24) + F('M22 10L12 16L6 40L14 44L18 32V56H46V32L50 44L58 40L52 16L42 10Q32 16 22 10Z', '#c95a48') + ln('M18 24Q32 27 46 24M18 33Q32 36 46 33M18 42Q32 45 46 42M18 50Q32 53 46 50', '#8f3a2e', 1.4) + ln('M9 30L16 32M8 36L15 38M55 30L48 32M56 36L49 38', '#8f3a2e', 1.2) + ln('M32 15V56', '#e9dcc4', 1.6) + F('M22 10Q24 4 32 4Q40 4 42 10Q32 16 22 10Z', '#e8d9bd', 1.3) + ln('M25 7Q28 9.5 32 9.5Q36 9.5 39 7', '#cbb894', 1) + hl('M19 18Q24 17 28 18V54H20Z', .18) + sh('M40 16L50 18L46 56H40Z', .15),
+    ac: shadow(32, 25) + R(6, 12, 52, 22, '#f2efe8', 5) + R(10, 27, 44, 5, '#cfd3d0', 1.5, 1.1) + ln('M12 29.5H52', '#a9aeac', .8) + R(45, 16, 7, 3, '#5fb3a4', 1, .8) + hl('M8 14H56V18H8Z', .45) + sh('M52 12Q58 12 58 17V29Q58 34 52 34Z', .1) + ln('M14 38Q11 44 15 50M24 38Q21 45 25 52M34 38Q31 44 35 50', '#7fb2cf', 2) + `<g fill="#cfe5ee">${[[14, 44], [25, 46], [33, 43]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1"/>`).join('')}</g>` + R(44, 40, 11, 18, '#e9e6de', 2.5, 1.3) + R(46.5, 43, 6, 3.5, '#9fcbbf', .6, .8) + dot(48, 50, 1.1, '#c9553d') + dot(52, 50, 1.1, '#7a8288') + dot(48, 54, 1.1, '#7a8288') + dot(52, 54, 1.1, '#7a8288'),
+    umbrella: shadow(32, 22) + F('M6 32Q8 10 32 9Q56 10 58 32Q52 27 45 32Q39 27 32 32Q25 27 19 32Q12 27 6 32Z', '#3f7a9a') + F('M19 32Q22 12 32 9Q42 12 45 32Q39 27 32 32Q25 27 19 32Z', '#5f9ab8', 1.2) + hl('M10 26Q13 14 26 11Q16 17 14 27Z', .35) + sh('M45 32Q44 18 34 10Q55 12 58 32Q52 27 45 32Z', .14) + ln('M32 9V5', INK, 1.8) + ln('M32 32V50Q32 56 37.5 56Q42 56 42 51', '#5a4a3c', 2.6) + `<g fill="#8ec1db" stroke="${INK}" stroke-width=".7">${[[12, 42], [20, 48], [50, 44]].map(([x, y]) => `<path d="M${x} ${y - 4}q-2.4 3.4 0 4.6q2.4 -1.2 0 -4.6z"/>`).join('')}</g>`,
+    mask: shadow(32, 20) + `<path d="M16 24Q4 21 6 34Q8 43 16 38M48 24Q60 21 58 34Q56 43 48 38" fill="none" stroke="${INK}" stroke-width="3.6" stroke-linecap="round"/><path d="M16 24Q4 21 6 34Q8 43 16 38M48 24Q60 21 58 34Q56 43 48 38" fill="none" stroke="#f1f6f8" stroke-width="2" stroke-linecap="round"/>` + F('M16 21Q32 15 48 21V40Q32 50 16 40Z', '#a9d0dc') + ln('M17 27Q32 23 47 27M17 33Q32 29 47 33M17 39Q32 36 47 39', '#7aa9b8', 1.3) + ln('M24 20Q32 17.5 40 20', '#e3e8ea', 2) + hl('M18 22Q24 20 28 20Q22 24 19 32Z', .35) + sh('M40 20Q48 21 48 21V40Q44 43 40 44Q45 32 40 20Z', .12),
+    medicine: shadow(32, 24) + F('M38 18L42 12V48L38 54Z', '#d7d2c6') + F('M10 18L14 12H42L38 18Z', '#e6e1d6') + R(10, 18, 28, 36, '#f4f1ea', 0) + R(10, 22, 28, 8, '#3f9a7a', 0, 1) + p('M20 34h8v5h5v7h-5v5h-8v-5h-5v-7h5z', '#3f9a7a') + hl('M12 31H15V52H12Z', .5) + `<g transform="rotate(-18 50 44)">${R(41, 30, 15, 24, '#cfd6db', 2, 1.2)}${[0, 1, 2].map(i => O(45.5, 35 + i * 7, 2.6, '#f2d27a', 1) + O(51.5, 35 + i * 7, 2.6, i === 1 ? '#fff' : '#e8796a', 1)).join('')}</g>`,
+    battery: shadow(32, 22) + R(18.5, 10, 6, 4, '#c9ced0', 1, 1) + R(14, 14, 15, 41, '#2f3a44', 3) + R(14, 14, 15, 12, '#d9873a', 3, 1.2) + hl('M16 16H19V53H16Z', .3) + ln('M18 34V42M14.5 38H21.5', '#ffe3a0', 1.6) + R(38.5, 10, 6, 4, '#c9ced0', 1, 1) + R(34, 14, 15, 41, '#3f7a68', 3) + R(34, 14, 15, 12, '#d9dfe0', 3, 1.2) + hl('M36 16H39V53H36Z', .3) + F('M43 30L37.5 39.5H41.5L39.5 48L46 37.5H42Z', '#ffe3a0', 1.1) + sh('M25 14H29V55H25Z', .2) + sh('M45 14H49V55H45Z', .2),
+    food: shadow(32, 26) + F('M10 27V52Q10 55 21 55Q32 55 32 52V27Z', '#c9553d') + E(21, 27, 11, 3.6, '#d9dcdc', 1.4) + E(21, 27, 8, 2.4, '#c2c6c7', .8) + R(10, 34, 22, 11, '#f2e2c0', 0, 1.1) + F('M17 39.5Q21 35 25 39.5Q21 43 17 39.5Z', '#e0913f', 1) + hl('M12 29H15V52H12Z', .35) + sh('M27 29H32V52Q32 54 27 54.6Z', .2) + R(39, 6, 9, 5, '#3f7ab0', 1.5, 1.2) + F('M40 11H47V16L52 22V53Q52 55 50 55H37Q35 55 35 53V22L40 16Z', 'rgba(207,229,238,.95)') + `<path d="M36 30H51V53Q51 54 50 54H37Q36 54 36 53Z" fill="#9cc9dc"/>` + ln('M40 11H47V16L52 22V53Q52 55 50 55H37Q35 55 35 53V22L40 16Z', INK, 1.5) + ln('M35.5 38H51.5M35.5 46H51.5', '#7fb2c8', 1) + hl('M37.5 23H39.5V52H37.5Z', .7)
   };
-  const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function svg(body, box, cls='') { return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${box}" class="${escape(cls)}" aria-hidden="true" focusable="false">${body}</svg>`; }
-  function windowPane(x,y,w=22,h=30) { return r(x+2,y+2,w,h,C.ink,2)+r(x,y,w,h,C.light,2)+line(x+w/2,y,x+w/2,y+h,C.cream,2)+line(x,y+h/2,x+w,y+h/2,C.cream,2); }
-  function plant(x,y,s=1) { return `<g transform="translate(${x} ${y}) scale(${s})">${r(-8,0,16,16,C.coral,2)}${line(0,0,0,-23,C.ink,2)}${p('M0 -7Q-23 -5 -19 -22Q-3 -23 0 -7Z',C.mint)}${p('M0 -15Q2 -34 19 -29Q23 -15 0 -15Z',C.mint)}</g>`; }
-  function tree(x,y,s=1) { return `<g transform="translate(${x} ${y}) scale(${s})">${r(-5,-42,10,48,C.ink,2)}${circle(-14,-54,24,C.mint)}${circle(12,-64,30,C.mint)}${circle(27,-47,20,C.mint)}${line(0,-40,15,-58,C.ink,2)}</g>`; }
-  function person(x,y,color=C.coral,s=1) { return `<g transform="translate(${x} ${y}) scale(${s})">${circle(0,-39,6,C.orange)}${p('M-7 -30Q0 -34 7 -30L10 -10H-10Z',color)}${line(-4,-10,-6,8,C.ink,3)}${line(5,-10,9,8,C.ink,3)}${line(-7,-26,-15,-13,C.ink,3)}${line(7,-26,16,-19,C.ink,3)}${r(11,-20,11,13,C.orange,2)}</g>`; }
-  function backdrop(w=480,h=300) { return r(0,0,w,h,C.paper)+circle(w*.79,h*.25,h*.14,C.light)+p(`M0 ${h*.63}Q${w*.2} ${h*.53} ${w*.4} ${h*.63}T${w} ${h*.59}V${h}H0Z`,C.cream); }
-  function house(level) {
-    let b=backdrop();
-    b+=p('M0 263Q210 245 480 263V300H0Z','#d7ddca')+r(0,277,480,23,C.cream)+line(0,279,480,279,C.paper,3);
-    if(level===0) {
-      b+=r(112,105,239,161,'#e4c6ae',3)+p('M103 107L126 78H341L359 107Z',C.ink)+r(126,115,211,7,C.coral)+r(143,172,48,94,C.ink,3)+r(147,177,39,89,C.mint,2)+circle(178,225,3,C.orange)+windowPane(216,144,45,57)+windowPane(281,144,37,57)+r(212,201,53,6,C.coral)+r(275,201,49,6,C.coral)+r(138,263,65,8,C.paper)+line(125,132,148,132,C.cream,3)+line(318,243,337,243,C.paper,3)+plant(308,247,1.1)+r(111,247,17,19,C.ink,2);
-    } else if(level===1) {
-      b+=r(126,72,229,194,C.paper,3)+p('M118 74L134 56H348L363 74Z',C.ink)+r(126,75,45,191,C.blue)+windowPane(139,96,20,34)+windowPane(190,96,38,41)+windowPane(263,96,38,41)+windowPane(190,170,38,41)+windowPane(263,170,38,41)+r(182,138,132,7,C.coral)+r(180,144,136,19,C.mint)+line(190,145,190,161,C.paper)+line(215,145,215,161,C.paper)+line(241,145,241,161,C.paper)+line(266,145,266,161,C.paper)+line(294,145,294,161,C.paper)+r(230,225,36,41,C.ink,2)+r(235,228,26,38,C.orange,1)+plant(321,250,.9)+plant(195,139,.65);
-    } else if(level===2) {
-      b+=r(99,117,275,148,C.paper,3)+r(137,75,198,66,C.cream)+p('M85 120L135 77L205 120Z',C.coral)+p('M202 120L335 76L385 120Z',C.ink)+windowPane(125,151,47,52)+windowPane(287,151,52,52)+windowPane(209,92,36,28)+r(205,165,50,100,C.mint,3)+r(213,178,34,38,C.light,2)+circle(245,229,3,C.orange)+r(186,263,86,8,C.cream)+plant(112,248,.9)+plant(357,248,1.2)+r(277,208,71,6,C.coral)+line(124,218,171,218,C.cream,3);
-    } else if(level===3) {
-      b+=r(96,71,286,195,C.paper,3)+r(96,71,70,195,C.blue)+r(165,71,217,12,C.ink)+r(177,84,190,12,C.coral)+windowPane(112,94,37,52)+windowPane(112,171,37,51);
-      for(let y=104;y<=174;y+=70) { for(let x=187;x<=313;x+=63) b+=windowPane(x,y,38,42); b+=r(178,y+42,184,7,C.ink)+r(178,y+49,184,15,C.mint); for(let x=185;x<360;x+=20) b+=line(x,y+49,x,y+63,C.paper,2); b+=plant(340,y+42,.55); }
-      b+=r(244,239,41,27,C.ink,2)+r(250,241,29,25,C.orange,1)+r(95,65,287,7,C.cream);
-    } else {
-      b+=r(105,142,283,122,C.paper,3)+r(195,83,164,181,C.paper,3)+r(181,72,194,15,C.ink)+r(91,131,184,14,C.ink)+r(112,158,77,63,C.blue,2)+line(150,158,150,221,C.paper,3)+windowPane(221,105,53,54)+windowPane(293,105,40,54)+r(208,162,139,6,C.coral)+r(210,168,137,19,C.mint)+line(225,169,225,185,C.paper)+line(253,169,253,185,C.paper)+line(281,169,281,185,C.paper)+line(311,169,311,185,C.paper)+r(236,210,49,54,C.ink,2)+r(242,215,37,49,C.orange,2)+windowPane(310,211,46,34)+r(118,233,63,7,C.coral)+plant(324,162,.75)+plant(165,129,.65)+plant(375,246,1.15)+p('M59 268L60 221Q60 202 76 204Q91 204 91 223V268Z',C.mint)+line(65,229,85,229,C.paper)+line(65,243,85,243,C.paper)+p('M271 272L307 300H197L231 272Z',C.paper);
-    }
-    b+=tree(48,265,.8)+tree(430,265,1.05)+circle(397,273,7,C.mint)+circle(87,269,5,C.orange)+person(75,274,C.coral,.57);
-    return svg(b,'0 0 480 300','art-scene art-house');
-  }
-  function city() {
-    let b=r(0,0,1000,620,C.paper)+circle(807,123,72,C.light)+p('M0 191Q105 152 184 190T384 178T589 184T789 170T1000 189V353H0Z','#e8dfce');
-    // Quiet skyline behind the lived-in foreground neighborhood.
-    [[23,159,73,232],[120,112,67,279],[205,173,94,218],[328,90,65,301],[417,135,110,256],[569,166,85,225],[694,119,70,272],[790,153,106,238],[920,122,80,269]].forEach((a,i)=>{ b+=r(...a,i%2?'#b7c7bf':'#cbd2c4',3); for(let y=a[1]+17;y<350;y+=30)for(let x=a[0]+13;x<a[0]+a[2]-9;x+=22)b+=r(x,y,8,13,C.paper,1); });
-    b+=p('M0 426Q402 395 1000 413V620H0Z',C.cream)+p('M0 515L1000 455V558L0 618Z','#708b89')+line(20,578,960,518,C.paper,3)+r(0,429,1000,14,'#d3c7af');
-    b+=r(63,231,206,199,C.paper,3)+p('M49 233L78 193H252L280 233Z',C.coral)+r(76,243,11,187,C.cream);
-    for(let x=102;x<242;x+=55) b+=windowPane(x,257,33,44)+windowPane(x,322,33,42);
-    b+=r(94,375,150,54,C.ink,2)+r(101,380,46,47,C.light,2)+r(159,380,77,47,C.blue,2)+p('M87 375L100 358H238L251 375Z',C.orange);
-    for(let x=96;x<245;x+=24)b+=r(x,361,12,14,C.paper);
-    b+=r(317,182,201,240,C.cream,3)+r(303,177,228,14,C.ink,2)+r(330,197,174,7,C.coral);
-    for(let y=218;y<350;y+=65){ for(let x=342;x<500;x+=58)b+=windowPane(x,y,32,39); b+=r(332,y+39,173,6,C.coral)+r(332,y+45,173,12,C.mint); }
-    b+=r(374,365,42,57,C.ink,2)+r(382,374,26,48,C.orange)+r(437,371,60,37,C.light,2)+plant(488,347,.75);
-    b+=r(575,255,210,162,C.paper,3)+p('M558 258L596 216H757L799 258Z',C.ink)+r(591,270,178,9,C.orange);
-    for(let x=594;x<765;x+=54)b+=windowPane(x,297,32,42);
-    b+=r(595,364,169,54,C.mint,3)+r(604,370,74,47,C.light,2)+r(691,370,63,47,C.ink,2)+line(639,370,639,416,C.cream,3)+plant(765,400,.9);
-    b+=r(825,201,149,217,C.coral,3)+p('M812 201L835 178H961L987 201Z',C.ink)+r(837,211,123,9,C.cream);
-    for(let y=237;y<350;y+=58)for(let x=843;x<963;x+=46)b+=windowPane(x,y,27,36);
-    b+=r(864,369,45,49,C.ink,2)+r(870,375,33,43,C.orange);
-    b+=tree(31,444,1.7)+tree(548,430,1.4)+tree(801,428,1.1)+tree(971,460,1.7)+plant(278,421,1.25)+plant(318,420,.95);
-    // Street furniture, bicycle, café tables and neighbors.
-    b+=r(234,443,98,9,C.coral,3)+r(241,452,6,20,C.ink)+r(319,452,6,20,C.ink)+r(234,423,98,14,C.coral,3)+line(241,437,241,444)+line(323,437,323,444);
-    b+=line(726,351,726,450,C.ink,4)+p('M708 354Q726 324 744 354Z',C.ink)+circle(726,352,9,C.light)+circle(851,461,21,C.ink)+circle(901,461,21,C.ink)+circle(851,461,17,C.cream)+circle(901,461,17,C.cream)+p('M851 461L869 429L884 461H851L881 438L901 461','none',`stroke="${C.coral}" stroke-width="4" stroke-linejoin="round"`)+line(868,429,879,429,C.ink,3)+line(881,438,887,425,C.ink,3)+line(887,425,898,425,C.ink,3);
-    b+=r(617,434,45,6,C.orange,3)+line(639,440,639,465,C.ink,3)+r(596,440,13,5,C.mint,2)+line(602,445,602,465)+r(675,440,13,5,C.mint,2)+line(681,445,681,465)+r(631,425,8,9,C.paper,2);
-    b+=person(179,458,C.mint,.95)+person(448,444,C.coral,.83)+person(478,446,C.blue,.65)+person(756,471,C.orange,.95)+person(356,528,C.coral,1.05);
-    b+=p('M401 550Q440 545 468 551L459 566H407Z',C.orange)+circle(414,568,5,C.ink)+circle(453,568,5,C.ink)+line(406,548,393,535,C.ink,3)+circle(890,67,3,C.coral)+p('M681 77Q689 70 698 77M698 77Q707 70 715 77','none',`stroke="${C.ink}" stroke-width="2" stroke-linecap="round"`);
-    return svg(b,'0 0 1000 620','art-scene art-city');
-  }
-  function warehouse() {
-    let b=backdrop()+r(0,264,480,36,C.cream)+tree(47,266,.8)+p('M93 122L240 53L391 122V265H93Z',C.mint)+p('M79 126L240 47L407 126L401 135L240 62L85 135Z',C.ink)+r(112,139,259,14,C.paper)+r(168,164,143,101,C.ink,3)+r(174,169,131,49,C.cream);
-    for(let y=177;y<218;y+=10)b+=line(179,y,300,y,C.paper,2);
-    b+=r(120,176,31,39,C.light,2)+line(135,176,135,215,C.cream,2)+r(332,176,25,70,C.paper,2)+r(337,182,15,29,C.blue,1)+circle(350,224,2,C.orange);
-    [[184,234,36,30],[223,228,37,36],[264,241,29,23],[218,204,30,23],[107,237,34,28]].forEach(a=>{b+=r(...a,C.orange,2)+r(a[0]+a[2]*.44,a[1],a[2]*.14,a[3],C.paper)+line(a[0]+5,a[1]+a[3]-6,a[0]+12,a[1]+a[3]-6,C.ink,2);});
-    b+=r(159,264,160,7,C.coral)+plant(381,248,1)+person(409,270,C.coral,.75)+r(47,267,47,5,C.ink,2)+circle(55,277,5,C.ink)+circle(84,277,5,C.ink)+line(90,267,103,230,C.ink,3)+r(50,244,32,22,C.orange,2);
-    return svg(b,'0 0 480 300','art-scene art-warehouse');
-  }
-  const scenes = {city:city(),warehouse:warehouse()};
-  for(let n=0;n<5;n++) scenes['house-'+n]=house(n);
-  const houseIds=['studio','flat','two','city','dream'];
-  const aliases={room:'warehouse',small:'warehouse',normal:'warehouse',large:'warehouse',music:'sound',next:'arrow',inventory:'warehouse',chart:'assets',profit:'assets',coin:'cash'};
+  // General UI icons (not product art) keep their simple silhouettes, recoloured to the new palette.
+  const general = {
+    cash: r(7, 20, 48, 29, C.mint, 4) + r(10, 16, 43, 27, C.paper, 3) + circle(32, 30, 9, C.orange) + line(32, 24, 32, 36, C.paper) + line(27, 28, 37, 28, C.paper) + line(27, 32, 37, 32, C.paper),
+    assets: r(10, 36, 10, 17, C.mint, 2) + r(27, 25, 10, 28, C.blue, 2) + r(44, 11, 10, 42, C.orange, 2) + p('M10 27L29 14L38 19L53 6', 'none', `stroke="${INK}" stroke-width="3"`),
+    warehouse: p('M7 27L32 9L57 27V53H7Z', C.mint) + r(17, 30, 30, 23, C.paper, 2) + line(20, 37, 44, 37) + line(20, 43, 44, 43) + p('M5 27L32 7L59 27', 'none', `stroke="${INK}" stroke-width="4"`),
+    home: p('M12 29L32 12L52 29V54H12Z', C.paper) + p('M7 29L32 8L57 29', 'none', `stroke="${C.coral}" stroke-width="6" stroke-linejoin="round"`) + r(27, 35, 12, 19, C.mint, 2) + r(16, 32, 8, 9, C.orange, 1),
+    news: r(10, 12, 39, 42, C.paper, 3) + p('M49 21H55V49Q55 54 49 54Z', C.mint) + r(16, 19, 26, 5, INK, 1) + r(16, 29, 11, 13, C.coral, 1) + line(32, 30, 43, 30) + line(32, 37, 43, 37) + line(16, 47, 43, 47),
+    calendar: r(10, 13, 44, 42, C.paper, 4) + r(10, 13, 44, 12, C.coral, 4) + line(22, 9, 22, 18) + line(42, 9, 42, 18) + r(18, 31, 7, 7, C.mint, 1) + r(29, 31, 7, 7, C.orange, 1) + r(40, 31, 7, 7, C.mint, 1) + r(18, 42, 7, 7, C.mint, 1) + r(29, 42, 7, 7, C.mint, 1),
+    sound: p('M10 25H21L36 13V51L21 39H10Z', C.mint) + p('M43 22Q55 32 43 42M48 14Q66 32 48 50', 'none', `stroke="${INK}" stroke-width="3" stroke-linecap="round"`),
+    settings: p('M26 7H38L40 16L48 19L56 16L61 27L53 32L52 40L56 48L46 55L39 49L31 50L25 57L15 51L18 42L13 35L5 31L9 20L19 21L24 16Z', C.mint) + circle(33, 32, 11, C.paper) + circle(33, 32, 5, INK),
+    help: circle(32, 32, 24, C.mint) + p('M24 24Q25 14 35 18Q46 22 37 31L32 35V39', 'none', `stroke="${C.paper}" stroke-width="4" stroke-linecap="round"`) + circle(32, 46, 2.5, C.paper),
+    buy: r(9, 34, 46, 20, C.mint, 4) + p('M32 8V39M21 28L32 39L43 28', 'none', `stroke="${INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
+    sell: r(9, 34, 46, 20, C.orange, 4) + p('M32 39V8M21 19L32 8L43 19', 'none', `stroke="${INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
+    arrow: p('M10 32H53M36 15L53 32L36 49', 'none', `stroke="${INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"`),
+    close: p('M17 17L47 47M47 17L17 47', 'none', `stroke="${INK}" stroke-width="4" stroke-linecap="round"`),
+    star: p('M32 7L39 23L57 25L44 38L47 56L32 47L17 56L20 38L7 25L25 23Z', C.orange),
+    search: circle(27, 27, 17, C.paper) + `<circle cx="27" cy="27" r="17" fill="none" stroke="${INK}" stroke-width="4"/>` + line(40, 40, 55, 55, INK, 5),
+    // Brand seal: a key whose bow is a house-shaped stamp (original mark, no font download).
+    seal: `<rect x="4" y="4" width="56" height="56" rx="10" fill="#b8473a"/><rect x="8" y="8" width="48" height="48" rx="7" fill="none" stroke="#f6e4c8" stroke-width="1.6"/>` + p('M16 30L32 17L48 30V45H16Z', 'none', 'stroke="#f6e4c8" stroke-width="3" stroke-linejoin="round"') + `<circle cx="32" cy="34" r="4.2" fill="none" stroke="#f6e4c8" stroke-width="2.6"/>` + p('M32 38V48M32 44H36M32 47.5H35', 'none', 'stroke="#f6e4c8" stroke-width="2.4" stroke-linecap="round"')
+  };
+  const icons = Object.assign({}, products, general);
+  const svg = (body, box, cls = '') => K.svg(body, box, cls);
+  const houseIds = ['studio', 'flat', 'two', 'city', 'dream'];
+  const aliases = {room:'warehouse', small:'warehouse', normal:'warehouse', large:'warehouse', music:'sound', next:'arrow', inventory:'warehouse', chart:'assets', profit:'assets', coin:'cash'};
+  const sceneIds = S.ids;
   H.Art = Object.freeze({
-    palette:Object.freeze(C),
-    icon(id,className='') { const key=aliases[id] || (houseIds.includes(id)?'home':id); return svg(icons[key] || icons.home,'0 0 64 64','art-icon'+(className?' '+className:'')); },
-    scene(kind) { if(houseIds.includes(kind) && kind!=='city') kind='house-'+houseIds.indexOf(kind); return scenes[kind] || scenes.city; },
-    iconIds:Object.freeze(Object.keys(icons)), sceneIds:Object.freeze(Object.keys(scenes))
+    palette: Object.freeze(C),
+    icon(id, className = '') { const key = aliases[id] || (houseIds.includes(id) ? 'home' : id); return svg(icons[key] || icons.home, '0 0 64 64', 'art-icon' + (className ? ' ' + className : '')); },
+    // scene(kind[, {phase, season, tone, lamps}]) — options are optional; calls without them keep the old output contract.
+    scene(kind, opts) { if (houseIds.includes(kind) && kind !== 'city') kind = 'house-' + houseIds.indexOf(kind); return S.scene(sceneIds.includes(kind) ? kind : 'city', opts); },
+    iconIds: Object.freeze(Object.keys(icons)), sceneIds,
+    productIconIds: Object.freeze(Object.keys(products)),
+    tones: Object.freeze(Object.keys(K.TONES)), seasons: K.SEASONS, phaseTone: K.PHASE_TONE,
+    defs: K.defs, standalone: K.standalone, mount(doc) { const d = doc || g.document; K.inject(d); return K.grain(d); }
   });
-})(window);
+})(typeof window !== 'undefined' ? window : globalThis);

@@ -1,6 +1,8 @@
 # 这一年，安个家
 
-新用户默认开启原创暖调音乐；已有保存的音乐关闭偏好会继续保留。音乐只在首次用户交互后解锁，符合浏览器自动播放限制。
+新用户默认开启原创分阶段配乐；已有保存的音乐关闭偏好会继续保留。音乐只在首次用户交互后解锁，符合浏览器自动播放限制；无法启动时显示“点击启用声音”提示，不会静默假播放。
+
+**视听升级（0.3）**：温暖都市纸本插画——黄昏开始页、市场街景横幅与“我的窗口”、六种时段光与四季附件、独立租房场景与五档住房构图、20 个重绘商品图标、交易小票、房产传单、开门购房庆祝、绘本式年度结算；按游戏阶段切换的原创 Web Audio 配乐（开始/起步/发展/冲刺/两种结局）。画面与音乐只读玩家可见信息，阶段由同一 director 判定。设计见 `docs/av-direction.md`，美术见 `docs/art.md`，音频见 `docs/audio.md`。音频指标均为数字测量，**未经人工听验**。
 
 完整系统与经济平衡基础上的0.2正式界面与审核修复版本。纯HTML/CSS/Vanilla JavaScript；玩家无须安装工具、启动服务器、联网或下载依赖。
 
@@ -27,13 +29,18 @@ node tests/cdp-smoke.cjs
 node tests/ui-interaction.cjs
 node tests/system-browser.cjs
 node tests/acceptance-supplement.cjs
+node assets/build-art.cjs
+node tests/av-visual.cjs        # 视觉：6视口截图/对比度/性能/庆祝清理/setScene协议
+node tests/av-integration.cjs   # 整合：声音受阻提示、可信点击后音乐播放时空闲CPU
+node tests/av-audio-director.cjs
+node tests/av-audio.cjs
 node simulation/run.cjs --seeds 1000 --prefix balance-v3-primary --out docs/balance-primary.json
 node simulation/run.cjs --seeds 1000 --prefix balance-v3-holdout --out docs/balance-holdout.json
 node simulation/report.cjs
 ```
 `tests/browser.html` 可双击执行同一核心测试。CDP自动化依赖本机Edge和Node24内置WebSocket，**只是开发工具，不是游戏运行依赖**，参阅QA文档 `docs/browser-tooling.md`。
 
-当前实际执行：核心17组、UI74条断言（原20检查加音量与键盘循环回归）、系统浏览器28检查、补充审核5检查全部通过。系统测试含浏览器完整退出重启继续、存档拒绝/隔离、52周结算；住房/仓储覆盖使用明确资金fixture，不声称自然经济成功或人工试玩。历史smoke证据见 `docs/ui.md`。
+0.3视听升级后（2026-10-03 16:25–16:31 UTC）实测：核心18项、UI交互、系统浏览器28检查、补充5检查、smoke全部通过，旧断言未改；新增视觉93项、整合10项、音频director 13项通过（音频90项见 `docs/av-audio-report.md`）。以下为0.2版当时记录：核心17组、UI74条断言（原20检查加音量与键盘循环回归）、系统浏览器28检查、补充审核5检查全部通过。系统测试含浏览器完整退出重启继续、存档拒绝/隔离、52周结算；住房/仓储覆盖使用明确资金fixture，不声称自然经济成功或人工试玩。历史smoke证据见 `docs/ui.md`。
 
 最终模拟每难度每策略1000训练种子及1000未用于调参的留出种子，共30000局，保守/随机/追涨/低价买入/不交易，均直接复用引擎和玩家可见数据。完整结果、源代码哈希与逐种子样本见 `docs/balance*.json`，解读见 `docs/balance.md`。模拟不等于人工试玩。
 
@@ -47,7 +54,7 @@ node simulation/report.cjs
 - `js/validation.js`：严格必需字段、数值、历史、事件、收支与结果一致性
 - `js/game.js`：原子操作与状态调度；`js/save.js`：隔离式持久化
 - `js/ui.js`：正式开始页、三栏市场、交易/住房/仓储、帮助/教程、设置存档和结算
-- `js/art.js`、`assets/`：原创SVG城市、住房、商品；`js/audio.js`：用户交互后启动的WebAudio合成声音
+- `js/art-kit.js`/`art-scenes.js`/`art.js`、`css/scenes.css`、`assets/`：原创SVG街区、住房、商品与共享defs；`js/audio-score.js`/`audio-director.js`/`audio-instruments.js`/`audio.js`：用户交互后启动的分阶段WebAudio配乐
 - `simulation/`：开发模拟/报告；`tests/ui-interaction.cjs`：新版UI自动交互与多分辨率截图
 
 `window.HomeYear`：`new Engine(seed, difficulty='standard')`；`snapshot()`隔离副本；`restore(snapshot)`严格校验后恢复；失败保留原状态。`visible()`仅投影玩家可见信息（无RNG、趋势、隐藏事件），供策略公平使用。`dispatch({type,id,qty,revision,token})` 返回 `{ok,error,saveError,result}`；type为buy/sell/house/**warehouse**/next/end。revision来自当前状态；唯一非空token阻止重复提交。`onCommit(snapshot)`保存异常只报告saveError，不回滚成功操作。

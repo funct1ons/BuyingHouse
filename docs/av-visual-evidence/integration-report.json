@@ -1,0 +1,137 @@
+{
+  "kind": "real Edge headless file:// with trusted CDP mouse input; digital signals only, not listening tests",
+  "started": "2026-10-03T16:27:16.234Z",
+  "checks": [
+    {
+      "name": "no AudioContext before any interaction",
+      "pass": true
+    },
+    {
+      "name": "rejected resume sets needsGesture and shows a visible clickable prompt (no silent fake playback)",
+      "pass": true,
+      "detail": {
+        "st": {
+          "state": "suspended",
+          "needsGesture": true,
+          "musicRunning": true
+        },
+        "prompt": {
+          "text": "🔈 点击启用声音",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "real click on prompt resumes audio and removes the prompt",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "needsGesture": false
+      }
+    },
+    {
+      "name": "trusted click: context running, music scheduler on, single interval",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "musicRunning": true,
+        "intervals": 1,
+        "cue": "early"
+      }
+    },
+    {
+      "name": "audio cue follows the visual phase (early at standard start)",
+      "pass": true,
+      "detail": {
+        "target": "early",
+        "cue": "early",
+        "phase": "early"
+      }
+    },
+    {
+      "name": "music playing 60s idle: scheduler kept running (bars advanced)",
+      "pass": true,
+      "detail": {
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.235,
+        "percent": 0.392,
+        "scriptPercent": 0.21,
+        "state": "running",
+        "musicRunning": true,
+        "cue": "early",
+        "bar0": 1,
+        "bar1": 8,
+        "switches": 2,
+        "voices": 2,
+        "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+      }
+    },
+    {
+      "name": "music playing 60s idle: main-thread TaskDuration < 3% of wall time (headless baseline)",
+      "pass": true,
+      "detail": {
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.235,
+        "percent": 0.392,
+        "scriptPercent": 0.21,
+        "state": "running",
+        "musicRunning": true,
+        "cue": "early",
+        "bar0": 1,
+        "bar1": 8,
+        "switches": 2,
+        "voices": 2,
+        "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+      }
+    },
+    {
+      "name": "simulated hidden page stops the music scheduler",
+      "pass": true,
+      "detail": {
+        "musicRunning": false,
+        "intervals": 1
+      }
+    },
+    {
+      "name": "music off via real click stops scheduler; no prompt left behind",
+      "pass": true,
+      "detail": {
+        "musicRunning": false,
+        "intervals": 0
+      }
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "metrics": {
+    "blockedStatus": {
+      "state": "suspended",
+      "needsGesture": true,
+      "musicRunning": true
+    },
+    "idleMusic": {
+      "seconds": 60.01,
+      "taskDurationSeconds": 0.235,
+      "percent": 0.392,
+      "scriptPercent": 0.21,
+      "state": "running",
+      "musicRunning": true,
+      "cue": "early",
+      "bar0": 1,
+      "bar1": 8,
+      "switches": 2,
+      "voices": 2,
+      "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+    }
+  },
+  "errors": [],
+  "browser": "Edg/154.0.4258.53",
+  "finished": "2026-10-03T16:28:26.528Z",
+  "summary": {
+    "passed": 10,
+    "failed": 0
+  }
+}

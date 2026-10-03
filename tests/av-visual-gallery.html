@@ -1,0 +1,13 @@
+<!doctype html>
+<!-- Development-only art gallery (tests/ is not published to Pages). Renders the live art modules. -->
+<html lang="zh-CN"><head><meta charset="utf-8"><title>BuyingHouse art gallery</title>
+<style>body{margin:0;background:#e9e1d1;font:12px sans-serif;color:#333}.wrap{display:grid;gap:10px;padding:10px}.scenes{grid-template-columns:repeat(4,1fr)}.scenes figure,.icons figure{margin:0;background:#fff;border-radius:8px;padding:6px}.scenes svg{width:100%;height:auto;display:block}.icons{grid-template-columns:repeat(10,1fr)}.icons svg{width:100%;height:auto}.wide svg{width:100%;height:150px;display:block}.city svg{width:100%;height:560px;display:block}figcaption{padding-top:3px}</style>
+<script src="../js/data.js"></script><script src="../js/art-kit.js"></script><script src="../js/art-scenes.js"></script><script src="../js/art.js"></script></head>
+<body><div id="out"></div><script>
+const A=HomeYear.Art,q=new URLSearchParams(location.search),view=q.get('view')||'houses';A.mount(document);let h='';
+if(view==='houses'){const season=q.get('season')||null,phase=q.get('phase')||'development';h+='<div class="wrap scenes">'+['rent','house-0','house-1','house-2','house-3','house-4','warehouse'].map(id=>`<figure>${A.scene(id,{season,phase})}<figcaption>${id} ${season||''} ${phase}</figcaption></figure>`).join('')+'</div>';}
+if(view==='tones'){h+='<div class="wrap scenes">'+A.tones.map(t=>`<figure>${A.scene(q.get('id')||'house-0',{tone:t,season:q.get('season')})}<figcaption>${t}</figcaption></figure>`).join('')+'</div>';}
+if(view==='icons'){h+='<div class="wrap icons">'+A.iconIds.map(id=>`<figure>${A.icon(id)}<figcaption>${id}</figcaption></figure>`).join('')+'</div>';}
+if(view==='city'){h+='<div class="wrap city"><figure>'+A.scene('city',{lamps:true})+'</figure></div><div class="wrap wide"><figure>'+A.scene('street',{phase:q.get('phase')||'development',season:q.get('season')||'spring'})+'</figure></div>';}
+document.getElementById('out').innerHTML=h;
+</script></body></html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>HomeYear 配乐试听（开发用）</title>
+<style>body{font:14px/1.5 "Microsoft YaHei UI",sans-serif;margin:24px;background:#f6efe2;color:#283c39}button{margin:3px;padding:6px 10px}pre{background:#fffaf0;padding:10px;border-radius:8px;max-height:40vh;overflow:auto}section{margin-bottom:14px}</style>
+<script defer src="../js/data.js"></script>
+<script defer src="../js/audio-score.js"></script>
+<script defer src="../js/audio-director.js"></script>
+<script defer src="../js/audio-instruments.js"></script>
+<script defer src="../js/audio.js"></script>
+</head><body>
+<h1>配乐试听（开发工具，不随游戏发布）</h1>
+<p>先点任意按钮解锁声音。这里只播放数字合成音频；是否好听需要人工用真实设备判断。</p>
+<section id="cues"><b>曲目/阶段：</b></section>
+<section id="sfx"><b>音效：</b></section>
+<section><b>状态：</b><label><input type="checkbox" id="dialog"> 对话框打开</label> <label>进度 <input type="range" id="progress" min="0" max="100" value="10"></label> <select id="climate"><option>steady</option><option>hot</option><option>cold</option></select> <label>音量 <input type="range" id="volume" min="0" max="100" value="50"></label> <button id="musicToggle">音乐开/关</button></section>
+<pre id="status"></pre>
+<script>
+'use strict';
+// Scene presets that reach each cue only through public setScene fields.
+const PRESETS={menu:{screen:'start'},early:{screen:'game',week:5,status:'playing',house:null,progress:.1},development:{screen:'game',week:24,status:'playing',house:null,progress:.5},
+  sprint:{screen:'game',week:47,status:'playing',house:null,progress:.6},'sprint-final':{screen:'game',week:51,status:'playing',house:null,progress:.6},
+  'ending-home':{screen:'game',week:52,status:'ended',house:'flat',progress:1},'ending-rent':{screen:'game',week:52,status:'ended',house:null,progress:.4}};
+let current={...PRESETS.menu},settings={autoSave:true,sound:true,music:true,animation:'normal',numberFormat:'decimal'};
+function scene(){return {...current,dialogOpen:document.getElementById('dialog').checked,progress:current.screen==='game'&&current.status==='playing'?Number(document.getElementById('progress').value)/100:current.progress,climate:document.getElementById('climate').value};}
+addEventListener('DOMContentLoaded',()=>{
+  HomeYear.Audio.configure(settings);HomeYear.Audio.setScene(scene());
+  for(const k of Object.keys(PRESETS)){const b=document.createElement('button');b.textContent=k;b.onclick=()=>{current={...PRESETS[k]};if(current.progress!==undefined)document.getElementById('progress').value=Math.round(current.progress*100);HomeYear.Audio.setScene(scene());};document.getElementById('cues').append(b);}
+  for(const k of ['buy','sell','next','news','error','click','house']){const b=document.createElement('button');b.textContent=k;b.onclick=()=>HomeYear.Audio.play(k);document.getElementById('sfx').append(b);}
+  for(const id of ['dialog','progress','climate'])document.getElementById(id).addEventListener('input',()=>HomeYear.Audio.setScene(scene()));
+  document.getElementById('volume').addEventListener('input',e=>HomeYear.Audio.setVolume(Number(e.target.value)/100));
+  document.getElementById('musicToggle').onclick=()=>{settings={...settings,music:!settings.music};HomeYear.Audio.configure(settings);};
+  setInterval(()=>{document.getElementById('status').textContent=JSON.stringify(HomeYear.Audio.status(),null,1);},250);
+});
+document.addEventListener('click',()=>HomeYear.Audio.unlock(),true);
+
+// ---- Offline harness used by tests/av-audio.cjs ----
+// timeline: [{at:seconds, scene:{...}} | {at, sfx:'house'}]. The real Engine is ticked at render time via
+// OfflineAudioContext.suspend(), so currentTime advances exactly as in live playback.
+window.avRender=async function(spec){
+  const sr=spec.sampleRate||44100,secs=spec.seconds,ac=new OfflineAudioContext(2,Math.ceil(sr*secs),sr);
+  const engine=new HomeYear.AudioEngine(ac,ac.destination,{seed:spec.seed||7,rules:spec.rules});
+  const timeline=(spec.timeline||[]).slice().sort((a,b)=>a.at-b.at),log=[],step=128*Math.round(.05*sr/128)/sr;
+  const stateAt=[];
+  engine.request(HomeYear.AudioDirector.normalize(spec.scene),0);
+  const run=t=>{while(timeline.length&&timeline[0].at<=t+1e-9){const ev=timeline.shift();if(ev.scene)engine.request(HomeYear.AudioDirector.normalize(ev.scene),t);if(ev.sfx)engine.sfx(ev.sfx,t+.01);if(ev.halt){engine.halt(t,.1,true);engine.haltedUntil=Infinity;}if(ev.resume)engine.haltedUntil=0;}
+    if(spec.music===false)engine.flush(t+.15);else if(!engine.haltedUntil)engine.tick(t);const s=engine.status();if(!stateAt.length||stateAt[stateAt.length-1].cue!==s.cue||stateAt[stateAt.length-1].section!==s.section)stateAt.push({t:+t.toFixed(3),cue:s.cue,section:s.section,bar:s.bar,chord:s.chord});};
+  const schedule=t=>{if(t>=secs-step)return;ac.suspend(t).then(()=>{run(ac.currentTime);schedule(t+step);ac.resume();});};
+  run(0);schedule(step);
+  const t0=performance.now(),buf=await ac.startRendering(),renderMs=performance.now()-t0;
+  const L=buf.getChannelData(0),R=buf.getChannelData(1),n=L.length;
+  let peak=0,dc=0;for(let i=0;i<n;i++){const a=Math.abs(L[i]),b=Math.abs(R[i]);if(a>peak)peak=a;if(b>peak)peak=b;dc+=L[i]+R[i];}
+  const win=Math.round(sr*.3),rms=[];for(let s=0;s+win<=n;s+=win){let q=0;for(let i=s;i<s+win;i++)q+=(L[i]*L[i]+R[i]*R[i])/2;rms.push(Math.sqrt(q/win));}
+  // Largest sample-to-sample jump per 50 ms window, used for click detection around switches.
+  const jw=Math.round(sr*.05),jumps=[];for(let s=1;s+jw<=n;s+=jw){let j=0;for(let i=s;i<s+jw;i++){const d=Math.max(Math.abs(L[i]-L[i-1]),Math.abs(R[i]-R[i-1]));if(d>j)j=d;}jumps.push(j);}
+  const out={sampleRate:sr,seconds:secs,renderMs,peak,dc:dc/(2*n),rms,jumps,switches:engine.switches,timeline:stateAt,status:engine.status(),nodes:HomeYear.AudioInstruments.stats()};
+  if(spec.wav){const wsr=22050,ratio=sr/wsr,off=Math.floor((spec.wavFrom||0)*sr),len=Math.floor(Math.min(n-off,(spec.wavSeconds||45)*sr)/ratio),pcm=new Int16Array(len);for(let i=0;i<len;i++){const k=off+Math.floor(i*ratio);pcm[i]=Math.max(-32768,Math.min(32767,Math.round((L[k]+R[k])/2*32767)));}
+    const bytes=new Uint8Array(44+len*2),dv=new DataView(bytes.buffer),w=(o,s)=>{for(let i=0;i<s.length;i++)bytes[o+i]=s.charCodeAt(i);};
+    w(0,'RIFF');dv.setUint32(4,36+len*2,true);w(8,'WAVE');w(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,wsr,true);dv.setUint32(28,wsr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);w(36,'data');dv.setUint32(40,len*2,true);
+    new Uint8Array(pcm.buffer).forEach((b,i)=>bytes[44+i]=b);let bin='';for(let i=0;i<bytes.length;i+=32768)bin+=String.fromCharCode.apply(null,bytes.subarray(i,i+32768));out.wav=btoa(bin);}
+  return out;
+};
+</script>
+</body></html>

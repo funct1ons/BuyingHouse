@@ -1,0 +1,892 @@
+{
+  "scope": "Real Edge headless file:// via tests/av-preview.html. Digital signal measurements of the real scheduler; NOT a listening test.",
+  "limits": {
+    "peakDb": -1,
+    "rmsLo": -24,
+    "rmsHi": -18,
+    "quietExtra": 4,
+    "spreadDb": 3,
+    "sfxPeakDb": -6,
+    "sfxOverMusicDb": 6,
+    "dipDb": 6,
+    "riseDb": 3,
+    "jumpMax": 0.25,
+    "dwell": 24
+  },
+  "checks": [
+    {
+      "name": "menu peak <= -1 dBFS",
+      "pass": true,
+      "detail": -4.1
+    },
+    {
+      "name": "menu median 300ms RMS in [-28,-18] dBFS",
+      "pass": true,
+      "detail": -18.9
+    },
+    {
+      "name": "menu no DC offset",
+      "pass": true,
+      "detail": -0.00000516
+    },
+    {
+      "name": "menu plays A/B/A2/C in 64 bars and loops",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ]
+    },
+    {
+      "name": "early peak <= -1 dBFS",
+      "pass": true,
+      "detail": -5.4
+    },
+    {
+      "name": "early median 300ms RMS in [-24,-18] dBFS",
+      "pass": true,
+      "detail": -21.1
+    },
+    {
+      "name": "early no DC offset",
+      "pass": true,
+      "detail": -0.00000457
+    },
+    {
+      "name": "early plays A/B/A2/C in 64 bars and loops",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ]
+    },
+    {
+      "name": "development peak <= -1 dBFS",
+      "pass": true,
+      "detail": -4.2
+    },
+    {
+      "name": "development median 300ms RMS in [-24,-18] dBFS",
+      "pass": true,
+      "detail": -20.7
+    },
+    {
+      "name": "development no DC offset",
+      "pass": true,
+      "detail": -0.00000806
+    },
+    {
+      "name": "development plays A/B/A2/C in 64 bars and loops",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ]
+    },
+    {
+      "name": "sprint peak <= -1 dBFS",
+      "pass": true,
+      "detail": -7.2
+    },
+    {
+      "name": "sprint median 300ms RMS in [-24,-18] dBFS",
+      "pass": true,
+      "detail": -21.4
+    },
+    {
+      "name": "sprint no DC offset",
+      "pass": true,
+      "detail": 0.00000172
+    },
+    {
+      "name": "sprint plays A/B/A2/C in 64 bars and loops",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ]
+    },
+    {
+      "name": "sprint-final peak <= -1 dBFS",
+      "pass": true,
+      "detail": -6.6
+    },
+    {
+      "name": "sprint-final median 300ms RMS in [-24,-18] dBFS",
+      "pass": true,
+      "detail": -21.1
+    },
+    {
+      "name": "sprint-final no DC offset",
+      "pass": true,
+      "detail": 0.0000061
+    },
+    {
+      "name": "ending-home peak <= -1 dBFS",
+      "pass": true,
+      "detail": -4.3
+    },
+    {
+      "name": "ending-home median 300ms RMS in [-24,-18] dBFS",
+      "pass": true,
+      "detail": -18.8
+    },
+    {
+      "name": "ending-home no DC offset",
+      "pass": true,
+      "detail": -0.0000047
+    },
+    {
+      "name": "ending-home reaches tail after full form",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C",
+        "T"
+      ]
+    },
+    {
+      "name": "ending-rent peak <= -1 dBFS",
+      "pass": true,
+      "detail": -3
+    },
+    {
+      "name": "ending-rent median 300ms RMS in [-28,-18] dBFS",
+      "pass": true,
+      "detail": -19.1
+    },
+    {
+      "name": "ending-rent no DC offset",
+      "pass": true,
+      "detail": -0.00000421
+    },
+    {
+      "name": "ending-rent reaches tail after full form",
+      "pass": true,
+      "detail": [
+        "A",
+        "B",
+        "A2",
+        "C",
+        "T"
+      ]
+    },
+    {
+      "name": "in-game cue RMS medians within 3 dB",
+      "pass": true,
+      "detail": [
+        -21.1,
+        -20.7,
+        -21.4,
+        -18.8
+      ]
+    },
+    {
+      "name": "six cues with distinct chord sequences, melodies and instrument sets",
+      "pass": true,
+      "detail": [
+        {
+          "id": "menu",
+          "bpm": 72,
+          "key": 2,
+          "mode": "major",
+          "insts": "glock+hiss+pad+piano+strings+sub",
+          "tracks": 7
+        },
+        {
+          "id": "early",
+          "bpm": 92,
+          "key": 5,
+          "mode": "major",
+          "insts": "bass+epiano+flute+kick+marimba+pad+rim+shaker",
+          "tracks": 8
+        },
+        {
+          "id": "development",
+          "bpm": 100,
+          "key": 8,
+          "mode": "major",
+          "insts": "bass+flute+glock+kick+piano+rim+shaker+strings",
+          "tracks": 8
+        },
+        {
+          "id": "sprint",
+          "bpm": 116,
+          "key": 0,
+          "mode": "minor",
+          "insts": "bass+brass+kick+pad+pluck+rim+shaker+strings+timpani+wood",
+          "tracks": 10
+        },
+        {
+          "id": "ending-home",
+          "bpm": 84,
+          "key": 3,
+          "mode": "major",
+          "insts": "flute+glock+piano+strings+sub",
+          "tracks": 6
+        },
+        {
+          "id": "ending-rent",
+          "bpm": 66,
+          "key": 2,
+          "mode": "major",
+          "insts": "hiss+pad+piano+sub",
+          "tracks": 5
+        }
+      ]
+    },
+    {
+      "name": "every cue has >=5 simultaneous parts",
+      "pass": true,
+      "detail": [
+        7,
+        8,
+        8,
+        10,
+        6,
+        5
+      ]
+    },
+    {
+      "name": "switch menu->early happens",
+      "pass": true,
+      "detail": 33.383
+    },
+    {
+      "name": "switch menu->early on beat boundary (<=5ms)",
+      "pass": true,
+      "detail": 40
+    },
+    {
+      "name": "switch menu->early wait <= 1 beat",
+      "pass": true,
+      "detail": 0.1
+    },
+    {
+      "name": "switch menu->early RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 5.1,
+        "rise": 2.1
+      }
+    },
+    {
+      "name": "switch menu->early no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.116
+    },
+    {
+      "name": "switch early->development happens",
+      "pass": true,
+      "detail": 33.963
+    },
+    {
+      "name": "switch early->development on 4-bar phrase boundary (<=5ms)",
+      "pass": true,
+      "detail": 3.000000000000001
+    },
+    {
+      "name": "switch early->development wait <= dwell+phrase",
+      "pass": true,
+      "detail": 0.7
+    },
+    {
+      "name": "switch early->development RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 0.7,
+        "rise": 0.2
+      }
+    },
+    {
+      "name": "switch early->development no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.074
+    },
+    {
+      "name": "switch development->sprint happens",
+      "pass": true,
+      "detail": 40.85
+    },
+    {
+      "name": "switch development->sprint on 4-bar phrase boundary (<=5ms)",
+      "pass": true,
+      "detail": 3.9999999999999987
+    },
+    {
+      "name": "switch development->sprint wait <= dwell+phrase",
+      "pass": true,
+      "detail": 7.5
+    },
+    {
+      "name": "switch development->sprint RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 4.4,
+        "rise": -3.3
+      }
+    },
+    {
+      "name": "switch development->sprint no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.033
+    },
+    {
+      "name": "switch sprint->ending-home happens",
+      "pass": true,
+      "detail": 33.671
+    },
+    {
+      "name": "switch sprint->ending-home on beat boundary (<=5ms)",
+      "pass": true,
+      "detail": 65
+    },
+    {
+      "name": "switch sprint->ending-home wait <= 1 beat",
+      "pass": true,
+      "detail": 0.4
+    },
+    {
+      "name": "switch sprint->ending-home RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": -0.3,
+        "rise": 0
+      }
+    },
+    {
+      "name": "switch sprint->ending-home no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.114
+    },
+    {
+      "name": "switch sprint->ending-rent happens",
+      "pass": true,
+      "detail": 33.671
+    },
+    {
+      "name": "switch sprint->ending-rent on beat boundary (<=5ms)",
+      "pass": true,
+      "detail": 65
+    },
+    {
+      "name": "switch sprint->ending-rent wait <= 1 beat",
+      "pass": true,
+      "detail": 0.4
+    },
+    {
+      "name": "switch sprint->ending-rent RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 5.5,
+        "rise": -0.4
+      }
+    },
+    {
+      "name": "switch sprint->ending-rent no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.088
+    },
+    {
+      "name": "switch development->menu happens",
+      "pass": true,
+      "detail": 33.65
+    },
+    {
+      "name": "switch development->menu on beat boundary (<=5ms)",
+      "pass": true,
+      "detail": 56.00000000000001
+    },
+    {
+      "name": "switch development->menu wait <= 1 beat",
+      "pass": true,
+      "detail": 0.4
+    },
+    {
+      "name": "switch development->menu RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 1,
+        "rise": 0.3
+      }
+    },
+    {
+      "name": "switch development->menu no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.077
+    },
+    {
+      "name": "switch ending-home->menu happens",
+      "pass": true,
+      "detail": 33.621
+    },
+    {
+      "name": "switch ending-home->menu on beat boundary (<=5ms)",
+      "pass": true,
+      "detail": 46.99999999999999
+    },
+    {
+      "name": "switch ending-home->menu wait <= 1 beat",
+      "pass": true,
+      "detail": 0.3
+    },
+    {
+      "name": "switch ending-home->menu RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90",
+      "pass": true,
+      "detail": {
+        "dip": 1.9,
+        "rise": 0.3
+      }
+    },
+    {
+      "name": "switch ending-home->menu no click (max sample jump <= 0.25)",
+      "pass": true,
+      "detail": 0.079
+    },
+    {
+      "name": "progress jitter 0.79<->0.91 for 2 min: switches respect dwell (>= 24 s apart)",
+      "pass": true,
+      "detail": {
+        "switches": 4,
+        "gaps": [
+          44.3,
+          28.8,
+          31.3
+        ]
+      }
+    },
+    {
+      "name": "progress jitter inside hysteresis band (0.81<->0.89) never switches",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "41 rapid requests merge into a single switch to latest target (sprint)",
+      "pass": true,
+      "detail": [
+        "development",
+        "sprint"
+      ]
+    },
+    {
+      "name": "sprint takes priority and is not blocked by dwell (switch soon after week 45)",
+      "pass": true,
+      "detail": [
+        {
+          "to": "early",
+          "at": 0.1
+        },
+        {
+          "to": "sprint",
+          "at": 13.1
+        }
+      ]
+    },
+    {
+      "name": "phaseOf priority/hysteresis on public fields",
+      "pass": true,
+      "detail": [
+        "sprint",
+        "development",
+        "development",
+        "early",
+        "ending-rent",
+        "menu"
+      ]
+    },
+    {
+      "name": "SFX + stinger peak <= -6 dBFS",
+      "pass": true,
+      "detail": -7
+    },
+    {
+      "name": "each SFX loudest window >= music median + 6 dB",
+      "pass": true,
+      "detail": {
+        "perFx": {
+          "buy": -13.3,
+          "sell": -14.7,
+          "next": -13.7,
+          "news": -14.1,
+          "error": -12.8,
+          "click": -13.9
+        },
+        "music": -21.1
+      }
+    },
+    {
+      "name": "house stinger stays below -1 dBFS on top of music",
+      "pass": true,
+      "detail": -4.5
+    },
+    {
+      "name": "house stinger audible above music bed",
+      "pass": true,
+      "detail": {
+        "bed": -20.1,
+        "stinger": -15.5
+      }
+    },
+    {
+      "name": "untrusted unlock: suspended context reports playing=false, legacy musicRunning=true, no notes queued",
+      "pass": true,
+      "detail": {
+        "state": "suspended",
+        "playing": false,
+        "musicRunning": true,
+        "queued": 0,
+        "needsGesture": true
+      }
+    },
+    {
+      "name": "before any gesture: no AudioContext",
+      "pass": true
+    },
+    {
+      "name": "setScene before gesture still does not create context",
+      "pass": true
+    },
+    {
+      "name": "trusted click: running, one scheduler timer, real signal",
+      "pass": true,
+      "detail": {
+        "peak": 0.1956,
+        "timers": 2,
+        "cue": "early"
+      }
+    },
+    {
+      "name": "hidden tab: silent, scheduler stopped",
+      "pass": true,
+      "detail": {
+        "peak": 0,
+        "timers": 1,
+        "cue": null
+      }
+    },
+    {
+      "name": "return to tab: music resumes from A2 (not from the top)",
+      "pass": true,
+      "detail": {
+        "peak": 0.1987,
+        "section": "A2"
+      }
+    },
+    {
+      "name": "music off: silent within 600 ms, timer cleared, musicRunning false",
+      "pass": true,
+      "detail": {
+        "peak": 0,
+        "timers": 1
+      }
+    },
+    {
+      "name": "music on again: single timer, signal back",
+      "pass": true,
+      "detail": {
+        "peak": 0.2189,
+        "timers": 2
+      }
+    },
+    {
+      "name": "volume 0: master gain 0 and digital silence",
+      "pass": true,
+      "detail": {
+        "gain": 0,
+        "peak": 0
+      }
+    },
+    {
+      "name": "volume restored: signal back",
+      "pass": true,
+      "detail": 0.156
+    },
+    {
+      "name": "dialogOpen applies duck snapshot without switching cue",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "name": "5 alternating preset clicks: requests counted, scheduler not duplicated",
+      "pass": true,
+      "detail": {
+        "requests": 5,
+        "switches": 4
+      }
+    },
+    {
+      "name": "ending request switches promptly (no dwell)",
+      "pass": true,
+      "detail": "ending-home"
+    },
+    {
+      "name": "back to menu switches promptly",
+      "pass": true,
+      "detail": "menu"
+    },
+    {
+      "name": "live voices bounded during playback (<= 64) while creation keeps progressing",
+      "pass": true,
+      "detail": {
+        "before": {
+          "created": 183,
+          "live": 11
+        },
+        "after": {
+          "created": 231,
+          "live": 11
+        }
+      }
+    },
+    {
+      "name": "after music off, all voices end and disconnect (live 0, no retiring instances)",
+      "pass": true,
+      "detail": {
+        "nodes": {
+          "created": 231,
+          "live": 0
+        },
+        "retiring": 0
+      }
+    },
+    {
+      "name": "no page exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "cues": {
+    "menu": {
+      "cue": "menu",
+      "seconds": 150,
+      "peakDb": -4.1,
+      "rmsMedianDb": -18.9,
+      "rmsP10Db": -22.7,
+      "rmsP90Db": -16.6,
+      "dc": -0.00000516,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ],
+      "maxJump": 0.125,
+      "renderMs": 10993,
+      "stolen": 0
+    },
+    "early": {
+      "cue": "early",
+      "seconds": 150,
+      "peakDb": -5.4,
+      "rmsMedianDb": -21.1,
+      "rmsP10Db": -24.6,
+      "rmsP90Db": -18.7,
+      "dc": -0.00000457,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ],
+      "maxJump": 0.176,
+      "renderMs": 8884,
+      "stolen": 0
+    },
+    "development": {
+      "cue": "development",
+      "seconds": 150,
+      "peakDb": -4.2,
+      "rmsMedianDb": -20.7,
+      "rmsP10Db": -24.1,
+      "rmsP90Db": -17.5,
+      "dc": -0.00000806,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ],
+      "maxJump": 0.106,
+      "renderMs": 8781,
+      "stolen": 0
+    },
+    "sprint": {
+      "cue": "sprint",
+      "seconds": 133.4,
+      "peakDb": -7.2,
+      "rmsMedianDb": -21.4,
+      "rmsP10Db": -25.3,
+      "rmsP90Db": -19.4,
+      "dc": 0.00000172,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C"
+      ],
+      "maxJump": 0.048,
+      "renderMs": 6476,
+      "stolen": 0
+    },
+    "sprint-final": {
+      "cue": "sprint",
+      "seconds": 25.8,
+      "peakDb": -6.6,
+      "rmsMedianDb": -21.1,
+      "rmsP10Db": -24.3,
+      "rmsP90Db": -19.2,
+      "dc": 0.0000061,
+      "sections": [
+        "A",
+        "B"
+      ],
+      "maxJump": 0.109,
+      "renderMs": 1341,
+      "stolen": 0
+    },
+    "ending-home": {
+      "cue": "ending-home",
+      "seconds": 121,
+      "peakDb": -4.3,
+      "rmsMedianDb": -18.8,
+      "rmsP10Db": -21.9,
+      "rmsP90Db": -16.7,
+      "dc": -0.0000047,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C",
+        "T"
+      ],
+      "maxJump": 0.169,
+      "renderMs": 7511,
+      "stolen": 0
+    },
+    "ending-rent": {
+      "cue": "ending-rent",
+      "seconds": 150,
+      "peakDb": -3,
+      "rmsMedianDb": -19.1,
+      "rmsP10Db": -22.5,
+      "rmsP90Db": -16.4,
+      "dc": -0.00000421,
+      "sections": [
+        "A",
+        "B",
+        "A2",
+        "C",
+        "T"
+      ],
+      "maxJump": 0.143,
+      "renderMs": 8634,
+      "stolen": 0
+    }
+  },
+  "transitions": [
+    {
+      "from": "menu",
+      "to": "early",
+      "urgent": true,
+      "requestAt": 33.3,
+      "switchAt": 33.383,
+      "waitS": 0.1,
+      "gridUnits": 40,
+      "dipDb": 5.1,
+      "riseDb": 2.1,
+      "maxJump": 0.116
+    },
+    {
+      "from": "early",
+      "to": "development",
+      "urgent": false,
+      "requestAt": 33.3,
+      "switchAt": 33.963,
+      "waitS": 0.7,
+      "gridUnits": 3.000000000000001,
+      "dipDb": 0.7,
+      "riseDb": 0.2,
+      "maxJump": 0.074
+    },
+    {
+      "from": "development",
+      "to": "sprint",
+      "urgent": false,
+      "requestAt": 33.3,
+      "switchAt": 40.85,
+      "waitS": 7.5,
+      "gridUnits": 3.9999999999999987,
+      "dipDb": 4.4,
+      "riseDb": -3.3,
+      "maxJump": 0.033
+    },
+    {
+      "from": "sprint",
+      "to": "ending-home",
+      "urgent": true,
+      "requestAt": 33.3,
+      "switchAt": 33.671,
+      "waitS": 0.4,
+      "gridUnits": 65,
+      "dipDb": -0.3,
+      "riseDb": 0,
+      "maxJump": 0.114
+    },
+    {
+      "from": "sprint",
+      "to": "ending-rent",
+      "urgent": true,
+      "requestAt": 33.3,
+      "switchAt": 33.671,
+      "waitS": 0.4,
+      "gridUnits": 65,
+      "dipDb": 5.5,
+      "riseDb": -0.4,
+      "maxJump": 0.088
+    },
+    {
+      "from": "development",
+      "to": "menu",
+      "urgent": true,
+      "requestAt": 33.3,
+      "switchAt": 33.65,
+      "waitS": 0.4,
+      "gridUnits": 56.00000000000001,
+      "dipDb": 1,
+      "riseDb": 0.3,
+      "maxJump": 0.077
+    },
+    {
+      "from": "ending-home",
+      "to": "menu",
+      "urgent": true,
+      "requestAt": 33.3,
+      "switchAt": 33.621,
+      "waitS": 0.3,
+      "gridUnits": 46.99999999999999,
+      "dipDb": 1.9,
+      "riseDb": 0.3,
+      "maxJump": 0.079
+    }
+  ],
+  "errors": [],
+  "browser": "Edg/154.0.4258.53",
+  "sfx": {
+    "buy": -13.3,
+    "sell": -14.7,
+    "next": -13.7,
+    "news": -14.1,
+    "error": -12.8,
+    "click": -13.9
+  }
+}
