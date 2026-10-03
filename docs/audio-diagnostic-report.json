@@ -28,7 +28,7 @@
         "volume": 0.5,
         "gain": 0.5,
         "state": "running",
-        "musicRunning": true
+        "musicRunning": false
       },
       "settings": {
         "autoSave": true,
@@ -38,10 +38,10 @@
         "numberFormat": "decimal"
       },
       "hidden": false,
-      "peak": 0.00899476744234562,
-      "rms": 0.0020355589418831906,
+      "peak": 0,
+      "rms": 0,
       "count": 307200,
-      "nonzero": 252336
+      "nonzero": 0
     },
     {
       "name": "both off",
@@ -59,10 +59,10 @@
         "numberFormat": "decimal"
       },
       "hidden": false,
-      "peak": 0.00896141491830349,
-      "rms": 0.0021408278434524755,
+      "peak": 0.008993090130388737,
+      "rms": 0.0019500307012270519,
       "count": 307200,
-      "nonzero": 289909
+      "nonzero": 246512
     },
     {
       "name": "music on from both off",
@@ -80,8 +80,8 @@
         "numberFormat": "decimal"
       },
       "hidden": false,
-      "peak": 0.002893246943131089,
-      "rms": 0.0017117915595879594,
+      "peak": 0.008420590311288834,
+      "rms": 0.00499687813916717,
       "count": 307200,
       "nonzero": 307200
     },
@@ -101,10 +101,10 @@
         "numberFormat": "decimal"
       },
       "hidden": false,
-      "peak": 0.0003967200464103371,
-      "rms": 0.000047290494505995515,
+      "peak": 0.0014014107873663306,
+      "rms": 0.0001549353277238739,
       "count": 307200,
-      "nonzero": 46464
+      "nonzero": 71296
     },
     {
       "name": "other tab active",
@@ -239,7 +239,7 @@
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
     "V8-Version": "15.4.11.7",
     "WebKit-Version": "537.36 (@5af6e80f702cffe10645c6d6433668f011b739be)",
-    "webSocketDebuggerUrl": "ws://127.0.0.1:59540/devtools/browser/59564359-25ad-4355-aa30-31ede0b3b4e6"
+    "webSocketDebuggerUrl": "ws://127.0.0.1:65075/devtools/browser/f3ec323e-3d90-4392-80d8-80d0047a3f8a"
   },
   "events": [
     {
