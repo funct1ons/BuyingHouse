@@ -1,10 +1,14 @@
 (function (H) {
   'use strict';
   H.trade = function (s,kind,id,qty) {
-    const p = H.product(id);
+    const p = H.holding(id);
     H.int(qty,1);
-    const item = s.inventory[id];
-    const gross = H.mul(s.market[id].price,qty), fee = H.fee(gross);
+    const legacy = H.legacyProducts.some(x => x.id === id);
+    const item = legacy ? s.legacy[id] : s.inventory[id];
+    if (kind === 'buy' && legacy) throw Error('已退出市场，只能按冻结回收价出售');
+    if (kind === 'buy' && !s.listing.includes(id)) throw Error('本周未上架');
+    const unit = kind === 'buy' ? s.market[id].price : H.channelUnit(s, id);
+    const gross = H.mul(unit, qty), fee = H.fee(gross);
     if (kind === 'buy') {
       const cost = H.add(gross,fee);
       if (cost > s.cash) throw Error('资金不足');

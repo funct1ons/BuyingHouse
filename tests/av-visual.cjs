@@ -86,7 +86,7 @@ try{
  ck('sprint shows brass countdown ring (no red alarm)',await ev(`!!document.querySelector('.calendar.countdown .cal-ring')`));
 
  // --- visual phase shares the director's hysteresis (enter 0.90, leave below 0.80); compare with a fresh director fed the same payloads ---
- {const steps=[];for(const [label,p] of [['p.50',.5],['p.92',.92],['p.85',.85],['p.75',.75],['p.85b',.85]]){const due=await ev(`HomeYear.housePrice({difficulty:'standard'},HomeYear.houses[0])`);const base=await ev(`(()=>{const e=new HomeYear.Engine('AV-HYST','standard');for(let w=1;w<10;w++){const v=e.visible();e.dispatch({type:'next',revision:v.revision,token:'h'+w})}return e.visible().cash})()`);await fixture({week:10,cash:Math.round(p*due)-base,seed:'AV-HYST'});steps.push({label,phase:await ev('document.body.dataset.phase'),progress:(await ev('HomeYear.UI.audioScene()')).progress});}
+ {const steps=[];for(const [label,p] of [['p.50',.5],['p.92',.92],['p.85',.85],['p.75',.75],['p.85b',.85]]){const due=await ev(`HomeYear.housePrice(new HomeYear.Engine('AV-HYST','standard').visible(),HomeYear.houses[0])`);const base=await ev(`(()=>{const e=new HomeYear.Engine('AV-HYST','standard');for(let w=1;w<10;w++){const v=e.visible();e.dispatch({type:'next',revision:v.revision,token:'h'+w})}return e.visible().cash})()`);await fixture({week:10,cash:Math.round(p*due)-base,seed:'AV-HYST'});steps.push({label,phase:await ev('document.body.dataset.phase'),progress:(await ev('HomeYear.UI.audioScene()')).progress});}
  const expect=['early','development','development','early','early'];
  const ref=await ev(`(()=>{if(!HomeYear.AudioDirector)return null;const d=HomeYear.AudioDirector.createDirector();d.request({screen:'start'});return ${JSON.stringify(steps.map(s=>s.progress))}.map(p=>d.request({screen:'game',week:10,status:'playing',house:null,progress:p,season:'winter',climate:'steady',dialogOpen:false}))})()`);
  report.metrics.hysteresis={steps,expect,directorReference:ref};
@@ -94,7 +94,7 @@ try{
  ck('visual phase equals a fresh HomeYear.AudioDirector fed the same public progress sequence',ref===null||ref.every((p,i)=>p===steps[i].phase),{ref,visual:steps.map(s=>s.phase)});}
 
  // --- scene cache: re-rendering the market must not rebuild illustrations unless their key changes ---
- const before=await ev('HomeYear.UI.sceneBuilds()');for(const cat of ['生活','电子','全部'])await click(`[data-action=category][data-category="${cat}"]`);await click('[data-action=favorite][data-id=rice]');await click('[data-action=favorite][data-id=rice]');
+ const before=await ev('HomeYear.UI.sceneBuilds()');for(const cat of ['生活','电子','全部'])await click(`[data-action=category][data-category="${cat}"]`);const fav=await ev(`(()=>{const id=HomeYear.UI.snapshot().listing.find(x=>document.querySelector('[data-action=favorite][data-id="'+x+'"]'));if(!id)throw Error('no listed favorite control');return id;})()`);await click(`[data-action=favorite][data-id="${fav}"]`);await click(`[data-action=favorite][data-id="${fav}"]`);
  const after=await ev('HomeYear.UI.sceneBuilds()');ck('scene slots reused across re-renders (street/home not rebuilt)',after.street===before.street&&after.home===before.home,{before,after});
  // renderGame cost at 1366: category clicks call renderGame synchronously.
  const times=await ev(`(()=>{const t=[];for(let i=0;i<25;i++){const b=document.querySelector('[data-action=category][data-category="'+(i%2?'全部':'生活')+'"]');const s=performance.now();b.click();t.push(performance.now()-s);}t.sort((a,b)=>a-b);return t})()`);

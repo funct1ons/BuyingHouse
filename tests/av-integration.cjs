@@ -77,7 +77,7 @@ const status=()=>ev('HomeYear.Audio.status()');
  await ev(`localStorage.setItem('homeyear.settings.v1',JSON.stringify({autoSave:true,sound:false,music:false,animation:'normal',numberFormat:'decimal'}))`);
  await load();
  st=await status();ck('music+sound off from a saved preference: no context, no scheduler, no engine cue',st.state==='uncreated'&&st.musicRunning===false&&!st.playing&&(await ev('qaIntervals.size'))===0&&st.cue===null,{state:st.state,musicRunning:st.musicRunning,cue:st.cue,intervals:await ev('qaIntervals.size')});
- const due=await ev(`HomeYear.housePrice({difficulty:'standard'},HomeYear.houses[0])`);
+ const due=await ev(`HomeYear.housePrice(new HomeYear.Engine('AV-LATE','standard').visible(),HomeYear.houses[0])`);
  const base=await ev(`(()=>{const e=new HomeYear.Engine('AV-LATE','standard');for(let w=1;w<10;w++){const v=e.visible();e.dispatch({type:'next',revision:v.revision,token:'l'+w})}return e.visible().cash})()`);
  const lateSteps=[];for(const [label,p] of [['p.50',.5],['p.92',.92],['p.85',.85]]){await fixture({week:10,cash:Math.round(p*due)-base,seed:'AV-LATE'});lateSteps.push({label,progress:(await ev('HomeYear.UI.audioScene()')).progress,phase:await ev('document.body.dataset.phase'),cue:(await status()).cue,timers:await ev('qaIntervals.size')});}
  report.metrics.lateEngine={steps:lateSteps,base};

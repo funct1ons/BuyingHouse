@@ -1,0 +1,71 @@
+{
+ "summary": {
+  "passed": 24,
+  "failed": 0
+ },
+ "metrics": {
+  "blockedStatus": {
+   "state": "suspended",
+   "needsGesture": true,
+   "musicRunning": false,
+   "playing": false,
+   "musicWanted": true
+  },
+  "idleMusic": {
+   "seconds": 60.01,
+   "taskDurationSeconds": 0.204,
+   "percent": 0.341,
+   "scriptPercent": 0.185,
+   "state": "running",
+   "musicRunning": true,
+   "target": "early",
+   "phase": "early",
+   "cue": "early",
+   "bar0": 1,
+   "bar1": 8,
+   "section0": "A",
+   "section1": "A2",
+   "switches": 2,
+   "voices": 6,
+   "queued": 3,
+   "timers": 1,
+   "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+  },
+  "lateEngine": {
+   "steps": [
+    {
+     "label": "p.50",
+     "progress": 0.5,
+     "phase": "early",
+     "cue": null,
+     "timers": 0
+    },
+    {
+     "label": "p.92",
+     "progress": 0.92,
+     "phase": "development",
+     "cue": null,
+     "timers": 0
+    },
+    {
+     "label": "p.85",
+     "progress": 0.85,
+     "phase": "development",
+     "cue": null,
+     "timers": 0
+    }
+   ],
+   "base": 316000
+  },
+  "resultDialog": {
+   "open": true,
+   "kind": "result",
+   "storybook": true,
+   "dialogOpen": false,
+   "dialog": "result",
+   "layers": false,
+   "cue": "ending-home",
+   "target": "ending-home"
+  }
+ }
+}

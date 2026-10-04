@@ -1,0 +1,29 @@
+{
+  "sha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+  "bytes": 7867,
+  "week": 4,
+  "house": "studio",
+  "warehouse": "normal",
+  "houseValue": 650000,
+  "warehouseSpent": 220000,
+  "cash": 6233900,
+  "capacity": 75,
+  "activeEvents": [
+    {
+      "id": "flu",
+      "started": 4,
+      "until": 6
+    }
+  ],
+  "personalEvent": null,
+  "newsIds": [
+    "flu"
+  ],
+  "holdings": 20,
+  "nonzeroProfits": 20,
+  "products": 20,
+  "events": 40,
+  "rulesVersion": "0.2",
+  "version": 2,
+  "fee": 0.01
+}

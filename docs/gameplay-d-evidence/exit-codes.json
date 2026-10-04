@@ -1,0 +1,56 @@
+[
+  {
+    "command": "node tests/ui-interaction.cjs",
+    "exitCode": 0,
+    "ms": 24414,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\ui-interaction.txt"
+  },
+  {
+    "command": "node tests/acceptance-final.cjs",
+    "exitCode": 0,
+    "ms": 84049,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\acceptance-final.txt"
+  },
+  {
+    "command": "node tests/acceptance-supplement.cjs",
+    "exitCode": 0,
+    "ms": 3920,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\acceptance-supplement.txt"
+  },
+  {
+    "command": "node tests/av-audio.cjs",
+    "exitCode": 0,
+    "ms": 148772,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\av-audio.txt"
+  },
+  {
+    "command": "node tests/av-integration.cjs --idle 60",
+    "exitCode": 0,
+    "ms": 82675,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\av-integration-idle60.txt"
+  },
+  {
+    "command": "node tests/av-visual.cjs",
+    "exitCode": 0,
+    "ms": 166234,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\av-visual.txt"
+  },
+  {
+    "command": "node tests/milestone-b-edge.cjs",
+    "exitCode": 0,
+    "ms": 4010,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\milestone-b-edge.txt"
+  },
+  {
+    "command": "node tests/milestone-b-edge-migrate.cjs",
+    "exitCode": 0,
+    "ms": 3159,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\milestone-b-edge-migrate.txt"
+  },
+  {
+    "command": "node tests/milestone-b-edge-review.cjs",
+    "exitCode": 0,
+    "ms": 8698,
+    "log": "C:\\files\\code\\BuyingHouse\\docs\\gameplay-d-evidence\\logs\\milestone-b-edge-review.txt"
+  }
+]

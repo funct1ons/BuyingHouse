@@ -1,0 +1,114 @@
+{
+  "browser": "Edg/154.0.4258.53",
+  "failures": [],
+  "notes": {
+    "browser": "Edg/154.0.4258.53",
+    "shelf": {
+      "cards": [
+        "rice",
+        "pork",
+        "eggs",
+        "fruit",
+        "phone",
+        "coat",
+        "umbrella",
+        "mask"
+      ],
+      "catalog0": "rice"
+    },
+    "priceOrder": [
+      "mask",
+      "eggs",
+      "umbrella",
+      "pork",
+      "fruit",
+      "rice",
+      "coat",
+      "phone",
+      "ac",
+      "collectible",
+      "gpu",
+      "watch"
+    ],
+    "openedByKey": [
+      "mask",
+      "eggs",
+      "umbrella",
+      "pork",
+      "fruit",
+      "rice",
+      "coat",
+      "phone",
+      "ac"
+    ],
+    "big": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [
+        "fruit"
+      ],
+      "animation": "normal",
+      "reduce": false
+    },
+    "importReplay": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "continueReplay": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "small": {
+      "week": 5,
+      "head": {
+        "id": "mask",
+        "abs": 2499,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "none": {
+      "week": 42,
+      "head": null,
+      "surge": [],
+      "cards": 8
+    },
+    "reducedSetting": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [],
+      "animation": "reduced"
+    },
+    "systemReduce": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [],
+      "animation": "normal",
+      "reduce": true
+    },
+    "external": [],
+    "consoleErrors": 0
+  }
+}

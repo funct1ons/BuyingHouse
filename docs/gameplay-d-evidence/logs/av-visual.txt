@@ -1,0 +1,75 @@
+{
+ "summary": {
+  "passed": 93,
+  "failed": 0
+ },
+ "metrics": {
+  "firstContentfulPaintMs": {
+   "ms": 123.7000000178814,
+   "source": "double-rAF after load (no paint entry in headless)",
+   "domContentLoaded": 60.900000005960464
+  },
+  "coldLoadWallMs": 130,
+  "audioSetSceneNative": true,
+  "svgElements 1366x768": 1462,
+  "svgElements 1600x900": 1462,
+  "svgElements 1920x1080": 1462,
+  "svgElements 2560x1440": 1462,
+  "svgElements 1920x1080@125": 1462,
+  "svgElements 1920x1080@150": 1462,
+  "hysteresis": {
+   "steps": [
+    {
+     "label": "p.50",
+     "phase": "early",
+     "progress": 0.5
+    },
+    {
+     "label": "p.92",
+     "phase": "development",
+     "progress": 0.92
+    },
+    {
+     "label": "p.85",
+     "phase": "development",
+     "progress": 0.85
+    },
+    {
+     "label": "p.75",
+     "phase": "early",
+     "progress": 0.75
+    },
+    {
+     "label": "p.85b",
+     "phase": "early",
+     "progress": 0.85
+    }
+   ],
+   "expect": [
+    "early",
+    "development",
+    "development",
+    "early",
+    "early"
+   ],
+   "directorReference": [
+    "early",
+    "development",
+    "development",
+    "early",
+    "early"
+   ]
+  },
+  "renderGameMedianMs": 1,
+  "renderGameP90Ms": 1.2,
+  "setSceneCalls": 254,
+  "idle": {
+   "seconds": 60.013,
+   "taskDurationSeconds": 0.0325,
+   "percent": 0.054,
+   "screen": "game",
+   "music": true,
+   "audioState": "suspended"
+  }
+ }
+}

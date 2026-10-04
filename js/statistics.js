@@ -10,11 +10,11 @@
     s.stats.maxDrawdown = Math.max(s.stats.maxDrawdown,drawdown);
   };
   H.summary = s => {
-    const ranked = H.products.map(p => ({id:p.id,profit:s.stats.byProduct[p.id]})).sort((a,b) => b.profit-a.profit);
+    const ranked = H.heldProducts().map(p => ({id:p.id,profit:s.stats.byProduct[p.id]})).sort((a,b) => b.profit-a.profit);
     const h = H.houses.find(h => h.id === s.house);
     return {ending:h ? h.ending : '仍在租房', assets:H.assets(s), cash:s.cash, house:s.house,
-      inventoryValue:H.inventoryValue(s), houseValue:H.houseValue(s), profit:s.stats.profit,
-      unrealized:H.products.reduce((n,p) => n+s.inventory[p.id].qty*s.market[p.id].price-s.inventory[p.id].cost,0),
+      inventoryValue:H.inventoryValue(s), liquidValue:H.liquidValue(s), houseValue:H.houseValue(s), profit:s.stats.profit,
+      unrealized:H.heldProducts().reduce((n,p) => n + H.channelNet(s,p.id,H.qtyOf(s,p.id)) - H.costOf(s,p.id), 0),
       turnover:s.stats.turnover, bought:s.stats.bought, sold:s.stats.sold, fees:s.stats.fees,
       best:s.stats.best, worst:s.stats.worst, bestProduct:ranked[0].id, worstProduct:ranked[ranked.length-1].id,
       peak:s.stats.peak, trades:s.stats.trades, houseWeek:s.stats.houseWeek, upgrades:s.stats.upgrades,

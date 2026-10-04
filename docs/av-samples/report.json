@@ -27,7 +27,7 @@
     {
       "name": "menu no DC offset",
       "pass": true,
-      "detail": -0.00000511
+      "detail": -0.00000517
     },
     {
       "name": "menu plays A/B/A2/C in 64 bars and loops",
@@ -52,7 +52,7 @@
     {
       "name": "early no DC offset",
       "pass": true,
-      "detail": -0.0000046
+      "detail": -0.00000453
     },
     {
       "name": "early plays A/B/A2/C in 64 bars and loops",
@@ -77,7 +77,7 @@
     {
       "name": "development no DC offset",
       "pass": true,
-      "detail": -0.0000081
+      "detail": -0.00000811
     },
     {
       "name": "development plays A/B/A2/C in 64 bars and loops",
@@ -102,7 +102,7 @@
     {
       "name": "sprint no DC offset",
       "pass": true,
-      "detail": 0.00000169
+      "detail": 0.0000017
     },
     {
       "name": "sprint plays A/B/A2/C in 64 bars and loops",
@@ -142,7 +142,7 @@
     {
       "name": "ending-home no DC offset",
       "pass": true,
-      "detail": -0.00000465
+      "detail": -0.00000461
     },
     {
       "name": "ending-home reaches tail after full form",
@@ -168,7 +168,7 @@
     {
       "name": "ending-rent no DC offset",
       "pass": true,
-      "detail": -0.00000425
+      "detail": -0.00000421
     },
     {
       "name": "ending-rent reaches tail after full form",
@@ -626,7 +626,7 @@
       "name": "trusted click: running, one scheduler timer, real signal",
       "pass": true,
       "detail": {
-        "peak": 0.2177,
+        "peak": 0.2114,
         "timers": 2,
         "cue": "early"
       }
@@ -644,7 +644,7 @@
       "name": "return to tab: music resumes from A2 (not from the top)",
       "pass": true,
       "detail": {
-        "peak": 0.2053,
+        "peak": 0.225,
         "section": "A2"
       }
     },
@@ -660,7 +660,7 @@
       "name": "music on again: single timer, signal back",
       "pass": true,
       "detail": {
-        "peak": 0.2133,
+        "peak": 0.2015,
         "timers": 2
       }
     },
@@ -675,7 +675,7 @@
     {
       "name": "volume restored: signal back",
       "pass": true,
-      "detail": 0.1503
+      "detail": 0.1675
     },
     {
       "name": "dialogOpen applies duck snapshot without switching cue",
@@ -705,12 +705,12 @@
       "pass": true,
       "detail": {
         "before": {
-          "created": 179,
+          "created": 177,
           "live": 11
         },
         "after": {
-          "created": 226,
-          "live": 15
+          "created": 225,
+          "live": 16
         }
       }
     },
@@ -719,7 +719,7 @@
       "pass": true,
       "detail": {
         "nodes": {
-          "created": 226,
+          "created": 225,
           "live": 0
         },
         "retiring": 0
@@ -739,7 +739,7 @@
       "rmsMedianDb": -18.9,
       "rmsP10Db": -22.7,
       "rmsP90Db": -16.6,
-      "dc": -0.00000511,
+      "dc": -0.00000517,
       "sections": [
         "A",
         "B",
@@ -747,7 +747,7 @@
         "C"
       ],
       "maxJump": 0.125,
-      "renderMs": 10939,
+      "renderMs": 18122,
       "stolen": 0
     },
     "early": {
@@ -757,7 +757,7 @@
       "rmsMedianDb": -21.1,
       "rmsP10Db": -24.6,
       "rmsP90Db": -18.7,
-      "dc": -0.0000046,
+      "dc": -0.00000453,
       "sections": [
         "A",
         "B",
@@ -765,7 +765,7 @@
         "C"
       ],
       "maxJump": 0.176,
-      "renderMs": 6265,
+      "renderMs": 11256,
       "stolen": 0
     },
     "development": {
@@ -775,7 +775,7 @@
       "rmsMedianDb": -20.7,
       "rmsP10Db": -24.1,
       "rmsP90Db": -17.5,
-      "dc": -0.0000081,
+      "dc": -0.00000811,
       "sections": [
         "A",
         "B",
@@ -783,7 +783,7 @@
         "C"
       ],
       "maxJump": 0.106,
-      "renderMs": 7028,
+      "renderMs": 7332,
       "stolen": 0
     },
     "sprint": {
@@ -793,7 +793,7 @@
       "rmsMedianDb": -21.4,
       "rmsP10Db": -25.3,
       "rmsP90Db": -19.4,
-      "dc": 0.00000169,
+      "dc": 0.0000017,
       "sections": [
         "A",
         "B",
@@ -801,7 +801,7 @@
         "C"
       ],
       "maxJump": 0.048,
-      "renderMs": 6348,
+      "renderMs": 6711,
       "stolen": 0
     },
     "sprint-final": {
@@ -817,7 +817,7 @@
         "B"
       ],
       "maxJump": 0.109,
-      "renderMs": 1421,
+      "renderMs": 1533,
       "stolen": 0
     },
     "ending-home": {
@@ -827,7 +827,7 @@
       "rmsMedianDb": -18.8,
       "rmsP10Db": -21.9,
       "rmsP90Db": -16.7,
-      "dc": -0.00000465,
+      "dc": -0.00000461,
       "sections": [
         "A",
         "B",
@@ -836,7 +836,7 @@
         "T"
       ],
       "maxJump": 0.169,
-      "renderMs": 7518,
+      "renderMs": 7899,
       "stolen": 0
     },
     "ending-rent": {
@@ -846,7 +846,7 @@
       "rmsMedianDb": -19.1,
       "rmsP10Db": -22.5,
       "rmsP90Db": -16.4,
-      "dc": -0.00000425,
+      "dc": -0.00000421,
       "sections": [
         "A",
         "B",
@@ -855,7 +855,7 @@
         "T"
       ],
       "maxJump": 0.143,
-      "renderMs": 8663,
+      "renderMs": 8504,
       "stolen": 0
     }
   },

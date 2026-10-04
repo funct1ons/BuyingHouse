@@ -1,5 +1,6 @@
 'use strict';
-// Offline developer tool; all prices, events, trades and saves use the shipped engine.
+// Historical v2 tool. It still sells with price*0.99 and is not the v4 evidence runner.
+// C1 and later samples use simulation/c1.cjs. Do not overwrite docs/balance-*.json with this file.
 const fs=require('node:fs'), path=require('node:path'), crypto=require('node:crypto');
 const root=path.join(__dirname,'..'), window={};
 const files=['data','math','market','trading','statistics','validation','game'];
@@ -29,9 +30,10 @@ function run(seed,difficulty,strategy) {
     let s=e.visible();
     if(strategy!=='idle'&&week<52) {
       if(strategy==='random') {
-        const p=H.products[Math.floor(rand()*H.products.length)],i=s.inventory[p.id];
+        const listed=s.listing||H.products.map(p=>p.id);
+        const p=H.products.find(x=>x.id===listed[Math.floor(rand()*listed.length)])||H.products[0],i=s.inventory[p.id];
         if(i.qty&&rand()<.5)act('sell',p.id,Math.max(1,Math.floor(i.qty*rand())));
-        else purchase(s,p,s.cash*(.2+.6*rand()));
+        else if(listed.includes(p.id)) purchase(s,p,s.cash*(.2+.6*rand()));
       } else {
         for(const p of H.products) {
           const i=s.inventory[p.id],m=s.market[p.id];if(!i.qty)continue;
@@ -42,6 +44,7 @@ function run(seed,difficulty,strategy) {
         }
         s=e.visible();
         const candidates=H.products.filter(p => {
+          if(s.listing&&!s.listing.includes(p.id))return false;
           const m=s.market[p.id],ratio=m.price/p.basePrice;
           if(strategy==='conservative')return ['生活','贵重'].includes(p.category)&&p.volatility<.08&&ratio<.88;
           if(strategy==='value')return ratio<.84;

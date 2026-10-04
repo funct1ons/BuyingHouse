@@ -27,10 +27,11 @@ const variants=[];
 for(const season of H.Art.seasons)for(const id of ['rent','house-0','house-2','house-4']){const s=H.Art.scene(id,{season,phase:'development'});check(s,id+season);write(`${id}-${season}.svg`,s);variants.push(`${id}-${season}`);}
 for(const [id,phase] of [['rent','ending-rent'],['house-4','ending-home'],['house-1','sprint'],['street','sprint'],['street','early']]){const s=H.Art.scene(id,{phase,season:'autumn'});check(s,id+phase);write(`${id}-${phase}.svg`,s);variants.push(`${id}-${phase}`);}
 for(const tone of H.Art.tones)for(const season of H.Art.seasons){const s=H.Art.scene('house-3',{tone,season,lamps:true});check(s,tone);}
-for(const p of H.products) check(H.Art.icon(p.id,'smoke'),p.id);
-if(H.products.length!==20)throw Error('Expected 20 products');
-if(new Set(H.products.map(p=>H.Art.icon(p.id))).size!==20)throw Error('Duplicate product art');
-if(H.products.some(p=>!H.Art.productIconIds.includes(p.id)))throw Error('Product without dedicated icon');
+const catalog=H.products.concat(H.legacyProducts||[]);
+for(const p of catalog) check(H.Art.icon(p.id,'smoke'),p.id);
+if(catalog.length!==20)throw Error('Expected 20 product icons across pool and legacy');
+if(new Set(catalog.map(p=>H.Art.icon(p.id))).size!==20)throw Error('Duplicate product art');
+if(catalog.some(p=>!H.Art.productIconIds.includes(p.id)))throw Error('Product without dedicated icon');
 if(!H.Art.icon('rice','x" onload="evil').includes('&quot;'))throw Error('Class escaping failed');
 for(const id of ['city','rent','street',...H.houses.map((_,i)=>'house-'+i)])check(H.Art.scene(id),id);
 check(H.Art.scene('warehouse'),'warehouse');

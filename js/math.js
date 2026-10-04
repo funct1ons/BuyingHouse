@@ -31,13 +31,56 @@
     if (!p) throw Error('未知商品');
     return p;
   };
+  H.holding = id => {
+    const p = H.products.find(x => x.id === id) || H.legacyProducts.find(x => x.id === id);
+    if (!p) throw Error('未知商品');
+    return p;
+  };
+  H.heldProducts = () => H.products.concat(H.legacyProducts);
+  H.quoteOf = (s,id) => id in s.inventory ? s.market[id] : s.legacy[id];
+  H.qtyOf = (s,id) => H.quoteOf(s,id) && (id in s.inventory ? s.inventory[id].qty : s.legacy[id].qty);
+  H.costOf = (s,id) => id in s.inventory ? s.inventory[id].cost : s.legacy[id].cost;
   H.difficulty = s => H.difficulties[s.difficulty];
-  H.housePrice = (s,h) => H.int(Math.round(h.price * H.difficulty(s).houseFactor));
-  H.warehousePrice = (s,w) => H.int(Math.round(w.price * H.difficulty(s).warehouseFactor));
-  H.used = s => H.products.reduce((n,p) => H.add(n,H.mul(s.inventory[p.id].qty,p.size)),0);
-  H.inventoryValue = s => H.products.reduce((n,p) => H.add(n,H.mul(s.inventory[p.id].qty,s.market[p.id].price)),0);
-  H.houseValue = s => s.house ? H.housePrice(s,H.houses.find(h => h.id === s.house)) : 0;
-  H.assets = s => H.add(H.add(s.cash,H.inventoryValue(s)),H.houseValue(s));
+  H.publishedBook = s => {
+    const table = H.priceBooks[s.priceBook && s.priceBook.id];
+    const book = table && table[s.difficulty];
+    if (!book) throw Error('价格簿无效');
+    return book;
+  };
+  H.housePrice = (s,h) => {
+    const houses = s.priceBook && s.priceBook.houses;
+    if (!houses || !Object.prototype.hasOwnProperty.call(houses, h.id)) throw Error('价格簿无效');
+    return H.int(houses[h.id]);
+  };
+  H.warehousePrice = (s,w) => {
+    const warehouses = s.priceBook && s.priceBook.warehouses;
+    if (!warehouses || !Object.prototype.hasOwnProperty.call(warehouses, w.id)) throw Error('价格簿无效');
+    return H.int(warehouses[w.id]);
+  };
+  H.used = s => H.heldProducts().reduce((n,p) => H.add(n, H.mul(H.qtyOf(s,p.id), p.size)), 0);
+  H.inventoryValue = s => H.heldProducts().reduce((n,p) => H.add(n, H.mul(H.qtyOf(s,p.id), H.quoteOf(s,p.id).price)), 0);
+  H.houseValue = s => s.house ? H.housePrice(s, H.houses.find(h => h.id === s.house)) : 0;
+  H.assets = s => H.add(H.add(s.cash, H.inventoryValue(s)), H.houseValue(s));
   H.fee = amount => H.int(Math.ceil(amount * H.rules.fee));
+  H.buybackQuote = price => {
+    const q = Math.floor(price * H.rules.buybackNumer / H.rules.buybackDenom);
+    if (q >= 1) return q;
+    return price >= 1 ? 1 : 0;
+  };
+  H.channelUnit = (s,id) => {
+    const price = H.quoteOf(s,id).price;
+    if (H.legacyProducts.some(p => p.id === id) || !s.listing.includes(id)) return H.buybackQuote(price);
+    return price;
+  };
+  H.channelGross = (s,id,qty) => H.mul(H.channelUnit(s,id), qty);
+  H.channelNet = (s,id,qty) => {
+    const gross = H.channelGross(s,id,qty);
+    return gross - H.fee(gross);
+  };
+  H.liquidValue = s => H.heldProducts().reduce((n,p) => {
+    const qty = H.qtyOf(s,p.id);
+    return qty ? H.add(n, H.channelNet(s,p.id,qty)) : n;
+  }, 0);
+  H.changeBps = m => m.previous ? Math.round((m.price - m.previous) / m.previous * 10000) : 0;
   H.seasonAt = week => ['冬','春','夏','秋'][Math.floor((week-1)/13)];
 })(window.HomeYear);

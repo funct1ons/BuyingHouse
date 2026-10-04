@@ -1,6 +1,6 @@
 {
   "kind": "real Edge headless file:// with trusted CDP mouse input; digital signals only, not listening tests",
-  "started": "2026-10-03T19:32:57.805Z",
+  "started": "2026-10-04T06:43:41.686Z",
   "checks": [
     {
       "name": "no AudioContext before any interaction",
@@ -85,73 +85,73 @@
       }
     },
     {
-      "name": "music playing 5s idle: scheduler kept running (bars advanced)",
+      "name": "music playing 60s idle: scheduler kept running (bars advanced)",
       "pass": true,
       "detail": {
-        "seconds": 5.01,
-        "taskDurationSeconds": 0.021,
-        "percent": 0.419,
-        "scriptPercent": 0.269,
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.204,
+        "percent": 0.341,
+        "scriptPercent": 0.185,
         "state": "running",
         "musicRunning": true,
         "target": "early",
         "phase": "early",
         "cue": "early",
         "bar0": 1,
-        "bar1": 3,
+        "bar1": 8,
         "section0": "A",
-        "section1": "A",
+        "section1": "A2",
         "switches": 2,
-        "voices": 8,
-        "queued": 7,
+        "voices": 6,
+        "queued": 3,
         "timers": 1,
         "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
       }
     },
     {
-      "name": "music playing 5s idle: exactly one timer, voices <= 64, cue still matches the visual phase (no drift)",
+      "name": "music playing 60s idle: exactly one timer, voices <= 64, cue still matches the visual phase (no drift)",
       "pass": true,
       "detail": {
-        "seconds": 5.01,
-        "taskDurationSeconds": 0.021,
-        "percent": 0.419,
-        "scriptPercent": 0.269,
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.204,
+        "percent": 0.341,
+        "scriptPercent": 0.185,
         "state": "running",
         "musicRunning": true,
         "target": "early",
         "phase": "early",
         "cue": "early",
         "bar0": 1,
-        "bar1": 3,
+        "bar1": 8,
         "section0": "A",
-        "section1": "A",
+        "section1": "A2",
         "switches": 2,
-        "voices": 8,
-        "queued": 7,
+        "voices": 6,
+        "queued": 3,
         "timers": 1,
         "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
       }
     },
     {
-      "name": "music playing 5s idle: main-thread TaskDuration < 3% of wall time (headless baseline)",
+      "name": "music playing 60s idle: main-thread TaskDuration < 3% of wall time (headless baseline)",
       "pass": true,
       "detail": {
-        "seconds": 5.01,
-        "taskDurationSeconds": 0.021,
-        "percent": 0.419,
-        "scriptPercent": 0.269,
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.204,
+        "percent": 0.341,
+        "scriptPercent": 0.185,
         "state": "running",
         "musicRunning": true,
         "target": "early",
         "phase": "early",
         "cue": "early",
         "bar0": 1,
-        "bar1": 3,
+        "bar1": 8,
         "section0": "A",
-        "section1": "A",
+        "section1": "A2",
         "switches": 2,
-        "voices": 8,
-        "queued": 7,
+        "voices": 6,
+        "queued": 3,
         "timers": 1,
         "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
       }
@@ -327,22 +327,22 @@
       "musicWanted": true
     },
     "idleMusic": {
-      "seconds": 5.01,
-      "taskDurationSeconds": 0.021,
-      "percent": 0.419,
-      "scriptPercent": 0.269,
+      "seconds": 60.01,
+      "taskDurationSeconds": 0.204,
+      "percent": 0.341,
+      "scriptPercent": 0.185,
       "state": "running",
       "musicRunning": true,
       "target": "early",
       "phase": "early",
       "cue": "early",
       "bar0": 1,
-      "bar1": 3,
+      "bar1": 8,
       "section0": "A",
-      "section1": "A",
+      "section1": "A2",
       "switches": 2,
-      "voices": 8,
-      "queued": 7,
+      "voices": 6,
+      "queued": 3,
       "timers": 1,
       "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
     },
@@ -370,7 +370,7 @@
           "timers": 0
         }
       ],
-      "base": 325000
+      "base": 316000
     },
     "resultDialog": {
       "open": true,
@@ -385,7 +385,7 @@
   },
   "errors": [],
   "browser": "Edg/154.0.4258.53",
-  "finished": "2026-10-03T19:33:26.128Z",
+  "finished": "2026-10-04T06:45:04.274Z",
   "summary": {
     "passed": 24,
     "failed": 0

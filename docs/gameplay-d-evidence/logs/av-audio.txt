@@ -1,0 +1,98 @@
+PASS menu peak <= -1 dBFS -4.1
+PASS menu median 300ms RMS in [-28,-18] dBFS -18.9
+PASS menu no DC offset -0.00000517
+PASS menu plays A/B/A2/C in 64 bars and loops ["A","B","A2","C"]
+PASS early peak <= -1 dBFS -5.4
+PASS early median 300ms RMS in [-24,-18] dBFS -21.1
+PASS early no DC offset -0.00000453
+PASS early plays A/B/A2/C in 64 bars and loops ["A","B","A2","C"]
+PASS development peak <= -1 dBFS -4.2
+PASS development median 300ms RMS in [-24,-18] dBFS -20.7
+PASS development no DC offset -0.00000811
+PASS development plays A/B/A2/C in 64 bars and loops ["A","B","A2","C"]
+PASS sprint peak <= -1 dBFS -7.2
+PASS sprint median 300ms RMS in [-24,-18] dBFS -21.4
+PASS sprint no DC offset 0.0000017
+PASS sprint plays A/B/A2/C in 64 bars and loops ["A","B","A2","C"]
+PASS sprint-final peak <= -1 dBFS -6.6
+PASS sprint-final median 300ms RMS in [-24,-18] dBFS -21.1
+PASS sprint-final no DC offset 0.00000612
+PASS ending-home peak <= -1 dBFS -4.3
+PASS ending-home median 300ms RMS in [-24,-18] dBFS -18.8
+PASS ending-home no DC offset -0.00000461
+PASS ending-home reaches tail after full form ["A","B","A2","C","T"]
+PASS ending-rent peak <= -1 dBFS -3
+PASS ending-rent median 300ms RMS in [-28,-18] dBFS -19.1
+PASS ending-rent no DC offset -0.00000421
+PASS ending-rent reaches tail after full form ["A","B","A2","C","T"]
+PASS in-game cue RMS medians within 3 dB [-21.1,-20.7,-21.4,-18.8]
+PASS ending coda: form A/B/A2/C plays once, then the 8-bar T coda repeats (form never replays) ["A","B","A2","C","T"]
+PASS ending coda: engine reports the held coda (inTail true; loop counts coda laps, not form repeats) {"inTail":true,"loop":2,"formRepeats":1}
+PASS ending coda: second coda lap is still playing at a similar level (no fade-out, no restart) {"seconds":180,"formSeconds":120,"sections":["A","B","A2","C","T"],"codaLap1Db":-21.2,"codaLap2Db":-24.1,"lastSection":"T","lastCue":"ending-rent","inTail":true,"loop":2}
+PASS non-looping cue without a tail stays inside its sections (no undefined section, no crash) {"maxSec":3,"distinct":[0,1,2,3],"inTail":false,"lastSection":"C"}
+PASS six cues with distinct chord sequences, melodies and instrument sets [{"id":"menu","bpm":72,"key":2,"mode":"major","insts":"glock+hiss+pad+piano+strings+sub","tracks":7},{"id":"early","bpm":92,"key":5,"mode":"major","insts":"bass+epiano+flute+kick+marimba+pad+rim+shaker","tracks":8},{"id":"development","bpm":100,"key":8,"mode":"major","insts":"bass+flute+glock+kick+piano+rim+shaker+strings","tracks":8},{"id":"sprint","bpm":116,"key":0,"mode":"minor","insts":"bass+brass+kick+pad+pluck+rim+shaker+strings+timpani+wood","tracks":10},{"id":"ending-home","bpm":84,"key":3,"mode":"major","insts":"flute+glock+piano+strings+sub","tracks":6},{"id":"ending-rent","bpm":66,"key":2,"mode":"major","insts":"hiss+pad+piano+sub","tracks":5}]
+PASS every cue has >=5 simultaneous parts [7,8,8,10,6,5]
+PASS switch menu->early happens 33.383
+PASS switch menu->early on beat boundary (<=5ms) 40
+PASS switch menu->early wait <= 1 beat 0.1
+PASS switch menu->early RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":5.1,"rise":2.1}
+PASS switch menu->early no click (max sample jump <= 0.25) 0.116
+PASS switch early->development happens 33.963
+PASS switch early->development on 4-bar phrase boundary (<=5ms) 3.000000000000001
+PASS switch early->development wait <= dwell+phrase 0.7
+PASS switch early->development RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":0.7,"rise":0.2}
+PASS switch early->development no click (max sample jump <= 0.25) 0.074
+PASS switch development->sprint happens 40.85
+PASS switch development->sprint on 4-bar phrase boundary (<=5ms) 3.9999999999999987
+PASS switch development->sprint wait <= dwell+phrase 7.5
+PASS switch development->sprint RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":4.4,"rise":-3.3}
+PASS switch development->sprint no click (max sample jump <= 0.25) 0.033
+PASS switch sprint->ending-home happens 33.671
+PASS switch sprint->ending-home on beat boundary (<=5ms) 65
+PASS switch sprint->ending-home wait <= 1 beat 0.4
+PASS switch sprint->ending-home RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":-0.3,"rise":0}
+PASS switch sprint->ending-home no click (max sample jump <= 0.25) 0.114
+PASS switch sprint->ending-rent happens 33.671
+PASS switch sprint->ending-rent on beat boundary (<=5ms) 65
+PASS switch sprint->ending-rent wait <= 1 beat 0.4
+PASS switch sprint->ending-rent RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":5.5,"rise":-0.4}
+PASS switch sprint->ending-rent no click (max sample jump <= 0.25) 0.088
+PASS switch development->menu happens 33.65
+PASS switch development->menu on beat boundary (<=5ms) 56.00000000000001
+PASS switch development->menu wait <= 1 beat 0.4
+PASS switch development->menu RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":1,"rise":0.3}
+PASS switch development->menu no click (max sample jump <= 0.25) 0.077
+PASS switch ending-home->menu happens 33.621
+PASS switch ending-home->menu on beat boundary (<=5ms) 46.99999999999999
+PASS switch ending-home->menu wait <= 1 beat 0.3
+PASS switch ending-home->menu RMS dip <= 6 dB vs lower median, rise <= 3 dB vs higher P90 {"dip":1.9,"rise":0.3}
+PASS switch ending-home->menu no click (max sample jump <= 0.25) 0.079
+PASS progress jitter 0.79<->0.91 for 2 min: switches respect dwell (>= 24 s apart) {"switches":4,"gaps":[44.3,28.8,31.3]}
+PASS progress jitter inside hysteresis band (0.81<->0.89) never switches 1
+PASS 41 rapid requests merge into a single switch to latest target (sprint) ["development","sprint"]
+PASS sprint takes priority and is not blocked by dwell (switch soon after week 45) [{"to":"early","at":0.1},{"to":"sprint","at":13.1}]
+PASS phaseOf priority/hysteresis on public fields ["sprint","development","development","early","ending-rent","menu"]
+PASS SFX + stinger peak <= -6 dBFS -7
+PASS each SFX loudest window >= music median + 6 dB {"perFx":{"buy":-13.3,"sell":-14.7,"next":-13.7,"news":-14.1,"error":-12.8,"click":-13.9},"music":-21.1}
+PASS house stinger stays below -1 dBFS on top of music -4.5
+PASS house stinger audible above music bed {"bed":-20.1,"stinger":-15.5}
+PASS untrusted unlock: no running context, no idle scheduler, no notes queued, needsGesture set {"state":"suspended","musicRunning":false,"playing":false,"needsGesture":true,"timers":1,"cue":null}
+PASS blocked context still remembers that music is wanted (recovery path exists) {"musicWanted":true,"needsGesture":true,"timers":1}
+PASS before any gesture: no AudioContext
+PASS setScene before gesture still does not create context
+PASS trusted click: running, one scheduler timer, real signal {"peak":0.2114,"timers":2,"cue":"early"}
+PASS hidden tab: silent, scheduler stopped {"peak":0,"timers":1,"cue":null}
+PASS return to tab: music resumes from A2 (not from the top) {"peak":0.225,"section":"A2"}
+PASS music off: silent within 600 ms, timer cleared, musicRunning false {"peak":0,"timers":1}
+PASS music on again: single timer, signal back {"peak":0.2015,"timers":2}
+PASS volume 0: master gain 0 and digital silence {"gain":0,"peak":0}
+PASS volume restored: signal back 0.1675
+PASS dialogOpen applies duck snapshot without switching cue true
+PASS 5 alternating preset clicks: requests counted, scheduler not duplicated {"requests":5,"switches":4}
+PASS ending request switches promptly (no dwell) "ending-home"
+PASS back to menu switches promptly "menu"
+PASS live voices bounded during playback (<= 64) while creation keeps progressing {"before":{"created":177,"live":11},"after":{"created":225,"live":16}}
+PASS after music off, all voices end and disconnect (live 0, no retiring instances) {"nodes":{"created":225,"live":0},"retiring":0}
+PASS no page exceptions []
+
+96/96 passed
