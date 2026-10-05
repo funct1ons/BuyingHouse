@@ -60,6 +60,43 @@
   H.used = s => H.heldProducts().reduce((n,p) => H.add(n, H.mul(H.qtyOf(s,p.id), p.size)), 0);
   H.inventoryValue = s => H.heldProducts().reduce((n,p) => H.add(n, H.mul(H.qtyOf(s,p.id), H.quoteOf(s,p.id).price)), 0);
   H.houseValue = s => s.house ? H.housePrice(s, H.houses.find(h => h.id === s.house)) : 0;
+  // Closed form from the published base. Shocks with week<=target apply once, not each later week.
+  H.houseAt = function (baseFen, week, housingLog) {
+    H.int(baseFen);
+    H.int(week, 1, 52);
+    if (!Array.isArray(housingLog)) throw Error('住房冲击无效');
+    let num = 1n, den = 1n;
+    const steps = BigInt(week - 1);
+    num *= 101n ** steps;
+    den *= 100n ** steps;
+    for (const entry of housingLog) {
+      if (!entry || !Number.isSafeInteger(entry.week) || entry.week > week) continue;
+      const ev = H.housingEvents.find(e => e.id === entry.id);
+      if (!ev) throw Error('住房冲击无效');
+      num *= BigInt(ev.numer);
+      den *= BigInt(ev.denom);
+    }
+    return H.int(Number((BigInt(baseFen) * num + den / 2n) / den));
+  };
+  H.houseQuote = function (state, houseId, week = state.week) {
+    const book = H.publishedBook(state);
+    if (!Object.prototype.hasOwnProperty.call(book.houses, houseId)) throw Error('住房无效');
+    return H.houseAt(book.houses[houseId], week, state.housingLog || []);
+  };
+  H.houseChangeBps = function (state, houseId) {
+    if (state.week <= 1) return 0;
+    const today = H.houseQuote(state, houseId, state.week);
+    const yesterday = H.houseQuote(state, houseId, state.week - 1);
+    return Math.round((today - yesterday) / yesterday * 10000);
+  };
+  H.maxHouseValue = function (difficulty) {
+    const book = H.priceBooks['0.3'][difficulty];
+    if (!book) throw Error('难度无效');
+    const log = [{id: 'housing_stimulus', week: 6}, {id: 'housing_first', week: 6}];
+    let max = 0;
+    for (const price of Object.values(book.houses)) max = Math.max(max, H.houseAt(price, 52, log));
+    return max;
+  };
   H.assets = s => H.add(H.add(s.cash, H.inventoryValue(s)), H.houseValue(s));
   H.fee = amount => H.int(Math.ceil(amount * H.rules.fee));
   H.buybackQuote = price => {

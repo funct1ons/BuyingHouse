@@ -9,9 +9,60 @@
     }
     return (a >>> 0).toString(16).padStart(8, '0') + (b >>> 0).toString(16).padStart(8, '0');
   };
+  function milestoneId(entry) {
+    return H.contentId(entry.seed + '\0' + entry.difficulty + '\0' + entry.calendarStartWeek + '\0' + entry.week + '\0' + entry.houseId + '\0' + entry.price + '\0' + entry.paid);
+  }
+  H.validateMilestones = function (value) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) throw Error('里程碑无效');
+    const actual = Object.keys(value);
+    if (actual.length !== 2 || !Object.prototype.hasOwnProperty.call(value, 'version') || !Object.prototype.hasOwnProperty.call(value, 'entries')) throw Error('里程碑无效');
+    if (value.version !== 1 || !Array.isArray(value.entries) || value.entries.length > 1000) throw Error('里程碑无效');
+    const ids = new Set();
+    for (const entry of value.entries) {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) throw Error('里程碑无效');
+      const fields = ['houseId', 'week', 'difficulty', 'seed', 'calendarStartWeek', 'price', 'paid'];
+      if (Object.keys(entry).length !== fields.length || fields.some(k => !Object.prototype.hasOwnProperty.call(entry, k))) throw Error('里程碑无效');
+      if (!H.houses.some(h => h.id === entry.houseId) || !Object.prototype.hasOwnProperty.call(H.difficulties, entry.difficulty)) throw Error('里程碑无效');
+      if (typeof entry.seed !== 'string' || !entry.seed.length || entry.seed.length > 128) throw Error('里程碑无效');
+      H.int(entry.week, 1, 52);
+      H.int(entry.calendarStartWeek, 1, 52);
+      if (entry.calendarStartWeek !== H.calendarStart(entry.seed)) throw Error('里程碑无效');
+      H.int(entry.price, 1);
+      H.int(entry.paid, 1);
+      if (entry.paid > entry.price) throw Error('里程碑无效');
+      const id = milestoneId(entry);
+      if (ids.has(id)) throw Error('里程碑无效');
+      ids.add(id);
+    }
+    return true;
+  };
+  H.milestoneBadges = function (entries) {
+    if (!Array.isArray(entries)) throw Error('里程碑无效');
+    const seen = new Set(entries.map(e => e && e.houseId));
+    const groups = new Map();
+    for (const e of entries) {
+      const key = e.seed + '\0' + e.difficulty + '\0' + e.calendarStartWeek;
+      groups.set(key, (groups.get(key) || 0) + 1);
+    }
+    let climb = false;
+    for (const n of groups.values()) if (n >= 3) climb = true;
+    const row = (id, name, earned) => ({id, name, earned: !!earned});
+    return [
+      row('first-key', '第一次拿到钥匙', entries.length >= 1),
+      row('count-5', '五次拿到钥匙', entries.length >= 5),
+      row('count-10', '十次拿到钥匙', entries.length >= 10),
+      row('city-five', '旧城五档都出现过', ['studio', 'flat', 'two', 'city', 'dream'].every(id => seen.has(id))),
+      row('first-townhouse', '第一次市中心小洋楼', seen.has('townhouse')),
+      row('first-courtyard', '第一次首都四合院', seen.has('courtyard')),
+      row('first-island', '第一次独立海岛', seen.has('island')),
+      row('first-mars', '第一次火星定居舱', seen.has('mars')),
+      row('climb-3', '同一局至少三套', climb)
+    ];
+  };
   H.SaveAdapter = function (storage) {
-    const key = 'homeyear.save.v6', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1';
-    let quarantined = false, damagedRaw = null;
+    const key = 'homeyear.save.v7', v6Key = 'homeyear.save.v6', v5Key = 'homeyear.save.v5', v4Key = 'homeyear.save.v4', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1', milestoneKey = 'homeyear.milestones.v1';
+    const oldKeys = [v6Key, v5Key, v4Key, v3Key, legacyKey, v1Key];
+    let quarantined = false, damagedRaw = null, milestoneQuarantined = false, milestoneDamaged = null;
     this.key = key;
     this.legacyKey = legacyKey;
     this.v3Key = v3Key;
@@ -37,7 +88,7 @@
       try {
         if (typeof raw !== 'string' || raw.length > 2000000) throw Error('存档文本为空或过大');
         const value = JSON.parse(raw);
-        if (value && [1,2,3,4,5].includes(value.version)) throw Error(H.oldSaveNotice);
+        if (value && [1,2,3,4,5,6].includes(value.version)) throw Error(H.oldSaveNotice);
         H.validate(value);
         return {ok: true, state: H.clone(value)};
       } catch (e) { return failure(e); }
@@ -67,7 +118,7 @@
         raw = store.getItem(key);
         if (raw === null) {
           let oldPresent = false;
-          for (const oldKey of ['homeyear.save.v5','homeyear.save.v4', v3Key, legacyKey, v1Key]) {
+          for (const oldKey of oldKeys) {
             if (store.getItem(oldKey) !== null) oldPresent = true;
           }
           quarantined = false; damagedRaw = null;
@@ -94,7 +145,7 @@
       return read.ok ? read.raw : null;
     };
     this.oldRaw = () => {
-      for (const oldKey of ['homeyear.save.v5','homeyear.save.v4',v3Key,legacyKey,v1Key]) {
+      for (const oldKey of oldKeys) {
         const read = this.readKey(oldKey);
         if (read.ok && read.raw !== null) return read.raw;
       }
@@ -198,6 +249,56 @@
     };
     this.damaged = () => damagedRaw;
     this.isQuarantined = () => quarantined;
+    function entriesFrom(state) {
+      if (!state || !Array.isArray(state.purchases)) throw Error('购房记录无效');
+      return state.purchases.map(p => ({houseId: p.houseId, week: p.week, difficulty: state.difficulty, seed: state.seed, calendarStartWeek: H.calendarStart(state.seed), price: p.price, paid: p.paid}));
+    }
+    function dedupe(list) {
+      const out = [], seen = new Set();
+      for (const entry of list) {
+        const id = milestoneId(entry);
+        if (seen.has(id)) continue;
+        seen.add(id);
+        out.push(entry);
+      }
+      return out;
+    }
+    this.loadMilestones = () => {
+      let raw = null;
+      try {
+        const store = getStorage();
+        raw = store.getItem(milestoneKey);
+        if (raw === null) {
+          milestoneQuarantined = false; milestoneDamaged = null;
+          return {ok: true, milestones: {version: 1, entries: []}};
+        }
+        const value = JSON.parse(raw);
+        H.validateMilestones(value);
+        milestoneQuarantined = false; milestoneDamaged = null;
+        return {ok: true, milestones: H.clone(value)};
+      } catch (e) {
+        milestoneQuarantined = true; milestoneDamaged = raw;
+        return {...failure(e), raw};
+      }
+    };
+    this.mergeMilestones = (state, options = {}) => {
+      try {
+        const incoming = entriesFrom(state);
+        const current = this.loadMilestones();
+        if (!current.ok && options.replaceDamaged !== true) throw Error(current.error);
+        const entries = dedupe((current.ok ? current.milestones.entries : []).concat(incoming));
+        const doc = {version: 1, entries};
+        H.validateMilestones(doc);
+        const encoded = JSON.stringify(doc);
+        const store = getStorage();
+        store.setItem(milestoneKey, encoded);
+        if (store.getItem(milestoneKey) !== encoded) throw Error('里程碑回读不一致');
+        milestoneQuarantined = false; milestoneDamaged = null;
+        return {ok: true, milestones: H.clone(doc)};
+      } catch (e) { return failure(e); }
+    };
+    this.damagedMilestones = () => milestoneDamaged;
+    this.isMilestoneQuarantined = () => milestoneQuarantined;
     this.loadSettings = () => {
       try {
         const raw = getStorage().getItem(settingsKey);

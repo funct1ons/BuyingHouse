@@ -2,7 +2,7 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.7', saveVersion: 6, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.8', saveVersion: 7, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
@@ -49,7 +49,11 @@
     {id:'flat', name:'普通公寓', price:1000000, district:'近郊', description:'有阳台，也有新的生活。', icon:'⌂', ending:'小有成就'},
     {id:'two', name:'舒适两居', price:1400000, district:'河岸', description:'客厅不再兼任仓库。', icon:'⌂', ending:'安居有余'},
     {id:'city', name:'城市住宅', price:1900000, district:'中心', description:'通勤与风景都更从容。', icon:'⌂', ending:'城市新贵'},
-    {id:'dream', name:'理想之家', price:2500000, district:'花园', description:'终于有地方安放所有梦想。', icon:'⌂', ending:'理想成真'}
+    {id:'dream', name:'理想之家', price:2500000, district:'花园', description:'终于有地方安放所有梦想。', icon:'⌂', ending:'理想成真'},
+    {id:'townhouse', name:'市中心小洋楼', price:3600000, district:'梧桐街', description:'梧桐影落在自家的窗台上。', icon:'⌂', ending:'街角有自己的灯'},
+    {id:'courtyard', name:'首都四合院', price:6200000, district:'旧城', description:'旧城的砖还在，门却是自己的。', icon:'⌂', ending:'一进院子，一片天'},
+    {id:'island', name:'独立海岛', price:10800000, district:'外海', description:'四面潮水，屋子只这一间。', icon:'⌂', ending:'潮声代替闹钟'},
+    {id:'mars', name:'火星定居舱', price:20000000, district:'同步轨道', description:'舷窗外是红尘，舱里留着这一年的灯。', icon:'⌂', ending:'下一颗行星的门'}
   ];
   H.warehouses = [
     {id:'room', name:'出租屋角落', capacity:20, price:0},
@@ -64,8 +68,22 @@
       easy: book({studio:520000, flat:800000, two:1120000, city:1520000, dream:2000000}, {room:0, small:56000, normal:176000, large:400000}),
       standard: book({studio:650000, flat:1000000, two:1400000, city:1900000, dream:2500000}, {room:0, small:70000, normal:220000, large:500000}),
       challenge: book({studio:812500, flat:1250000, two:1750000, city:2375000, dream:3125000}, {room:0, small:84000, normal:264000, large:600000})
+    },
+    // 0.3 copies 0.2 for the original five houses and all warehouses. New houses use exact 0.8 / 1.25.
+    '0.3': {
+      easy: book({studio:520000, flat:800000, two:1120000, city:1520000, dream:2000000, townhouse:2880000, courtyard:4960000, island:8640000, mars:16000000}, {room:0, small:56000, normal:176000, large:400000}),
+      standard: book({studio:650000, flat:1000000, two:1400000, city:1900000, dream:2500000, townhouse:3600000, courtyard:6200000, island:10800000, mars:20000000}, {room:0, small:70000, normal:220000, large:500000}),
+      challenge: book({studio:812500, flat:1250000, two:1750000, city:2375000, dream:3125000, townhouse:4500000, courtyard:7750000, island:13500000, mars:25000000}, {room:0, small:84000, normal:264000, large:600000})
     }
   };
+  for (const d of ['easy', 'standard', 'challenge']) {
+    for (const id of ['studio', 'flat', 'two', 'city', 'dream']) {
+      if (H.priceBooks['0.3'][d].houses[id] !== H.priceBooks['0.2'][d].houses[id]) throw Error('价格簿抄录错误');
+    }
+    for (const id of Object.keys(H.priceBooks['0.2'][d].warehouses)) {
+      if (H.priceBooks['0.3'][d].warehouses[id] !== H.priceBooks['0.2'][d].warehouses[id]) throw Error('价格簿抄录错误');
+    }
+  }
   const fx = (kind, bps) => ({kind, bps});
   const market = [
     ['egg_supply','蛋筐在店门口叠了起来','集中到货已经发生，鸡蛋的本周价格里看得到。',2,'temporary','reliable',{eggs:fx('persist',-1800)}],
@@ -117,6 +135,19 @@
     swan_tariff: origin('关税与贸易不确定性','2025-04-16','WTO','Temporary tariff pause mitigates trade contraction, but strong downside risks persist','https://www.wto.org/english/news_e/news25_e/tfore_16apr25_e.htm','关税与政策不确定性导致当时贸易展望下调。','贸易预测不是全年实际结果或商品零售价；手机、名表与藏品方向为原创设计。'),
     swan_protection: origin('防护用品供给受扰','2020-03-03','WHO','Shortage of personal protective equipment endangering health workers worldwide','https://www.who.int/news/item/03-03-2020-shortage-of-personal-protective-equipment-endangering-health-workers-worldwide','防护用品供给受扰、需求上升，WHO呼吁增加生产。','虚构临时防护标准及常备需求，冲击非新闻实测幅度；不宣传囤积获利，不渲染伤亡。')
   });
+  H.housingRules = Object.freeze({probability:.12, firstWeek:6, lastWeek:46, gap:8, limit:3});
+  H.housingEvents = Object.freeze([
+    Object.freeze({id:'housing_stimulus', title:'金融柜台贴出了支持房产的新告示', situation:'降准、降息和对房地产的金融支持已经宣布。本城房价已按这场消息重估，不是公报里的数字。', numer:108, denom:100}),
+    Object.freeze({id:'housing_first', title:'房贷柜台改了套数认定的口径', situation:'认房不认贷的口径已经落地。本城房价跟着这场已经发生的调整重估，不是文件开出的报价。', numer:105, denom:100}),
+    Object.freeze({id:'housing_default', title:'远方房企被标成限制性违约', situation:'评级下调已经公布，本城房价只计入预期冲击。这不是买卖建议，也不讨论断供。', numer:92, denom:100}),
+    Object.freeze({id:'housing_index', title:'统计公报写下了七十城房价', situation:'七十个大中城市商品住宅价格公报已经发布。本城这笔跌幅不是公报上的实测数字。', numer:94, denom:100})
+  ]);
+  H.housingOrigins = Object.freeze({
+    housing_stimulus: origin('国新办金融支持发布会','2024-09-24','新华社（中国政府网）','稳预期稳信心 多项金融政策齐发力支持经济高质量发展','https://www.gov.cn/zhengce/202409/content_6976242.htm','2024-09-24国新办发布会上，中国人民银行宣布下调存款准备金率0.5个百分点，并把7天期逆回购操作利率从1.7%下调到1.5%；同时宣布降低存量房贷利率、统一房贷最低首付比例等房地产金融支持。','游戏涨幅是虚构的城市房价映射，不是这场发布会的实测房价或政策报价。'),
+    housing_first: origin('优化住房套数认定','2023-08-18','住房城乡建设部、中国人民银行、金融监管总局','住房城乡建设部 中国人民银行 金融监管总局关于优化个人住房贷款中住房套数认定标准的通知','https://www.gov.cn/zhengce/zhengceku/202308/content_6900164.htm','建房〔2023〕52号成文日期为2023年8月18日。居民家庭在当地名下无成套住房的，不论是否已利用贷款购买过住房，按首套住房信贷政策执行。不是未核实的8月30日。','认房不认贷只说明套数口径。游戏涨幅是原创映射，不是通知里的房价。'),
+    housing_default: origin('惠誉将恒大、恒大地产与天基降至限制性违约','2021-12-09','The National（转述惠誉）','Fitch downgrades Evergrande and declares developer in default as restructuring looms','https://www.thenationalnews.com/business/2021/12/09/fitch-downgrades-evergrande-and-declares-developer-in-default-as-restructuring-looms/','2021-12-09报道：惠誉把中国恒大集团及其子公司恒大地产、天基控股降至限制性违约（restricted default）。天基债券宽限期于12月6日届满，评级行动见诸当周声明。','只把预期冲击映射为本城虚构跌幅，不是投资建议，不引导断供，也不等于任何房价实测。'),
+    housing_index: origin('70个大中城市商品住宅销售价格','2026-08（2026-09-15发布）','国家统计局','2026年8月份70个大中城市商品住宅销售价格变动情况','https://www.stats.gov.cn/sj/zxfb/202609/t20260915_1965304.html','2026-09-15发布的2026年8月指数表，上月=100。新建商品住宅北京环比99.8、上海环比100.4，不是单一全国跌幅。','游戏里的下跌是原创映射，不是这份月报的实测跌幅。')
+  });
   // Fail at catalog load, not after an invalid event enters a saved game.
   for (const e of H.events) for (const [id, effect] of Object.entries(e.effects)) {
     if (!H.products.some(p => p.id === id) || !['immediate','persist','structural'].includes(effect.kind) || !Number.isSafeInteger(effect.bps) || effect.bps <= -10000) throw Error('事件目录无效');
@@ -137,6 +168,10 @@
   H.newsSituation = n => {
     if (!n) return '';
     if (n.kind === 'holding') return H.holdingSituation;
+    if (n.kind === 'housing') {
+      const housing = H.housingEvents.find(e => e.id === n.id);
+      return (housing && housing.situation) || '';
+    }
     if (n.id === 'move' && n.kind === 'headline') return H.moveSituation;
     const ev = H.events.find(e => e.id === n.id);
     return (ev && ev.situation) || '';
@@ -159,5 +194,5 @@
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
   H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
   H.oldSaveNotice = '内测规则更新，旧档不兼容，请开始新游戏';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v6。请先导出损坏原文。确认替换？';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v7。请先导出损坏原文。确认替换？';
 })(window);

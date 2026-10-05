@@ -65,7 +65,7 @@
   };
   const icons = Object.assign({}, products, general);
   const svg = (body, box, cls = '') => K.svg(body, box, cls);
-  const houseIds = ['studio', 'flat', 'two', 'city', 'dream'];
+  const houseIds = ['studio', 'flat', 'two', 'city', 'dream', 'townhouse', 'courtyard', 'island', 'mars'];
   const aliases = {room:'warehouse', small:'warehouse', normal:'warehouse', large:'warehouse', music:'sound', next:'arrow', inventory:'warehouse', chart:'assets', profit:'assets', coin:'cash'};
   const sceneIds = S.ids;
   H.Art = Object.freeze({

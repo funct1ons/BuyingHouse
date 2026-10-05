@@ -310,3 +310,35 @@ button,[role=button],.product{-webkit-user-select:none;user-select:none;-webkit-
   .start{align-content:start}.start-form{align-self:start}
   .celebration-art{width:min(360px,55vw);max-height:55dvh}.celebration-title{font-size:24px}
 }
+
+/* Housing ladder: group titles stay outside the price grid; the far tier remains in the scrolling column. */
+.house-group{display:block;min-width:0;margin-top:12px}
+.house-group-title{margin:0 0 8px;font-size:18px}
+.house-far-note{margin:0 0 8px;color:var(--text-secondary)}
+.house-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:14px}
+.flyer-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.flyer-price strong{white-space:nowrap}
+.goal-price{min-width:0}
+.goal-price .goal-change{margin-left:6px;font-size:12px;font-weight:700;white-space:nowrap}
+.housing-news{border-left:3px solid var(--brass);background:#f8f1e4}
+.housing-label{color:#8a3a25;font-weight:700;letter-spacing:.06em}
+.housing-log{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.milestone-badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.milestone-badge{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:2px 10px;background:#fffdf8}
+.milestone-badge.earned{border-color:var(--brass);font-weight:700}
+.milestone-badge.muted{opacity:.55}
+.milestone-log{margin:8px 0;padding-left:1.2em}
+.milestone-quarantine{color:#8a3a25}
+.year-purchases{display:block;width:100%;margin:8px 0}
+dialog[data-kind=milestones],dialog[data-kind=housing-event]{width:min(860px,94vw)}
+@media(min-width:1100px){
+  dialog[data-kind=houses] .flyer-price strong{font-size:20px}
+  dialog[data-kind=houses] .house-group-title{margin-bottom:10px}
+}
+@media(max-width:700px){
+  dialog[data-kind=houses] .dialog-body{overflow:auto}
+  dialog[data-kind=houses] .house-grid,dialog[data-kind=houses] .flyers{grid-template-columns:1fr}
+  dialog[data-kind=houses] .house-card,dialog[data-kind=houses] .flyer-price,dialog[data-kind=houses] .flyer-price strong{min-width:0;max-width:100%}
+  dialog[data-kind=houses] .house-group-far{scroll-margin-bottom:12px}
+  .goal-price .goal-change{white-space:normal}
+}

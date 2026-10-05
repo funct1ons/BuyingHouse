@@ -37,10 +37,15 @@
   H.buyHouse = function (s,id) {
     const index = H.houses.findIndex(h => h.id === id), old = H.houses.findIndex(h => h.id === s.house);
     if (index < 0 || index <= old) throw Error('仅允许首次购买或升级住房');
-    const due = H.housePrice(s,H.houses[index])-H.houseValue(s);
+    const price = H.housePrice(s, H.houses[index]);
+    const due = price - (s.house ? H.houseValue(s) : 0);
+    if (!Number.isSafeInteger(due) || due <= 0) throw Error('购房金额无效');
     if (s.cash < due) throw Error('购房资金不足');
     s.cash -= due;
     s.house = id;
+    s.houseBasis = H.add(s.houseBasis || 0, due);
+    if (!Array.isArray(s.purchases)) s.purchases = [];
+    s.purchases.push({houseId: id, week: s.week, price, paid: due});
     if (s.stats.houseWeek === 0) s.stats.houseWeek = s.week;
   };
   H.upgradeWarehouse = function (s,id) {

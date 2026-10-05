@@ -36,9 +36,10 @@
       }
       throw Error('无法上架 '+id);
     }
-    test('12轮换池/8退出商品/37事件/5住房/4仓储与价格簿',()=>{
-      // 规则0.5仅新增7重大事件；0.4完整目录冻结，不用于现行事件抽取。
-      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===37&&H.houses.length===5&&H.warehouses.length===4);
+    test('12轮换池/8退出商品/37事件/9住房/4仓储与价格簿',()=>{
+      // 规则0.5仅新增7重大事件；0.4完整目录冻结，不用于现行事件抽取。住房冲击不进入 H.events。
+      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===37&&H.houses.length===9&&H.warehouses.length===4);
+      assert(!H.events.some(e=>e.id==='housing_stimulus'||e.id==='housing_first'||e.id==='housing_default'||e.id==='housing_index'));
       assert(H.v3.catalog.events.length===30&&H.v3.catalog.rules.saveVersion===3);
       assert(H.v2.catalog.products.length===20&&H.v2.catalog.events.length===40&&H.v2.catalog.rules.saveVersion===2);
       for(const p of H.products){for(const k of ['name','category','description','basePrice','minPrice','maxPrice','volatility','trendSensitivity','eventSensitivity','unitSize','icon','season'])assert(p[k]!==undefined);assert(p.basePrice===p.base&&p.unitSize===p.size);}
@@ -146,8 +147,9 @@
       const e=new H.Engine();for(let i=1;i<52;i++)assert(op(e,'next').ok);
       assert(e.snapshot().week===52&&!op(e,'next').ok);fund(e,9000000);ensureListed(e,'rice');
       assert(op(e,'buy','rice',1).ok);assert(op(e,'house','studio').ok);
-      assert(e.snapshot().status==='playing');const cash=e.snapshot().cash;
-      assert(op(e,'house','flat').ok);assert(e.snapshot().cash===cash-350000);
+      assert(e.snapshot().status==='playing');const booked=e.snapshot();
+      const due=booked.priceBook.houses.flat-booked.priceBook.houses.studio;
+      assert(op(e,'house','flat').ok);assert(e.snapshot().cash===booked.cash-due);
       assert(!op(e,'house','studio').ok&&!op(e,'house','flat').ok);
       assert(op(e,'end').ok);const done=e.snapshot();assert(done.result.house==='flat'&&done.history.length===52);
       assert(op(e,'end').ok);equal(done,e.snapshot());assert(!op(e,'buy','rice',1).ok);
@@ -177,9 +179,9 @@
       s.week=5;H.drawEvents(s);assert(!s.activeEvents.some(e=>e.id==='chips'&&e.started===2));
       assert(H.seasonAt(13)==='冬'&&H.seasonAt(14)==='春'&&H.seasonAt(27)==='夏'&&H.seasonAt(40)==='秋');
       const e=new H.Engine();const v=e.visible();assert(!('rng'in v)&&!('activeEvents'in v)&&!('onStreak'in v)&&!('absence'in v)&&!('macro'in v)&&!('personal'in v)&&!('stats'in v)&&!('trend'in v.market.rice)&&!('trend'in v.legacy.gold));
-      assert(v.priceBook&&v.priceBook.id==='0.2'&&H.housePrice(v,H.houses[0])===v.priceBook.houses.studio);
+      assert(v.priceBook&&v.priceBook.id==='0.3'&&H.housePrice(v,H.houses[0])===v.priceBook.houses.studio);
       const rngBefore=e.snapshot().rng;const marketBefore=JSON.stringify(e.snapshot().market);e.visible();e.diagnostics();const seen=e.snapshot();
-      assert(rngBefore.market===seen.rng.market&&rngBefore.events===seen.rng.events&&rngBefore.visual===seen.rng.visual&&rngBefore.listing===seen.rng.listing&&marketBefore===JSON.stringify(seen.market));
+      assert(rngBefore.market===seen.rng.market&&rngBefore.events===seen.rng.events&&rngBefore.visual===seen.rng.visual&&rngBefore.listing===seen.rng.listing&&rngBefore.housing===seen.rng.housing&&marketBefore===JSON.stringify(seen.market));
       for(let i=1;i<52;i++)assert(op(e,'next').ok);for(const n of e.snapshot().news)assert(H.reliability[n.reliability]);
     });
     test('越界才计钳制，贴界且raw未越出不计，读取诊断不耗随机',()=>{
@@ -221,7 +223,7 @@
       const mid=engine.snapshot();
       engine.visible();engine.diagnostics();
       const after=engine.snapshot();
-      assert(mid.rng.market===after.rng.market&&mid.rng.events===after.rng.events&&mid.rng.visual===after.rng.visual&&mid.rng.listing===after.rng.listing);
+      assert(mid.rng.market===after.rng.market&&mid.rng.events===after.rng.events&&mid.rng.visual===after.rng.visual&&mid.rng.listing===after.rng.listing&&mid.rng.housing===after.rng.housing);
       assert(JSON.stringify(mid.market)===JSON.stringify(after.market));
       const rejected=engine.dispatch({type:'next',revision:engine.visible().revision-1,token:'stale-next'});
       assert(!rejected.ok&&engine.diagnostics().clips===committed.clips&&engine.diagnostics().clipLog.length===1,'拒绝的 next 不增加诊断');

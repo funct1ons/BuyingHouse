@@ -38,7 +38,7 @@
   H.validate = function (s) {
     keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'calendarStartWeek', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
       'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'rumors', 'history', 'stats',
-      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'priceBook'], '存档');
+      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'housingLog', 'purchases', 'houseBasis', 'priceBook'], '存档');
     if (s.version !== H.rules.saveVersion || s.rulesVersion !== H.rules.version) throw Error('存档版本不兼容（不支持旧版或未来版本）');
     if (typeof s.seed !== 'string' || !s.seed.length || s.seed.length > 128) throw Error('种子无效');
     if (!Object.prototype.hasOwnProperty.call(H.difficulties, s.difficulty)) throw Error('难度无效');
@@ -53,11 +53,11 @@
     if (s.status === 'playing' && s.result !== null) throw Error('未结束状态不能有结算');
     if (s.status === 'ended' && s.week !== 52) throw Error('结算周无效');
     keys(s.priceBook, ['id', 'houses', 'warehouses'], '价格簿');
-    const published = H.priceBooks[s.priceBook.id] && H.priceBooks[s.priceBook.id][s.difficulty];
+    if (s.priceBook.id !== '0.3') throw Error('价格簿无效');
+    const published = H.priceBooks['0.3'][s.difficulty];
     if (!published) throw Error('价格簿无效');
     keys(s.priceBook.houses, Object.keys(published.houses), '住房价');
     keys(s.priceBook.warehouses, Object.keys(published.warehouses), '仓储价');
-    for (const id of Object.keys(published.houses)) if (s.priceBook.houses[id] !== published.houses[id]) throw Error('住房价与价格簿不一致');
     for (const id of Object.keys(published.warehouses)) if (s.priceBook.warehouses[id] !== published.warehouses[id]) throw Error('仓储价与价格簿不一致');
     if (s.migration !== null) {
       keys(s.migration, ['fromVersion', 'fromRules', 'atWeek', 'backup'], '迁移');
@@ -83,8 +83,21 @@
       if ((s.upgrade && entry.week <= s.upgrade.atWeek) || (!s.upgrade && s.migration && entry.week <= s.migration.atWeek)) throw Error('规则升级前不能有重大事件');
       swanIds.add(entry.id); swanWeek = entry.week;
     }
-    keys(s.rng, ['market', 'events', 'visual', 'listing'], '随机流');
-    for (const key of ['market', 'events', 'visual', 'listing']) H.int(s.rng[key], 1, 4294967295);
+    if (!Array.isArray(s.housingLog) || s.housingLog.length > H.housingRules.limit) throw Error('住房冲击无效');
+    const housingIds = new Set();
+    let previousHousingWeek = null;
+    for (const entry of s.housingLog) {
+      keys(entry, ['id', 'week'], '住房冲击');
+      const ev = H.housingEvents.find(e => e.id === entry.id);
+      if (!ev || housingIds.has(entry.id)) throw Error('住房冲击无效');
+      H.int(entry.week, H.housingRules.firstWeek, Math.min(H.housingRules.lastWeek, s.week));
+      if (previousHousingWeek !== null && entry.week - previousHousingWeek < H.housingRules.gap) throw Error('住房冲击无效');
+      housingIds.add(entry.id);
+      previousHousingWeek = entry.week;
+    }
+    for (const id of Object.keys(published.houses)) if (s.priceBook.houses[id] !== H.houseQuote(s, id)) throw Error('住房价与公式不一致');
+    keys(s.rng, ['market', 'events', 'visual', 'listing', 'housing'], '随机流');
+    for (const key of ['market', 'events', 'visual', 'listing', 'housing']) H.int(s.rng[key], 1, 4294967295);
     const ids = H.products.map(p => p.id);
     const legacyIds = H.legacyProducts.map(p => p.id);
     keys(s.inventory, ids, '库存'); keys(s.market, ids, '市场'); keys(s.legacy, legacyIds, '退出商品');
@@ -119,6 +132,7 @@
     const unique = new Set();
     for (const a of s.activeEvents) {
       keys(a, ['id', 'started', 'until'], '持续事件');
+      if (H.housingEvents.some(e => e.id === a.id)) throw Error('住房冲击不能写入商品事件');
       const e = H.events.find(e => e.id === a.id && e.type === 'market');
       if (!e || unique.has(a.id)) throw Error('事件无效或重复');
       unique.add(a.id);
@@ -141,6 +155,27 @@
     H.int(s.stats.worst, -Number.MAX_SAFE_INTEGER, 0);
     H.int(s.stats.houseWeek, 0, s.week); H.int(s.stats.upgrades, 0, 3); H.int(s.stats.maxDrawdown, 0, 1000000);
     if ((s.house === null) !== (s.stats.houseWeek === 0)) throw Error('购房周数不一致');
+    H.int(s.houseBasis, 0);
+    if (!Array.isArray(s.purchases) || s.purchases.length > H.houses.length) throw Error('购房记录无效');
+    let paidSum = 0, previousTier = -1;
+    for (let i = 0; i < s.purchases.length; i++) {
+      const row = s.purchases[i];
+      keys(row, ['houseId', 'week', 'price', 'paid'], '购房记录');
+      const index = H.houses.findIndex(h => h.id === row.houseId);
+      if (index < 0 || index <= previousTier) throw Error('购房记录无效');
+      H.int(row.week, 1, s.week);
+      const log = s.housingLog.filter(entry => entry.week <= row.week);
+      const price = H.houseAt(published.houses[row.houseId], row.week, log);
+      const prevPrice = i === 0 ? 0 : H.houseAt(published.houses[s.purchases[i - 1].houseId], row.week, log);
+      if (row.price !== price || row.paid !== price - prevPrice) throw Error('购房记录无效');
+      H.int(row.price); H.int(row.paid);
+      paidSum = H.add(paidSum, row.paid);
+      previousTier = index;
+    }
+    if (paidSum !== s.houseBasis) throw Error('购房成本不一致');
+    if (s.house === null) {
+      if (s.purchases.length !== 0 || s.houseBasis !== 0) throw Error('购房记录无效');
+    } else if (!s.purchases.length || s.purchases[s.purchases.length - 1].houseId !== s.house || s.purchases[0].week !== s.stats.houseWeek) throw Error('购房记录无效');
     if (s.stats.warehouseSpent !== H.warehousePrice(s, warehouse) || (s.warehouse === 'room') !== (s.stats.upgrades === 0)) throw Error('仓储统计不一致');
     keys(s.stats.byProduct, ids.concat(legacyIds), '商品利润');
     const st = s.stats, big = BigInt;
@@ -169,10 +204,10 @@
         big(st.profit) > big(st.best) * trades || big(st.profit) < big(st.worst) * trades) throw Error('交易次数或最佳最差统计不一致');
     const unit = s.migration ? Math.max(...H.v2.catalog.products.map(p => Math.ceil(p.max / p.size))) : Math.max(...H.products.map(p => Math.ceil(p.max / p.size)));
     const maxStock = trades === 0n ? 0n : big(s.capacity) * big(unit);
-    if (st.peak < H.difficulty(s).initialCash || big(st.peak) > big(H.difficulty(s).initialCash) + big(st.grants) + sold + maxStock) throw Error('资产峰值不可达');
+    if (st.peak < H.difficulty(s).initialCash || big(st.peak) > big(H.difficulty(s).initialCash) + big(st.grants) + sold + maxStock + big(H.maxHouseValue(s.difficulty))) throw Error('资产峰值不可达');
     const minimumDrawdown = st.peak ? Math.round((st.peak - H.assets(s)) / st.peak * 1000000) : 0;
     if (st.maxDrawdown < minimumDrawdown) throw Error('最大回撤小于当前回撤');
-    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - H.houseValue(s) - s.stats.warehouseSpent;
+    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - s.houseBasis - s.stats.warehouseSpent;
     if (!Number.isSafeInteger(expectedCash) || expectedCash !== s.cash) throw Error('现金与收支统计不一致');
     if (!Array.isArray(s.history) || s.history.length !== s.week) throw Error('资产历史长度无效');
     for (let index = 0; index < s.history.length; index++) {
@@ -183,15 +218,19 @@
     }
     const current = s.history[s.week - 1];
     if (current.cash !== s.cash || current.inventory !== H.inventoryValue(s) || current.house !== H.houseValue(s) || current.assets !== H.assets(s)) throw Error('本周资产历史不一致');
-    if (!Array.isArray(s.news) || s.news.length > H.events.length + 4) throw Error('新闻无效');
+    if (!Array.isArray(s.news) || s.news.length > H.events.length + 5) throw Error('新闻无效');
     let headlines = 0, moves = 0;
     for (const n of s.news) {
       keys(n, ['id', 'title', 'reliability', 'week', 'kind', 'productId', 'changeBps', 'fresh'], '新闻');
       if (typeof n.title !== 'string' || !n.title.length || n.title.length > 200 || !Object.prototype.hasOwnProperty.call(H.reliability, n.reliability) || n.week !== s.week) throw Error('新闻内容无效');
-      if (!['headline', 'holding', 'listing', 'ongoing', 'personal'].includes(n.kind) || typeof n.fresh !== 'boolean') throw Error('新闻种类无效');
+      if (!['headline', 'holding', 'listing', 'ongoing', 'personal', 'housing'].includes(n.kind) || typeof n.fresh !== 'boolean') throw Error('新闻种类无效');
       H.int(n.changeBps, -1000000, 1000000);
       if (n.id === 'rumor') throw Error('新闻内容无效');
-      if (n.productId !== null) {
+      if (n.kind === 'housing') {
+        const ev = H.housingEvents.find(e => e.id === n.id);
+        if (!ev || n.productId !== null || n.title !== ev.title || n.reliability !== 'reliable' || n.fresh !== true || n.changeBps !== H.houseChangeBps(s, 'studio') || !s.housingLog.some(l => l.id === n.id && l.week === s.week)) throw Error('住房新闻无效');
+      } else if (H.housingEvents.some(e => e.id === n.id)) throw Error('住房新闻无效');
+      else if (n.productId !== null) {
         if (!ids.concat(legacyIds).includes(n.productId) || n.changeBps !== H.changeBps(H.quoteOf(s, n.productId))) throw Error('新闻涨跌与行情不一致');
       } else if (n.changeBps !== 0 || n.kind !== 'personal') throw Error('新闻内容无效');
       if (n.kind === 'ongoing' && (n.reliability !== 'normal' || n.fresh !== false)) throw Error('持续事件新闻无效');
@@ -203,6 +242,7 @@
             (a.started === s.week ? n.kind !== 'headline' || !n.fresh || n.reliability !== swan.reliability : n.kind !== 'ongoing' || n.fresh)) throw Error('重大事件新闻与日志不一致');
       }
       if (n.kind === 'headline') headlines++;
+      if (n.kind === 'housing') continue;
       if (n.id === 'move') {
         moves++;
         if (n.kind !== 'headline' && n.kind !== 'holding') throw Error('新闻内容无效');
@@ -215,6 +255,11 @@
       if (s.news.filter(n => n.id === a.id && n.kind === (a.started === s.week ? 'headline' : 'ongoing')).length !== 1) throw Error('重大事件缺少唯一新闻');
     }
     if (headlines > 1) throw Error('新闻内容无效');
+    const housingNow = s.housingLog.filter(l => l.week === s.week);
+    if (s.news.filter(n => n.kind === 'housing').length !== housingNow.length) throw Error('住房新闻无效');
+    for (const l of housingNow) {
+      if (s.news.filter(n => n.kind === 'housing' && n.id === l.id).length !== 1) throw Error('住房新闻无效');
+    }
     const bulletinRows = s.news.filter(n => n.kind === 'headline' || n.kind === 'holding' || n.kind === 'listing');
     if (bulletinRows.length > 3 || bulletinRows.filter(n => n.kind === 'listing').length > 1) throw Error('快报超过三行');
     if (!Array.isArray(s.rumors) || s.rumors.length > H.hintRules.limit) throw Error('传闻数量无效');

@@ -18,6 +18,7 @@
       turnover:s.stats.turnover, bought:s.stats.bought, sold:s.stats.sold, fees:s.stats.fees,
       best:s.stats.best, worst:s.stats.worst, bestProduct:ranked[0].id, worstProduct:ranked[ranked.length-1].id,
       peak:s.stats.peak, trades:s.stats.trades, houseWeek:s.stats.houseWeek, upgrades:s.stats.upgrades,
-      maxDrawdown:s.stats.maxDrawdown, byProduct:H.clone(s.stats.byProduct), history:H.clone(s.history)};
+      maxDrawdown:s.stats.maxDrawdown, byProduct:H.clone(s.stats.byProduct), history:H.clone(s.history),
+      purchases:H.clone(s.purchases)};
   };
 })(window.HomeYear);

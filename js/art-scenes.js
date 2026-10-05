@@ -504,8 +504,145 @@
     return K.svg(body, '0 0 1600 900', 'art-scene art-city', ' preserveAspectRatio="xMidYMax slice"');
   }
 
-  const builders = {city: [city, 'dusk'], street: [street, 'day'], rent: [rent, 'morning'], 'house-0': [house0, 'morning'], 'house-1': [house1, 'day'], 'house-2': [house2, 'golden'], 'house-3': [house3, 'evening'], 'house-4': [house4, 'golden'], warehouse: [warehouse, 'day']};
-  const seeds = {city: 101, street: 202, rent: 303, 'house-0': 404, 'house-1': 505, 'house-2': 606, 'house-3': 707, 'house-4': 808, warehouse: 909};
+  // Downtown townhouse: two storeys, pitched roof, dormer, iron balcony, plane trees.
+  function house5(c) {
+    const W = 480, Hh = 300, t = c.t;
+    let s = sky(c, W, Hh, [400, 44, 15]);
+    const left = box(c, -40, 146, 156, 110, '#cbb89a', {pattern: 'tile', depth: 0});
+    s += left.s + gable(c, -40, 148, 156, 30, '#5c6a72', {inset: 16, overhang: 6});
+    s += win(c, 4, 166, 30, 36, {pot: true}) + win(c, 48, 166, 30, 36, {blind: true});
+    s += win(c, 22, 216, 36, 28, {transom: false});
+    const right = box(c, 368, 138, 150, 118, '#d5c0a4', {pattern: 'brick', depth: 0});
+    s += right.s + gable(c, 368, 140, 150, 32, '#6a4034', {inset: 16, overhang: 6});
+    s += win(c, 386, 160, 32, 38) + win(c, 434, 160, 32, 38, {pot: true});
+    s += win(c, 400, 214, 38, 28, {transom: false, curtain: true, inside: ['curtain']});
+    const main = box(c, 148, 124, 184, 132, '#e7d3b6', {pattern: 'brick', depth: 12});
+    s += main.s + gable(c, 144, 126, 192, 42, '#6d4034', {inset: 26, overhang: 10});
+    const dorm = box(c, 210, 92, 48, 28, '#f3e6d0', {depth: 0, cornice: false});
+    s += dorm.s + gable(c, 204, 94, 60, 16, '#6d4034', {inset: 8, overhang: 5});
+    s += win(c, 220, 98, 26, 18, {mull: false, transom: false});
+    s += win(c, 166, 140, 42, 34, {lit: t.on > 0, inside: ['shelf', 'lamp'], lamp: false});
+    s += win(c, 262, 140, 50, 34, {curtain: true, inside: ['curtain']});
+    const ink = mix('#3c342f', t.ink, .25), bx = 162, by = 176, bw = 156;
+    s += rect(bx, by, bw, 4, mix('#c9b8a4', t.ambient, .25)) + rect(bx, by + 4, bw, 2, t.shade, {opacity: .35});
+    s += line(bx + 2, by, bx + 2, by - 14, ink, 1.3) + line(bx + bw - 2, by, bx + bw - 2, by - 14, ink, 1.3);
+    s += line(bx + 2, by - 14, bx + bw - 2, by - 14, ink, 1.3) + line(bx + 2, by - 7, bx + bw - 2, by - 7, ink, 1);
+    for (let i = 8; i < bw - 4; i += 8) s += line(bx + i, by, bx + i, by - 14, ink, 1);
+    s += stroke(`M${bx + 2} ${by - 14}q5 -6 10 0M${bx + bw - 2} ${by - 14}q-5 -6 -10 0`, ink, 1.1);
+    if (c.season !== 'winter') {
+      s += rect(bx + 18, by - 18, 16, 5, '#b5654b') + circ(bx + 24, by - 21, 4, c.L[1]) + circ(bx + 30, by - 23, 3.4, c.L[0]);
+      if (c.season === 'spring') s += circ(bx + 22, by - 25, 1.5, '#f2b7c4') + circ(bx + 29, by - 26, 1.4, '#fff2f5');
+    }
+    s += win(c, 164, 196, 34, 42);
+    s += rect(226, 192, 40, 64, mix('#3f322c', t.ink, .25)) + rect(230, 196, 32, 60, mix('#8d4e32', t.ambient, .12)) + rect(230, 196, 32, 60, 'url(#hy-wood)');
+    s += rect(234, 200, 24, 14, mix('#a35c3c', t.lit, .15)) + circ(256, 230, 2, '#e2b45a') + path('M228 192h36l-4 -7h-28z', mix('#6d4034', t.ambient, .15));
+    s += win(c, 284, 198, 30, 38, {pot: true});
+    s += ground(c, W, 256, 44, {road: 280});
+    s += path('M220 256h52l12 10H208Z', mix('#d9cbb0', t.lit, .25)) + path('M220 256h52l12 10H208Z', 'url(#hy-tile)');
+    s += tree(c, 52, 258, 1.02) + tree(c, 424, 260, .9);
+    s += shrub(c, 198, 256, .62) + shrub(c, 338, 258, .52);
+    s += lampPost(c, 118, 278, 54) + person(c, 390, 292, .88, {color: '#7a5a48', bag: '#d9a54a', walk: true, umbrella: true});
+    s += weather(c, W, Hh, 14) + frameVignette(W, Hh, t.night ? 1 : .4);
+    return K.svg(s, '0 0 480 300', 'art-scene art-house');
+  }
+  // One courtyard: screen wall, hanging-pillar gate, jujube. Stylized, not a real residence.
+  function house6(c) {
+    const W = 480, Hh = 300, t = c.t, tile = '#5e6c74', wall = '#d2c0a4', wood = '#7a5340';
+    let s = sky(c, W, Hh, [78, 36, 14]);
+    const hall = box(c, 158, 70, 164, 72, '#e4d2b4', {pattern: 'brick', depth: 10});
+    s += hall.s + gable(c, 150, 72, 180, 28, tile, {inset: 18, overhang: 8});
+    s += win(c, 186, 86, 34, 30, {lit: t.on > 0, inside: ['lamp', 'painting'], lamp: false}) + win(c, 262, 86, 34, 30);
+    s += rect(228, 88, 26, 54, mix(wood, t.ink, .12)) + rect(231, 92, 20, 50, mix('#a8693f', t.ambient, .12)) + rect(231, 92, 20, 50, 'url(#hy-wood)') + circ(246, 118, 1.7, '#e2b45a');
+    const wingL = box(c, 16, 104, 132, 110, wall, {pattern: 'brick', depth: 0});
+    s += wingL.s + gable(c, 12, 106, 140, 22, tile, {inset: 14, overhang: 6});
+    s += win(c, 36, 126, 28, 32) + win(c, 84, 126, 28, 32, {pot: true});
+    const wingR = box(c, 336, 104, 132, 110, wall, {pattern: 'brick', depth: 0});
+    s += wingR.s + gable(c, 332, 106, 140, 22, tile, {inset: 14, overhang: 6});
+    s += win(c, 356, 126, 28, 32) + win(c, 406, 126, 28, 32);
+    s += rect(148, 142, 188, 78, mix('#cbb892', t.ambient, .25)) + rect(148, 142, 188, 78, 'url(#hy-tile)', {opacity: .7});
+    if (c.season === 'winter') s += rect(148, 142, 188, 4, '#f3f7fa', {opacity: .85});
+    if (c.season === 'autumn') for (let i = 0; i < 6; i++) s += ell(160 + c.rnd() * 150, 158 + c.rnd() * 46, 2.2, 1.1, pick(c, ['#e9b44a', '#d98a35', '#c4772f']));
+    s += path('M214 220h36l-12 -58h-20z', mix('#e6d7bc', t.lit, .2));
+    const tx = 168, ty = 200, sc = .58;
+    s += tree(c, tx, ty, sc, {small: true});
+    if (c.season !== 'winter' && c.season !== 'spring') for (const [dx, dy] of [[-10, -80], [8, -86], [2, -96], [14, -76], [-6, -68], [12, -92], [0, -74]]) s += circ(tx + dx * sc, ty + dy * sc, 2, '#b4332a');
+    const screen = box(c, 206, 150, 68, 48, '#e8d8bc', {pattern: 'brick', depth: 0, cornice: false});
+    s += screen.s + gable(c, 202, 152, 76, 16, tile, {inset: 10, overhang: 4});
+    s += rect(218, 164, 44, 26, mix('#f6ead4', t.lit, .3)) + circ(240, 177, 10, mix('#8d3f34', t.ambient, .1)) + circ(240, 177, 6.2, mix('#e6c56a', t.lit, .22));
+    s += path('M240 172.5l3.4 4.5-3.4 4.5-3.4-4.5z', '#f8efdc');
+    s += shrub(c, 188, 196, .48);
+    s += rect(16, 214, 152, 42, mix(wall, t.shade, .06)) + rect(16, 214, 152, 42, 'url(#hy-brick)') + rect(12, 210, 160, 6, mix('#ece2d0', t.lit, .3));
+    s += rect(312, 214, 152, 42, mix(wall, t.shade, .06)) + rect(312, 214, 152, 42, 'url(#hy-brick)') + rect(308, 210, 160, 6, mix('#ece2d0', t.lit, .3));
+    s += gable(c, 168, 220, 144, 16, tile, {inset: 18, overhang: 10});
+    s += path('M184 220H296V228Q240 236 184 228Z', mix('#8d3f34', t.ambient, .12));
+    s += rect(186, 220, 7, 36, mix(wood, t.ambient, .15)) + rect(287, 220, 7, 36, mix(wood, t.ambient, .15));
+    s += rect(184, 218, 112, 5, mix(wood, t.ink, .1));
+    s += rect(214, 224, 5, 16, mix('#8a5a3c', t.ambient, .12)) + rect(261, 224, 5, 16, mix('#8a5a3c', t.ambient, .12));
+    s += circ(216.5, 242, 4.2, mix('#c4553d', t.ambient, .08)) + circ(263.5, 242, 4.2, mix('#c4553d', t.ambient, .08));
+    s += circ(216.5, 242, 1.8, '#f3ddb4') + circ(263.5, 242, 1.8, '#f3ddb4');
+    s += ground(c, W, 256, 44, {pave: '#cfc3ae'});
+    s += shrub(c, 52, 256, .58) + shrub(c, 436, 258, .52);
+    s += lampPost(c, 78, 294, 42) + person(c, 408, 294, .76, {color: '#6a5348', walk: true});
+    s += weather(c, W, Hh, 12) + frameVignette(W, Hh, t.night ? 1 : .35);
+    return K.svg(s, '0 0 480 300', 'art-scene art-house');
+  }
+  // Island cabin, shore rocks and a short pier. Sea only — no skyline.
+  function house7(c) {
+    const W = 480, Hh = 300, t = c.t;
+    let s = sky(c, W, Hh, [392, 56, 18]);
+    s += ground(c, W, 148, 152, {pave: '#e6d2b4'});
+    const isle = 'M72 236C48 210 70 184 124 176C170 168 196 188 240 180C300 170 348 198 372 220C400 246 386 278 330 286C260 296 200 274 150 280C104 286 88 258 72 236Z';
+    const sea = `M0 150H${W}V${Hh}H0Z ${isle}`;
+    s += path(sea, 'url(#hy-water)', {'fill-rule': 'evenodd'}) + path(sea, mix(t.sky[2], t.sky[1], .25), {'fill-rule': 'evenodd', opacity: .32}) + path(sea, 'url(#hy-ripple)', {'fill-rule': 'evenodd'});
+    s += path(isle, mix('#ecd8b6', t.ambient, .12)) + path(isle, 'none', {stroke: mix('#b5a48c', t.shade, .35), 'stroke-width': 5, opacity: .4});
+    if (c.season === 'autumn') for (const [x, y] of [[150, 230], [190, 248], [248, 236], [210, 220]]) s += ell(x, y, 2.2, 1.1, '#d98a35');
+    s += line(0, 156, W, 156, mix('#f6f1e6', t.lit, .45), 1.6, {opacity: .75});
+    s += path('M40 198l30 -16 20 12 -8 16 -28 2z', mix('#8d7b70', t.ambient, .2)) + path('M52 190l14 -8 8 10 -14 6z', mix('#d2c0ae', t.lit, .25));
+    s += path('M412 206l28 -10 16 18 -24 10z', mix('#7e6e66', t.shade, .15)) + path('M424 200l12 -6 6 8 -10 4z', mix('#d9c8b6', t.lit, .3));
+    s += ell(108, 248, 22, 9, mix('#6e625c', t.shade, .18)) + ell(292, 270, 30, 11, mix('#6e625c', t.shade, .15));
+    const cab = box(c, 156, 172, 118, 58, '#c4926a', {pattern: 'wood', depth: 10});
+    s += cab.s + gable(c, 148, 174, 134, 30, '#7b4a3a', {inset: 16, overhang: 9});
+    s += rect(246, 150, 10, 24, mix('#8d5a40', t.ambient, .2)) + rect(244, 148, 14, 4, mix('#6b4030', t.ink, .15));
+    s += win(c, 170, 188, 36, 28, {lit: t.on > 0, inside: ['lamp', 'plant'], lamp: false});
+    s += rect(220, 186, 26, 44, mix('#5a3a28', t.ink, .2)) + rect(223, 190, 20, 40, mix('#a8693f', t.ambient, .12)) + rect(223, 190, 20, 40, 'url(#hy-wood)') + circ(238, 210, 1.7, '#e2b45a');
+    s += path('M274 214H424L436 230H264Z', mix('#a8734a', t.ambient, .2)) + path('M274 214H424L436 230H264Z', 'url(#hy-wood)');
+    s += line(274, 220, 428, 220, mix('#6b442c', t.ink, .15), 1);
+    s += line(312, 230, 312, 252, mix('#5a3c2c', t.ink, .2), 2.2) + line(356, 226, 356, 258, mix('#5a3c2c', t.ink, .2), 2.2) + line(404, 228, 406, 260, mix('#5a3c2c', t.ink, .2), 2.2);
+    s += tree(c, 112, 228, .68) + shrub(c, 196, 230, .5) + shrub(c, 268, 226, .46);
+    s += lampPost(c, 132, 228, 44) + person(c, 360, 222, .58, {color: '#6a5346', walk: true});
+    s += weather(c, W, Hh, 12) + frameVignette(W, Hh, t.night ? 1 : .4);
+    return K.svg(s, '0 0 480 300', 'art-scene art-house');
+  }
+  // Warm paper habitat on red ground, with a small Earth. Not a metal poster.
+  function house8(c) {
+    const W = 480, Hh = 300, t = c.t;
+    let s = sky(c, W, Hh, [84, 62, 14]);
+    s += circ(410, 40, 9, mix('#1c3a44', t.ink, .15)) + circ(409, 39, 7.2, '#6ea0b8');
+    s += path('M405 36q4 -3 6 1q-2 2 -5 2q-1 -1 -1 -3z', '#7eae86') + path('M410 42q3 1 4 3q-4 1 -5 -1z', '#8fba90') + circ(407, 37.5, 1.4, '#fff6e4', {opacity: .7});
+    s += path('M0 200Q120 166 220 188T400 174T480 196V224H0Z', mix('#d36a48', t.haze, .45));
+    s += ground(c, W, 206, 94, {pave: '#d24a30'});
+    s += rect(0, 214, W, 86, '#c4472e', {opacity: .42});
+    s += path('M28 230l36 -20 24 10 -12 18 -34 2z', mix('#7a3024', t.shade, .12)) + path('M42 218l16 -10 8 8 -14 8z', mix('#f0a07a', t.lit, .28));
+    s += ell(438, 240, 28, 11, mix('#8d3e2c', t.shade, .18)) + path('M64 252l24 -8 14 10 -22 8z', mix('#a84834', t.ambient, .12));
+    const hab = box(c, 168, 162, 156, 66, '#e7b48a', {pattern: 'tile', depth: 8, cornice: false});
+    s += hab.s;
+    s += path('M154 180Q158 114 246 108Q334 114 338 180Z', mix('#f0c8a4', t.ambient, .12));
+    s += path('M154 180Q158 114 228 112Q190 142 166 180Z', mix('#fff1dc', t.lit, .5), {opacity: .8});
+    s += path('M270 126Q334 114 338 180Q300 154 270 140Z', mix('#c48462', t.shade, .2), {opacity: .5});
+    s += gable(c, 196, 172, 104, 22, '#8a4532', {inset: 14, overhang: 8});
+    s += win(c, 184, 184, 40, 28, {lit: t.on > 0, inside: ['lamp', 'plant'], lamp: false});
+    s += win(c, 272, 186, 32, 26, {curtain: true, inside: ['curtain']});
+    s += rect(236, 182, 24, 46, mix('#6b3a2a', t.ink, .2)) + rect(239, 186, 18, 42, mix('#b46a42', t.ambient, .12)) + rect(239, 186, 18, 42, 'url(#hy-wood)') + circ(252, 208, 1.6, '#e2b45a');
+    s += circ(300, 146, 11, mix('#6b3a2a', t.ink, .15)) + circ(300, 146, 8, t.on > .15 ? t.win : mix(t.sky[2], t.shade, .35));
+    s += path('M214 228h28l48 72h-96z', mix('#e7a07a', t.lit, .3), {opacity: .55});
+    s += tree(c, 86, 214, .6, {small: true}) + shrub(c, 140, 214, .58) + shrub(c, 372, 220, .66);
+    s += lampPost(c, 352, 224, 46) + person(c, 414, 248, .8, {color: '#8a4030', walk: true});
+    s += weather(c, W, Hh, 12) + frameVignette(W, Hh, t.night ? 1 : .4);
+    return K.svg(s, '0 0 480 300', 'art-scene art-house');
+  }
+
+  const builders = {city: [city, 'dusk'], street: [street, 'day'], rent: [rent, 'morning'], 'house-0': [house0, 'morning'], 'house-1': [house1, 'day'], 'house-2': [house2, 'golden'], 'house-3': [house3, 'evening'], 'house-4': [house4, 'golden'], warehouse: [warehouse, 'day'], 'house-5': [house5, 'golden'], 'house-6': [house6, 'morning'], 'house-7': [house7, 'day'], 'house-8': [house8, 'golden']};
+  const seeds = {city: 101, street: 202, rent: 303, 'house-0': 404, 'house-1': 505, 'house-2': 606, 'house-3': 707, 'house-4': 808, warehouse: 909, 'house-5': 1005, 'house-6': 1006, 'house-7': 1007, 'house-8': 1008};
   const cache = new Map();
   function scene(kind, opts) {
     const o = opts || {}, key = kind + '|' + (o.phase || '') + '|' + (o.tone || '') + '|' + (o.season || '') + '|' + (o.lamps ? 1 : 0);
