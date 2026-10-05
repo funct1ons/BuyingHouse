@@ -199,3 +199,112 @@ body[data-animation="reduced"] .swan-emphasis,body[data-animation="off"] .swan-e
 dialog[open][data-kind=major-event]{display:flex;flex-direction:column;overflow:hidden}
 dialog[data-kind=major-event] .dialog-head{flex-shrink:0}
 dialog[data-kind=major-event] .dialog-body{min-height:0;flex:1;max-height:none;overflow:auto}
+
+/* Mobile interaction and viewport foundation. Keep the desktop composition intact. */
+html{min-height:100%;background:var(--phase-tint)}
+body{min-height:100vh;min-height:100dvh;height:100vh;height:100dvh;overscroll-behavior-x:none}
+.shell{height:100vh;height:100dvh}
+.start{height:100vh;height:100dvh;min-height:100vh;min-height:100dvh}
+.mobile-nav{display:none}
+button,a,[role=button],.product,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button,[role=button],.product{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.dialog-body{overscroll-behavior:contain;overflow-wrap:anywhere}
+
+@media(hover:none){
+  button:hover:not(:disabled){transform:none}
+  .product:hover{transform:none;box-shadow:var(--elev-1);border-color:var(--border)}
+}
+
+@media(max-width:1099px){
+  body{height:auto;overflow-x:hidden}
+  .shell{height:auto;min-height:100vh;min-height:100dvh;padding:12px 18px;padding-top:max(12px,env(safe-area-inset-top));padding-right:max(18px,env(safe-area-inset-right));padding-bottom:max(12px,env(safe-area-inset-bottom));padding-left:max(18px,env(safe-area-inset-left))}
+  /* Only the body scrolls: the close button cannot scroll out of the dialog. */
+  dialog,dialog[data-kind=houses],dialog[data-kind=result],dialog[data-kind=trade]{width:calc(100vw - 24px);max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);margin:auto}
+  dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+  .dialog-head{position:static;flex:none;min-width:0;gap:8px}
+  .dialog-head h2{min-width:0;overflow-wrap:anywhere}
+  .dialog-head button{flex:none}
+  .dialog-body{flex:1 1 auto;min-height:0;min-width:0;max-height:none;overflow:auto}
+  .dialog-body .stack>*,.trade-layout>*{min-width:0}
+  .dialog-body .row{flex-wrap:wrap;min-width:0}
+  .dialog-body .row>*{min-width:0;max-width:100%}
+  .dialog-body input,.dialog-body select,.dialog-body textarea{max-width:100%}
+  .dialog-body input[type=file]{display:block;width:100%;min-width:0}
+  .settings-row{min-width:0;flex-wrap:wrap;gap:8px;min-height:44px}
+  .settings-row input[type=range]{min-width:0;flex:1 1 140px}
+  .choices{flex-wrap:wrap}
+  .receipt dl{grid-template-columns:auto minmax(0,1fr)}
+  .receipt dd,.stat-box strong{overflow-wrap:anywhere}
+  .counter>div:last-child{min-width:0;overflow-wrap:anywhere}
+}
+
+@media(max-width:700px),(max-width:1099px) and (max-height:520px) and (orientation:landscape){
+  .top-actions button,.left button,.footer button,.dialog-head button,.dialog-body button,.bulletin-line button,.rumor-line button,.tabs button{min-height:44px}
+  input:not([type=checkbox]):not([type=range]),select{min-height:44px}
+  .dialog-head button{min-width:44px}
+  .sale-buttons{gap:8px}.sale-buttons button{min-width:44px;padding-inline:6px}
+  .sale-buttons button:last-child{margin-left:4px}
+  .sale-secondary{gap:8px}.sale-secondary button{padding-inline:9px}
+  .personal-letter summary{min-height:44px;align-content:center}
+  .star{min-width:44px;min-height:44px;margin:-8px -8px -8px 0}
+  dialog::backdrop{backdrop-filter:none}
+  .start{height:auto;min-height:100vh;min-height:100dvh;overflow:visible;padding:20px;padding-top:max(20px,env(safe-area-inset-top));padding-right:max(20px,env(safe-area-inset-right));padding-bottom:max(20px,env(safe-area-inset-bottom));padding-left:max(20px,env(safe-area-inset-left))}
+  .start-form input,.start-form select{width:100%;min-width:0}
+  .start-form button{min-height:44px}
+}
+
+@media(max-width:700px){
+  .shell{grid-template-rows:auto auto 1fr auto;gap:10px;padding-inline:max(12px,env(safe-area-inset-left)) max(12px,env(safe-area-inset-right))}
+  .topbar{gap:8px;padding:8px;border-radius:12px}
+  .brand-chip{flex:1 1 auto;min-width:0;padding:5px 8px}
+  .brand-chip .brand{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .metrics{flex:1 1 100%;width:100%;min-width:0;margin-left:0;justify-content:space-between;gap:8px;padding:5px}
+  .metric{flex:1 1 0;min-width:0}.metric small{font-size:11px}.metric strong{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+  .top-actions{gap:6px}
+  .mobile-nav{display:flex;gap:8px}
+  .mobile-nav a{flex:1;min-height:44px;display:flex;justify-content:center;align-items:center;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--accent);text-decoration:none;font-weight:700}
+  .mobile-nav a:focus-visible{outline:3px solid #dda960;outline-offset:2px}
+  #market-title,#warehouse-title,#bulletin-title{scroll-margin-top:12px}
+  .workspace{gap:10px}.market-panel{order:0}.left{order:1}.right{order:2;max-height:none}
+  .bulletin{min-height:auto;overflow:visible}.bulletin-body{max-height:none;overflow:visible}
+  .left{height:auto;max-height:none}
+  .warehouse-panel.inventory-panel{flex:none;max-height:none;overflow:visible}
+  .warehouse-list,.personal-body{max-height:none;overflow:visible}
+  .market-panel{min-height:auto;overflow:visible}
+  .market-panel .tools{grid-template-columns:1fr 1fr;gap:8px}
+  .market-panel .tools small{grid-column:1/-1}
+  .market-head,.price-row{flex-wrap:wrap;gap:6px}
+  .price-row strong{min-width:0;overflow-wrap:anywhere}
+  .market-list{flex:none;max-height:none;overflow:visible;padding-right:0}
+  .market-list .product{padding:12px;min-height:146px}
+  .product-head{gap:8px}.product-icon{width:46px;height:46px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:3px}
+  .tabs::-webkit-scrollbar{display:none}.tabs button{flex:0 0 auto;padding-inline:12px}
+  .footer{position:sticky;bottom:0;display:flex;align-items:center;gap:8px;min-height:60px;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));background:var(--surface);z-index:2}
+  .footer>div:first-child{flex:1;min-width:0}.footer .primary{flex:0 1 180px;width:auto;min-width:150px;min-height:48px}.footer-save{flex:0 0 auto}.footer-save button{padding-inline:10px}
+  dialog{border-radius:16px}
+  .dialog-head{padding:12px 14px}.dialog-head h2{font-size:20px}.dialog-body{padding:14px}
+  /* Trading first, historical detail second; no need to scroll past the chart to buy. */
+  .trade-layout{gap:14px}.trade-form{grid-row:1}.trade-chart{grid-row:2}
+  .trade-icon{width:92px;height:92px}.trade-chart .trade-spark{height:88px}
+  .house-grid,.flyers{grid-template-columns:1fr}.house-card svg{height:auto;aspect-ratio:16/9}
+  .storybook{grid-template-columns:1fr}.result-hero{position:static}.page{padding:14px}.result-hero h2{font-size:22px;letter-spacing:1px}.page-right .stats-grid,.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .start{gap:16px}.start-copy,.start-form{width:100%;max-width:none}.start-copy{padding:14px 16px}.start-copy h1{font-size:28px;letter-spacing:2px}.start-form{padding:14px}
+  .celebration{height:100dvh}.celebration-art{width:min(560px,calc(100vw - 32px));border-width:4px}.celebration-title{font-size:28px;letter-spacing:4px}.celebration-sub{padding-inline:16px;font-size:13px}
+}
+
+@media(max-width:380px){
+  .shell{padding-inline:max(10px,env(safe-area-inset-left)) max(10px,env(safe-area-inset-right))}
+  .start{padding-inline:max(12px,env(safe-area-inset-left)) max(12px,env(safe-area-inset-right))}
+  .market-list .product{padding:10px}.footer .primary{min-width:138px}.footer-save button{padding-inline:8px}.dialog-body{padding:12px}
+}
+
+@media(max-width:1099px) and (max-height:520px) and (orientation:landscape){
+  .shell{gap:8px}.topbar{padding:7px}.workspace{display:grid;grid-template-columns:minmax(220px,32vw) minmax(0,1fr);gap:8px}
+  .left{grid-column:1;grid-row:1/3;position:static;height:auto;max-height:none;min-height:0}
+  .warehouse-panel.inventory-panel{flex:none;max-height:none;overflow:visible}.warehouse-list{max-height:none;overflow:visible}
+  .right{grid-column:2;grid-row:1;max-height:260px}.bulletin{min-height:0;overflow:hidden}.bulletin-body{max-height:210px;overflow:auto}
+  .market-panel{grid-column:2;grid-row:2;min-height:420px}.market-list{max-height:320px;overflow:auto}.footer{min-height:56px}
+  .start{align-content:start}.start-form{align-self:start}
+  .celebration-art{width:min(360px,55vw);max-height:55dvh}.celebration-title{font-size:24px}
+}
