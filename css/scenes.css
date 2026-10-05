@@ -254,7 +254,8 @@ button,[role=button],.product{-webkit-user-select:none;user-select:none;-webkit-
 }
 
 @media(max-width:700px){
-  .shell{grid-template-rows:auto auto 1fr auto;gap:10px;padding-inline:max(12px,env(safe-area-inset-left)) max(12px,env(safe-area-inset-right))}
+  .top-actions [data-action="fullscreen"],.start-form [data-action="fullscreen"]{display:inline-flex;min-height:44px}
+
   .topbar{gap:8px;padding:8px;border-radius:12px}
   .brand-chip{flex:1 1 auto;min-width:0;padding:5px 8px}
   .brand-chip .brand{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
