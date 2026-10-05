@@ -38,7 +38,7 @@
   H.validate = function (s) {
     keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
       'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'history', 'stats',
-      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'priceBook'], '存档');
+      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'priceBook'], '存档');
     if (s.version !== H.rules.saveVersion || s.rulesVersion !== H.rules.version) throw Error('存档版本不兼容（不支持旧版或未来版本）');
     if (typeof s.seed !== 'string' || !s.seed.length || s.seed.length > 128) throw Error('种子无效');
     if (!Object.prototype.hasOwnProperty.call(H.difficulties, s.difficulty)) throw Error('难度无效');
@@ -61,6 +61,24 @@
       if (s.migration.fromVersion !== 2 || s.migration.fromRules !== '0.2') throw Error('迁移来源无效');
       H.int(s.migration.atWeek, 1, s.week);
       if (typeof s.migration.backup !== 'string' || !s.migration.backup.startsWith('homeyear.save.backup.')) throw Error('迁移备份无效');
+    }
+    if (s.upgrade !== null) {
+      keys(s.upgrade, ['fromVersion', 'fromRules', 'atWeek', 'backup'], '规则升级');
+      if (s.upgrade.fromVersion !== 3 || s.upgrade.fromRules !== '0.4') throw Error('规则升级来源无效');
+      H.int(s.upgrade.atWeek, 1, s.week);
+      if (s.migration && s.migration.atWeek > s.upgrade.atWeek) throw Error('迁移链周数不一致');
+      if (typeof s.upgrade.backup !== 'string' || !/^homeyear\.save\.backup\.[0-9a-f]{16}(?:\.[1-9]\d{0,2})?$/.test(s.upgrade.backup)) throw Error('规则升级备份无效');
+    }
+    if (!Array.isArray(s.swanLog) || s.swanLog.length > 6) throw Error('重大事件日志无效');
+    const swanIds = new Set();
+    let swanWeek = -2;
+    for (const entry of s.swanLog) {
+      keys(entry, ['id', 'week'], '重大事件日志');
+      const e = H.events.find(e => e.id === entry.id && e.tier === 'swan');
+      H.int(entry.week, 4, Math.min(50, s.week));
+      if (!e || swanIds.has(entry.id) || entry.week - swanWeek < 6 || (e.season && H.seasonAt(entry.week) !== e.season)) throw Error('重大事件日志冲突');
+      if ((s.upgrade && entry.week <= s.upgrade.atWeek) || (!s.upgrade && s.migration && entry.week <= s.migration.atWeek)) throw Error('规则升级前不能有重大事件');
+      swanIds.add(entry.id); swanWeek = entry.week;
     }
     keys(s.rng, ['market', 'events', 'visual', 'listing'], '随机流');
     for (const key of ['market', 'events', 'visual', 'listing']) H.int(s.rng[key], 1, 4294967295);
@@ -101,9 +119,15 @@
       const e = H.events.find(e => e.id === a.id && e.type === 'market');
       if (!e || unique.has(a.id)) throw Error('事件无效或重复');
       unique.add(a.id);
+      if (e.tier === 'swan' && !s.swanLog.some(l => l.id === a.id && l.week === a.started)) throw Error('重大事件缺少一致日志');
       H.int(a.started, 2, s.week); H.int(a.until, s.week, 52);
       if (a.until !== Math.min(52, a.started + e.duration - 1)) throw Error('事件持续时间不一致');
     }
+    for (const l of s.swanLog) {
+      const e = H.events.find(e => e.id === l.id);
+      if (Math.min(52, l.week + e.duration - 1) >= s.week && !s.activeEvents.some(a => a.id === l.id && a.started === l.week)) throw Error('重大事件有效期缺少事件');
+    }
+    if (s.activeEvents.some(a => swanIds.has(a.id) && a.started === s.week) && s.activeEvents.filter(a => a.started === s.week).length > 1) throw Error('同周新市场事件超过一个');
     H.int(s.personal, -1000000, 1000000);
     if (s.personalEvent !== null) {
       const e = H.events.find(e => e.id === s.personalEvent && e.type === 'personal');
@@ -168,6 +192,13 @@
         if (!ids.concat(legacyIds).includes(n.productId) || n.changeBps !== H.changeBps(H.quoteOf(s, n.productId))) throw Error('新闻涨跌与行情不一致');
       } else if (n.changeBps !== 0 || n.kind !== 'personal') throw Error('新闻内容无效');
       if (n.kind === 'ongoing' && (n.reliability !== 'normal' || n.fresh !== false)) throw Error('持续事件新闻无效');
+      const swan = H.events.find(e => e.id === n.id && e.tier === 'swan');
+      if (swan) {
+        const a = s.activeEvents.find(a => a.id === n.id);
+        if (!a || !s.swanLog.some(l => l.id === n.id && l.week === a.started) ||
+            !Object.prototype.hasOwnProperty.call(swan.effects, n.productId) || n.title !== swan.title ||
+            (a.started === s.week ? n.kind !== 'headline' || !n.fresh || n.reliability !== swan.reliability : n.kind !== 'ongoing' || n.fresh)) throw Error('重大事件新闻与日志不一致');
+      }
       if (n.kind === 'headline') headlines++;
       if (n.id === 'move') {
         moves++;
@@ -176,6 +207,9 @@
       } else if (n.id === 'listing') {
         if (n.kind !== 'listing') throw Error('新闻内容无效');
       } else if (!H.events.some(e => e.id === n.id)) throw Error('新闻内容无效');
+    }
+    for (const a of s.activeEvents.filter(a => swanIds.has(a.id))) {
+      if (s.news.filter(n => n.id === a.id && n.kind === (a.started === s.week ? 'headline' : 'ongoing')).length !== 1) throw Error('重大事件缺少唯一新闻');
     }
     if (headlines > 1) throw Error('新闻内容无效');
     const bulletinRows = s.news.filter(n => n.kind === 'headline' || n.kind === 'holding' || n.kind === 'listing');

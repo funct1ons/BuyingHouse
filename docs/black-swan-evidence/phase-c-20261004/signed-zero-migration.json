@@ -1,0 +1,23 @@
+{
+  "scope": "diagnostic equality assertion ONLY: IEEE -0 and JSON 0 compare economically equal",
+  "originalMetadataSha256": "8fad9b480279bdd067dbe546d664b5fdde42aee2fa21361f49efc2ec45940b0e",
+  "originalCheckpointSha256": "66163edb3e18f7f5d4e5a4a2c9d1841e3b18ae0bff5ec31e54bce26edcf026c8",
+  "originalSourceHash": "a43e8873421e5dacc891945b145ee708440216182e4d9a9200f1dd58ca2ab7a0",
+  "newSourceHash": "1714fad451deb7315c3e0f499c746c69c61e6fe4b6c10998545e4d6a31daf23c",
+  "oldIdentityHash": "03925a8c425d84f161fb74c36bff2bfbc7247f6e69bf5dbfb911518d86f9e778",
+  "newIdentityHash": "b199acfe107e1622f52a8cbb91193c7c67530c97b1e7746e7b1e5c99180dff4e",
+  "completedGamesReused": 540,
+  "newGamesExecuted": 0,
+  "completedDataHash": "95738e6bc45088ef9878bdb39d7e18beb2e9a1d35c33f1e614f3946cffabb0c6",
+  "createdAfterOriginal540": true,
+  "firstRunFiles": {
+    "metadata.json": "8fad9b480279bdd067dbe546d664b5fdde42aee2fa21361f49efc2ec45940b0e",
+    "checkpoint.json": "66163edb3e18f7f5d4e5a4a2c9d1841e3b18ae0bff5ec31e54bce26edcf026c8",
+    "report.json": "8caf8b45d00b913f79dc936f8b4c28114fac6b72b89a282288eaad15515de8a2",
+    "summary.md": "11487cad213fbfd26543287217d7c817d6e61b09c92cabacb683deed5075120f",
+    "verification.json": "208f72027586601b4bfdafda6fb4ca6b02855363b5ac8389bf3a922095c01abd",
+    "runner.cjs": "a43e8873421e5dacc891945b145ee708440216182e4d9a9200f1dd58ca2ab7a0"
+  },
+  "newMetadataSha256": "d214515457c35e7f676f3ac1207a0b6aa0bffa61769c19468adb27ff156696ba",
+  "newCheckpointSha256": "271cda755ced6cdb1c9b1d9f60f1e66d64d3fa6029a8fd4e41bd8de5ff567a53"
+}

@@ -6,7 +6,7 @@
 // Usage: node tests/av-integration.cjs [--idle 60]
 const {launchEdge,delay}=require('./cdp-helper.cjs');const fs=require('node:fs/promises'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const argv=process.argv.slice(2),IDLE=argv.includes('--idle')?Number(argv[argv.indexOf('--idle')+1]):60;
-const out=path.resolve(__dirname,'../docs/av-visual-evidence');const url=pathToFileURL(path.resolve(__dirname,'../index.html')).href;
+const out=path.resolve(process.env.UI_EVIDENCE_DIR||path.join(__dirname,'../docs/av-visual-evidence'));const url=pathToFileURL(path.resolve(__dirname,'../index.html')).href;
 const report={kind:'real Edge headless file:// with trusted CDP mouse input; digital signals only, not listening tests',started:new Date().toISOString(),checks:[],metrics:{},errors:[]};
 let c;const ev=x=>c.evaluate(x);
 function ck(name,pass,detail){report.checks.push({name,pass:!!pass,...(detail!==undefined?{detail}:{})});if(!pass)console.error('FAIL',name,JSON.stringify(detail));}

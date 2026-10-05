@@ -1,0 +1,362 @@
+{
+  "supersedesScopes": [
+    "P2-1 output protection",
+    "P2-2 formal summary",
+    "P2-3 legacy formal size bound"
+  ],
+  "sourceBefore": {
+    "runner": "1714fad451deb7315c3e0f499c746c69c61e6fe4b6c10998545e4d6a31daf23c",
+    "tests": "8827051b6312f0d7a320f1df9a8d33f31cc0fcd7f1c97ee44ded51b348ad6956"
+  },
+  "sourceAfter": {
+    "js/data.js": "c3e3526bcc55d72b57044e8580836ad1b7dfa9c0c5587fc516b554934ea19130",
+    "js/math.js": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+    "js/v2-baseline.js": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+    "js/v3-baseline.js": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379",
+    "js/market.js": "852ee180996b996d846e26bf4a1feac4d25ddc88266a5996d2bc1fdacdb55c74",
+    "js/trading.js": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+    "js/statistics.js": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+    "js/validation.js": "a8f2a4b1d32cd24e1c36fecee7c17419d25f6f45e63c8d376c027de49f7b1e01",
+    "js/game.js": "78c7b0d418875a7f3e0e98dde759cbc2c9fb69eedbc49db54cf4f3326e447df4",
+    "js/save.js": "e99d50e04957bc748d93f131afb15b8d51d67e7c7463c7a0145df2d8c57ca383",
+    "simulation/black-swan.cjs": "89abe5c1b5999df228348a012261582aad8714f78a9cad6d8776a9e3843f1da9",
+    "simulation/black-swan-policy.cjs": "6d96b47695fa92dcd3e261237defd0191163ad9a2e0c54e317c421b22c137afb",
+    "tests/black-swan-simulation.cjs": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6",
+    "simulation/c1.cjs": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479"
+  },
+  "originalCByteCheck": {
+    "files": 30,
+    "identical": true,
+    "hashes": {
+      "docs/black-swan-evidence/phase-c-20261004/audit-resumption.cjs": "1393dade58d0310d5fabe4402219dbaa9985c73a4ba428aaba586c674052876a",
+      "docs/black-swan-evidence/phase-c-20261004/checkpoint.json": "271cda755ced6cdb1c9b1d9f60f1e66d64d3fa6029a8fd4e41bd8de5ff567a53",
+      "docs/black-swan-evidence/phase-c-20261004/commands.md": "db6d8a5169c8b28628910e3f5d078c58b56ffb54b0fc2d69c70f00eaf83280f0",
+      "docs/black-swan-evidence/phase-c-20261004/diagnostic-supplement.json": "0aae674d25f3bc7bd134df26f923907289001a571d5bdec8bb6e613c79ea9689",
+      "docs/black-swan-evidence/phase-c-20261004/final-manifest.json": "385e4df8da71e9f8fd53241f8a31b62ae43d8abc5765b51c780c6a8f427198dd",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/checkpoint.json": "66163edb3e18f7f5d4e5a4a2c9d1841e3b18ae0bff5ec31e54bce26edcf026c8",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/metadata.json": "8fad9b480279bdd067dbe546d664b5fdde42aee2fa21361f49efc2ec45940b0e",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/report.json": "8caf8b45d00b913f79dc936f8b4c28114fac6b72b89a282288eaad15515de8a2",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/runner.cjs": "a43e8873421e5dacc891945b145ee708440216182e4d9a9200f1dd58ca2ab7a0",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/summary.md": "11487cad213fbfd26543287217d7c817d6e61b09c92cabacb683deed5075120f",
+      "docs/black-swan-evidence/phase-c-20261004/first-run/verification.json": "208f72027586601b4bfdafda6fb4ca6b02855363b5ac8389bf3a922095c01abd",
+      "docs/black-swan-evidence/phase-c-20261004/market-paths.json": "9b6fd9c23747da59f15506f58ee4e8ac4f29cdc61a26ca6cfcbf54ae293a3329",
+      "docs/black-swan-evidence/phase-c-20261004/metadata.json": "d214515457c35e7f676f3ac1207a0b6aa0bffa61769c19468adb27ff156696ba",
+      "docs/black-swan-evidence/phase-c-20261004/outcomes.json": "59a2a2e9c02577a8b63e68452dc00eccc5d2e0c115e99671e2609314ae7ef1c3",
+      "docs/black-swan-evidence/phase-c-20261004/rebind-signed-zero.cjs": "3b1b863cbc515281f078a008ae565be5114da57f98b7ae288f9390583b9d24d3",
+      "docs/black-swan-evidence/phase-c-20261004/report.json": "d1f4f14325ae24bbd0733b011ae8759cc51c5596c559158d6d8f15c3e39fb519",
+      "docs/black-swan-evidence/phase-c-20261004/resume-negative/checkpoint.json": "d11ece958e830775e325cc952eb1fb80df5beb6cd95bbd50d91955d04fa71cb4",
+      "docs/black-swan-evidence/phase-c-20261004/resume-negative/metadata.json": "d214515457c35e7f676f3ac1207a0b6aa0bffa61769c19468adb27ff156696ba",
+      "docs/black-swan-evidence/phase-c-20261004/resumption-r2.log": "877503121fc0d8c6426c7361a79f71113a2942425c37e4c1717b22e9bcd4499a",
+      "docs/black-swan-evidence/phase-c-20261004/resumption-r3.log": "7901b8ceb0d1ffd3037b08ff3b0d9b198bc82c600a7100eafd9bc7fc8adb46ad",
+      "docs/black-swan-evidence/phase-c-20261004/resumption-report.json": "68a4a7e97148b63647623fba95b360dbf89d0d7746b0913d6d2e846cef68a668",
+      "docs/black-swan-evidence/phase-c-20261004/resumption.log": "3d55cf4f930b430e4d74cfa42a01e9c900499d1bc18670f59f66a194e03d9b5b",
+      "docs/black-swan-evidence/phase-c-20261004/run.log": "cbc0e74f6a3d53aa9cf0cf3f8b1b43282b76c67d5f809e497380ccc1282cb789",
+      "docs/black-swan-evidence/phase-c-20261004/signed-zero-migration.json": "e7a1e0d6d4ce2e50ed73183b9254ccc5933b77a30011060930f6eac677dddfed",
+      "docs/black-swan-evidence/phase-c-20261004/signed-zero-migration.log": "4de548e52040d09c69bc6fe668cbe600bcb88f2e31abc5f5925d4e06d1b126c1",
+      "docs/black-swan-evidence/phase-c-20261004/summary.md": "11487cad213fbfd26543287217d7c817d6e61b09c92cabacb683deed5075120f",
+      "docs/black-swan-evidence/phase-c-20261004/tests/unit-report.json": "47ad7ece299d13a10430994eebff771a3c22c08ff9c168a6b2cbaa6e98a54a99",
+      "docs/black-swan-evidence/phase-c-20261004/tests-final.log": "231f0329744c75c99422393d92603c56c678e89e248592d972aa236c8609e35f",
+      "docs/black-swan-evidence/phase-c-20261004/tests.log": "231f0329744c75c99422393d92603c56c678e89e248592d972aa236c8609e35f",
+      "docs/black-swan-evidence/phase-c-20261004/verification.json": "936fc6b7a4010fd1d56250360ec43f8ca1fffdbd25396c73efcc5c6ec724908f"
+    }
+  },
+  "originalProtected": {
+    "verified": true,
+    "files": 752
+  },
+  "Bafter": [
+    {
+      "path": "README.md",
+      "expected": "0bcdabd225654727d3c811bc5a984edf5a9a6f09b2b19e1cc90989ea4d0f066b",
+      "actual": "0bcdabd225654727d3c811bc5a984edf5a9a6f09b2b19e1cc90989ea4d0f066b"
+    },
+    {
+      "path": "css/scenes.css",
+      "expected": "f432f0a2d5f125243e40bb855d6572ee773186192a6467871c75807d8f00f316",
+      "actual": "f432f0a2d5f125243e40bb855d6572ee773186192a6467871c75807d8f00f316"
+    },
+    {
+      "path": "docs/gameplay-rules-0.5.md",
+      "expected": "1e7edfc2eff928f4d876d52690430df800eda54683d802258bf390a596426579",
+      "actual": "1e7edfc2eff928f4d876d52690430df800eda54683d802258bf390a596426579"
+    },
+    {
+      "path": "docs/save-v4.md",
+      "expected": "1a7c570c3579efdba7e63aa471f78601c82e60736ee4ab22d9ba88f533f27cd6",
+      "actual": "1a7c570c3579efdba7e63aa471f78601c82e60736ee4ab22d9ba88f533f27cd6"
+    },
+    {
+      "path": "docs/ui.md",
+      "expected": "7311308fa0b7686b75bcca18e04599b08cd3103c9aecc84bfb4ac4a46b88414b",
+      "actual": "7311308fa0b7686b75bcca18e04599b08cd3103c9aecc84bfb4ac4a46b88414b"
+    },
+    {
+      "path": "index.html",
+      "expected": "05415247138d003bd7fe80e73a01df78980cde714fde6a4bdf2c91e20dab1dec",
+      "actual": "05415247138d003bd7fe80e73a01df78980cde714fde6a4bdf2c91e20dab1dec"
+    },
+    {
+      "path": "js/data.js",
+      "expected": "c3e3526bcc55d72b57044e8580836ad1b7dfa9c0c5587fc516b554934ea19130",
+      "actual": "c3e3526bcc55d72b57044e8580836ad1b7dfa9c0c5587fc516b554934ea19130"
+    },
+    {
+      "path": "js/game.js",
+      "expected": "78c7b0d418875a7f3e0e98dde759cbc2c9fb69eedbc49db54cf4f3326e447df4",
+      "actual": "78c7b0d418875a7f3e0e98dde759cbc2c9fb69eedbc49db54cf4f3326e447df4"
+    },
+    {
+      "path": "js/market.js",
+      "expected": "852ee180996b996d846e26bf4a1feac4d25ddc88266a5996d2bc1fdacdb55c74",
+      "actual": "852ee180996b996d846e26bf4a1feac4d25ddc88266a5996d2bc1fdacdb55c74"
+    },
+    {
+      "path": "js/save.js",
+      "expected": "e99d50e04957bc748d93f131afb15b8d51d67e7c7463c7a0145df2d8c57ca383",
+      "actual": "e99d50e04957bc748d93f131afb15b8d51d67e7c7463c7a0145df2d8c57ca383"
+    },
+    {
+      "path": "js/ui.js",
+      "expected": "4f55844c5b29e4a348ef47e633815a4650daf02ce9171e91a5f54384745e70a6",
+      "actual": "4f55844c5b29e4a348ef47e633815a4650daf02ce9171e91a5f54384745e70a6"
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "expected": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379",
+      "actual": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379"
+    },
+    {
+      "path": "js/validation.js",
+      "expected": "a8f2a4b1d32cd24e1c36fecee7c17419d25f6f45e63c8d376c027de49f7b1e01",
+      "actual": "a8f2a4b1d32cd24e1c36fecee7c17419d25f6f45e63c8d376c027de49f7b1e01"
+    },
+    {
+      "path": "tests/acceptance-final.cjs",
+      "expected": "71dea62d8bb0453cfbd8222219589806696e0398c4fe94a641f0f495758f654f",
+      "actual": "71dea62d8bb0453cfbd8222219589806696e0398c4fe94a641f0f495758f654f"
+    },
+    {
+      "path": "tests/acceptance-supplement.cjs",
+      "expected": "a179b9770246b038e00bf09536df715ca64821279438a5b1de34833fbb5f3e02",
+      "actual": "a179b9770246b038e00bf09536df715ca64821279438a5b1de34833fbb5f3e02"
+    },
+    {
+      "path": "tests/av-audio.cjs",
+      "expected": "74c315a64b8ea96efdd0ec56dd11fa1339b5481eef251867bc2133863fa3faed",
+      "actual": "74c315a64b8ea96efdd0ec56dd11fa1339b5481eef251867bc2133863fa3faed"
+    },
+    {
+      "path": "tests/av-integration.cjs",
+      "expected": "090e22dfb32efd61f25b468b0da456c8ac2c57c77443bc31b12b015e315f5714",
+      "actual": "090e22dfb32efd61f25b468b0da456c8ac2c57c77443bc31b12b015e315f5714"
+    },
+    {
+      "path": "tests/av-visual.cjs",
+      "expected": "33ce9a07f2c389ba8228f85197d385af0cde057a11d8fe361a95f10b545a2362",
+      "actual": "33ce9a07f2c389ba8228f85197d385af0cde057a11d8fe361a95f10b545a2362"
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "expected": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee",
+      "actual": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee"
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "expected": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9",
+      "actual": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9"
+    },
+    {
+      "path": "tests/browser.html",
+      "expected": "0104bdb708ebb3d589c3cad38d1e6930d7512879664fb2a6df575ac6db9f8efc",
+      "actual": "0104bdb708ebb3d589c3cad38d1e6930d7512879664fb2a6df575ac6db9f8efc"
+    },
+    {
+      "path": "tests/cdp-smoke.cjs",
+      "expected": "df8628badbf4dcafa8c4c37649c9a51cfc7694ba1515951fad66427228189dc7",
+      "actual": "df8628badbf4dcafa8c4c37649c9a51cfc7694ba1515951fad66427228189dc7"
+    },
+    {
+      "path": "tests/milestone-b-edge-migrate.cjs",
+      "expected": "e6b557e67c9ebbcc20e11fc7c13bba47cb9e1785f91df2cd84eae806cb27362e",
+      "actual": "e6b557e67c9ebbcc20e11fc7c13bba47cb9e1785f91df2cd84eae806cb27362e"
+    },
+    {
+      "path": "tests/milestone-b-edge-review.cjs",
+      "expected": "293f792499b3f89fbe423606b7f6bfa012df614fe347aab52ac984c25ca53aec",
+      "actual": "293f792499b3f89fbe423606b7f6bfa012df614fe347aab52ac984c25ca53aec"
+    },
+    {
+      "path": "tests/milestone-b-edge.cjs",
+      "expected": "98ce8eeb26bdff2b1bb2e135823d3e7943115fa3310f6b03a46eaa8cae319a23",
+      "actual": "98ce8eeb26bdff2b1bb2e135823d3e7943115fa3310f6b03a46eaa8cae319a23"
+    },
+    {
+      "path": "tests/milestone-b.cjs",
+      "expected": "7b5b14f4a0c7bf49354469bd94ca5c5f697a849f931bdf82844956f310457e2f",
+      "actual": "7b5b14f4a0c7bf49354469bd94ca5c5f697a849f931bdf82844956f310457e2f"
+    },
+    {
+      "path": "tests/milestone-d-edge.cjs",
+      "expected": "26b078a08966b8ddb21139156349f6a1afeee1dc92ad4a18e3f6d70b5f7c100f",
+      "actual": "26b078a08966b8ddb21139156349f6a1afeee1dc92ad4a18e3f6d70b5f7c100f"
+    },
+    {
+      "path": "tests/review-b2.cjs",
+      "expected": "5a354ee5931bf25b4e561c0fbd1a54e2112ad11b3054a88a34f6dc76d793bc36",
+      "actual": "5a354ee5931bf25b4e561c0fbd1a54e2112ad11b3054a88a34f6dc76d793bc36"
+    },
+    {
+      "path": "tests/review-fixes.cjs",
+      "expected": "922b0359ba47cff9497c683cb67b4f72ab61d088bb90bbcbd182a5a95f526b5f",
+      "actual": "922b0359ba47cff9497c683cb67b4f72ab61d088bb90bbcbd182a5a95f526b5f"
+    },
+    {
+      "path": "tests/run.cjs",
+      "expected": "e4ab28dc395c924ed9335c9fc84c4cd6e0dfc3ab09735a5d6618684019bea059",
+      "actual": "e4ab28dc395c924ed9335c9fc84c4cd6e0dfc3ab09735a5d6618684019bea059"
+    },
+    {
+      "path": "tests/suite.js",
+      "expected": "c6679610b73b33d7d1f8875c7ee93bdeccf135d870f80160b08d18999dbd5c79",
+      "actual": "c6679610b73b33d7d1f8875c7ee93bdeccf135d870f80160b08d18999dbd5c79"
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "expected": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a",
+      "actual": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a"
+    },
+    {
+      "path": "tests/ui-interaction.cjs",
+      "expected": "dfc033ae2c5c9c0187a24e93e759688cf78d55bb0272b66b559f32e7bba89cf1",
+      "actual": "dfc033ae2c5c9c0187a24e93e759688cf78d55bb0272b66b559f32e7bba89cf1"
+    },
+    {
+      "path": "tests/review-save-v1.cjs",
+      "expected": "0bde1e6c9d8d23afa3a5fe205015e2b51ac7da29f18ad9d7eb8958842662fd1b",
+      "actual": "0bde1e6c9d8d23afa3a5fe205015e2b51ac7da29f18ad9d7eb8958842662fd1b"
+    },
+    {
+      "path": "docs/fixtures/v2-baseline-migrate.json",
+      "expected": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+      "actual": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c"
+    },
+    {
+      "path": "docs/gameplay-rule-freeze.md",
+      "expected": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6",
+      "actual": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6"
+    },
+    {
+      "path": "docs/gameplay-v4-balance.md",
+      "expected": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052",
+      "actual": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.json",
+      "expected": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e",
+      "actual": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.md",
+      "expected": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5",
+      "actual": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.json",
+      "expected": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b",
+      "actual": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.md",
+      "expected": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67",
+      "actual": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67"
+    },
+    {
+      "path": "docs/gameplay-v4-c1.json",
+      "expected": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e",
+      "actual": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e"
+    },
+    {
+      "path": "docs/gameplay-v4-c1.md",
+      "expected": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d",
+      "actual": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d"
+    },
+    {
+      "path": "docs/gameplay-v4-formal-summary.md",
+      "expected": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132",
+      "actual": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132"
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.json",
+      "expected": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888",
+      "actual": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888"
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.md",
+      "expected": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303",
+      "actual": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303"
+    },
+    {
+      "path": "docs/gameplay-v4-primary.json",
+      "expected": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc",
+      "actual": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc"
+    },
+    {
+      "path": "docs/gameplay-v4-primary.md",
+      "expected": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4",
+      "actual": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4"
+    },
+    {
+      "path": "js/math.js",
+      "expected": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "actual": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f"
+    },
+    {
+      "path": "js/statistics.js",
+      "expected": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "actual": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd"
+    },
+    {
+      "path": "js/trading.js",
+      "expected": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "actual": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc"
+    },
+    {
+      "path": "js/v2-baseline.js",
+      "expected": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "actual": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328"
+    },
+    {
+      "path": "simulation/c1.cjs",
+      "expected": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "actual": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479"
+    }
+  ],
+  "artifacts": {
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/before/c-evidence-hashes.json": "20b79d217deb0dc54e48c7819773e37bb42ecce79ff93b1f9cab8616b829fd15",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/before/runner.cjs": "1714fad451deb7315c3e0f499c746c69c61e6fe4b6c10998545e4d6a31daf23c",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/before/tests.cjs": "8827051b6312f0d7a320f1df9a8d33f31cc0fcd7f1c97ee44ded51b348ad6956",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/fix-report.md": "e96ff4eee393cbad7c516649cbb6a5bff1de2f3c3aee865bceeb1ca4d7b50bed",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/migrate-and-resume.cjs": "8e50873864c6b6aecb49f68c1f2645636c6bf96c0de989895a967038db2cc4be",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/migration-resumption-report.json": "da71da9544952c00b670ace16cdfbc92c77c6de4da40321b9a923772fb0fe855",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/migration-resumption.log": "febe9ea658bb883e3868cbfd5b91fa5cb68157fd63ebf82ce5da8faae83c087e",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/checkpoint.json": "ea79a11804eeb2a7e583e4a1e646b55bd2d5b214ca61c8454fd42738c1746f30",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/market-paths.json": "9b6fd9c23747da59f15506f58ee4e8ac4f29cdc61a26ca6cfcbf54ae293a3329",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/metadata.json": "7c762a794b3e11259344b3f298e28dec952ec752da2d6a447c07facb1a096288",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/outcomes.json": "59a2a2e9c02577a8b63e68452dc00eccc5d2e0c115e99671e2609314ae7ef1c3",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/report.json": "8dec1a34aeb37ed9e137bc9a483ca45116c9ecd0deeed1f51f187f7a2e4b9379",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/summary.md": "20f829a37bbbe86a47de275b96418bcdaded8d5e04d486020a4ee1fe7945a445",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/resumed/verification.json": "cfc59a4c635c8af8f391ebd286500336002edbef3cb6acf46f377ed024847462",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/runner.diff": "e696b9948d8f371eb839d10373a02c8dc9146f0acad3544262af0d70bb4e9f89",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/tests/unit-report.json": "ce32365380124f539ce3e9df5019366c1f81af6850c0775553eb47d006fec2d0",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/tests-three-p2.log": "e05a21c1e2928cd5949ebca8c42a4d5944031b50f8b08ae6b6ff37b8fb1e8936",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/tests.diff": "f48ee327e01fd612425713f4f01aaaaa76ef66a3445486a0d529d7b79b727327",
+    "docs/black-swan-evidence/phase-c-20261004/review-fixes-output/tests.log": "740f06a08a142324cd4ee5b048438b5b34ba61021d0a8319032aaf54c097c130"
+  },
+  "newMainSimulations": 0,
+  "newFormalSimulations": 0,
+  "newHoldoutSimulations": 0,
+  "reusedCompletedGames": 540,
+  "resumptionEngineCalls": 0,
+  "syntaxCheck": true,
+  "diffCheck": true
+}

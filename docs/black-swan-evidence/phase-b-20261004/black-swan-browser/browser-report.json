@@ -1,0 +1,823 @@
+{
+  "kind": "automated Edge file://; no manual play/listening",
+  "checks": [
+    {
+      "name": "swan_egg_short full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n多地蛋场临时停供，批发柜台告急\n\n鸡蛋 · 本周 +58.8%\n\n蛋品供给骤紧已经发生，常备主食的替代需求也有变化。本周变化以成交价为准。\n\n鸡蛋 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看鸡蛋\n\n大米 · 本周 +3.7%\n\n大米 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看大米",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "eggs",
+            "name": "鸡蛋",
+            "pct": "+58.8%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "rice",
+            "name": "大米",
+            "pct": "+3.7%",
+            "listed": true,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_egg_short actual named quote/channel/link eggs",
+      "pass": true,
+      "detail": {
+        "id": "eggs",
+        "name": "鸡蛋",
+        "pct": "+58.8%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_egg_short actual named quote/channel/link rice",
+      "pass": true,
+      "detail": {
+        "id": "rice",
+        "name": "大米",
+        "pct": "+3.7%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_egg_short actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n加急蛋品到货，短缺预期迅速消退\n\n鸡蛋 · 本周 -48.9%\n\n到货与需求降温已缓解短缺预期，并非此前事件的定时后续。本周变化以成交价为准。\n\n鸡蛋 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看鸡蛋\n\n大米 · 本周 -16.1%\n\n大米 · 仅可回收 · 持有 0 · 当前渠道净额 ¥0.00\n查看大米",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "eggs",
+            "name": "鸡蛋",
+            "pct": "-48.9%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "rice",
+            "name": "大米",
+            "pct": "-16.1%",
+            "listed": false,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_egg_relief actual named quote/channel/link eggs",
+      "pass": true,
+      "detail": {
+        "id": "eggs",
+        "name": "鸡蛋",
+        "pct": "-48.9%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_egg_relief actual named quote/channel/link rice",
+      "pass": true,
+      "detail": {
+        "id": "rice",
+        "name": "大米",
+        "pct": "-16.1%",
+        "listed": false,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_egg_relief actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_protection full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_protection nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n防护标准临时升级，常备用品突然紧俏\n\n口罩 · 本周 +120.1%\n\n临时防护标准已经升级，常备用品需求挤压供给。本周变化以成交价为准。\n\n口罩 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看口罩\n\n大米 · 本周 +15.1%\n\n大米 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看大米\n\n鸡蛋 · 本周 +21.4%\n\n鸡蛋 · 仅可回收 · 持有 0 · 当前渠道净额 ¥0.00\n查看鸡蛋",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "mask",
+            "name": "口罩",
+            "pct": "+120.1%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "rice",
+            "name": "大米",
+            "pct": "+15.1%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "eggs",
+            "name": "鸡蛋",
+            "pct": "+21.4%",
+            "listed": false,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_protection actual named quote/channel/link mask",
+      "pass": true,
+      "detail": {
+        "id": "mask",
+        "name": "口罩",
+        "pct": "+120.1%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_protection actual named quote/channel/link rice",
+      "pass": true,
+      "detail": {
+        "id": "rice",
+        "name": "大米",
+        "pct": "+15.1%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_protection actual named quote/channel/link eggs",
+      "pass": true,
+      "detail": {
+        "id": "eggs",
+        "name": "鸡蛋",
+        "pct": "+21.4%",
+        "listed": false,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_protection actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_protection import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_protection continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n进口新规突然生效，柜台成本与消费预期分化\n\n手机 · 本周 +24.3%\n\n进口成本和可选消费预期已经分化，各商品可能有不同方向。本周变化以成交价为准。\n\n手机 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看手机\n\n名表 · 本周 -12.9%\n\n名表 · 仅可回收 · 持有 0 · 当前渠道净额 ¥0.00\n查看名表\n\n城市藏品 · 本周 -23.9%\n\n城市藏品 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看城市藏品",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "phone",
+            "name": "手机",
+            "pct": "+24.3%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "watch",
+            "name": "名表",
+            "pct": "-12.9%",
+            "listed": false,
+            "link": true
+          },
+          {
+            "id": "collectible",
+            "name": "城市藏品",
+            "pct": "-23.9%",
+            "listed": true,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_tariff actual named quote/channel/link phone",
+      "pass": true,
+      "detail": {
+        "id": "phone",
+        "name": "手机",
+        "pct": "+24.3%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_tariff actual named quote/channel/link watch",
+      "pass": true,
+      "detail": {
+        "id": "watch",
+        "name": "名表",
+        "pct": "-12.9%",
+        "listed": false,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_tariff actual named quote/channel/link collectible",
+      "pass": true,
+      "detail": {
+        "id": "collectible",
+        "name": "城市藏品",
+        "pct": "-23.9%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_tariff actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ongoing state nonfresh",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n新算法落地，旧算力订单突然撤回\n\n显卡 · 本周 -58.4%\n\n效率突破已改变旧硬件订单预期，部分订单已经撤回。本周变化以成交价为准。\n\n显卡 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看显卡\n\n手机 · 本周 -13.8%\n\n手机 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看手机",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "gpu",
+            "name": "显卡",
+            "pct": "-58.4%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "phone",
+            "name": "手机",
+            "pct": "-13.8%",
+            "listed": true,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_efficiency actual named quote/channel/link gpu",
+      "pass": true,
+      "detail": {
+        "id": "gpu",
+        "name": "显卡",
+        "pct": "-58.4%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_efficiency actual named quote/channel/link phone",
+      "pass": true,
+      "detail": {
+        "id": "phone",
+        "name": "手机",
+        "pct": "-13.8%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_efficiency actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_route full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_route nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n主航道临时封航，进口柜台等不到货\n\n手机 · 本周 +56.1%\n\n在途货物延迟已经发生，进口耐用品供给收紧。本周变化以成交价为准。\n\n手机 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看手机\n\n显卡 · 本周 +20.1%\n\n显卡 · 仅可回收 · 持有 0 · 当前渠道净额 ¥0.00\n查看显卡\n\n空调 · 本周 +38.1%\n\n空调 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看空调",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "phone",
+            "name": "手机",
+            "pct": "+56.1%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "gpu",
+            "name": "显卡",
+            "pct": "+20.1%",
+            "listed": false,
+            "link": true
+          },
+          {
+            "id": "ac",
+            "name": "空调",
+            "pct": "+38.1%",
+            "listed": true,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_route actual named quote/channel/link phone",
+      "pass": true,
+      "detail": {
+        "id": "phone",
+        "name": "手机",
+        "pct": "+56.1%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_route actual named quote/channel/link gpu",
+      "pass": true,
+      "detail": {
+        "id": "gpu",
+        "name": "显卡",
+        "pct": "+20.1%",
+        "listed": false,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_route actual named quote/channel/link ac",
+      "pass": true,
+      "detail": {
+        "id": "ac",
+        "name": "空调",
+        "pct": "+38.1%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_route actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_route import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_route continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_route ongoing state nonfresh",
+      "pass": true
+    },
+    {
+      "name": "swan_heat full core/UI state equality",
+      "pass": true
+    },
+    {
+      "name": "swan_heat nonblocking major label once",
+      "pass": true,
+      "detail": {
+        "label": "重大事件 · 本周已发生\n异常热浪提前压城，制冷货源吃紧\n\n空调 · 本周 +42.9%\n\n热旱天气已牵动制冷、农产和雨具需求。本周变化以成交价为准。\n\n空调 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00 · 浮盈 ¥0.00\n查看空调\n\n水果 · 本周 +25.0%\n\n水果 · 仅可回收 · 持有 0 · 当前渠道净额 ¥0.00\n查看水果\n\n雨具 · 本周 -17.0%\n\n雨具 · 本周可买 · 持有 0 · 当前渠道净额 ¥0.00\n查看雨具",
+        "emphasis": "true",
+        "modal": false,
+        "quotes": [
+          {
+            "id": "ac",
+            "name": "空调",
+            "pct": "+42.9%",
+            "listed": true,
+            "link": true
+          },
+          {
+            "id": "fruit",
+            "name": "水果",
+            "pct": "+25.0%",
+            "listed": false,
+            "link": true
+          },
+          {
+            "id": "umbrella",
+            "name": "雨具",
+            "pct": "-17.0%",
+            "listed": true,
+            "link": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "swan_heat actual named quote/channel/link ac",
+      "pass": true,
+      "detail": {
+        "id": "ac",
+        "name": "空调",
+        "pct": "+42.9%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_heat actual named quote/channel/link fruit",
+      "pass": true,
+      "detail": {
+        "id": "fruit",
+        "name": "水果",
+        "pct": "+25.0%",
+        "listed": false,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_heat actual named quote/channel/link umbrella",
+      "pass": true,
+      "detail": {
+        "id": "umbrella",
+        "name": "雨具",
+        "pct": "-17.0%",
+        "listed": true,
+        "link": true
+      }
+    },
+    {
+      "name": "swan_heat actual changes not configuration/predictive text",
+      "pass": true
+    },
+    {
+      "name": "swan_heat import no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_heat continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ongoing state nonfresh",
+      "pass": true
+    },
+    {
+      "name": "motion reduced no major animation, mute preserved",
+      "pass": true,
+      "detail": {
+        "settings": {
+          "autoSave": true,
+          "sound": true,
+          "music": true,
+          "animation": "reduced",
+          "numberFormat": "decimal"
+        },
+        "audio": {
+          "volume": 0,
+          "gain": 0.5,
+          "state": "suspended",
+          "musicRunning": false,
+          "playing": false,
+          "needsGesture": true,
+          "engine": true,
+          "musicWanted": true,
+          "cue": null,
+          "nodes": {
+            "created": 0,
+            "live": 0
+          }
+        },
+        "marks": []
+      }
+    },
+    {
+      "name": "motion off no major animation, mute preserved",
+      "pass": true,
+      "detail": {
+        "settings": {
+          "autoSave": true,
+          "sound": true,
+          "music": true,
+          "animation": "off",
+          "numberFormat": "decimal"
+        },
+        "audio": {
+          "volume": 0,
+          "gain": 0.5,
+          "state": "suspended",
+          "musicRunning": false,
+          "playing": false,
+          "needsGesture": true,
+          "engine": true,
+          "musicWanted": true,
+          "cue": null,
+          "nodes": {
+            "created": 0,
+            "live": 0
+          }
+        },
+        "marks": []
+      }
+    },
+    {
+      "name": "system reduce no emphasis",
+      "pass": true
+    },
+    {
+      "name": "hidden document no emphasis/music loop",
+      "pass": true
+    },
+    {
+      "name": "major layout 1366",
+      "pass": true,
+      "detail": {
+        "width": 1366,
+        "height": 768,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": true
+      }
+    },
+    {
+      "name": "major layout 1600",
+      "pass": true,
+      "detail": {
+        "width": 1600,
+        "height": 900,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": true
+      }
+    },
+    {
+      "name": "major layout 1920",
+      "pass": true,
+      "detail": {
+        "width": 1920,
+        "height": 1080,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": false
+      }
+    },
+    {
+      "name": "major layout 2560",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "height": 1440,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": false
+      }
+    },
+    {
+      "name": "major layout 125-equivalent",
+      "pass": true,
+      "detail": {
+        "width": 1093,
+        "height": 614,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": true
+      }
+    },
+    {
+      "name": "major layout 150-equivalent",
+      "pass": true,
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "horizontal": false,
+        "center": 0,
+        "visible": true,
+        "bulletinScrollable": true
+      }
+    },
+    {
+      "name": "v3 future-path explicit warning 0",
+      "pass": true
+    },
+    {
+      "name": "v3 cancel writes nothing 0",
+      "pass": true
+    },
+    {
+      "name": "v3 full state preserved 0",
+      "pass": true
+    },
+    {
+      "name": "v3 local original/raw backup/settings preserved 0",
+      "pass": true
+    },
+    {
+      "name": "v3 local persisted v4 no replay 0",
+      "pass": true
+    },
+    {
+      "name": "upgrade backup export exists 0",
+      "pass": true
+    },
+    {
+      "name": "v3 future-path explicit warning 1",
+      "pass": true
+    },
+    {
+      "name": "v3 cancel writes nothing 1",
+      "pass": true
+    },
+    {
+      "name": "v3 full state preserved 1",
+      "pass": true
+    },
+    {
+      "name": "v3 local original/raw backup/settings preserved 1",
+      "pass": true
+    },
+    {
+      "name": "v3 local persisted v4 no replay 1",
+      "pass": true
+    },
+    {
+      "name": "upgrade backup export exists 1",
+      "pass": true
+    },
+    {
+      "name": "chain both backup exports",
+      "pass": true
+    },
+    {
+      "name": "damaged v4 extra replace confirmation",
+      "pass": true
+    },
+    {
+      "name": "damaged migrate second cancel no write",
+      "pass": true
+    },
+    {
+      "name": "v3 import memory-only while quarantine retained",
+      "pass": true
+    },
+    {
+      "name": "manual save still isolated",
+      "pass": true
+    },
+    {
+      "name": "damaged export enabled",
+      "pass": true
+    },
+    {
+      "name": "v3 import does not persist v4",
+      "pass": true
+    },
+    {
+      "name": "ended v3 result retained",
+      "pass": true
+    },
+    {
+      "name": "ended no next/trade",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors",
+      "pass": true
+    },
+    {
+      "name": "no external requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "layouts": [
+    {
+      "width": 1366,
+      "height": 768,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": true
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": false
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": false
+    },
+    {
+      "width": 1093,
+      "height": 614,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": true
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "horizontal": false,
+      "center": 0,
+      "visible": true,
+      "bulletinScrollable": true
+    }
+  ],
+  "screenshots": [
+    "major-mixed-directions-1366.png",
+    "major-1366.png",
+    "major-1600.png",
+    "major-1920.png",
+    "major-2560.png",
+    "major-125-equivalent.png",
+    "major-150-equivalent.png",
+    "v3-upgrade-preserved-current-week.png"
+  ],
+  "browser": "Edg/154.0.4258.53"
+}

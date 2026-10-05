@@ -42,15 +42,16 @@ const raw = fs.readFileSync(path.join(root, 'docs/fixtures/v2-baseline-migrate.j
   const view = await cdp.evaluate(`(() => {
     const s = HomeYear.UI.snapshot();
     const text = document.querySelector('.inventory-panel')?.innerText || '';
-    return {week:s.week, cash:s.cash, gold:s.legacy.gold.qty, book:s.priceBook.id, inventory:text.slice(0, 500), backup:s.migration && s.migration.backup, v2:localStorage.getItem('homeyear.save.v2')===${JSON.stringify(raw)}};
+    return {week:s.week, cash:s.cash, gold:s.legacy.gold.qty, book:s.priceBook.id, inventory:text, backup:s.migration && s.migration.backup, v2:localStorage.getItem('homeyear.save.v2')===${JSON.stringify(raw)}};
   })()`);
   if (!view.v2) failures.push('v2 overwritten');
   if (view.book !== '0.2' || view.gold < 1 || !view.inventory.includes('已退出')) failures.push('legacy inventory ' + JSON.stringify(view));
-  await cdp.evaluate(`[...document.querySelectorAll('.inventory-line')].find(el => el.innerText.includes('已退出')).click()`);
+  await cdp.evaluate(`[...document.querySelectorAll('.inventory-card')].find(el => el.innerText.includes('已退出')).querySelector('[data-action=trade]').click()`);
   await delay(250);
   const preview = await cdp.evaluate(`document.querySelector('#preview')?.innerText || ''`);
   if (!preview.includes('回收报价') || !preview.includes('手续费')) failures.push('buyback preview ' + preview.slice(0, 240));
   const report = {view:{week:view.week, cash:view.cash, gold:view.gold, book:view.book, backup:view.backup, v2:view.v2}, preview:preview.slice(0, 240), consoleErrors, failures};
+  if(process.env.UI_EVIDENCE_DIR){fs.mkdirSync(process.env.UI_EVIDENCE_DIR,{recursive:true});fs.writeFileSync(path.join(process.env.UI_EVIDENCE_DIR,'migration-report.json'),JSON.stringify(report,null,2));}
   console.log(JSON.stringify(report, null, 2));
   await edge.cleanup();
   if (failures.length || consoleErrors.length) process.exitCode = 1;

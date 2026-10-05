@@ -1,6 +1,6 @@
 (function (H) {
   'use strict';
-  const marketEvents = () => H.events.filter(e => e.type === 'market');
+  const marketEvents = () => H.events.filter(e => e.type === 'market' && e.tier !== 'swan');
   const personalEvents = () => H.events.filter(e => e.type === 'personal');
   const pick = (s, list) => list[Math.floor(H.random(s, 'events') * list.length)];
   const poolIndex = id => H.products.findIndex(p => p.id === id);
@@ -101,22 +101,59 @@
     s.season = H.seasonAt(s.week);
     s.macro = Math.max(.8, Math.min(1.2, s.macro * .8 + (.9 + .2 * H.random(s, 'market')) * .2));
   };
+  // Only already-known scheduling state is read here; never cash, holdings, P&L or prices.
+  function swanCandidates(s, filtered) {
+    return H.events.filter(e => e.tier === 'swan').filter(e => {
+      let reason = null;
+      if (s.swanLog.some(l => l.id === e.id)) reason = 'used';
+      else if (e.season && s.season !== e.season) reason = 'season';
+      else if (!e.primaryProducts.some(id => s.listing.includes(id))) reason = 'offSale';
+      else if (s.activeEvents.some(a => {
+        const ordinary = H.events.find(e => e.id === a.id);
+        return ordinary.tier !== 'swan' && e.primaryProducts.some(id => ordinary.effects[id] && ordinary.effects[id].kind !== 'structural');
+      })) reason = 'overlap';
+      if (reason) filtered[e.id] = reason;
+      return !reason;
+    });
+  }
   H.drawEvents = s => {
     s.activeEvents = s.activeEvents.filter(e => e.until >= s.week);
     s.personal = 0;
     s.personalEvent = null;
     s.news = [];
-    if (H.random(s, 'events') < .42) {
-      const e = pick(s, marketEvents());
-      if (!s.activeEvents.some(a => a.id === e.id)) {
-        s.activeEvents.push({id: e.id, started: s.week, until: Math.min(52, s.week + e.duration - 1)});
+    const cfg = H.swanRules, last = s.swanLog[s.swanLog.length - 1];
+    const eligible = s.week >= cfg.firstWeek && s.week <= cfg.lastWeek && s.swanLog.length < cfg.limit && (!last || s.week - last.week >= cfg.gap);
+    const filtered = {}, candidates = eligible ? swanCandidates(s, filtered) : [];
+    let chosen = null, swanAttempt = false, ordinaryAttempt = false;
+    if (candidates.length) {
+      swanAttempt = true;
+      if (H.random(s, 'events') < cfg.probability) chosen = pick(s, candidates);
+    }
+    if (chosen) {
+      s.swanLog.push({id: chosen.id, week: s.week});
+    } else {
+      ordinaryAttempt = H.random(s, 'events') < .42;
+      if (ordinaryAttempt) {
+        const blocked = new Set();
+        for (const a of s.activeEvents) {
+          const e = H.events.find(e => e.id === a.id);
+          if (e.tier === 'swan') for (const [id, fx] of Object.entries(e.effects)) if (fx.kind === 'persist') blocked.add(id);
+        }
+        const ordinary = marketEvents().filter(e => !Object.keys(e.effects).some(id => blocked.has(id)));
+        if (ordinary.length) {
+          const e = pick(s, ordinary);
+          if (!s.activeEvents.some(a => a.id === e.id)) chosen = e;
+        }
       }
     }
+    if (chosen) s.activeEvents.push({id: chosen.id, started: s.week, until: Math.min(52, s.week + chosen.duration - 1)});
     if (H.random(s, 'events') < .08) {
       const e = pick(s, personalEvents());
       s.personalEvent = e.id;
       s.personal = e.cash < 0 ? Math.round(e.cash * H.difficulty(s).risk) : e.cash;
     }
+    return {week:s.week, eligible, swanAttempt, candidates:candidates.map(e => e.id), filtered, ordinaryAttempt,
+      started:chosen ? chosen.id : null, swan:!!chosen && chosen.tier === 'swan'};
   };
   H.trends = s => {
     for (const p of H.products) {

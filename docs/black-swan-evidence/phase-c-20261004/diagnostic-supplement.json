@@ -1,0 +1,61 @@
+{
+  "warningScope": "specific primary event/product strata; not just pooled rate",
+  "capRoundingCorrection": {
+    "easy": {
+      "hits": 1,
+      "denominator": 2014,
+      "rate": 0.0004965243296921549
+    },
+    "standard": {
+      "hits": 1,
+      "denominator": 2014,
+      "rate": 0.0004965243296921549
+    },
+    "challenge": {
+      "hits": 1,
+      "denominator": 2014,
+      "rate": 0.0004965243296921549
+    }
+  },
+  "warnings": [
+    {
+      "difficulty": "easy",
+      "event": "swan_heat",
+      "primaryProducts": [
+        "ac"
+      ],
+      "clipped": 2,
+      "primaryObservations": 7,
+      "rate": 0.2857142857142857,
+      "threshold": 0.2,
+      "reviewRequired": true,
+      "noAutomaticParameterChange": true
+    },
+    {
+      "difficulty": "standard",
+      "event": "swan_heat",
+      "primaryProducts": [
+        "ac"
+      ],
+      "clipped": 2,
+      "primaryObservations": 7,
+      "rate": 0.2857142857142857,
+      "threshold": 0.2,
+      "reviewRequired": true,
+      "noAutomaticParameterChange": true
+    },
+    {
+      "difficulty": "challenge",
+      "event": "swan_heat",
+      "primaryProducts": [
+        "ac"
+      ],
+      "clipped": 2,
+      "primaryObservations": 7,
+      "rate": 0.2857142857142857,
+      "threshold": 0.2,
+      "reviewRequired": true,
+      "noAutomaticParameterChange": true
+    }
+  ]
+}

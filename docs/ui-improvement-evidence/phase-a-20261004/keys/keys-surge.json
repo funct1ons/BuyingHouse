@@ -1,0 +1,124 @@
+{
+  "browser": "Edg/154.0.4258.53",
+  "notes": {
+    "browser": "Edg/154.0.4258.53",
+    "shelf": {
+      "cards": [
+        "rice",
+        "pork",
+        "eggs",
+        "fruit",
+        "phone",
+        "coat",
+        "umbrella",
+        "mask"
+      ],
+      "catalog0": "rice"
+    },
+    "priceOrder": [
+      "eggs",
+      "umbrella",
+      "mask",
+      "fruit",
+      "milk",
+      "pork",
+      "food",
+      "rice",
+      "battery",
+      "medicine",
+      "oil",
+      "coat",
+      "ac",
+      "collectible",
+      "console",
+      "phone",
+      "gpu",
+      "camera",
+      "gold",
+      "watch"
+    ],
+    "openedByKey": [
+      "eggs",
+      "umbrella",
+      "mask",
+      "fruit",
+      "milk",
+      "pork",
+      "food",
+      "rice",
+      "battery"
+    ],
+    "big": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [
+        "fruit"
+      ],
+      "animation": "normal",
+      "reduce": false
+    },
+    "importReplay": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "continueReplay": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "small": {
+      "week": 5,
+      "head": {
+        "id": "mask",
+        "abs": 2499,
+        "fresh": true
+      },
+      "surge": []
+    },
+    "none": {
+      "week": 42,
+      "head": null,
+      "surge": [],
+      "cards": 8
+    },
+    "reducedSetting": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [],
+      "animation": "reduced"
+    },
+    "systemReduce": {
+      "week": 24,
+      "head": {
+        "id": "fruit",
+        "abs": 2500,
+        "fresh": true
+      },
+      "surge": [],
+      "animation": "normal",
+      "reduce": true
+    },
+    "external": [],
+    "consoleErrors": 0
+  },
+  "failures": [],
+  "externalCount": 0,
+  "consoleErrors": []
+}

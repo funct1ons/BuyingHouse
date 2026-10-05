@@ -1,0 +1,14 @@
+{
+  "completeResumeNoNewGames": true,
+  "outcomesHashUnchanged": true,
+  "marketHashUnchanged": true,
+  "negativeChecks": [
+    "tampered checkpoint hash",
+    "stale seed/source identity",
+    "duplicate completed game",
+    "existing output refusal"
+  ],
+  "exactCapNotTriggered": true,
+  "aboveCapTriggered": true,
+  "syntheticCapFixtureNotBalanceSample": true
+}

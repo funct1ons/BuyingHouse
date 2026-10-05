@@ -36,9 +36,10 @@
       }
       throw Error('无法上架 '+id);
     }
-    test('12轮换池/8退出商品/30事件/5住房/4仓储与价格簿',()=>{
-      // 规则0.4：轮换池从20收为12，8个退出商品保留给旧档。市场事件从32条收为22条，个人事件仍为8条。
-      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===30&&H.houses.length===5&&H.warehouses.length===4);
+    test('12轮换池/8退出商品/37事件/5住房/4仓储与价格簿',()=>{
+      // 规则0.5仅新增7重大事件；0.4完整目录冻结，不用于现行事件抽取。
+      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===37&&H.houses.length===5&&H.warehouses.length===4);
+      assert(H.v3.catalog.events.length===30&&H.v3.catalog.rules.saveVersion===3);
       assert(H.v2.catalog.products.length===20&&H.v2.catalog.events.length===40&&H.v2.catalog.rules.saveVersion===2);
       for(const p of H.products){for(const k of ['name','category','description','basePrice','minPrice','maxPrice','volatility','trendSensitivity','eventSensitivity','unitSize','icon','season'])assert(p[k]!==undefined);assert(p.basePrice===p.base&&p.unitSize===p.size);}
       assert(new Set(H.products.map(p=>p.volatility)).size>8);

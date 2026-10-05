@@ -1,0 +1,66 @@
+{
+  "baseline": "a538345",
+  "allIdentical": true,
+  "files": [
+    {
+      "file": "js/data.js",
+      "baselineSha256": "32e3f49bf14ba43e9673559c26afa4bbf1db451d60f8cf3cfc59251b981216ba",
+      "currentSha256": "32e3f49bf14ba43e9673559c26afa4bbf1db451d60f8cf3cfc59251b981216ba",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/math.js",
+      "baselineSha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "currentSha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/v2-baseline.js",
+      "baselineSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "currentSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/market.js",
+      "baselineSha256": "b222af7c200bb2936b6852717bd00d0cea211a657687994d261ba0fcfc856f97",
+      "currentSha256": "b222af7c200bb2936b6852717bd00d0cea211a657687994d261ba0fcfc856f97",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/trading.js",
+      "baselineSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "currentSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/statistics.js",
+      "baselineSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "currentSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/validation.js",
+      "baselineSha256": "d8b1db7691e4094dc5075559084313f35adb48fe21077aeebb340282cc974c91",
+      "currentSha256": "d8b1db7691e4094dc5075559084313f35adb48fe21077aeebb340282cc974c91",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/game.js",
+      "baselineSha256": "749cfd9460dc294b37bffa2f2ba45466bc5af4bf14ca74c242b48e897b7b4a84",
+      "currentSha256": "749cfd9460dc294b37bffa2f2ba45466bc5af4bf14ca74c242b48e897b7b4a84",
+      "byteIdentical": true
+    },
+    {
+      "file": "js/save.js",
+      "baselineSha256": "146141a67ef9334c4378f9f6707bf4ba8d7ac07a3a482cd805a65ab4a57104a3",
+      "currentSha256": "146141a67ef9334c4378f9f6707bf4ba8d7ac07a3a482cd805a65ab4a57104a3",
+      "byteIdentical": true
+    },
+    {
+      "file": "simulation/c1.cjs",
+      "baselineSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "currentSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "byteIdentical": true
+    }
+  ]
+}

@@ -14,7 +14,7 @@
       week: 1, cash: H.difficulties[difficulty].initialCash, capacity: H.rules.capacity, warehouse: 'room',
       revision: 0, status: 'playing', house: null, result: null, rng: {}, inventory: {}, market: {}, activeEvents: [],
       macro: 1, season: '冬', personal: 0, personalEvent: null, news: [], history: [], stats: {},
-      listing: [], absence: {}, onStreak: {}, legacy: {}, migration: null, priceBook: priceBook(difficulty)};
+      listing: [], absence: {}, onStreak: {}, legacy: {}, migration: null, upgrade: null, swanLog: [], priceBook: priceBook(difficulty)};
     for (const key of H.statFields) s.stats[key] = 0;
     s.stats.byProduct = {};
     for (const stream of ['market', 'events', 'visual', 'listing']) s.rng[stream] = H.seed(seed + ':' + stream);
@@ -38,58 +38,24 @@
     H.record(s); H.validate(s);
     return s;
   };
+  H.migrateV3 = function (raw, backup) {
+    if (!H.v3 || !H.v3.validate(raw)) throw Error('旧 v3 校验失败');
+    const s = H.clone(raw);
+    s.version = H.rules.saveVersion;
+    s.rulesVersion = H.rules.version;
+    s.swanLog = [];
+    s.upgrade = {fromVersion: 3, fromRules: '0.4', atWeek: raw.week, backup};
+    H.validate(s);
+    return s;
+  };
   H.migrateV2 = function (raw, backup) {
-    if (!raw || raw.status !== 'playing') throw Error('已结束旧档不迁移');
-    if (!H.v2 || !H.v2.validate(raw)) throw Error('旧档校验失败');
-    const book = H.priceBooks['0.2'][raw.difficulty];
-    if (!book) throw Error('旧档难度无效');
-    if (H.v2.houseValue(raw) !== (raw.house ? book.houses[raw.house] : 0)) throw Error('旧住房价与价格簿不一致');
-    if (raw.stats.warehouseSpent !== book.warehouses[raw.warehouse]) throw Error('旧仓储价与价格簿不一致');
-    const s = H.create(raw.seed, raw.difficulty);
-    s.week = raw.week;
-    s.cash = raw.cash;
-    s.capacity = raw.capacity;
-    s.warehouse = raw.warehouse;
-    s.revision = raw.revision;
-    s.house = raw.house;
-    s.macro = raw.macro;
-    s.season = raw.season;
-    s.personal = raw.personal;
-    s.personalEvent = raw.personalEvent;
-    s.history = H.clone(raw.history);
-    s.stats = H.clone(raw.stats);
-    s.activeEvents = [];
-    s.rng.market = raw.rng.market;
-    s.rng.events = raw.rng.events;
-    s.rng.visual = raw.rng.visual;
-    s.rng.listing = H.seed(raw.seed + ':listing:' + raw.week + ':' + raw.revision);
-    for (const p of H.products) {
-      s.inventory[p.id] = H.clone(raw.inventory[p.id]);
-      s.market[p.id] = H.clone(raw.market[p.id]);
-    }
-    for (const p of H.legacyProducts) {
-      const src = raw.market[p.id];
-      s.legacy[p.id] = {qty: raw.inventory[p.id].qty, cost: raw.inventory[p.id].cost,
-        price: src.price, previous: src.previous, trend: src.trend, history: src.history.slice(), low: src.low, high: src.high};
-    }
-    s.listing = H.initialListing(s);
-    for (const p of H.products) {
-      const on = s.listing.includes(p.id);
-      s.absence[p.id] = on ? 0 : 1;
-      s.onStreak[p.id] = on ? 1 : 0;
-    }
-    s.migration = {fromVersion: 2, fromRules: '0.2', atWeek: raw.week, backup};
-    s.news = [];
-    const moves = H.products.filter(p => Math.abs(H.changeBps(s.market[p.id])) >= H.rules.headlineMoveBps)
-      .sort((a, b) => Math.abs(H.changeBps(s.market[b.id])) - Math.abs(H.changeBps(s.market[a.id])));
-    if (moves.length) {
-      const bps = H.changeBps(s.market[moves[0].id]);
-      s.news.push({id: 'move', title: moves[0].name + '本周价格已经明显变动', reliability: 'normal', week: s.week,
-        kind: 'headline', productId: moves[0].id, changeBps: bps, fresh: true});
-    }
-    if (s.cash !== raw.cash || JSON.stringify(s.history) !== JSON.stringify(raw.history) || s.stats.warehouseSpent !== raw.stats.warehouseSpent || H.houseValue(s) !== H.v2.houseValue(raw)) {
-      throw Error('迁移改变了现金、历史或住房仓储价');
-    }
+    // Convert inside the immutable 0.4 context, never write an intermediate v3 key.
+    if (!H.v3) throw Error('冻结旧规则转换不可用');
+    const s = H.clone(H.v3.migrateV2(raw, backup));
+    s.version = H.rules.saveVersion;
+    s.rulesVersion = H.rules.version;
+    s.swanLog = [];
+    s.upgrade = null;
     H.validate(s);
     return s;
   };
@@ -99,7 +65,7 @@
     this.snapshot = () => H.clone(state);
     const blankDiag = () => ({clips: 0, persistCapTriggers: 0, specStarts: 0, specStartClips: 0,
       eventStartedClips: 0, noEventStartedClips: 0, eventStartedWeeks: 0, noEventStartedWeeks: 0,
-      byProduct: {}, persistCapped: {}, clipLog: []});
+      byProduct: {}, persistCapped: {}, clipLog: [], eventLog: []});
     let diag = blankDiag();
     this.restore = s => {
       H.validate(s);
@@ -111,6 +77,7 @@
       eventStartedClips: diag.eventStartedClips, noEventStartedClips: diag.noEventStartedClips,
       eventStartedWeeks: diag.eventStartedWeeks, noEventStartedWeeks: diag.noEventStartedWeeks,
       byProduct: Object.assign({}, diag.byProduct), persistCapped: Object.assign({}, diag.persistCapped),
+      eventLog: H.clone(diag.eventLog),
       clipLog: diag.clipLog.map(row => Object.assign({}, row, {clipped: row.clipped.slice(), startedProducts: row.startedProducts.slice(),
         persistCapped: row.persistCapped.slice(), persistProducts: row.persistProducts.slice()}))});
     this.visible = () => ({seed: state.seed, difficulty: state.difficulty, week: state.week, revision: state.revision,
@@ -128,7 +95,7 @@
         if (op.revision !== state.revision) throw Error('操作已过期');
         if (state.status !== 'playing') throw Error('本年已结束');
         const next = H.clone(state);
-        let pending = null;
+        let pending = null, eventDiag = null;
         switch (op.type) {
           case 'buy': case 'sell': H.trade(next, op.type, op.id, op.qty); break;
           case 'house': H.buyHouse(next, op.id); break;
@@ -136,7 +103,7 @@
           case 'next':
             if (next.week === 52) throw Error('第52周请结束本年');
             next.week++;
-            H.environment(next); H.rotate(next); H.drawEvents(next); H.trends(next);
+            H.environment(next); H.rotate(next); eventDiag = H.drawEvents(next); H.trends(next);
             pending = H.prices(next);
             pending.week = next.week;
             H.personal(next); H.news(next); break;
@@ -150,6 +117,8 @@
         H.validate(next);
         state = next; seen.add(op.token);
         if (pending) {
+          diag.eventLog.push({...eventDiag, changes: Object.fromEntries(H.products.map(p => [p.id, H.changeBps(next.market[p.id])])),
+            clipped: pending.clipped.slice(), persistCapped: pending.persistCapped.slice()});
           diag.clips += pending.clips;
           diag.persistCapTriggers += pending.persistCapTriggers;
           diag.specStarts += pending.specStarts;

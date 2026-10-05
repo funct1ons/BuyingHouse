@@ -77,6 +77,7 @@ const url = pathToFileURL(path.join(root, 'index.html')).href;
   })()`);
   if (matched !== true) failures.push('continue future mismatch ' + matched);
   const report = {url, opened:{week:opened.week, listed:opened.listed, cards:opened.cards, priceBook:opened.priceBook}, afterNext, continued, matched, consoleErrors, external, failures};
+  if(process.env.UI_EVIDENCE_DIR){const fs=require('node:fs');fs.mkdirSync(process.env.UI_EVIDENCE_DIR,{recursive:true});fs.writeFileSync(path.join(process.env.UI_EVIDENCE_DIR,'edge-report.json'),JSON.stringify(report,null,2));}
   console.log(JSON.stringify(report, null, 2));
   await edge.cleanup();
   if (failures.length || consoleErrors.length) process.exitCode = 1;

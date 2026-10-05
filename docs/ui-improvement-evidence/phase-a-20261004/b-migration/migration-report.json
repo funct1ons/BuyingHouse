@@ -1,0 +1,13 @@
+{
+  "view": {
+    "week": 4,
+    "cash": 6233900,
+    "gold": 1,
+    "book": "0.2",
+    "backup": "homeyear.save.backup.bcdb6797abf6f5ae",
+    "v2": true
+  },
+  "preview": "街区小票\n第 4 周 · 卖出 食用油 × 1\n回收报价\n¥233.62\n回收折价\n¥20.32\n手续费\n¥2.34\n净回款\n¥231.28\n交易后现金\n¥62,570.28\n仓储\n39 / 75 · 可买 0",
+  "consoleErrors": [],
+  "failures": []
+}

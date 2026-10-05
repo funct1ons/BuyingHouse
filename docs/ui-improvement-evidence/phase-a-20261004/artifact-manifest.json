@@ -1,0 +1,794 @@
+[
+  {
+    "path": "acceptance/houses.png",
+    "bytes": 210839,
+    "sha256": "f8149d2ddc34c5485485000283ead22e9bf31e5d607b95e247cf66beb47ac753",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-125-equivalent.png",
+    "bytes": 678422,
+    "sha256": "a0d89e20f2c6ec64fa174813ea820371c7a6c6f3a67cb70379b24d2759860341",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-1366.png",
+    "bytes": 579028,
+    "sha256": "6486cd50344f6913fd74b6cbc94e45545f72574d31cbbf5f4971658dffd214c9",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-150-equivalent.png",
+    "bytes": 512720,
+    "sha256": "b2202b31740b92d63cabd29e1226a49d6c20ff952ea5a28bd0f24dc9f522bf55",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-1600.png",
+    "bytes": 717410,
+    "sha256": "caf5ad939a8a0e5c58d3419f8eca479ea2ede1f7d8dbf71aa149661e00c217f9",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-1920.png",
+    "bytes": 922421,
+    "sha256": "ec5222803cf3fa2a5d31ffc2fc956bb29b6ce6f0dd90354de965d5ee1315a1fd",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/market-2560.png",
+    "bytes": 1246695,
+    "sha256": "31cfd19bf27fe58a53604b8c9f7c3e6570f8c17f6d7a0ca32e9c180b7ef23e9c",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/result-no-house.png",
+    "bytes": 151335,
+    "sha256": "968e44e7b8e8b4bcc785c945c21d862cfb6f18d46db7bcf4f32818d25c8e5fdc",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/result-owned.png",
+    "bytes": 144504,
+    "sha256": "733c3904004cf87b4988ea25dda1a65060eff43e6fef2ba3a0e163d47bc77d3d",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/settings.png",
+    "bytes": 298491,
+    "sha256": "496f599a5398722dd6481337cdbccd648975f73d84857f150cc9e4cf5d3caf0d",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/start.png",
+    "bytes": 279486,
+    "sha256": "81a6d1b581aebe53a5606cb0d41b30b05b2f00f6aecd31db322b7cae4a867196",
+    "status": "captured"
+  },
+  {
+    "path": "acceptance/trade.png",
+    "bytes": 322705,
+    "sha256": "f73356db6bedaf8427e3ee4e1edc025c1bc4fc23a041f024963022cf67b2bbd1",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-01-start.jpg",
+    "bytes": 114317,
+    "sha256": "03e903c07dd0c24770551b3784c13a0383564436605cab137cb076556d0689a0",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-02-market.jpg",
+    "bytes": 157740,
+    "sha256": "14da387a64f023ac2b9ff9a397a5f6d6181ee9e14ac2787abf7dbeba9830aebe",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-03-trade.jpg",
+    "bytes": 87067,
+    "sha256": "c7df14f1f6fdd25d6cb6e0914a95544bfdc66f1c7a78c0f726423a7f7696b832",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-04-houses.jpg",
+    "bytes": 111952,
+    "sha256": "63a2359f5d33d9191e19349bf79137d96cf1411c04e05dd38acfb33e1d8aaa3a",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-05-celebration.jpg",
+    "bytes": 71735,
+    "sha256": "75c8c181fc48e6aecab7cafbfdd640af4584da4fdf1e0efe897209f3fcf1f2cc",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-06-market-owned.jpg",
+    "bytes": 160535,
+    "sha256": "99b75737d8b8fd67ca5c07d58470f1b89f8feaafd703cfbe455938f978f873bb",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-07-result-home.jpg",
+    "bytes": 92617,
+    "sha256": "76cb1bb405ebf31da98034c53945928683ce132aaf7e7b9146872647f57f644e",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1366x768-08-result-rent.jpg",
+    "bytes": 98200,
+    "sha256": "fa45c6b9fb59bbf3e7f4b3f159baac073bad64b94b9092864cfa74ff6c6053ed",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-01-start.jpg",
+    "bytes": 159320,
+    "sha256": "f0cb6490683878d0d000f11b452c4d4b40e60c236e4cca59c509f85a94bbf8f0",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-02-market.jpg",
+    "bytes": 198679,
+    "sha256": "040a3277594c0c931f61fabd63cf9a579a933161acd5f2c43026768e9018ff67",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-03-trade.jpg",
+    "bytes": 103016,
+    "sha256": "19deb19d994d70f435949dd380ab10a23606ae9512dd99b3f4fc42c65a605b24",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-04-houses.jpg",
+    "bytes": 136283,
+    "sha256": "396915cc8d30e320a7d5cce77e60965346655c853c81468434ed691bed2423f2",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-05-celebration.jpg",
+    "bytes": 79082,
+    "sha256": "bdf466a1d6cb55ae741104a5f3520b20c6bb0cc75ccfb52d4d94e4e7ce9fa747",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-06-market-owned.jpg",
+    "bytes": 203066,
+    "sha256": "c1e109ae0cff2ce4173f704cabfaaf1998e991ec18f26cdc1fb75c1b46fcc55d",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-07-result-home.jpg",
+    "bytes": 110032,
+    "sha256": "1464bfa8d4d2a5d8031a09a924c3c81b06622f2a222daf2a8ce8c0d3a01a14ab",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1600x900-08-result-rent.jpg",
+    "bytes": 116298,
+    "sha256": "12d333d8bece8a1b28e347590a4d0bc0ac1c1e7d9b98269afe0dbcac94d198c0",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-01-start.jpg",
+    "bytes": 199455,
+    "sha256": "5c22b933b00db1b50766dafb30da4f57bdb5e7f3f713879f667600df49f17d85",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-02-market.jpg",
+    "bytes": 227817,
+    "sha256": "7f877116a37dba8f9539575a2803d34b700b3c52ee0d0c5358e3f0b0462fe1f2",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-03-trade.jpg",
+    "bytes": 122797,
+    "sha256": "d1202484f14bebc3f91af554100b756b59a4fae7e6a0cb13c6b0ac9f086d8b7c",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-04-houses.jpg",
+    "bytes": 176650,
+    "sha256": "17fc6ccf435b246385ed811a64b78879f9f506c98e172f185a1714f66db54476",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-05-celebration.jpg",
+    "bytes": 96623,
+    "sha256": "21efcf1e2355d801c71199eb4f9434298c1da445fd604d4b9d7e5bfa83e457c8",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-06-market-owned.jpg",
+    "bytes": 242954,
+    "sha256": "270a343fc90731f08bfaffe9760ac66c12df423692edf9bc4655f90c25ee730b",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-07-result-home.jpg",
+    "bytes": 134176,
+    "sha256": "d076f11b1328038e4463b8f4f075803547b7f1fedc970da67bcd17ae7ab38090",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080-08-result-rent.jpg",
+    "bytes": 139427,
+    "sha256": "d0ff789943d71a7d554b455961cedd42102f9f95c14430b0046e26c838afcd27",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-01-start.jpg",
+    "bytes": 198493,
+    "sha256": "c5b868111889c746c8b4064b869b86530e0a9ebd91ef1bce6f4dab80426b3935",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-02-market.jpg",
+    "bytes": 256494,
+    "sha256": "dd4a45d4ae7564c56fc8447c60f3ad9717ec61ba0bfcb069b2c7ab8684940405",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-03-trade.jpg",
+    "bytes": 134969,
+    "sha256": "0f3e72bd5fffc85fe7ab66f42a9554bcc3b03a55a475438dace431e945f37093",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-04-houses.jpg",
+    "bytes": 188035,
+    "sha256": "03cd74c3f5ec4a366af068965fe4badf3f4b4c0df7cc9cd4c377c2df79884e10",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-05-celebration.jpg",
+    "bytes": 106116,
+    "sha256": "67b9a452874fc7e3b80568392140b786affee423a44630d65f33c9d18bb6d88f",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-06-market-owned.jpg",
+    "bytes": 259414,
+    "sha256": "47193c5d8a8f890c7447041a2935d0e5be5752135de5c76bcca4827f2e2e7225",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-07-result-home.jpg",
+    "bytes": 144793,
+    "sha256": "2b49c284fd7dab8dc88700e944184c39215b0dcebff7bd5d92741ee06cd6173a",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@125-08-result-rent.jpg",
+    "bytes": 153799,
+    "sha256": "34c069b35a1120785b7424841f3c7458b3434056d6b3f98e03ac695e574a3db5",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-01-start.jpg",
+    "bytes": 196355,
+    "sha256": "5b6f6f1d084347b326fbdc0ca0d013bc5f66bd9854d9b86804e7ff5b1cc15182",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-02-market.jpg",
+    "bytes": 256915,
+    "sha256": "b5d13da5efb4b96bceb1af5075f7d5cf14a9204fe3210861c9c9c68029319cce",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-03-trade.jpg",
+    "bytes": 148382,
+    "sha256": "ccb3294b10d543bde0d2c39052fa58b7e8db6dab23ff7243ea18f54adc751f57",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-04-houses.jpg",
+    "bytes": 189964,
+    "sha256": "f3ca3b8092472563880baea448ad88bcccd1700197c91bbbdd432e5cfab72afa",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-05-celebration.jpg",
+    "bytes": 121868,
+    "sha256": "6b6030393a89cea08872c829ce0288620cdba3e2521b165750a3aa363aff0647",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-06-market-owned.jpg",
+    "bytes": 259502,
+    "sha256": "ec0b071ab93b4a82f67fb20f580e10422c40703c711bc515e36b2ff3fdce44e0",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-07-result-home.jpg",
+    "bytes": 141266,
+    "sha256": "ea660dc59f9281f16ca0bc705c4cba208c9a4313207723500c889ea6eada8743",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/1920x1080@150-08-result-rent.jpg",
+    "bytes": 156116,
+    "sha256": "7ca2553c8ba133fd0a14e06ab18a84970773a57390d64b6cb9dc50f9368b1898",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-01-start.jpg",
+    "bytes": 311003,
+    "sha256": "3cf725f72c4a1b9a1b5b5f6650466dda9f8bd76ee19d38b15cabb435627ef307",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-02-market.jpg",
+    "bytes": 279770,
+    "sha256": "a37ae2674ca765b79b08c8a7e83bd41044414890c31e4f2c7470ebe14e1089f3",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-03-trade.jpg",
+    "bytes": 151966,
+    "sha256": "b8f38b0a69c6288dcb5d1cfe155698979a26b2e4de3bdebc223fd879dc5d70e9",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-04-houses.jpg",
+    "bytes": 225810,
+    "sha256": "ca4ba53eda7bc86934c75107b5cfbeed324580da583c9542fcb5225fdf7f3e4e",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-05-celebration.jpg",
+    "bytes": 119239,
+    "sha256": "fe28003bcfd695540c02040ca5e26d5d821c3b9dda6ca7cf90a24cfd582e7f7f",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-06-market-owned.jpg",
+    "bytes": 301616,
+    "sha256": "9b0717b76a00a5c38254817521a8ca86bfccd142d23b61650511b15cec6aa09f",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-07-result-home.jpg",
+    "bytes": 177773,
+    "sha256": "f7bf465efef9ecc3d0d1abb22aacdcb45fa1d230db1cca2406c74c207df2102a",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/2560x1440-08-result-rent.jpg",
+    "bytes": 186938,
+    "sha256": "ac53fd79a01c105e11d1ab530600bae2251024f9de0e2d25944429e3da03636d",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/reduced-motion-celebration.jpg",
+    "bytes": 69865,
+    "sha256": "9291bac76e718387746d805885afb32defa3a60944290bf794ae59ab4e9d139a",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/season-autumn-sprint.jpg",
+    "bytes": 161805,
+    "sha256": "a9116982584274c4277a6b616092deb83e36829addd4bbed576344cdd54bb0f3",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/season-spring-development.jpg",
+    "bytes": 159757,
+    "sha256": "703932038255c87818a5e5f2438a7440a751381207ea633d9970736384254c82",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/season-summer-development.jpg",
+    "bytes": 159253,
+    "sha256": "e718030fc25170e73c0dc7ea87a480faf78f51d3989fd1a3e1cdedf3570177e0",
+    "status": "captured"
+  },
+  {
+    "path": "av-visual/season-winter-early.jpg",
+    "bytes": 160960,
+    "sha256": "d140ed0c36922bbabf50eba2e24b881d2386c9df34e9b6bdf662c80d03718c00",
+    "status": "captured"
+  },
+  {
+    "path": "b-review/week2-bulletin-1366.png",
+    "bytes": 616772,
+    "sha256": "0c7c815edcd3a81561be60bb8f9cc5ac7e139e095aa3bcdbc403144d84b73137",
+    "status": "captured"
+  },
+  {
+    "path": "b-review/week2-bulletin-1600.png",
+    "bytes": 766328,
+    "sha256": "86bc4b313446760c8cae1ae5c1293a768c20fbfdfe3dd1d029af89543ee9b023",
+    "status": "captured"
+  },
+  {
+    "path": "b-review/week2-trade-1366.png",
+    "bytes": 360303,
+    "sha256": "74b9d5424c1f5ddc576ce11082058fa70fc4a6eeba4603e00ce393cf7b0f2abe",
+    "status": "captured"
+  },
+  {
+    "path": "b-review/week2-trade-1600.png",
+    "bytes": 766328,
+    "sha256": "86bc4b313446760c8cae1ae5c1293a768c20fbfdfe3dd1d029af89543ee9b023",
+    "status": "withdrawn"
+  },
+  {
+    "path": "new-ui/fallback-1000.png",
+    "bytes": 444944,
+    "sha256": "263f204f569f429c78a299ec31a3147268709c6531ea77b77b18a49ac7da0ae8",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/fallback-650.png",
+    "bytes": 314346,
+    "sha256": "f80837e4492530fd9b50e83c7cf363cb676a33dd599d5f519ec9c137b4806fa7",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-filtered.png",
+    "bytes": 621937,
+    "sha256": "1ab2e1497fbc3e0582b005441e8b79be480049248ac71d7e7fc041d15c0f4d7d",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-1280.png",
+    "bytes": 548529,
+    "sha256": "ecba8b60a6ba234b59f87daa4cba086f915f9bcb804960f34acc8d3ef73cc04a",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-1366.png",
+    "bytes": 618522,
+    "sha256": "b0b9b984e0b71ff9ed0b000eb9fea692b012183a1084e14c19a7b0a874614b5e",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-1536.png",
+    "bytes": 722020,
+    "sha256": "588895a0b271907b5d8b89eeaafd89ca5eb25b76663960fccad605913a090953",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-1600.png",
+    "bytes": 779267,
+    "sha256": "51d7dde8066cb8843bbccb73d7a5af7954719e9a15903ec5ad1f4986865037da",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-1920.png",
+    "bytes": 992909,
+    "sha256": "3421e0b155f386a1eabc4c915a9d38fcf0569ad3058cb2c042e43f55f8485892",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/full-legacy-long-2560.png",
+    "bytes": 1377759,
+    "sha256": "201b5bda47068cbf1f0d8180f3b8127c8d921834b97b2bed5ec53244534ecc0e",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/legacy-sale.png",
+    "bytes": 619042,
+    "sha256": "0a784d130934373b9a467616bee2e9159866a9f5c8f5aa46b39536844ce0f713",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-1280x720.png",
+    "bytes": 921107,
+    "sha256": "b730c334a1c6af32b1791eac875a4e7564b6fa12518a934e58bf4c11ffeabcba",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-1366x768.png",
+    "bytes": 572520,
+    "sha256": "d9ef0c7b0348c29d649c9eb8a9e1e459a3d508d2b0cbe1beb51ddc97de72a3d6",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-1536x864.png",
+    "bytes": 860554,
+    "sha256": "20c2639896c49b533f83dc366648e1fb3aaf3a953096327793abf351be2c6cbb",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-1600x900.png",
+    "bytes": 711961,
+    "sha256": "cf89b8ce14e7bc029c31c644ca3caaf5c60d3983366e92a9a60b83fac6bd8d44",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-1920x1080.png",
+    "bytes": 913217,
+    "sha256": "fdf97224a0a906df2b281e91ed072f2a26a9f3b1bc5a1e56b32bb631dc0e4461",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/new-2560x1440.png",
+    "bytes": 1235580,
+    "sha256": "c61f34bee47b17cc338121a0e323c83f07456ee41e8190be248f9bdc1811651e",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/off-sale.png",
+    "bytes": 635154,
+    "sha256": "baa543491ade20abe595af147320900c4a49a3e8903dabd0b556eab90446f4ad",
+    "status": "captured"
+  },
+  {
+    "path": "new-ui/personal-expanded-ongoing.png",
+    "bytes": 591834,
+    "sha256": "2c478a1dc9fbe6e93cf33195c2bc871f1e4925ad9852cf1ca1d6ec6247b0d63f",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/fallback-1000.png",
+    "bytes": 444944,
+    "sha256": "263f204f569f429c78a299ec31a3147268709c6531ea77b77b18a49ac7da0ae8",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/fallback-650.png",
+    "bytes": 314346,
+    "sha256": "f80837e4492530fd9b50e83c7cf363cb676a33dd599d5f519ec9c137b4806fa7",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-filtered.png",
+    "bytes": 621937,
+    "sha256": "1ab2e1497fbc3e0582b005441e8b79be480049248ac71d7e7fc041d15c0f4d7d",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-1280.png",
+    "bytes": 548525,
+    "sha256": "92e229e909a75a4751750049dd34ec926630f9e683fac6c8c217a45d40e093d9",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-1366.png",
+    "bytes": 618522,
+    "sha256": "b0b9b984e0b71ff9ed0b000eb9fea692b012183a1084e14c19a7b0a874614b5e",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-1536.png",
+    "bytes": 722020,
+    "sha256": "588895a0b271907b5d8b89eeaafd89ca5eb25b76663960fccad605913a090953",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-1600.png",
+    "bytes": 779291,
+    "sha256": "86e6dda45750a1388c0b48a83887bb1a6ab472fc12d802cce6a6acbadf24391f",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-1920.png",
+    "bytes": 992909,
+    "sha256": "3421e0b155f386a1eabc4c915a9d38fcf0569ad3058cb2c042e43f55f8485892",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/full-legacy-long-2560.png",
+    "bytes": 1377759,
+    "sha256": "201b5bda47068cbf1f0d8180f3b8127c8d921834b97b2bed5ec53244534ecc0e",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/legacy-sale.png",
+    "bytes": 619042,
+    "sha256": "0a784d130934373b9a467616bee2e9159866a9f5c8f5aa46b39536844ce0f713",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-1280x720.png",
+    "bytes": 921107,
+    "sha256": "b730c334a1c6af32b1791eac875a4e7564b6fa12518a934e58bf4c11ffeabcba",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-1366x768.png",
+    "bytes": 572520,
+    "sha256": "d9ef0c7b0348c29d649c9eb8a9e1e459a3d508d2b0cbe1beb51ddc97de72a3d6",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-1536x864.png",
+    "bytes": 860554,
+    "sha256": "20c2639896c49b533f83dc366648e1fb3aaf3a953096327793abf351be2c6cbb",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-1600x900.png",
+    "bytes": 711961,
+    "sha256": "cf89b8ce14e7bc029c31c644ca3caaf5c60d3983366e92a9a60b83fac6bd8d44",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-1920x1080.png",
+    "bytes": 913217,
+    "sha256": "fdf97224a0a906df2b281e91ed072f2a26a9f3b1bc5a1e56b32bb631dc0e4461",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/new-2560x1440.png",
+    "bytes": 1235580,
+    "sha256": "c61f34bee47b17cc338121a0e323c83f07456ee41e8190be248f9bdc1811651e",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/off-sale.png",
+    "bytes": 635154,
+    "sha256": "baa543491ade20abe595af147320900c4a49a3e8903dabd0b556eab90446f4ad",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/p2-detail-clear-focus.png",
+    "bytes": 573736,
+    "sha256": "e9cbe2d03f201da6437d3736067e790849071c7323fc8705bd78dbc5e2cc3f46",
+    "status": "captured"
+  },
+  {
+    "path": "review-p2-ui/personal-expanded-ongoing.png",
+    "bytes": 591834,
+    "sha256": "2c478a1dc9fbe6e93cf33195c2bc871f1e4925ad9852cf1ca1d6ec6247b0d63f",
+    "status": "captured"
+  },
+  {
+    "path": "review-p3-b/week2-bulletin-1366.png",
+    "bytes": 616667,
+    "sha256": "6d5c8dec4dfcc084361a6587249b4016e2420e4d7735d6f7cf162589bccd522d",
+    "status": "captured"
+  },
+  {
+    "path": "review-p3-b/week2-bulletin-1600.png",
+    "bytes": 766175,
+    "sha256": "27897a680a8f72c902d1380386dcf8fcfaafa9739d82882fb35c55acb30d1853",
+    "status": "captured"
+  },
+  {
+    "path": "review-p3-b/week2-trade-1366.png",
+    "bytes": 360355,
+    "sha256": "f503c8bc21ec7696e3f9e5443096870d985e63c76df98aee9d33d52f5137797f",
+    "status": "captured"
+  },
+  {
+    "path": "review-p3-b/week2-trade-1600.png",
+    "bytes": 450871,
+    "sha256": "74db3cdc3c2a21752e882bfc985dffa33018ec0b1588a7de2f3ce2067bc27416",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/houses.png",
+    "bytes": 210839,
+    "sha256": "f8149d2ddc34c5485485000283ead22e9bf31e5d607b95e247cf66beb47ac753",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-125-equivalent.png",
+    "bytes": 678422,
+    "sha256": "a0d89e20f2c6ec64fa174813ea820371c7a6c6f3a67cb70379b24d2759860341",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-1366.png",
+    "bytes": 578990,
+    "sha256": "d6ddbdef57e36793177946672a2d9b08d66543a3c39a156dd862d01c268e1782",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-150-equivalent.png",
+    "bytes": 515632,
+    "sha256": "3d015ac62dea76002f69766f7450b4f1904b286815e33989f37c8582a6e60ee6",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-1600.png",
+    "bytes": 717410,
+    "sha256": "caf5ad939a8a0e5c58d3419f8eca479ea2ede1f7d8dbf71aa149661e00c217f9",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-1920.png",
+    "bytes": 922421,
+    "sha256": "ec5222803cf3fa2a5d31ffc2fc956bb29b6ce6f0dd90354de965d5ee1315a1fd",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/market-2560.png",
+    "bytes": 1246695,
+    "sha256": "31cfd19bf27fe58a53604b8c9f7c3e6570f8c17f6d7a0ca32e9c180b7ef23e9c",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/result-no-house.png",
+    "bytes": 151335,
+    "sha256": "968e44e7b8e8b4bcc785c945c21d862cfb6f18d46db7bcf4f32818d25c8e5fdc",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/result-owned.png",
+    "bytes": 144469,
+    "sha256": "c9490cc336b68254637989bed1147e8c95867da87e7c7189b827afb90d52e5eb",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/settings.png",
+    "bytes": 298491,
+    "sha256": "496f599a5398722dd6481337cdbccd648975f73d84857f150cc9e4cf5d3caf0d",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/start.png",
+    "bytes": 279341,
+    "sha256": "2d21746dad00ece5bdd51d70bbc48111857153d43f006e32742a891be228070a",
+    "status": "captured"
+  },
+  {
+    "path": "review-system/trade.png",
+    "bytes": 322705,
+    "sha256": "f73356db6bedaf8427e3ee4e1edc025c1bc4fc23a041f024963022cf67b2bbd1",
+    "status": "captured"
+  },
+  {
+    "path": "review-ui-interaction/market-1366.png",
+    "bytes": 615591,
+    "sha256": "d6b3600387b84559181cf5f99a1de5b141bc8e7052e7d81bd360aad0b33b135a",
+    "status": "captured"
+  },
+  {
+    "path": "review-ui-interaction/market-1600.png",
+    "bytes": 767919,
+    "sha256": "de409707e4f0373381a02948fc5da98dc05e8d492741ad03e5903633a4e5743a",
+    "status": "captured"
+  },
+  {
+    "path": "review-ui-interaction/market-1920.png",
+    "bytes": 987235,
+    "sha256": "a6a67649ca817f8f52c862c2e19a2c29a6de1b9896120d0be7398e8febda7534",
+    "status": "captured"
+  },
+  {
+    "path": "review-ui-interaction/market-2560.png",
+    "bytes": 1336209,
+    "sha256": "dea9f74d45452a539785fc428449f4447f44dfdbb118e913ab4a1b5bd140ff33",
+    "status": "captured"
+  },
+  {
+    "path": "review-ui-interaction/result.png",
+    "bytes": 877817,
+    "sha256": "81b48e25828518188bc7670342a8fd3351f871df29c19ffd165a4041382b3356",
+    "status": "captured"
+  },
+  {
+    "path": "ui-interaction/market-1366.png",
+    "bytes": 615692,
+    "sha256": "256b24e0589f588cd8c393633a3939b2fa7f7d498d7e16dd5e15c3ad3e2be26f",
+    "status": "captured"
+  },
+  {
+    "path": "ui-interaction/market-1600.png",
+    "bytes": 767995,
+    "sha256": "423dcdae9a64eefd36cf26a613af51523958beb5c0deecbf6afca27fd4d668e6",
+    "status": "captured"
+  },
+  {
+    "path": "ui-interaction/market-1920.png",
+    "bytes": 987347,
+    "sha256": "ef55a9410be8d7cda7832896cebaff13dddcb86b55df66b9c5a2ea90eeb4797a",
+    "status": "captured"
+  },
+  {
+    "path": "ui-interaction/market-2560.png",
+    "bytes": 1336278,
+    "sha256": "fbddf9c4bc92696123e0da231d460523e989ea16a452061aa9ecb5489ba667cc",
+    "status": "captured"
+  },
+  {
+    "path": "ui-interaction/result.png",
+    "bytes": 877250,
+    "sha256": "173e7f161cd7774806b91c6d9e2e96abeadc337930b8a5942e4617d9499faf23",
+    "status": "captured"
+  }
+]

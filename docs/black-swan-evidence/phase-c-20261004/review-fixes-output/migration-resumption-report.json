@@ -1,0 +1,43 @@
+{
+  "supersedes": "original C runner output safety/formal-summary/formal-size capability ONLY; original 540 data retained",
+  "issues": [
+    "P2-1 prewrite output isolation",
+    "P2-2 identity-aware single-cohort summary",
+    "P2-3 <=540 legacy CLI bound/formal disabled"
+  ],
+  "createdAfterOriginal540": true,
+  "sourceChanges": {
+    "before": {
+      "simulation/black-swan.cjs": "1714fad451deb7315c3e0f499c746c69c61e6fe4b6c10998545e4d6a31daf23c",
+      "tests/black-swan-simulation.cjs": "8827051b6312f0d7a320f1df9a8d33f31cc0fcd7f1c97ee44ded51b348ad6956"
+    },
+    "after": {
+      "simulation/black-swan.cjs": "89abe5c1b5999df228348a012261582aad8714f78a9cad6d8776a9e3843f1da9",
+      "tests/black-swan-simulation.cjs": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6"
+    }
+  },
+  "oldIdentityHash": "b199acfe107e1622f52a8cbb91193c7c67530c97b1e7746e7b1e5c99180dff4e",
+  "newIdentityHash": "8aa4b1827ce396027fd771ebc8481aacb32bc7a9a5fe9365561d863457259462",
+  "completedDataHash": "95738e6bc45088ef9878bdb39d7e18beb2e9a1d35c33f1e614f3946cffabb0c6",
+  "completedGamesReused": 540,
+  "newGamesExecuted": 0,
+  "engineCalls": 0,
+  "originalCEvidenceFilesVerified": 30,
+  "protectedAfter": {
+    "verified": true,
+    "files": 752
+  },
+  "resumedProtectedAfter": {
+    "verified": true,
+    "files": 782
+  },
+  "outcomesHash": "dccb824d6aa6c289ae3b164053573d236626105a415ac1401cd14096191f66d4",
+  "marketPathsHash": "c39312740c24aacb215981efb785f4e21e9da81c96b2c67c44c270e748d73b8f",
+  "dataBytesIdentical": true,
+  "sourceDiffs": [
+    "runner.diff",
+    "tests.diff"
+  ],
+  "oldMetadataFileHash": "d214515457c35e7f676f3ac1207a0b6aa0bffa61769c19468adb27ff156696ba",
+  "newMetadataFileHash": "7c762a794b3e11259344b3f298e28dec952ec752da2d6a447c07facb1a096288"
+}

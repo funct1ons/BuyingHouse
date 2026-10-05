@@ -5,7 +5,7 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = vm.createContext({console});
 context.window = context;
-for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
+for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
 }
 const H = context.HomeYear;
@@ -70,22 +70,22 @@ check('v2导入写独立备份且不覆盖本地v2', () => {
   const staged = saves.stageLegacy(raw);
   if (!staged.ok) throw Error(staged.error);
   if (map.get('homeyear.save.v2') !== 'LOCAL-ORIGINAL') throw Error('导入覆盖了本地v2');
-  if (map.has('homeyear.save.v3')) throw Error('导入提前写入了v3');
+  if (map.has('homeyear.save.v4')) throw Error('导入提前写入了v4');
   if (map.get(staged.backup) !== raw) throw Error('备份不是导入原文');
   if (!staged.state.migration || staged.state.migration.backup !== staged.backup) throw Error('备份路径未写入存档');
   if (staged.state.activeEvents.length || staged.state.news.some(n => n.id === 'flu')) throw Error('旧事件或旧新闻未清空');
 });
-check('损坏v3不带replaceDamaged不能迁移', () => {
+check('损坏v4不带replaceDamaged不能迁移', () => {
   const raw = fs.readFileSync(path.join(root, 'docs/fixtures/v2-baseline-migrate.json'), 'utf8');
   const map = new Map();
-  map.set('homeyear.save.v3', 'BROKEN');
+  map.set('homeyear.save.v4', 'BROKEN');
   map.set('homeyear.save.v2', raw);
   const store = {getItem:k=>map.has(k)?map.get(k):null, setItem:(k,v)=>map.set(k,v), removeItem:k=>map.delete(k)};
   const saves = new H.SaveAdapter(store);
   if (saves.load().ok) throw Error('坏档未被隔离');
   const denied = saves.migrate(raw);
   if (denied.ok) throw Error('隔离状态被偷带替换');
-  if (map.get('homeyear.save.v3') !== 'BROKEN') throw Error('坏档被覆盖');
+  if (map.get('homeyear.save.v4') !== 'BROKEN') throw Error('坏档被覆盖');
   if (map.get('homeyear.save.v2') !== raw) throw Error('v2被改写');
   const allowed = saves.migrate(raw, {replaceDamaged:true});
   if (!allowed.ok) throw Error(allowed.error);

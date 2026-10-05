@@ -10,10 +10,11 @@
     return (a >>> 0).toString(16).padStart(8, '0') + (b >>> 0).toString(16).padStart(8, '0');
   };
   H.SaveAdapter = function (storage) {
-    const key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1';
+    const key = 'homeyear.save.v4', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1';
     let quarantined = false, damagedRaw = null;
     this.key = key;
     this.legacyKey = legacyKey;
+    this.v3Key = v3Key;
     this.settingsKey = settingsKey;
     function getStorage() {
       if (storage) return storage;
@@ -49,21 +50,38 @@
         return {ok: true, state: H.clone(value)};
       } catch (e) { return failure(e); }
     };
+    this.parseV3 = raw => {
+      try {
+        if (typeof raw !== 'string' || !raw.length || raw.length > 2000000) throw Error('旧 v3 文本为空或过大');
+        const value = JSON.parse(raw);
+        if (!H.v3) throw Error('冻结 v3 校验不可用');
+        H.v3.validate(value);
+        return {ok: true, state: H.clone(value)};
+      } catch (e) { return failure(e); }
+    };
     this.load = () => {
       let raw = null;
       try {
         const store = getStorage();
         raw = store.getItem(key);
-        const legacyRaw = store.getItem(legacyKey);
-        const legacy = legacyRaw === null ? null : this.parseLegacy(legacyRaw);
+        // A valid current save is authoritative even when an unrelated old-key read fails.
+        const readOld = (oldKey, parse) => {
+          try { const text = store.getItem(oldKey); return text === null ? null : parse(text); }
+          catch (e) { return failure(e); }
+        };
+        const oldV3 = readOld(v3Key, this.parseV3);
+        const legacy = readOld(legacyKey, this.parseLegacy);
         if (raw === null) {
-          if (store.getItem(v1Key) !== null) throw Error('发现旧版存档：不支持自动迁移，请保留原档');
-          return {ok: true, state: null, legacy};
+          // Recognized v3/v2 saves take precedence over an unrelated v1 remnant.
+          // Only consult v1 when neither supported old format validated successfully.
+          if (!(oldV3 && oldV3.ok) && !(legacy && legacy.ok) && store.getItem(v1Key) !== null) throw Error('发现旧版存档：不支持自动迁移，请保留原档');
+          quarantined = false; damagedRaw = null;
+          return {ok: true, state: null, legacy, oldV3};
         }
         const parsed = this.parse(raw);
         if (!parsed.ok) throw Error(parsed.error);
         quarantined = false; damagedRaw = null;
-        return {...parsed, legacy};
+        return {...parsed, legacy, oldV3};
       } catch (e) {
         quarantined = true; damagedRaw = raw;
         let legacy = null;
@@ -71,7 +89,9 @@
           const legacyRaw = getStorage().getItem(legacyKey);
           if (legacyRaw !== null) legacy = this.parseLegacy(legacyRaw);
         } catch (ignore) {}
-        return {...failure(e), raw, legacy};
+        let oldV3 = null;
+        try { const oldRaw = getStorage().getItem(v3Key); if (oldRaw !== null) oldV3 = this.parseV3(oldRaw); } catch (ignore) {}
+        return {...failure(e), raw, legacy, oldV3};
       }
     };
     this.readKey = storageKey => {
@@ -85,13 +105,17 @@
       const read = this.readKey(legacyKey);
       return read.ok ? read.raw : null;
     };
-    this.stageLegacy = raw => {
+    this.oldRaw = () => {
+      const read = this.readKey(v3Key);
+      return read.ok && read.raw !== null ? read.raw : this.legacyRaw();
+    };
+    const stage = (raw, version) => {
       try {
         const store = getStorage();
-        let beforeLegacy;
-        try { beforeLegacy = store.getItem(legacyKey); }
+        let beforeLegacy, beforeV3;
+        try { beforeLegacy = store.getItem(legacyKey); beforeV3 = store.getItem(v3Key); }
         catch (e) { return failure(e); }
-        const parsed = this.parseLegacy(raw);
+        const parsed = version === 3 ? this.parseV3(raw) : this.parseLegacy(raw);
         if (!parsed.ok) return parsed;
         let backupKey;
         try { backupKey = writeBackup(store, raw); }
@@ -99,17 +123,33 @@
         let afterLegacy;
         try { afterLegacy = store.getItem(legacyKey); }
         catch (e) { return failure(e); }
-        if (afterLegacy !== beforeLegacy) return failure(Error('旧档原键被意外改写'));
+        if (afterLegacy !== beforeLegacy || store.getItem(v3Key) !== beforeV3) return failure(Error('旧档原键被意外改写'));
         if (store.getItem(backupKey) !== raw) return failure(Error('备份回读不一致'));
-        const converted = H.migrateV2(parsed.state, backupKey);
+        const converted = version === 3 ? H.migrateV3(parsed.state, backupKey) : H.migrateV2(parsed.state, backupKey);
         return {ok: true, state: H.clone(converted), backup: backupKey};
       } catch (e) { return failure(e); }
     };
+    this.stageLegacy = raw => stage(raw, 2);
+    this.stageV3 = raw => stage(raw, 3);
+    this.stageOld = raw => {
+      try { return JSON.parse(raw).version === 3 ? this.stageV3(raw) : this.stageLegacy(raw); }
+      catch (e) { return failure(e); }
+    };
+    function writeCurrent(store, encoded) {
+      const before = store.getItem(key);
+      try {
+        store.setItem(key, encoded);
+        if (store.getItem(key) !== encoded) throw Error('新档回读不一致');
+      } catch (e) {
+        try { if (before === null) store.removeItem(key); else store.setItem(key, before); } catch (ignore) {}
+        throw e;
+      }
+    }
     this.save = (state, options = {}) => {
       try {
         H.validate(state);
         if (quarantined && options.replaceDamaged !== true) throw Error('原存档已隔离，请先导出原文，再明确覆盖或删除');
-        getStorage().setItem(key, JSON.stringify(state));
+        writeCurrent(getStorage(), JSON.stringify(state));
         quarantined = false; damagedRaw = null;
         return {ok: true};
       } catch (e) { return failure(e); }
@@ -117,15 +157,21 @@
     this.migrate = (raw, options = {}) => {
       try {
         if (quarantined && options.replaceDamaged !== true) return failure(Error('原存档已隔离，请先导出原文，再明确覆盖或删除'));
-        const staged = this.stageLegacy(raw);
+        const staged = this.stageOld(raw);
         if (!staged.ok) return staged;
         const store = getStorage();
-        const beforeLegacy = store.getItem(legacyKey);
+        const beforeLegacy = store.getItem(legacyKey), beforeV3 = store.getItem(v3Key), beforeCurrent = store.getItem(key);
         const encoded = JSON.stringify(staged.state);
-        store.setItem(key, encoded);
-        if (store.getItem(key) !== encoded) throw Error('新档回读不一致');
-        if (store.getItem(legacyKey) !== beforeLegacy) throw Error('旧档原键被意外改写');
         if (store.getItem(staged.backup) !== raw) throw Error('备份回读不一致');
+        try {
+          writeCurrent(store, encoded);
+          if (store.getItem(v3Key) !== beforeV3) throw Error('旧 v3 原键被意外改写');
+          if (store.getItem(legacyKey) !== beforeLegacy) throw Error('旧档原键被意外改写');
+          if (store.getItem(staged.backup) !== raw) throw Error('备份回读不一致');
+        } catch (e) {
+          try { if (beforeCurrent === null) store.removeItem(key); else store.setItem(key, beforeCurrent); } catch (ignore) {}
+          throw e;
+        }
         quarantined = false; damagedRaw = null;
         return {ok: true, state: staged.state, backup: staged.backup};
       } catch (e) { return failure(e); }
@@ -149,7 +195,11 @@
       return read.raw;
     };
     this.import = (raw, engine) => {
-      const parsed = this.parse(raw);
+      let parsed;
+      try {
+        const version = JSON.parse(raw).version;
+        parsed = version === 2 || version === 3 ? this.stageOld(raw) : this.parse(raw);
+      } catch (e) { return failure(e); }
       if (!parsed.ok) return parsed;
       try { engine.restore(parsed.state); return {ok: true}; } catch (e) { return failure(e); }
     };

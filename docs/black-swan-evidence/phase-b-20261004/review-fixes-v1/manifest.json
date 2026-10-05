@@ -1,0 +1,1275 @@
+{
+  "base": "a53834511d58c127957da8873a1df18a7abf02a5",
+  "supersedes": "docs/black-swan-evidence/phase-b-20261004/manifest.json",
+  "supersedesScopes": [
+    "supported old save + residual v1 load precedence",
+    "actual result.assets / stats.peak / localStorage property getter testing"
+  ],
+  "previousManifestSha256": "653d33b53213bfac53e11103c1707a5b0c943695a464dbc73914404797760239",
+  "beforeSaveSha256": "2e86a8650f6946e99ad68c89daa39ec1e5e7ceb375aeb09871ccab7459aa0109",
+  "changes": [
+    {
+      "path": "js/save.js",
+      "beforeSha256": "2e86a8650f6946e99ad68c89daa39ec1e5e7ceb375aeb09871ccab7459aa0109",
+      "afterSha256": "e99d50e04957bc748d93f131afb15b8d51d67e7c7463c7a0145df2d8c57ca383"
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "beforeSha256": "605db09a783f19c384767aed349e879bae088cec8df7dc4e78647e82fcc2c881",
+      "afterSha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9"
+    }
+  ],
+  "unchangedPriorLiveFiles": 31,
+  "historical": [
+    {
+      "path": "docs/fixtures/v2-baseline-migrate.json",
+      "sha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+      "baselineSha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+      "identical": true,
+      "currentSha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c"
+    },
+    {
+      "path": "docs/gameplay-rule-freeze.md",
+      "sha256": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6",
+      "baselineSha256": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6",
+      "identical": true,
+      "currentSha256": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6"
+    },
+    {
+      "path": "docs/gameplay-v4-balance.md",
+      "sha256": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052",
+      "baselineSha256": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052",
+      "identical": true,
+      "currentSha256": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.json",
+      "sha256": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e",
+      "baselineSha256": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e",
+      "identical": true,
+      "currentSha256": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.md",
+      "sha256": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5",
+      "baselineSha256": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5",
+      "identical": true,
+      "currentSha256": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.json",
+      "sha256": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b",
+      "baselineSha256": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b",
+      "identical": true,
+      "currentSha256": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b"
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.md",
+      "sha256": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67",
+      "baselineSha256": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67",
+      "identical": true,
+      "currentSha256": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67"
+    },
+    {
+      "path": "docs/gameplay-v4-c1.json",
+      "sha256": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e",
+      "baselineSha256": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e",
+      "identical": true,
+      "currentSha256": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e"
+    },
+    {
+      "path": "docs/gameplay-v4-c1.md",
+      "sha256": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d",
+      "baselineSha256": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d",
+      "identical": true,
+      "currentSha256": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d"
+    },
+    {
+      "path": "docs/gameplay-v4-formal-summary.md",
+      "sha256": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132",
+      "baselineSha256": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132",
+      "identical": true,
+      "currentSha256": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132"
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.json",
+      "sha256": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888",
+      "baselineSha256": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888",
+      "identical": true,
+      "currentSha256": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888"
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.md",
+      "sha256": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303",
+      "baselineSha256": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303",
+      "identical": true,
+      "currentSha256": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303"
+    },
+    {
+      "path": "docs/gameplay-v4-primary.json",
+      "sha256": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc",
+      "baselineSha256": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc",
+      "identical": true,
+      "currentSha256": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc"
+    },
+    {
+      "path": "docs/gameplay-v4-primary.md",
+      "sha256": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4",
+      "baselineSha256": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4",
+      "identical": true,
+      "currentSha256": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4"
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "baselineSha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "identical": true,
+      "currentSha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f"
+    },
+    {
+      "path": "js/statistics.js",
+      "sha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "baselineSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "identical": true,
+      "currentSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd"
+    },
+    {
+      "path": "js/trading.js",
+      "sha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "baselineSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "identical": true,
+      "currentSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc"
+    },
+    {
+      "path": "js/v2-baseline.js",
+      "sha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "baselineSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "identical": true,
+      "currentSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328"
+    },
+    {
+      "path": "simulation/c1.cjs",
+      "sha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "baselineSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "identical": true,
+      "currentSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479"
+    }
+  ],
+  "live": [
+    {
+      "path": "README.md",
+      "sha256": "0bcdabd225654727d3c811bc5a984edf5a9a6f09b2b19e1cc90989ea4d0f066b"
+    },
+    {
+      "path": "css/scenes.css",
+      "sha256": "f432f0a2d5f125243e40bb855d6572ee773186192a6467871c75807d8f00f316"
+    },
+    {
+      "path": "docs/gameplay-rules-0.5.md",
+      "sha256": "1e7edfc2eff928f4d876d52690430df800eda54683d802258bf390a596426579"
+    },
+    {
+      "path": "docs/save-v4.md",
+      "sha256": "1a7c570c3579efdba7e63aa471f78601c82e60736ee4ab22d9ba88f533f27cd6"
+    },
+    {
+      "path": "docs/ui.md",
+      "sha256": "7311308fa0b7686b75bcca18e04599b08cd3103c9aecc84bfb4ac4a46b88414b"
+    },
+    {
+      "path": "index.html",
+      "sha256": "05415247138d003bd7fe80e73a01df78980cde714fde6a4bdf2c91e20dab1dec"
+    },
+    {
+      "path": "js/data.js",
+      "sha256": "c3e3526bcc55d72b57044e8580836ad1b7dfa9c0c5587fc516b554934ea19130"
+    },
+    {
+      "path": "js/game.js",
+      "sha256": "78c7b0d418875a7f3e0e98dde759cbc2c9fb69eedbc49db54cf4f3326e447df4"
+    },
+    {
+      "path": "js/market.js",
+      "sha256": "852ee180996b996d846e26bf4a1feac4d25ddc88266a5996d2bc1fdacdb55c74"
+    },
+    {
+      "path": "js/save.js",
+      "sha256": "e99d50e04957bc748d93f131afb15b8d51d67e7c7463c7a0145df2d8c57ca383"
+    },
+    {
+      "path": "js/ui.js",
+      "sha256": "4f55844c5b29e4a348ef47e633815a4650daf02ce9171e91a5f54384745e70a6"
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "sha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379"
+    },
+    {
+      "path": "js/validation.js",
+      "sha256": "a8f2a4b1d32cd24e1c36fecee7c17419d25f6f45e63c8d376c027de49f7b1e01"
+    },
+    {
+      "path": "tests/acceptance-final.cjs",
+      "sha256": "71dea62d8bb0453cfbd8222219589806696e0398c4fe94a641f0f495758f654f"
+    },
+    {
+      "path": "tests/acceptance-supplement.cjs",
+      "sha256": "a179b9770246b038e00bf09536df715ca64821279438a5b1de34833fbb5f3e02"
+    },
+    {
+      "path": "tests/av-audio.cjs",
+      "sha256": "74c315a64b8ea96efdd0ec56dd11fa1339b5481eef251867bc2133863fa3faed"
+    },
+    {
+      "path": "tests/av-integration.cjs",
+      "sha256": "090e22dfb32efd61f25b468b0da456c8ac2c57c77443bc31b12b015e315f5714"
+    },
+    {
+      "path": "tests/av-visual.cjs",
+      "sha256": "33ce9a07f2c389ba8228f85197d385af0cde057a11d8fe361a95f10b545a2362"
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "sha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee"
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "sha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9"
+    },
+    {
+      "path": "tests/browser.html",
+      "sha256": "0104bdb708ebb3d589c3cad38d1e6930d7512879664fb2a6df575ac6db9f8efc"
+    },
+    {
+      "path": "tests/cdp-smoke.cjs",
+      "sha256": "df8628badbf4dcafa8c4c37649c9a51cfc7694ba1515951fad66427228189dc7"
+    },
+    {
+      "path": "tests/milestone-b-edge-migrate.cjs",
+      "sha256": "e6b557e67c9ebbcc20e11fc7c13bba47cb9e1785f91df2cd84eae806cb27362e"
+    },
+    {
+      "path": "tests/milestone-b-edge-review.cjs",
+      "sha256": "293f792499b3f89fbe423606b7f6bfa012df614fe347aab52ac984c25ca53aec"
+    },
+    {
+      "path": "tests/milestone-b-edge.cjs",
+      "sha256": "98ce8eeb26bdff2b1bb2e135823d3e7943115fa3310f6b03a46eaa8cae319a23"
+    },
+    {
+      "path": "tests/milestone-b.cjs",
+      "sha256": "7b5b14f4a0c7bf49354469bd94ca5c5f697a849f931bdf82844956f310457e2f"
+    },
+    {
+      "path": "tests/milestone-d-edge.cjs",
+      "sha256": "26b078a08966b8ddb21139156349f6a1afeee1dc92ad4a18e3f6d70b5f7c100f"
+    },
+    {
+      "path": "tests/review-b2.cjs",
+      "sha256": "5a354ee5931bf25b4e561c0fbd1a54e2112ad11b3054a88a34f6dc76d793bc36"
+    },
+    {
+      "path": "tests/review-fixes.cjs",
+      "sha256": "922b0359ba47cff9497c683cb67b4f72ab61d088bb90bbcbd182a5a95f526b5f"
+    },
+    {
+      "path": "tests/run.cjs",
+      "sha256": "e4ab28dc395c924ed9335c9fc84c4cd6e0dfc3ab09735a5d6618684019bea059"
+    },
+    {
+      "path": "tests/suite.js",
+      "sha256": "c6679610b73b33d7d1f8875c7ee93bdeccf135d870f80160b08d18999dbd5c79"
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "sha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a"
+    },
+    {
+      "path": "tests/ui-interaction.cjs",
+      "sha256": "dfc033ae2c5c9c0187a24e93e759688cf78d55bb0272b66b559f32e7bba89cf1"
+    },
+    {
+      "path": "tests/review-save-v1.cjs",
+      "sha256": "0bde1e6c9d8d23afa3a5fe205015e2b51ac7da29f18ad9d7eb8958842662fd1b"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/browser-report.json",
+      "sha256": "41224e72c7d7a41adb1a1f16e5f5412ab0ffe6bd60542e6a0b95d6fddd9a6c59"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-125-equivalent.png",
+      "sha256": "86120df4168f607646b619327b221440998a2fb8dd1a04dd384eefda1891111d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-1366.png",
+      "sha256": "4de2a0e88e7fca5cdb775ae355429a8dd5a52e798992a1693890c5efdf6a6ef5"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-150-equivalent.png",
+      "sha256": "5502692339080179a2b5ee97c214608f68433201d04dbef18c473b7237cb6a14"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-1600.png",
+      "sha256": "42de4b0dde2ff315a8354241acfb1eca3bd65be5f7f88714f3746620d92498ca"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-1920.png",
+      "sha256": "86c2f93af80eb1d357aa731fb0f52a1a13aff23776526235732dcf81bcb2aa03"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-2560.png",
+      "sha256": "c1fac60a41baf27d7d9eab028aebc724331d4c033d541f5543fcca068405f72d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/major-mixed-directions-1366.png",
+      "sha256": "dc4f774ae004cc2ebd30b49bd24f478e82ad839173a9603733f9d4f300071a63"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser/v3-upgrade-preserved-current-week.png",
+      "sha256": "a2472ee4456a9812b6861b3f23323b8d15c563d8c6802f29d577e816fb16cce6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan-browser.log",
+      "sha256": "24154ddef7f308e6c1154239f7de2ce2247827d0ccc1569ef2dfcf9842560f05"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/black-swan.log",
+      "sha256": "03f5fe429ac3df791af50cc58dfae6d396fdac04ee67f3f609882120ee3a19e0"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/fix-report.md",
+      "sha256": "8a97142cda77ea34b963656c01a1f067eea86cb13a579263530e3dc7e6ddd266"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge/edge-report.json",
+      "sha256": "56e4e67407b0f55641de797f0d8a346456b17cbb4479264845b55a94951c10ab"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-migrate/migration-report.json",
+      "sha256": "3662e6caf0a4334fd376255828856287eb503e74652dfd3eb429c5abd4942907"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-migrate.log",
+      "sha256": "3cd8165f02f2b7b91874e7574c46cb12ec7cae6f69552443dc2835c5b82c433c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review/review-report.json",
+      "sha256": "14e5adcc94a41c930a18769533b7ddd3d8e3eb37212dacb05b756932c1e3ab6a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review/week2-bulletin-1366.png",
+      "sha256": "433af08c7d4c56f4eed19a73248b706c8ac6e8e05390f485329d3ebde0c4b22c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review/week2-bulletin-1600.png",
+      "sha256": "27897a680a8f72c902d1380386dcf8fcfaafa9739d82882fb35c55acb30d1853"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review/week2-trade-1366.png",
+      "sha256": "f503c8bc21ec7696e3f9e5443096870d985e63c76df98aee9d33d52f5137797f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review/week2-trade-1600.png",
+      "sha256": "74db3cdc3c2a21752e882bfc985dffa33018ec0b1588a7de2f3ce2067bc27416"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge-review.log",
+      "sha256": "68e74ccba0550e920ff5b735b5611e5f0624250510bf7dfba1f4166acc094cc4"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b-edge.log",
+      "sha256": "30b8b2c63d746e6bc92967b18b5d50775e7cf0386d4601f7bf291dabf17ed59d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/milestone-b.log",
+      "sha256": "afab737579c8fb419739dfba27d40970921d8a767fc82c35a2847fc9d4d95a93"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/previous-manifest.json",
+      "sha256": "653d33b53213bfac53e11103c1707a5b0c943695a464dbc73914404797760239"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/review-b2.log",
+      "sha256": "ee957927c4e3cf1acd0c9712a8b1d799c5ef5d352d121d3c0ca4356ce2c4fcad"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/review-fixes.log",
+      "sha256": "da0b0078b4aebf75441b679358e54b4c3b6c7ac16988b8c320b0bcc72b440211"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/run.log",
+      "sha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/save-before.js",
+      "sha256": "2e86a8650f6946e99ad68c89daa39ec1e5e7ceb375aeb09871ccab7459aa0109"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_efficiency-fixture.json",
+      "sha256": "ddd63bacbc813cb04ec82a7de6f9eda64de4771a3b2d2b007d57b638cd508319"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_egg_relief-fixture.json",
+      "sha256": "1e7499ef9f0a0d0b81f1ea3a6d224d6ba2c96eecdaf51271011e986f1d4ada7e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_egg_short-fixture.json",
+      "sha256": "166ba0e288a6b3ce28a44e8668c15024c6fc705845eea94113ddd89916e94bd4"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_heat-fixture.json",
+      "sha256": "6dc8fdba6e53403579b1cd30b8c2b065beaf8f1afebd806eb3392a4a4d5bc91b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_protection-fixture.json",
+      "sha256": "cdea2af65dcaa846fd872fcc39fa94f809d7c5b900b76501c153cf9373d5d312"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_route-fixture.json",
+      "sha256": "8ef79b888a426d4153529d082fa5af560f9e74a6c15e28fee218af575e815378"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/swan_tariff-fixture.json",
+      "sha256": "8fb13cbb2adb735708ed794503cbf4472edc636da037504c8bdb88cd101cb59d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/houses.png",
+      "sha256": "f8149d2ddc34c5485485000283ead22e9bf31e5d607b95e247cf66beb47ac753"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-125-equivalent.png",
+      "sha256": "a0d89e20f2c6ec64fa174813ea820371c7a6c6f3a67cb70379b24d2759860341"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-1366.png",
+      "sha256": "6486cd50344f6913fd74b6cbc94e45545f72574d31cbbf5f4971658dffd214c9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-150-equivalent.png",
+      "sha256": "3d015ac62dea76002f69766f7450b4f1904b286815e33989f37c8582a6e60ee6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-1600.png",
+      "sha256": "caf5ad939a8a0e5c58d3419f8eca479ea2ede1f7d8dbf71aa149661e00c217f9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-1920.png",
+      "sha256": "ec5222803cf3fa2a5d31ffc2fc956bb29b6ce6f0dd90354de965d5ee1315a1fd"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/market-2560.png",
+      "sha256": "31cfd19bf27fe58a53604b8c9f7c3e6570f8c17f6d7a0ca32e9c180b7ef23e9c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/report.json",
+      "sha256": "052b636bc86f63b8267c64f8a32735118347a1b12c01eefd1ec8fcf460f75b1e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/result-no-house.png",
+      "sha256": "5f6cc07b74a1f04079f6c32741a24c71e1620999717c6343a378d288c20c8d06"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/result-owned.png",
+      "sha256": "3e604c54ae1988f9aad25df22864efec57c5e43c56bacfcb842a5374b5e21938"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/settings.png",
+      "sha256": "a04acede84585ab2d26f5703db9a67236a4533a8231b36d6d3b18549e1b89364"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/start.png",
+      "sha256": "9cf112f7905154388fddf6ad85d8e8295066472c9b4f281dfc88e161a5481d77"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser/trade.png",
+      "sha256": "f73356db6bedaf8427e3ee4e1edc025c1bc4fc23a041f024963022cf67b2bbd1"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/system-browser.log",
+      "sha256": "354bd0fb862067c81045e4d55b7e6468cf063d7175c5575aa091de093539103c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted/bad-v3+v2+v1-migrated.png",
+      "sha256": "b196d32bc3bd2dd54731eb5b14a0cbba851de4361ad8b4ae3f0e48396a3e4875"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted/targeted-report.json",
+      "sha256": "be6e6b7471628a34666a6aa69d87e2d5002a8720ac244404fa61cf7a9c9fda8d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted/v2+v1-migrated.png",
+      "sha256": "0c77e7f40959ca2370f4bce9121e0e34b8ce0cbc616e9f166873bacb778de174"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted/v3+v2+v1-migrated.png",
+      "sha256": "3bf5a43335954d3bfe17f58be300ab8ed69faf9d57231c38e7a0c498019c85ec"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted.log",
+      "sha256": "79be35bb9ac0cb0657e6b4124e3cf3fe7e561e686e40b2b3760eb5730a7507be"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/fallback-1000.png",
+      "sha256": "c771be29e7984235ca54066bc660defe9f57d81b0a91ca7a695802430fbd6254"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/fallback-650.png",
+      "sha256": "ded8e355304ec52407a012ec25c2929ffc7d79393e0e7d60799c10d080ab9fdf"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-filtered.png",
+      "sha256": "1ab2e1497fbc3e0582b005441e8b79be480049248ac71d7e7fc041d15c0f4d7d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-1280.png",
+      "sha256": "92e229e909a75a4751750049dd34ec926630f9e683fac6c8c217a45d40e093d9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-1366.png",
+      "sha256": "b0b9b984e0b71ff9ed0b000eb9fea692b012183a1084e14c19a7b0a874614b5e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-1536.png",
+      "sha256": "588895a0b271907b5d8b89eeaafd89ca5eb25b76663960fccad605913a090953"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-1600.png",
+      "sha256": "51d7dde8066cb8843bbccb73d7a5af7954719e9a15903ec5ad1f4986865037da"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-1920.png",
+      "sha256": "3421e0b155f386a1eabc4c915a9d38fcf0569ad3058cb2c042e43f55f8485892"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/full-legacy-long-2560.png",
+      "sha256": "201b5bda47068cbf1f0d8180f3b8127c8d921834b97b2bed5ec53244534ecc0e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/legacy-sale.png",
+      "sha256": "0a784d130934373b9a467616bee2e9159866a9f5c8f5aa46b39536844ce0f713"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-1280x720.png",
+      "sha256": "b730c334a1c6af32b1791eac875a4e7564b6fa12518a934e58bf4c11ffeabcba"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-1366x768.png",
+      "sha256": "d9ef0c7b0348c29d649c9eb8a9e1e459a3d508d2b0cbe1beb51ddc97de72a3d6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-1536x864.png",
+      "sha256": "20c2639896c49b533f83dc366648e1fb3aaf3a953096327793abf351be2c6cbb"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-1600x900.png",
+      "sha256": "cf89b8ce14e7bc029c31c644ca3caaf5c60d3983366e92a9a60b83fac6bd8d44"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-1920x1080.png",
+      "sha256": "fdf97224a0a906df2b281e91ed072f2a26a9f3b1bc5a1e56b32bb631dc0e4461"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/new-2560x1440.png",
+      "sha256": "c61f34bee47b17cc338121a0e323c83f07456ee41e8190be248f9bdc1811651e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/off-sale.png",
+      "sha256": "aabce5e2cabe03bcc2d56680819c93bd97a3b3b6de1d1bcb6540057ca687fa30"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/p2-detail-clear-focus.png",
+      "sha256": "e9cbe2d03f201da6437d3736067e790849071c7323fc8705bd78dbc5e2cc3f46"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/personal-expanded-ongoing.png",
+      "sha256": "59aba117860befc70538202fd4764597345c68c6bf10cd68593f08b7f33a4556"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements/report.json",
+      "sha256": "1a8959e04294375d160b4952814262dbd85a2fb1fd67bf1ea491a820d8728910"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-gameplay-improvements.log",
+      "sha256": "eeb475b9b2f8193514e711becce4c6a73fa2bd1edced418987eb65cc8c927d16"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/market-1366.png",
+      "sha256": "d6b3600387b84559181cf5f99a1de5b141bc8e7052e7d81bd360aad0b33b135a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/market-1600.png",
+      "sha256": "de409707e4f0373381a02948fc5da98dc05e8d492741ad03e5903633a4e5743a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/market-1920.png",
+      "sha256": "a6a67649ca817f8f52c862c2e19a2c29a6de1b9896120d0be7398e8febda7534"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/market-2560.png",
+      "sha256": "dea9f74d45452a539785fc428449f4447f44dfdbb118e913ab4a1b5bd140ff33"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/report.json",
+      "sha256": "45799ebbe5a73cea75bd0c3966c0c6a659063fb86244889a4251a36a756f346f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction/result.png",
+      "sha256": "0146f6090924b04ddf21395344c69767efe89f468adcc77c55bfbb0649b2bc0a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/ui-interaction.log",
+      "sha256": "969870f4ed3c1c43cc70540226f92fdefebc6398a65214fd58f1d5bbb928e53b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/unit-report.json",
+      "sha256": "8c20957fc031499e48f7a21b9826febe333befe91ce755c3f5524cd608fdcb24"
+    }
+  ],
+  "retainedPriorEvidence": [
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/acceptance-supplement/supplement.json",
+      "sha256": "285c3a685bacbccff09708f99202b662ee219a922334f876108eec1c2abb8c95"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/acceptance-supplement.log",
+      "sha256": "eaaf4120bf7d8c62aa9ba7981cb619cf3830d0219b24241f4ef80791d6bce86c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-audio/report.json",
+      "sha256": "13d9ff3adf1418586a894315ecf77328ef55bd24da263f5e76022d2f5c467a07"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-audio-director.log",
+      "sha256": "64470e27b49a73225278d52c822a95bdfa683dadbf2c5e9c85550a3ba1a45f76"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-audio.log",
+      "sha256": "c988d94c734cf435fe1b2f17418209346a473777f9818d1b3a2736a6af448274"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-integration/integration-report.json",
+      "sha256": "ea1225a183cefa7fc69adc3b328146afadf97ba420111365b7fd6ecd108920df"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-integration.log",
+      "sha256": "3b6eb911c235b7344efccfc21400fb6828a7bdae2fbb5c2376a644d047f1b690"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-01-start.jpg",
+      "sha256": "33ba3e731b9dfcb59063476c072f51c76039f091f237191463e42312e1e2ebb6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-02-market.jpg",
+      "sha256": "5692281dfe4320b21b305967eec1484ec045eccaf23020064af6e6736bbdf286"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-03-trade.jpg",
+      "sha256": "76632da252ff289f7e9174e35129254e5046f738e2381025a7ea54075b77c5e6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-04-houses.jpg",
+      "sha256": "865756014ba2cd34aa4d63a4a1a139e1db1297c15bf299dc5cafa7337e4cab76"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-05-celebration.jpg",
+      "sha256": "838c2e6789d592052be56644c1e855655d7acdc350283d073072707d3b04d902"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-06-market-owned.jpg",
+      "sha256": "97212c44f8c8f62413586e8a3bf988ff55eba0d2ba4bdbe09d0e7da566ed562c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-07-result-home.jpg",
+      "sha256": "1b137f980a75aece6b78427ac68f0f0a32cb04529cfd06ecd184b42acf78fc4b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1366x768-08-result-rent.jpg",
+      "sha256": "d6eedb57be366d5785262d55f4a005cbb5d09a0f64e7c80a94ac83887fac2e92"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-01-start.jpg",
+      "sha256": "937b43fb3ca7ade7a8799ee95794214620bd7e245a07021699a84e0ad8ca4472"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-02-market.jpg",
+      "sha256": "47f070419225778d66dcded1082f326e8ea059814b9ae578984a94b8e30de414"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-03-trade.jpg",
+      "sha256": "c10e6530b70e57711afcd9c11dc3c6385ed3a77fabe19f8bd97cd5e4db071b01"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-04-houses.jpg",
+      "sha256": "6125affe0b1c69bdcb78d9a88f33ae1a03ece0fd10cca14eadcdc697fdf327e8"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-05-celebration.jpg",
+      "sha256": "7507aa63b4a9330a15d1983bf5a0f6a78684fdaa40c581413adae6b135ba80e2"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-06-market-owned.jpg",
+      "sha256": "93b20f4a20df497893d9e6ba996ff74b769b1104b10a9c24867fcd2d6f61b231"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-07-result-home.jpg",
+      "sha256": "2f552514c9108a34405baf2f539636d00019fa93938a7a63ff317466cda5723a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1600x900-08-result-rent.jpg",
+      "sha256": "bc25b20f054b9dd0bb318c0c8b92eea52819fe50385e39c00f6095abc29162a7"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-01-start.jpg",
+      "sha256": "6992b01dc8f2e7ef39be98216832a8b29763f377bd7e50c4ef26e21ad9c06113"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-02-market.jpg",
+      "sha256": "74aa4384f6fb85b6dc3fa5b5b3b88da7bbee7ee1a4410d1bdfd294f7df2c6d40"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-03-trade.jpg",
+      "sha256": "e1f0fb10feec6bda1df0917d65ed04faa07c51468b67eae3dc897e8359d39a96"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-04-houses.jpg",
+      "sha256": "dc088bbbfca5818daae8e0bc5220b673333dc6f363f973a5610ea2e13a95df30"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-05-celebration.jpg",
+      "sha256": "9ab659e6588f977be3cd07d2edbce80d99b18905e93d95089c6bc261d4b55299"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-06-market-owned.jpg",
+      "sha256": "f61a2497c2e3c13dc587832e14348944e29043d00c880dd416eae431b74e8aac"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-07-result-home.jpg",
+      "sha256": "4b3f8936f04a41e3eeb90f2b1bc0388e0e725ac6e3cdb9b3eb0d742e9af6b98b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080-08-result-rent.jpg",
+      "sha256": "625cbe6dbe6aa4a36f8319ed62709963690621a2c16fa85ec44580421bba00e2"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-01-start.jpg",
+      "sha256": "2d096ae8c02ed5b8a7661845a5425c8d5fe4d193e695caed0e44319ba1c1e160"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-02-market.jpg",
+      "sha256": "20c73caac85a0aa761c598b676e5b167cefb251af919ab7acfa664353f0f6862"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-03-trade.jpg",
+      "sha256": "287778be7abec52569f1f7b41afed978ca3e8c4e249f0c63fb79690cb696cd67"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-04-houses.jpg",
+      "sha256": "ce4ec68a199e35a5e904a64944b64457ae8a08825b308dda7fe41e1bd34d49cf"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-05-celebration.jpg",
+      "sha256": "c47ccfbd80cfab090b87bd6915fcda8366de163c95cf4b4cfe8355caa3262531"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-06-market-owned.jpg",
+      "sha256": "e2b56ae4c4711bf694c062c125338c789eed4a164136b36f7187b251e34f3615"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-07-result-home.jpg",
+      "sha256": "6fbfb0d22414491b084725385c8b7b9af93997e1ab8bf1e35a3639d14e1d9d00"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@125-08-result-rent.jpg",
+      "sha256": "cf2bf8de25e1016c735da6a8be31990a5ea39460a3e8b133af038e9b4915568b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-01-start.jpg",
+      "sha256": "86a17fcce1c8456817a45fef15cbfd97731f1a20c3bd9945fc8a0a8f4bf72be3"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-02-market.jpg",
+      "sha256": "6168f7c4e0d21fa436ce28b90b7a5dbf5f3b4e50af8e67601963d1abb3094c0d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-03-trade.jpg",
+      "sha256": "f26d2e54fd5ab3ebfd452909dd649d2f395f58a27aacdfa131bf524e45a1732c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-04-houses.jpg",
+      "sha256": "ab3a9692786c17c43f24622070092f0af81a88714a53408f74ad48e5650cb7a9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-05-celebration.jpg",
+      "sha256": "23fd8954e1cb6a9f2530b32a43e8fe36091e3cd33f094a58c50a918d44807d48"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-06-market-owned.jpg",
+      "sha256": "497a1cc95a29cfd74c3e69d7410833fe5f0b82e86cafe9b63b092151dd50e166"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-07-result-home.jpg",
+      "sha256": "280c9b267066437abf3bf0069852a3177c3bcdb2cdddb2d9b45521fa64e76ea1"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/1920x1080@150-08-result-rent.jpg",
+      "sha256": "5e05a5f6aeed80bec1a98770a16357ef6a2cf1699f203ce6836e23c772edf7e9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-01-start.jpg",
+      "sha256": "73b1133a2e0f98e91c820a240c80252c22e4d98cdfe448912473ca9e99625a8e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-02-market.jpg",
+      "sha256": "d98de08e5065c2247d7d9d7e96765afac4ec41a53db87da72b3be1600fb58931"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-03-trade.jpg",
+      "sha256": "14eaa6877b1d359a2b283d7c23f7cc61d0cc809f3e1e4fd280408aff374dfad6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-04-houses.jpg",
+      "sha256": "0a70ae0a543794689810d2ab494eaeb6c47cadecb9eac089fcc8e417c0160f48"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-05-celebration.jpg",
+      "sha256": "7cef8350df323c0171d5dafdbcc78e93e610f37452724f018bae486a2e5c8c4d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-06-market-owned.jpg",
+      "sha256": "bd3992b25a8693fe8152096e8401ba2fcd91919b0e2afff9438c8bb2799123bb"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-07-result-home.jpg",
+      "sha256": "50afc402d7fc63226dfcfc64a7654cfa0898bc64562a4d1099135264e1d063cd"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/2560x1440-08-result-rent.jpg",
+      "sha256": "caadcc8d3966ec353812b672d7965b0d47ab7117e62843efceff54cf9f43eadf"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/reduced-motion-celebration.jpg",
+      "sha256": "17acf5f7f67516c99293f14593e97d6b64a35666aacc762431a12ab3826511d0"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/report.json",
+      "sha256": "8fc00d5fe785b85d85fc31ed9308f2813399033f6554814c4e5ab12f04a29e9a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/season-autumn-sprint.jpg",
+      "sha256": "bd748a62764648800c5be9d821b96e871e09792ea2318c6b8f5d9f8ed03281fe"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/season-spring-development.jpg",
+      "sha256": "8baed1371e299ac1bf383b38e433a1800055856ca9e0de2720e0526d27154ec8"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/season-summer-development.jpg",
+      "sha256": "18981ea81628eab3b65bc24889e43be7f0a3d6b70b9c42061390ae5ada743600"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual/season-winter-early.jpg",
+      "sha256": "4f72cf00f5ca4ecd0440b3740cd38c2c02573f047dddb2748c5d48741a66a164"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/av-visual.log",
+      "sha256": "d7a6e13d8aedf66f6340e8cd8477f2813ef3401854a3e488c2a831a07562f744"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/browser-report.json",
+      "sha256": "41224e72c7d7a41adb1a1f16e5f5412ab0ffe6bd60542e6a0b95d6fddd9a6c59"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-125-equivalent.png",
+      "sha256": "86120df4168f607646b619327b221440998a2fb8dd1a04dd384eefda1891111d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-1366.png",
+      "sha256": "4de2a0e88e7fca5cdb775ae355429a8dd5a52e798992a1693890c5efdf6a6ef5"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-150-equivalent.png",
+      "sha256": "5502692339080179a2b5ee97c214608f68433201d04dbef18c473b7237cb6a14"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-1600.png",
+      "sha256": "42de4b0dde2ff315a8354241acfb1eca3bd65be5f7f88714f3746620d92498ca"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-1920.png",
+      "sha256": "86c2f93af80eb1d357aa731fb0f52a1a13aff23776526235732dcf81bcb2aa03"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-2560.png",
+      "sha256": "c1fac60a41baf27d7d9eab028aebc724331d4c033d541f5543fcca068405f72d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/major-mixed-directions-1366.png",
+      "sha256": "1f4c4dbf4707530f5c16143e750e7aec63cb6f5ec688a9243f1df47132ead02b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser/v3-upgrade-preserved-current-week.png",
+      "sha256": "587ae22008b836602e56cb7ab90782da7bf2a16bcabbde2e798fa493d9672f0c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan-browser.log",
+      "sha256": "24154ddef7f308e6c1154239f7de2ce2247827d0ccc1569ef2dfcf9842560f05"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/black-swan.log",
+      "sha256": "03f5fe429ac3df791af50cc58dfae6d396fdac04ee67f3f609882120ee3a19e0"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/browser-report.json",
+      "sha256": "41224e72c7d7a41adb1a1f16e5f5412ab0ffe6bd60542e6a0b95d6fddd9a6c59"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-125-equivalent.png",
+      "sha256": "86120df4168f607646b619327b221440998a2fb8dd1a04dd384eefda1891111d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-1366.png",
+      "sha256": "4de2a0e88e7fca5cdb775ae355429a8dd5a52e798992a1693890c5efdf6a6ef5"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-150-equivalent.png",
+      "sha256": "5502692339080179a2b5ee97c214608f68433201d04dbef18c473b7237cb6a14"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-1600.png",
+      "sha256": "42de4b0dde2ff315a8354241acfb1eca3bd65be5f7f88714f3746620d92498ca"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-1920.png",
+      "sha256": "86c2f93af80eb1d357aa731fb0f52a1a13aff23776526235732dcf81bcb2aa03"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-2560.png",
+      "sha256": "c1fac60a41baf27d7d9eab028aebc724331d4c033d541f5543fcca068405f72d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/major-mixed-directions-1366.png",
+      "sha256": "bc1be0fe766ca189e49d8ebcb883bf0dc390b58eca6d00c523c2915023bee207"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/browser/v3-upgrade-preserved-current-week.png",
+      "sha256": "8c74c24af754599e9352e0799605b4790c10ea330f1374a375831d84bbb81534"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke/index-html.png",
+      "sha256": "e451fa4e0e24dcc6398d0064c5b151b3d371e18dcbc4ff1aae02f3fa7f4f1c6e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke/report.json",
+      "sha256": "df7639d2223b138443c517312ea1ffd65bebe423ea44908b43841097d00714f5"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke/tests-browser-html.png",
+      "sha256": "8b61b9de5ecf1c198681c019708ba774c0f7b5b27c19b15726a8551216e6451f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke-first-run/index-html.png",
+      "sha256": "12bada5efec0d87d843da7d47e31d664670512cb1fa90aff0167e549fad3eb8c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke-first-run/report.json",
+      "sha256": "0b490c587b324559d1dd902572d1433dd1d91889bc31615c6124b7903150ef51"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke-first-run/tests-browser-html.png",
+      "sha256": "8b61b9de5ecf1c198681c019708ba774c0f7b5b27c19b15726a8551216e6451f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/cdp-smoke.log",
+      "sha256": "54452b39b1d5a257e9b26edfe3b1c5668ad44f3f02dcc9cf3cd185f9608c825a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/core-report.md",
+      "sha256": "e8a06f04780730d894e3e97f82e01fd4c9dc0b6d868d3650082cd50bc7dade9a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/invariant-before.txt",
+      "sha256": "e4efb717a7e4924aa7359dfd3d2c680908dbaa7badac88f4f5101958ef25ce51"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/manifest.json",
+      "sha256": "653d33b53213bfac53e11103c1707a5b0c943695a464dbc73914404797760239"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge/edge-report.json",
+      "sha256": "56e4e67407b0f55641de797f0d8a346456b17cbb4479264845b55a94951c10ab"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-migrate/migration-report.json",
+      "sha256": "3662e6caf0a4334fd376255828856287eb503e74652dfd3eb429c5abd4942907"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-migrate.log",
+      "sha256": "3cd8165f02f2b7b91874e7574c46cb12ec7cae6f69552443dc2835c5b82c433c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review/review-report.json",
+      "sha256": "14e5adcc94a41c930a18769533b7ddd3d8e3eb37212dacb05b756932c1e3ab6a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review/week2-bulletin-1366.png",
+      "sha256": "433af08c7d4c56f4eed19a73248b706c8ac6e8e05390f485329d3ebde0c4b22c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review/week2-bulletin-1600.png",
+      "sha256": "27897a680a8f72c902d1380386dcf8fcfaafa9739d82882fb35c55acb30d1853"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review/week2-trade-1366.png",
+      "sha256": "f503c8bc21ec7696e3f9e5443096870d985e63c76df98aee9d33d52f5137797f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review/week2-trade-1600.png",
+      "sha256": "74db3cdc3c2a21752e882bfc985dffa33018ec0b1588a7de2f3ce2067bc27416"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge-review.log",
+      "sha256": "68e74ccba0550e920ff5b735b5611e5f0624250510bf7dfba1f4166acc094cc4"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b-edge.log",
+      "sha256": "30b8b2c63d746e6bc92967b18b5d50775e7cf0386d4601f7bf291dabf17ed59d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-b.log",
+      "sha256": "afab737579c8fb419739dfba27d40970921d8a767fc82c35a2847fc9d4d95a93"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-d-edge/keys-surge.json",
+      "sha256": "2d85fe075e0d6d084a240d9a04a1da31f863f4c9dbd464d4ee4b73d01b411217"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/milestone-d-edge.log",
+      "sha256": "5bcbcd9a1593e7ffaa06d715495acf7e4d6b5b94a5e4e53fb2164911195a44c5"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-b2.log",
+      "sha256": "ee957927c4e3cf1acd0c9712a8b1d799c5ef5d352d121d3c0ca4356ce2c4fcad"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/review-fixes.log",
+      "sha256": "da0b0078b4aebf75441b679358e54b4c3b6c7ac16988b8c320b0bcc72b440211"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/run.log",
+      "sha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/surge-v5-fixtures.json",
+      "sha256": "58e24a27ab7a6e655f84c2ae45825cf3c23e546ed2638e027832ea87cab3a9da"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_efficiency-fixture.json",
+      "sha256": "ddd63bacbc813cb04ec82a7de6f9eda64de4771a3b2d2b007d57b638cd508319"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_egg_relief-fixture.json",
+      "sha256": "1e7499ef9f0a0d0b81f1ea3a6d224d6ba2c96eecdaf51271011e986f1d4ada7e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_egg_short-fixture.json",
+      "sha256": "166ba0e288a6b3ce28a44e8668c15024c6fc705845eea94113ddd89916e94bd4"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_heat-fixture.json",
+      "sha256": "6dc8fdba6e53403579b1cd30b8c2b065beaf8f1afebd806eb3392a4a4d5bc91b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_protection-fixture.json",
+      "sha256": "cdea2af65dcaa846fd872fcc39fa94f809d7c5b900b76501c153cf9373d5d312"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_route-fixture.json",
+      "sha256": "8ef79b888a426d4153529d082fa5af560f9e74a6c15e28fee218af575e815378"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/swan_tariff-fixture.json",
+      "sha256": "8fb13cbb2adb735708ed794503cbf4472edc636da037504c8bdb88cd101cb59d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/houses.png",
+      "sha256": "f8149d2ddc34c5485485000283ead22e9bf31e5d607b95e247cf66beb47ac753"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-125-equivalent.png",
+      "sha256": "a0d89e20f2c6ec64fa174813ea820371c7a6c6f3a67cb70379b24d2759860341"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-1366.png",
+      "sha256": "6486cd50344f6913fd74b6cbc94e45545f72574d31cbbf5f4971658dffd214c9"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-150-equivalent.png",
+      "sha256": "3d015ac62dea76002f69766f7450b4f1904b286815e33989f37c8582a6e60ee6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-1600.png",
+      "sha256": "863772f9078b55617e541e5ca16b72f6784fdccecf43b0e8acca1a6d1d495ab1"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-1920.png",
+      "sha256": "ec5222803cf3fa2a5d31ffc2fc956bb29b6ce6f0dd90354de965d5ee1315a1fd"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/market-2560.png",
+      "sha256": "31cfd19bf27fe58a53604b8c9f7c3e6570f8c17f6d7a0ca32e9c180b7ef23e9c"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/report.json",
+      "sha256": "320fd079958591ab6e517f47518025515f77e2eff0b8b9684e358c9f6a4c71a7"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/result-no-house.png",
+      "sha256": "5f6cc07b74a1f04079f6c32741a24c71e1620999717c6343a378d288c20c8d06"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/result-owned.png",
+      "sha256": "703d730f8f7f283106bab8befdaf88bbe5dc2a64e45c68b710197ffb849e4809"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/settings.png",
+      "sha256": "07826b0f248722bf3436ff8dce43849a4dd999d4f507f13dc4e50fe6eaf41089"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/start.png",
+      "sha256": "6c84d61580d1ac2dc3bf6e0327ee666dd83ccbce12ce150e284c0cda4ee3a9f6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser/trade.png",
+      "sha256": "1fd76e9f663e9e9e54bce06d58c1b95bf279eb1525ee15788401459b8b507f89"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/system-browser.log",
+      "sha256": "83c6f233093963b3280379fbf4de9ef235c5dfe3e558aa906232d79eaf7d5c88"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/fallback-1000.png",
+      "sha256": "c771be29e7984235ca54066bc660defe9f57d81b0a91ca7a695802430fbd6254"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/fallback-650.png",
+      "sha256": "ded8e355304ec52407a012ec25c2929ffc7d79393e0e7d60799c10d080ab9fdf"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-filtered.png",
+      "sha256": "1ab2e1497fbc3e0582b005441e8b79be480049248ac71d7e7fc041d15c0f4d7d"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-1280.png",
+      "sha256": "cb91bf67d66116362066a37f9a864ecce284ea9a617d9084bda80546dcc3a6f6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-1366.png",
+      "sha256": "b0b9b984e0b71ff9ed0b000eb9fea692b012183a1084e14c19a7b0a874614b5e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-1536.png",
+      "sha256": "588895a0b271907b5d8b89eeaafd89ca5eb25b76663960fccad605913a090953"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-1600.png",
+      "sha256": "51d7dde8066cb8843bbccb73d7a5af7954719e9a15903ec5ad1f4986865037da"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-1920.png",
+      "sha256": "3421e0b155f386a1eabc4c915a9d38fcf0569ad3058cb2c042e43f55f8485892"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/full-legacy-long-2560.png",
+      "sha256": "201b5bda47068cbf1f0d8180f3b8127c8d921834b97b2bed5ec53244534ecc0e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/legacy-sale.png",
+      "sha256": "0a784d130934373b9a467616bee2e9159866a9f5c8f5aa46b39536844ce0f713"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-1280x720.png",
+      "sha256": "b730c334a1c6af32b1791eac875a4e7564b6fa12518a934e58bf4c11ffeabcba"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-1366x768.png",
+      "sha256": "d9ef0c7b0348c29d649c9eb8a9e1e459a3d508d2b0cbe1beb51ddc97de72a3d6"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-1536x864.png",
+      "sha256": "20c2639896c49b533f83dc366648e1fb3aaf3a953096327793abf351be2c6cbb"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-1600x900.png",
+      "sha256": "cf89b8ce14e7bc029c31c644ca3caaf5c60d3983366e92a9a60b83fac6bd8d44"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-1920x1080.png",
+      "sha256": "fdf97224a0a906df2b281e91ed072f2a26a9f3b1bc5a1e56b32bb631dc0e4461"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/new-2560x1440.png",
+      "sha256": "c61f34bee47b17cc338121a0e323c83f07456ee41e8190be248f9bdc1811651e"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/off-sale.png",
+      "sha256": "aabce5e2cabe03bcc2d56680819c93bd97a3b3b6de1d1bcb6540057ca687fa30"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/p2-detail-clear-focus.png",
+      "sha256": "e9cbe2d03f201da6437d3736067e790849071c7323fc8705bd78dbc5e2cc3f46"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/personal-expanded-ongoing.png",
+      "sha256": "59aba117860befc70538202fd4764597345c68c6bf10cd68593f08b7f33a4556"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements/report.json",
+      "sha256": "1a8959e04294375d160b4952814262dbd85a2fb1fd67bf1ea491a820d8728910"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-gameplay-improvements.log",
+      "sha256": "eeb475b9b2f8193514e711becce4c6a73fa2bd1edced418987eb65cc8c927d16"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/market-1366.png",
+      "sha256": "d6b3600387b84559181cf5f99a1de5b141bc8e7052e7d81bd360aad0b33b135a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/market-1600.png",
+      "sha256": "de409707e4f0373381a02948fc5da98dc05e8d492741ad03e5903633a4e5743a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/market-1920.png",
+      "sha256": "a6a67649ca817f8f52c862c2e19a2c29a6de1b9896120d0be7398e8febda7534"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/market-2560.png",
+      "sha256": "dea9f74d45452a539785fc428449f4447f44dfdbb118e913ab4a1b5bd140ff33"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/report.json",
+      "sha256": "45799ebbe5a73cea75bd0c3966c0c6a659063fb86244889a4251a36a756f346f"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction/result.png",
+      "sha256": "0146f6090924b04ddf21395344c69767efe89f468adcc77c55bfbb0649b2bc0a"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/ui-interaction.log",
+      "sha256": "969870f4ed3c1c43cc70540226f92fdefebc6398a65214fd58f1d5bbb928e53b"
+    },
+    {
+      "path": "docs/black-swan-evidence/phase-b-20261004/unit-report.json",
+      "sha256": "425a6c5a45599929d4f6fc8823c161bacf0bc59841b5c56453283354c9d9a475"
+    }
+  ],
+  "invariants": {
+    "products": "df89f4c4e6a28aed4c3b9bff4aa69fc41c2aef0e9c4201ac657f9fe05b434fb4",
+    "legacyProducts": "be14e8d2db700ac90d9c07de0cca35a9e76f85372378150791b421eb701f5152",
+    "houses": "9d8d7d7376ac15aacc30445ce2ecba1e245c53bc58f893d704941c4ca3df57e1",
+    "warehouses": "26660c4c0bb8b6770b3a2d4b8cf4e3e7074d95cb716828e7114cc1ba55b582e8",
+    "difficulties": "01c621235874d9fd820df8fec86b373389cdd02aa86f62bbce4113a50d63dd7e"
+  }
+}

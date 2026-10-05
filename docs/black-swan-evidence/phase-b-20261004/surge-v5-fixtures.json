@@ -1,0 +1,18 @@
+{
+  "NONE": {
+    "seed": "SURGE-V5-32",
+    "week": 15
+  },
+  "BIG": {
+    "seed": "SURGE-V5-81",
+    "week": 44,
+    "id": "watch",
+    "abs": 2500
+  },
+  "SMALL": {
+    "seed": "SURGE-V5-162",
+    "week": 25,
+    "id": "mask",
+    "abs": 2499
+  }
+}

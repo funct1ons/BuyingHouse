@@ -1,0 +1,89 @@
+{
+  "notes": {
+    "week2": {
+      "week": 2,
+      "sort": "focus",
+      "sortLabel": "本周关注",
+      "headline": "weak"
+    },
+    "overflow1366": {
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "horizontal": false,
+      "offenders": [
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]"
+      ]
+    },
+    "tradeOpen": "贵重 单件占 2 空间\n¥333.83 / 件\n较上周 -52.3%\n\n小众收藏，热度反转可能很猛烈。\n\n最近12周 · 上周 ¥700.00\n历史 ¥333.83—¥700.00\n\n公开参考价 ¥700.00\n单件占 2 空间\n\n价格受季节、供需与市场环境影响，参考价不是保证。在售买卖各收1%手续费。未上架出售另计8%回收折价，手续费按回收报价另计。\n买入",
+    "overflow1600Bulletin": {
+      "width": 1600,
+      "height": 900,
+      "scrollWidth": 1600,
+      "horizontal": false,
+      "offenders": [
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]"
+      ]
+    },
+    "trade1600": {
+      "open": true,
+      "kind": "trade",
+      "visible": true
+    },
+    "overflow1600Trade": {
+      "width": 1600,
+      "height": 900,
+      "scrollWidth": 1600,
+      "horizontal": false,
+      "offenders": [
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "rect.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]",
+        "path.[object SVGAnimatedString]"
+      ]
+    },
+    "offSale": {
+      "id": "rice",
+      "sold": true
+    },
+    "damaged": {
+      "week": 4,
+      "v2": true,
+      "v3ok": true
+    },
+    "import": {
+      "week": 4,
+      "cash": 6233900,
+      "v2": "LOCAL-ORIGINAL",
+      "exited": true
+    },
+    "result": {
+      "best": "常备药",
+      "worst": "相机",
+      "lines": 20
+    }
+  },
+  "consoleErrors": [],
+  "failures": [],
+  "screenshots": [
+    "week2-bulletin-1366.png",
+    "week2-bulletin-1600.png",
+    "week2-trade-1366.png",
+    "week2-trade-1600.png"
+  ]
+}

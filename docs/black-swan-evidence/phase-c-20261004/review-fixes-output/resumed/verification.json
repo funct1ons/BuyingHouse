@@ -1,0 +1,15 @@
+{
+  "protected": {
+    "verified": true,
+    "files": 782
+  },
+  "totalGames": 540,
+  "expectedGames": 540,
+  "ended52": true,
+  "priceListingEventPathHashesIdenticalAcrossSixStrategies": true,
+  "uniquePaths": 90,
+  "pairedSeedClusters": 30,
+  "outcomesHash": "dccb824d6aa6c289ae3b164053573d236626105a415ac1401cd14096191f66d4",
+  "marketPathsHash": "c39312740c24aacb215981efb785f4e21e9da81c96b2c67c44c270e748d73b8f",
+  "metadataHash": "7c762a794b3e11259344b3f298e28dec952ec752da2d6a447c07facb1a096288"
+}

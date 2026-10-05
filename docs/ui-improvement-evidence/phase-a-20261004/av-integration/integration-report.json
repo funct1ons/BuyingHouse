@@ -1,0 +1,393 @@
+{
+  "kind": "real Edge headless file:// with trusted CDP mouse input; digital signals only, not listening tests",
+  "started": "2026-10-04T12:16:12.014Z",
+  "checks": [
+    {
+      "name": "no AudioContext before any interaction",
+      "pass": true
+    },
+    {
+      "name": "rejected resume sets needsGesture and shows a visible clickable prompt (no silent fake playback)",
+      "pass": true,
+      "detail": {
+        "st": {
+          "state": "suspended",
+          "needsGesture": true,
+          "musicRunning": false
+        },
+        "prompt": {
+          "text": "🔈 点击启用声音",
+          "visible": true
+        }
+      }
+    },
+    {
+      "name": "blocked context: status().playing is false and nothing is queued (no idle scheduling)",
+      "pass": true,
+      "detail": {
+        "state": "suspended",
+        "needsGesture": true,
+        "musicRunning": false,
+        "playing": false,
+        "musicWanted": true
+      }
+    },
+    {
+      "name": "blocked context: musicRunning stays false (no idle scheduler while the context cannot run)",
+      "pass": true,
+      "detail": {
+        "state": "suspended",
+        "needsGesture": true,
+        "musicRunning": false,
+        "playing": false,
+        "musicWanted": true
+      }
+    },
+    {
+      "name": "blocked context: the music request is remembered for recovery",
+      "pass": true,
+      "detail": {
+        "state": "suspended",
+        "needsGesture": true,
+        "musicRunning": false,
+        "playing": false,
+        "musicWanted": true
+      }
+    },
+    {
+      "name": "real click on prompt resumes audio, starts the scheduler exactly once and removes the prompt",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "needsGesture": false,
+        "musicRunning": true,
+        "intervals": 1,
+        "cue": "early"
+      }
+    },
+    {
+      "name": "trusted click: context running, music playing, single interval",
+      "pass": true,
+      "detail": {
+        "state": "running",
+        "musicRunning": true,
+        "intervals": 1,
+        "cue": "early"
+      }
+    },
+    {
+      "name": "audio cue follows the visual phase (early at standard start)",
+      "pass": true,
+      "detail": {
+        "target": "early",
+        "cue": "early",
+        "phase": "early"
+      }
+    },
+    {
+      "name": "music playing 60s idle: scheduler kept running (bars advanced)",
+      "pass": true,
+      "detail": {
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.267,
+        "percent": 0.445,
+        "scriptPercent": 0.252,
+        "state": "running",
+        "musicRunning": true,
+        "target": "early",
+        "phase": "early",
+        "cue": "early",
+        "bar0": 1,
+        "bar1": 8,
+        "section0": "A",
+        "section1": "A2",
+        "switches": 2,
+        "voices": 6,
+        "queued": 2,
+        "timers": 1,
+        "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+      }
+    },
+    {
+      "name": "music playing 60s idle: exactly one timer, voices <= 64, cue still matches the visual phase (no drift)",
+      "pass": true,
+      "detail": {
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.267,
+        "percent": 0.445,
+        "scriptPercent": 0.252,
+        "state": "running",
+        "musicRunning": true,
+        "target": "early",
+        "phase": "early",
+        "cue": "early",
+        "bar0": 1,
+        "bar1": 8,
+        "section0": "A",
+        "section1": "A2",
+        "switches": 2,
+        "voices": 6,
+        "queued": 2,
+        "timers": 1,
+        "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+      }
+    },
+    {
+      "name": "music playing 60s idle: main-thread TaskDuration < 3% of wall time (headless baseline)",
+      "pass": true,
+      "detail": {
+        "seconds": 60.01,
+        "taskDurationSeconds": 0.267,
+        "percent": 0.445,
+        "scriptPercent": 0.252,
+        "state": "running",
+        "musicRunning": true,
+        "target": "early",
+        "phase": "early",
+        "cue": "early",
+        "bar0": 1,
+        "bar1": 8,
+        "section0": "A",
+        "section1": "A2",
+        "switches": 2,
+        "voices": 6,
+        "queued": 2,
+        "timers": 1,
+        "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+      }
+    },
+    {
+      "name": "simulated hidden page stops the music scheduler",
+      "pass": true,
+      "detail": {
+        "musicRunning": false,
+        "playing": false,
+        "intervals": 1
+      }
+    },
+    {
+      "name": "music off via real click stops scheduler; no prompt left behind",
+      "pass": true,
+      "detail": {
+        "musicRunning": false,
+        "intervals": 0
+      }
+    },
+    {
+      "name": "music+sound off from a saved preference: no context, no scheduler, no engine cue",
+      "pass": true,
+      "detail": {
+        "state": "uncreated",
+        "musicRunning": false,
+        "cue": null,
+        "intervals": 0
+      }
+    },
+    {
+      "name": "while sound is off the visual phase still follows the hysteresis (0.50 → early, 0.92/0.85 → development)",
+      "pass": true,
+      "detail": [
+        {
+          "label": "p.50",
+          "progress": 0.5,
+          "phase": "early",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.92",
+          "progress": 0.92,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.85",
+          "progress": 0.85,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        }
+      ]
+    },
+    {
+      "name": "no engine and no scheduler are created while sound is off",
+      "pass": true,
+      "detail": [
+        {
+          "label": "p.50",
+          "progress": 0.5,
+          "phase": "early",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.92",
+          "progress": 0.92,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.85",
+          "progress": 0.85,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        }
+      ]
+    },
+    {
+      "name": "late engine keeps lastPhase: music starts on the phase the picture already shows (no early/dev mismatch)",
+      "pass": true,
+      "detail": {
+        "target": "development",
+        "cue": "development",
+        "phase": "development",
+        "musicRunning": true,
+        "switches": 1
+      }
+    },
+    {
+      "name": "late engine starts the scheduler exactly once (single fresh switch)",
+      "pass": true,
+      "detail": {
+        "intervals": 1,
+        "switches": 1
+      }
+    },
+    {
+      "name": "real result dialog reports dialogOpen=false (ending cue not pushed through the dialog mix)",
+      "pass": true,
+      "detail": {
+        "open": true,
+        "kind": "result",
+        "storybook": true,
+        "dialogOpen": false,
+        "dialog": "result",
+        "layers": false,
+        "cue": "ending-home",
+        "target": "ending-home"
+      }
+    },
+    {
+      "name": "ending cue plays behind the storybook with the dialog mix off",
+      "pass": true,
+      "detail": {
+        "cue": "ending-home",
+        "layers": {
+          "level": 2,
+          "cold": false,
+          "bright": 0,
+          "final": false,
+          "dialog": false
+        },
+        "phase": "ending-home"
+      }
+    },
+    {
+      "name": "closing the storybook keeps the ending cue and the un-ducked mix",
+      "pass": true,
+      "detail": {
+        "open": false,
+        "phase": "ending-home",
+        "layers": false,
+        "cue": "ending-home"
+      }
+    },
+    {
+      "name": "transient dialog over the ending cue still ducks (trade/houses/settings snapshot intact)",
+      "pass": true,
+      "detail": {
+        "levels": true,
+        "open": true,
+        "kind": "settings"
+      }
+    },
+    {
+      "name": "closing the transient dialog restores the un-ducked ending mix",
+      "pass": true,
+      "detail": {
+        "levels": false,
+        "open": false
+      }
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "metrics": {
+    "blockedStatus": {
+      "state": "suspended",
+      "needsGesture": true,
+      "musicRunning": false,
+      "playing": false,
+      "musicWanted": true
+    },
+    "idleMusic": {
+      "seconds": 60.01,
+      "taskDurationSeconds": 0.267,
+      "percent": 0.445,
+      "scriptPercent": 0.252,
+      "state": "running",
+      "musicRunning": true,
+      "target": "early",
+      "phase": "early",
+      "cue": "early",
+      "bar0": 1,
+      "bar1": 8,
+      "section0": "A",
+      "section1": "A2",
+      "switches": 2,
+      "voices": 6,
+      "queued": 2,
+      "timers": 1,
+      "note": "main-thread TaskDuration only; Web Audio rendering runs on the audio thread and is not included"
+    },
+    "lateEngine": {
+      "steps": [
+        {
+          "label": "p.50",
+          "progress": 0.5,
+          "phase": "early",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.92",
+          "progress": 0.92,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        },
+        {
+          "label": "p.85",
+          "progress": 0.85,
+          "phase": "development",
+          "cue": null,
+          "timers": 0
+        }
+      ],
+      "base": 316000
+    },
+    "resultDialog": {
+      "open": true,
+      "kind": "result",
+      "storybook": true,
+      "dialogOpen": false,
+      "dialog": "result",
+      "layers": false,
+      "cue": "ending-home",
+      "target": "ending-home"
+    }
+  },
+  "errors": [],
+  "browser": "Edg/154.0.4258.53",
+  "finished": "2026-10-04T12:17:36.227Z",
+  "summary": {
+    "passed": 24,
+    "failed": 0
+  }
+}

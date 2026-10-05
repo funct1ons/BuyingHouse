@@ -2,7 +2,7 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.4', saveVersion: 3, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.5', saveVersion: 4, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
@@ -93,6 +93,22 @@
   ];
   H.events = market.map(r => ({id:r[0], type:'market', title:r[1], situation:r[2], description:r[2],
     duration:r[3], fade:r[4], reliability:r[5], effects:r[6], weight:1}));
+  H.swanRules = Object.freeze({probability: .16, firstWeek: 4, lastWeek: 50, gap: 6, limit: 6});
+  const swans = [
+    ['swan_route','主航道临时封航，进口柜台等不到货','在途货物延迟已经发生，进口耐用品供给收紧。本周变化以成交价为准。',3,['phone'],null,{phone:fx('persist',4000),gpu:fx('persist',3000),ac:fx('persist',2500)}],
+    ['swan_efficiency','新算法落地，旧算力订单突然撤回','效率突破已改变旧硬件订单预期，部分订单已经撤回。本周变化以成交价为准。',1,['gpu'],null,{gpu:fx('immediate',-5000),phone:fx('immediate',-1500)}],
+    ['swan_egg_short','多地蛋场临时停供，批发柜台告急','蛋品供给骤紧已经发生，常备主食的替代需求也有变化。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',5500),rice:fx('immediate',1000)}],
+    ['swan_heat','异常热浪提前压城，制冷货源吃紧','热旱天气已牵动制冷、农产和雨具需求。本周变化以成交价为准。',3,['ac'],'夏',{ac:fx('persist',5000),fruit:fx('persist',3000),umbrella:fx('persist',-1500)}],
+    ['swan_tariff','进口新规突然生效，柜台成本与消费预期分化','进口成本和可选消费预期已经分化，各商品可能有不同方向。本周变化以成交价为准。',2,['phone','collectible'],null,{phone:fx('persist',3500),watch:fx('persist',-2500),collectible:fx('persist',-4000)}],
+    ['swan_protection','防护标准临时升级，常备用品突然紧俏','临时防护标准已经升级，常备用品需求挤压供给。本周变化以成交价为准。',1,['mask'],null,{mask:fx('immediate',11000),rice:fx('immediate',2000),eggs:fx('immediate',1500)}],
+    ['swan_egg_relief','加急蛋品到货，短缺预期迅速消退','到货与需求降温已缓解短缺预期，并非此前事件的定时后续。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',-4500),rice:fx('immediate',-1000)}]
+  ];
+  H.events.push(...swans.map(r => ({id:r[0], type:'market', tier:'swan', title:r[1], situation:r[2], description:r[2],
+    duration:r[3], primaryProducts:r[4], season:r[5], effects:r[6], fade:'none', reliability:'reliable', weight:1})));
+  // Fail at catalog load, not after an invalid event enters a saved game.
+  for (const e of H.events) for (const [id, effect] of Object.entries(e.effects)) {
+    if (!H.products.some(p => p.id === id) || !['immediate','persist','structural'].includes(effect.kind) || !Number.isSafeInteger(effect.bps)) throw Error('事件目录无效');
+  }
   const personal = [
     ['rent','临时租住维护费',-18000],['repair','手机维修',-24000],['ill','看诊支出',-20000],
     ['fare','通勤补缴',-12000],['bonus','公司小奖金',25000],['repay','朋友归还借款',16000],
@@ -127,5 +143,6 @@
   });
   H.defaultSettings = {autoSave:true, sound:true, music:true, animation:'normal', numberFormat:'decimal'};
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v3。请先导出损坏原文。确认替换？';
+  H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v4。请先导出损坏原文。确认替换？';
 })(window);

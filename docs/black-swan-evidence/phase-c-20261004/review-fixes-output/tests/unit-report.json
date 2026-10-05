@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "name": "historical policy exact byte copy and static facade only",
+      "pass": true
+    },
+    {
+      "name": "executable poison VM isolation, denied Engine/catalog/hidden/future and host escapes",
+      "pass": true
+    },
+    {
+      "name": "no early hidden reads: spies only permit diagnostics/snapshot after ended",
+      "pass": true
+    },
+    {
+      "name": "six historical policies retain dynamic value/random/52week/money semantics",
+      "pass": true
+    },
+    {
+      "name": "full path de-dup, RNG reproducible same hash, tampered path rejection",
+      "pass": true
+    },
+    {
+      "name": "seed freeze 1000+1000 disjoint, small prefix not selected by results",
+      "pass": true
+    },
+    {
+      "name": "correct denominators distinct from eligible and ordinaryAttempt",
+      "pass": true
+    },
+    {
+      "name": "all seven fixed primary definitions, tariff off-sale split not headline secondary",
+      "pass": true
+    },
+    {
+      "name": "bounds/role caps exact equality/active persist denominator and structural overlap",
+      "pass": true
+    },
+    {
+      "name": "integer cents/fee and ppm units, idle concentration null and Wilson",
+      "pass": true
+    },
+    {
+      "name": "P2 output preflight zero-write zero-Engine negatives in virtual directories",
+      "pass": true
+    },
+    {
+      "name": "P2 bounded legacy CLI refuses formal/oversize before any output or Engine",
+      "pass": true
+    },
+    {
+      "name": "P2 accurate small/formal-main/formal-holdout summaries, synthetic only",
+      "pass": true
+    }
+  ],
+  "testsDoNotUseHoldout": true
+}

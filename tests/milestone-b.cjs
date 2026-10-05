@@ -5,7 +5,7 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = vm.createContext({console});
 context.window = context;
-for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
+for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
 }
 const H = context.HomeYear;
@@ -42,7 +42,7 @@ check('fixture迁移保留现金历史住房仓储', () => {
     H.validate(e.snapshot());
   }
 });
-check('备份失败不写v3且不改v2', () => {
+check('备份失败不写v4且不改v2', () => {
   const map = new Map();
   map.set('homeyear.save.v2', raw);
   const store = {
@@ -54,7 +54,7 @@ check('备份失败不写v3且不改v2', () => {
   const result = saves.migrate(raw);
   if (result.ok) throw Error('备份失败仍迁移');
   if (map.get('homeyear.save.v2') !== raw) throw Error('v2被覆盖');
-  if (map.has('homeyear.save.v3')) throw Error('失败后写入了v3');
+  if (map.has('homeyear.save.v4')) throw Error('失败后写入了v4');
 });
 check('导入另一份v2不覆盖本地v2', () => {
   const map = new Map();
@@ -73,7 +73,7 @@ check('只信version不能迁移坏v2', () => {
   const store = {getItem: k => map.has(k) ? map.get(k) : null, setItem: (k, v) => map.set(k, v), removeItem: k => map.delete(k)};
   const saves = new H.SaveAdapter(store);
   const result = saves.migrate(JSON.stringify(bad));
-  if (result.ok || map.has('homeyear.save.v3')) throw Error('坏v2被迁移');
+  if (result.ok || map.has('homeyear.save.v4')) throw Error('坏v2被迁移');
 });
 check('读档后未来轨迹一致', () => {
   const a = new H.Engine('continue-future');

@@ -5,7 +5,7 @@
 // Usage: node tests/av-visual.cjs [--quick] [--idle 60]
 const {launchEdge,delay}=require('./cdp-helper.cjs');const fs=require('node:fs/promises'),path=require('node:path'),{pathToFileURL}=require('node:url');
 const argv=process.argv.slice(2),QUICK=argv.includes('--quick'),IDLE=Number((argv[argv.indexOf('--idle')+1])||60)*(argv.includes('--idle')?1:1);
-const out=path.resolve(__dirname,'../docs/av-visual-evidence');
+const out=path.resolve(process.env.UI_EVIDENCE_DIR||path.join(__dirname,'../docs/av-visual-evidence'));
 const VIEWS=[{id:'1366x768',w:1366,h:768,dsf:1},{id:'1600x900',w:1600,h:900,dsf:1},{id:'1920x1080',w:1920,h:1080,dsf:1},{id:'2560x1440',w:2560,h:1440,dsf:1},{id:'1920x1080@125',w:1536,h:864,dsf:1.25},{id:'1920x1080@150',w:1280,h:720,dsf:1.5}];
 const report={kind:'real Edge headless file:// DOM automation of index.html; screenshots are machine captures, not manual review',started:new Date().toISOString(),checks:[],metrics:{},scenes:[],errors:[],requests:[],shots:[]};
 let c;const ev=x=>c.evaluate(x);const allScenes=[];async function harvest(){try{const a=await ev('window.__scenes||[]');allScenes.push(...a);await ev('window.__scenes=[]');}catch{}}

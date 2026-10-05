@@ -1,0 +1,8 @@
+{
+  "status": "withdrawn-screenshot-evidence",
+  "artifact": "week2-trade-1600.png",
+  "reason": "Independent phase A review P3 found this file identical to week2-bulletin-1600.png. The former screenshot gate inspected a lingering trade-submit DOM node in a closed dialog instead of dialog.open/kind/visibility. Do not use it as evidence of an open trade dialog.",
+  "replacement": "../review-p3-b/week2-trade-1600.png",
+  "replacementReport": "../review-p3-b/review-report.json",
+  "originalPreserved": true
+}

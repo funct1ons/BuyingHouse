@@ -8,7 +8,7 @@ function args(){const out={};for(let i=2;i<process.argv.length;i++){const key=pr
 async function main(){
  const opts=args(),root=path.resolve(opts.root||path.join(__dirname,'..'));
  const stamp=new Date().toISOString().replace(/[:.]/g,'-');
- const output=path.resolve(opts.output||path.join(root,'docs',`browser-evidence-${stamp}`));await fs.mkdir(output,{recursive:true});
+ const output=path.resolve(opts.output||process.env.UI_EVIDENCE_DIR||path.join(root,'docs',`browser-evidence-${stamp}`));await fs.mkdir(output,{recursive:true});
  const width=Number(opts.width||1280),height=Number(opts.height||800);if(!Number.isInteger(width)||!Number.isInteger(height)||width<200||height<200)throw Error('Invalid viewport');
  const report={startedAt:new Date().toISOString(),command:[process.execPath,...process.argv.slice(1)],root,output,viewport:{width,height},phase:'stage-1 prototype; not a final acceptance gate',pages:[],unverified:['Final UI and multi-resolution layout','Save/load and complete playthrough','Persistent browser storage','External requests from browser internals (page Network events only)'],failures:[]};
  let edge;

@@ -5,7 +5,7 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const context = vm.createContext({console});
 context.window = context;
-for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
+for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
 }
 const H = context.HomeYear;
@@ -141,13 +141,13 @@ check('坏v2删事件或住房不能迁移', () => {
     const map = new Map();
     const saves = new H.SaveAdapter(storeFrom(map));
     const result = saves.migrate(JSON.stringify(bad));
-    if (result.ok || map.has('homeyear.save.v3')) throw Error('坏档被迁移');
+    if (result.ok || map.has('homeyear.save.v4')) throw Error('坏档被迁移');
   }
 });
-check('备份回读失败不改已有v3', () => {
+check('备份回读失败不改已有v4', () => {
   const map = new Map();
   const existing = JSON.stringify(H.create('keep-v3'));
-  map.set('homeyear.save.v3', existing);
+  map.set('homeyear.save.v4', existing);
   const store = {
     getItem: k => map.has(k) ? map.get(k) : null,
     setItem: (k, v) => { if (String(k).startsWith('homeyear.save.backup.')) { map.set(k, 'NOT-THE-RAW'); return; } map.set(k, v); },
@@ -156,16 +156,16 @@ check('备份回读失败不改已有v3', () => {
   const saves = new H.SaveAdapter(store);
   const result = saves.migrate(raw);
   if (result.ok) throw Error('回读失败仍迁移');
-  if (map.get('homeyear.save.v3') !== existing) throw Error('已有v3被改写');
+  if (map.get('homeyear.save.v4') !== existing) throw Error('已有v4被改写');
 });
 check('隔离档只有明确true才能覆盖', () => {
   const map = new Map();
-  map.set('homeyear.save.v3', 'BROKEN');
+  map.set('homeyear.save.v4', 'BROKEN');
   const saves = new H.SaveAdapter(storeFrom(map));
   if (saves.load().ok) throw Error('坏档未被隔离');
   const state = H.create('replace-flag');
   const fuzzy = saves.save(state, {replaceDamaged: 1});
-  if (fuzzy.ok || map.get('homeyear.save.v3') !== 'BROKEN') throw Error('非true授权覆盖了隔离档');
+  if (fuzzy.ok || map.get('homeyear.save.v4') !== 'BROKEN') throw Error('非true授权覆盖了隔离档');
   const exact = saves.save(state, {replaceDamaged: true});
   if (!exact.ok) throw Error(exact.error);
 });
@@ -176,7 +176,7 @@ check('已结束v2不迁移', () => {
   const map = new Map();
   const saves = new H.SaveAdapter(storeFrom(map));
   const result = saves.migrate(JSON.stringify(ended));
-  if (result.ok || map.has('homeyear.save.v3')) throw Error('结束档被迁移');
+  if (result.ok || map.has('homeyear.save.v4')) throw Error('结束档被迁移');
   let message = '';
   try { H.migrateV2(ended, 'homeyear.save.backup.ended'); }
   catch (e) { message = e.message; }

@@ -1,0 +1,261 @@
+{
+  "base": "a53834511d58c127957da8873a1df18a7abf02a5",
+  "v3FrozenBodyMatchesBaseline": true,
+  "historical": [
+    {
+      "path": "docs/fixtures/v2-baseline-migrate.json",
+      "sha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+      "baselineSha256": "210805df7e971053efe47544beb3eb6c85b13d1aa80444e56ad5ec590b5f7c7c",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-rule-freeze.md",
+      "sha256": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6",
+      "baselineSha256": "4cf437417262e0d5776aadbdba80f11c54eee2e62190cc9584b3c2cb328630b6",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-balance.md",
+      "sha256": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052",
+      "baselineSha256": "01e1e9ed624158b32078e6d71e03c8e1ee5e9038f869beed7b973e6f07b14052",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.json",
+      "sha256": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e",
+      "baselineSha256": "fd647cde0cf72528a69fd0126baae132789690ac0c05b3cae332cab94cb3442e",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r2.md",
+      "sha256": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5",
+      "baselineSha256": "4491f543bfb919be2585345400f46681dcedc9f01ad056c23c808a96e4d5f8a5",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.json",
+      "sha256": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b",
+      "baselineSha256": "e18e248941fb9e51b3e5e8829b387ff1ec3afd11fa0c772efe84fe527dd79a3b",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1-r3.md",
+      "sha256": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67",
+      "baselineSha256": "8f1ab5ba47103a5c6ca290c979c82cb3e87218920b61f8bc13f064d61dd1ee67",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1.json",
+      "sha256": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e",
+      "baselineSha256": "4d4fc01e13342bbf35a3cdc8c159465eff91e4365d168f1355478b436656a32e",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-c1.md",
+      "sha256": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d",
+      "baselineSha256": "92ac76156bfcb834237eecb47ef52b28ac522b3b7d5de423d78bc5e8c34ad10d",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-formal-summary.md",
+      "sha256": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132",
+      "baselineSha256": "892ca7b9bb052bb68da33fd4944acd57c8164b6b8aab976ed6c285aae9b3d132",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.json",
+      "sha256": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888",
+      "baselineSha256": "6c83f4d51637b61f0f648dfc059d29d562e590a2fcd88e4a90b40449b35f2888",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-holdout.md",
+      "sha256": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303",
+      "baselineSha256": "8863be9fb2754414b8b1b9b4a2071ddcb43003a4fe52d5dd05eb9ac3a1f1a303",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-primary.json",
+      "sha256": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc",
+      "baselineSha256": "ce1cc8107784fd582588e4f71c2058b6849a653aa0bb18f652723f45bb9b29cc",
+      "identical": true
+    },
+    {
+      "path": "docs/gameplay-v4-primary.md",
+      "sha256": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4",
+      "baselineSha256": "2dec6e29a6b6480525873025ef2eea00875b3f4dfe59065fe5b1af504c690ac4",
+      "identical": true
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "baselineSha256": "034fca7cba3e2a3287b2391b46e58fca8d48980be25ea57385384325ceef3a2f",
+      "identical": true
+    },
+    {
+      "path": "js/statistics.js",
+      "sha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "baselineSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "identical": true
+    },
+    {
+      "path": "js/trading.js",
+      "sha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "baselineSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "identical": true
+    },
+    {
+      "path": "js/v2-baseline.js",
+      "sha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "baselineSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "identical": true
+    },
+    {
+      "path": "simulation/c1.cjs",
+      "sha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "baselineSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "identical": true
+    }
+  ],
+  "live": [
+    {
+      "path": "README.md",
+      "sha256": "0bcdabd225654727d3c811bc5a984edf5a9a6f09b2b19e1cc90989ea4d0f066b"
+    },
+    {
+      "path": "css/scenes.css",
+      "sha256": "f432f0a2d5f125243e40bb855d6572ee773186192a6467871c75807d8f00f316"
+    },
+    {
+      "path": "docs/gameplay-rules-0.5.md",
+      "sha256": "1e7edfc2eff928f4d876d52690430df800eda54683d802258bf390a596426579"
+    },
+    {
+      "path": "docs/save-v4.md",
+      "sha256": "1a7c570c3579efdba7e63aa471f78601c82e60736ee4ab22d9ba88f533f27cd6"
+    },
+    {
+      "path": "docs/ui.md",
+      "sha256": "7311308fa0b7686b75bcca18e04599b08cd3103c9aecc84bfb4ac4a46b88414b"
+    },
+    {
+      "path": "index.html",
+      "sha256": "05415247138d003bd7fe80e73a01df78980cde714fde6a4bdf2c91e20dab1dec"
+    },
+    {
+      "path": "js/data.js",
+      "sha256": "c3e3526bcc55d72b57044e8580836ad1b7dfa9c0c5587fc516b554934ea19130"
+    },
+    {
+      "path": "js/game.js",
+      "sha256": "78c7b0d418875a7f3e0e98dde759cbc2c9fb69eedbc49db54cf4f3326e447df4"
+    },
+    {
+      "path": "js/market.js",
+      "sha256": "852ee180996b996d846e26bf4a1feac4d25ddc88266a5996d2bc1fdacdb55c74"
+    },
+    {
+      "path": "js/save.js",
+      "sha256": "2e86a8650f6946e99ad68c89daa39ec1e5e7ceb375aeb09871ccab7459aa0109"
+    },
+    {
+      "path": "js/ui.js",
+      "sha256": "4f55844c5b29e4a348ef47e633815a4650daf02ce9171e91a5f54384745e70a6"
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "sha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379"
+    },
+    {
+      "path": "js/validation.js",
+      "sha256": "a8f2a4b1d32cd24e1c36fecee7c17419d25f6f45e63c8d376c027de49f7b1e01"
+    },
+    {
+      "path": "tests/acceptance-final.cjs",
+      "sha256": "71dea62d8bb0453cfbd8222219589806696e0398c4fe94a641f0f495758f654f"
+    },
+    {
+      "path": "tests/acceptance-supplement.cjs",
+      "sha256": "a179b9770246b038e00bf09536df715ca64821279438a5b1de34833fbb5f3e02"
+    },
+    {
+      "path": "tests/av-audio.cjs",
+      "sha256": "74c315a64b8ea96efdd0ec56dd11fa1339b5481eef251867bc2133863fa3faed"
+    },
+    {
+      "path": "tests/av-integration.cjs",
+      "sha256": "090e22dfb32efd61f25b468b0da456c8ac2c57c77443bc31b12b015e315f5714"
+    },
+    {
+      "path": "tests/av-visual.cjs",
+      "sha256": "33ce9a07f2c389ba8228f85197d385af0cde057a11d8fe361a95f10b545a2362"
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "sha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee"
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "sha256": "605db09a783f19c384767aed349e879bae088cec8df7dc4e78647e82fcc2c881"
+    },
+    {
+      "path": "tests/browser.html",
+      "sha256": "0104bdb708ebb3d589c3cad38d1e6930d7512879664fb2a6df575ac6db9f8efc"
+    },
+    {
+      "path": "tests/cdp-smoke.cjs",
+      "sha256": "df8628badbf4dcafa8c4c37649c9a51cfc7694ba1515951fad66427228189dc7"
+    },
+    {
+      "path": "tests/milestone-b-edge-migrate.cjs",
+      "sha256": "e6b557e67c9ebbcc20e11fc7c13bba47cb9e1785f91df2cd84eae806cb27362e"
+    },
+    {
+      "path": "tests/milestone-b-edge-review.cjs",
+      "sha256": "293f792499b3f89fbe423606b7f6bfa012df614fe347aab52ac984c25ca53aec"
+    },
+    {
+      "path": "tests/milestone-b-edge.cjs",
+      "sha256": "98ce8eeb26bdff2b1bb2e135823d3e7943115fa3310f6b03a46eaa8cae319a23"
+    },
+    {
+      "path": "tests/milestone-b.cjs",
+      "sha256": "7b5b14f4a0c7bf49354469bd94ca5c5f697a849f931bdf82844956f310457e2f"
+    },
+    {
+      "path": "tests/milestone-d-edge.cjs",
+      "sha256": "26b078a08966b8ddb21139156349f6a1afeee1dc92ad4a18e3f6d70b5f7c100f"
+    },
+    {
+      "path": "tests/review-b2.cjs",
+      "sha256": "5a354ee5931bf25b4e561c0fbd1a54e2112ad11b3054a88a34f6dc76d793bc36"
+    },
+    {
+      "path": "tests/review-fixes.cjs",
+      "sha256": "922b0359ba47cff9497c683cb67b4f72ab61d088bb90bbcbd182a5a95f526b5f"
+    },
+    {
+      "path": "tests/run.cjs",
+      "sha256": "e4ab28dc395c924ed9335c9fc84c4cd6e0dfc3ab09735a5d6618684019bea059"
+    },
+    {
+      "path": "tests/suite.js",
+      "sha256": "c6679610b73b33d7d1f8875c7ee93bdeccf135d870f80160b08d18999dbd5c79"
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "sha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a"
+    },
+    {
+      "path": "tests/ui-interaction.cjs",
+      "sha256": "dfc033ae2c5c9c0187a24e93e759688cf78d55bb0272b66b559f32e7bba89cf1"
+    }
+  ],
+  "invariants": {
+    "products": "df89f4c4e6a28aed4c3b9bff4aa69fc41c2aef0e9c4201ac657f9fe05b434fb4",
+    "legacyProducts": "be14e8d2db700ac90d9c07de0cca35a9e76f85372378150791b421eb701f5152",
+    "houses": "9d8d7d7376ac15aacc30445ce2ecba1e245c53bc58f893d704941c4ca3df57e1",
+    "warehouses": "26660c4c0bb8b6770b3a2d4b8cf4e3e7074d95cb716828e7114cc1ba55b582e8",
+    "difficulties": "01c621235874d9fd820df8fec86b373389cdd02aa86f62bbce4113a50d63dd7e"
+  }
+}

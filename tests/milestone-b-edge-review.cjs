@@ -10,7 +10,7 @@ function endedSave() {
   const vm = require('node:vm');
   const context = vm.createContext({console});
   context.window = context;
-  for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
+  for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
   }
   const H = context.HomeYear;
@@ -35,7 +35,7 @@ function endedSave() {
   const s = e.snapshot();
   return {save: JSON.stringify(s), best: H.holding(s.result.bestProduct).name, worst: H.holding(s.result.worstProduct).name, bestLegacy: !!H.holding(s.result.bestProduct).legacy, worstLegacy: !!H.holding(s.result.worstProduct).legacy};
 }
-const outDir = path.join(root, 'docs', 'gameplay-evidence');
+const outDir = path.resolve(process.env.UI_EVIDENCE_DIR || path.join(root, 'docs', 'gameplay-evidence'));
 fs.mkdirSync(outDir, {recursive: true});
 (async () => {
   const failures = [];
@@ -86,9 +86,9 @@ fs.mkdirSync(outDir, {recursive: true});
     const s = HomeYear.UI.snapshot();
     const sort = document.querySelector('#sort');
     const bulletin = document.querySelector('[data-testid=bulletin]').innerText;
-    const letter = document.querySelector('.news-panel').innerText;
+    const letter = document.querySelector('.personal-letter').innerText;
     const personalTitles = s.news.filter(n => n.kind === 'personal').map(n => n.title);
-    const shown = [...document.querySelectorAll('.news-panel .news p')].map(el => el.textContent);
+    const shown = [...document.querySelectorAll('.personal-letter .news p')].map(el => el.textContent);
     return {week: s.week, sort: sort.value, sortLabel: sort.selectedOptions[0] && sort.selectedOptions[0].textContent, bulletin, letter, headline: (s.news.find(n => n.kind === 'headline') || {}).id, personalTitles, shown};
   })()`);
   notes.week2 = {week: week2.week, sort: week2.sort, sortLabel: week2.sortLabel, headline: week2.headline};
@@ -96,7 +96,7 @@ fs.mkdirSync(outDir, {recursive: true});
   if (!week2.bulletin.includes('热情降温已经发生') || week2.bulletin.includes('没有新的供应或需求事件')) failures.push('headline situation leaked');
   if (!week2.bulletin.includes('这是已发生的本周涨跌，不代表下周方向')) failures.push('holding situation missing');
   if (week2.letter.includes('街区很安静')) failures.push('quiet letter on headline week');
-  if (!week2.letter.includes('这周没有仍在持续的市场消息') && !week2.letter.includes('仍在影响')) failures.push('letter copy ' + week2.letter.slice(0, 180));
+  if (!week2.letter.includes('城市来信')) failures.push('compact personal letter missing');
   const dup = week2.shown.filter((title, i) => week2.shown.indexOf(title) !== i);
   if (dup.length) failures.push('duplicate letter ' + dup.join(','));
   const over1366 = await overflow();
@@ -105,9 +105,9 @@ fs.mkdirSync(outDir, {recursive: true});
   await shot('week2-bulletin-1366.png');
   await cdp.evaluate(`document.querySelector('[data-testid=bulletin] [data-action=trade]').click()`);
   await delay(300);
-  const tradeOpen = await cdp.evaluate(`document.querySelector('[data-testid=trade-submit]') ? document.querySelector('.dialog-body').innerText.slice(0, 180) : ''`);
+  const tradeOpen = await cdp.evaluate(`(()=>{const d=document.querySelector('dialog'),b=d.querySelector('[data-testid=trade-submit]'),r=d.getBoundingClientRect();return d.open&&d.dataset.kind==='trade'&&b&&r.width>0&&r.height>0?d.querySelector('.dialog-body').innerText.slice(0,180):''})()`);
   if (!tradeOpen.includes('名表') && !tradeOpen.includes('奢侈')) notes.tradeOpen = tradeOpen;
-  if (!tradeOpen) failures.push('bulletin trade did not open');
+  if (!tradeOpen) throw Error('1366 trade screenshot requires an open visible trade dialog');
   await shot('week2-trade-1366.png');
   await cdp.evaluate(`document.querySelector('[data-action=close]') && document.querySelector('[data-action=close]').click()`);
   await delay(200);
@@ -117,10 +117,13 @@ fs.mkdirSync(outDir, {recursive: true});
   notes.overflow1600Bulletin = over1600a;
   if (over1600a.horizontal) failures.push('overflow 1600 bulletin ' + over1600a.offenders.join(','));
   await shot('week2-bulletin-1600.png');
-  if (!await cdp.evaluate(`!!document.querySelector('[data-testid=trade-submit]')`)) {
+  if (!await cdp.evaluate(`document.querySelector('dialog').open&&document.querySelector('dialog').dataset.kind==='trade'`)) {
     await cdp.evaluate(`document.querySelector('[data-testid=bulletin] [data-action=trade]').click()`);
     await delay(300);
   }
+  const trade1600=await cdp.evaluate(`(()=>{const d=document.querySelector('dialog'),b=d.querySelector('[data-testid=trade-submit]'),r=d.getBoundingClientRect();return {open:d.open,kind:d.dataset.kind,visible:!!b&&r.width>0&&r.height>0}})()`);
+  notes.trade1600=trade1600;
+  if(!trade1600.open||trade1600.kind!=='trade'||!trade1600.visible)throw Error('1600 trade screenshot requires an open visible trade dialog');
   await shot('week2-trade-1600.png');
   const over1600b = await overflow();
   notes.overflow1600Trade = over1600b;
@@ -148,7 +151,7 @@ fs.mkdirSync(outDir, {recursive: true});
     }
     if (!found) failures.push('held good never left the shelf');
     else {
-      await cdp.evaluate(`[...document.querySelectorAll('.inventory-line')].find(el => el.innerText.includes('未上架')).click()`);
+      await cdp.evaluate(`[...document.querySelectorAll('.inventory-card')].find(el => el.innerText.includes('未上架')).querySelector('[data-action=trade]').click()`);
       await delay(250);
       const sell = await cdp.evaluate(`(() => ({preview: document.querySelector('#preview')?.innerText || '', buyDisabled: document.querySelector('[data-testid=trade-buy]')?.disabled === true, qty: HomeYear.UI.snapshot().inventory[${JSON.stringify(bought)}].qty}))()`);
       if (!sell.preview.includes('回收报价') || !sell.buyDisabled) failures.push('off-sale sell UI ' + JSON.stringify(sell));
@@ -159,7 +162,7 @@ fs.mkdirSync(outDir, {recursive: true});
       notes.offSale = {id: bought, sold: left === 0};
     }
   }
-  await cdp.evaluate(`localStorage.setItem('homeyear.save.v3','BROKEN'); localStorage.setItem('homeyear.save.v2', ${JSON.stringify(raw)}); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
+  await cdp.evaluate(`localStorage.setItem('homeyear.save.v4','BROKEN'); localStorage.setItem('homeyear.save.v2', ${JSON.stringify(raw)}); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
   if (!await ready(`!!document.querySelector('[data-testid=migrate]')`)) failures.push('migrate missing for damaged v3');
   else {
     await cdp.evaluate(`document.querySelector('[data-testid=migrate]').click()`);
@@ -167,10 +170,10 @@ fs.mkdirSync(outDir, {recursive: true});
     await cdp.evaluate(`document.querySelector('[data-testid=confirm-yes]').click()`);
     await delay(250);
     const second = await cdp.evaluate(`document.querySelector('.dialog-body')?.innerText || ''`);
-    if (!second.includes('替换损坏的 v3')) failures.push('second confirm missing ' + second.slice(0, 120));
+    if (!second.includes('替换损坏的 v4')) failures.push('second confirm missing ' + second.slice(0, 120));
     await cdp.evaluate(`[...document.querySelectorAll('button')].find(el => el.textContent === '取消').click()`);
     await delay(250);
-    const cancelled = await cdp.evaluate(`localStorage.getItem('homeyear.save.v3')`);
+    const cancelled = await cdp.evaluate(`localStorage.getItem('homeyear.save.v4')`);
     if (cancelled !== 'BROKEN') failures.push('cancel replaced damaged v3');
     await cdp.evaluate(`document.querySelector('[data-testid=migrate]').click()`);
     await delay(200);
@@ -178,11 +181,11 @@ fs.mkdirSync(outDir, {recursive: true});
     await delay(200);
     await cdp.evaluate(`document.querySelector('[data-testid=confirm-yes]').click()`);
     await delay(500);
-    const accepted = await cdp.evaluate(`(() => ({week: HomeYear.UI.snapshot()?.week, v2: localStorage.getItem('homeyear.save.v2') === ${JSON.stringify(raw)}, v3ok: !!JSON.parse(localStorage.getItem('homeyear.save.v3') || 'null')?.week}))()`);
+    const accepted = await cdp.evaluate(`(() => ({week: HomeYear.UI.snapshot()?.week, v2: localStorage.getItem('homeyear.save.v2') === ${JSON.stringify(raw)}, v3ok: !!JSON.parse(localStorage.getItem('homeyear.save.v4') || 'null')?.week}))()`);
     if (accepted.week !== 4 || !accepted.v2 || !accepted.v3ok) failures.push('accept migrate ' + JSON.stringify(accepted));
     notes.damaged = accepted;
   }
-  await cdp.evaluate(`localStorage.setItem('homeyear.save.v2','LOCAL-ORIGINAL'); localStorage.removeItem('homeyear.save.v3'); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
+  await cdp.evaluate(`localStorage.setItem('homeyear.save.v2','LOCAL-ORIGINAL'); localStorage.removeItem('homeyear.save.v4'); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
   if (!await ready(`!!document.querySelector('[data-action=settings]')`)) failures.push('settings missing');
   else {
     await cdp.evaluate(`document.querySelector('[data-action=settings]').click()`);
@@ -199,7 +202,7 @@ fs.mkdirSync(outDir, {recursive: true});
   const ended = endedSave();
   if (!ended.bestLegacy || !ended.worstLegacy) failures.push('ended setup not legacy extremes ' + ended.best + '/' + ended.worst);
   else {
-    await cdp.evaluate(`localStorage.setItem('homeyear.save.v3', ${JSON.stringify(ended.save)}); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
+    await cdp.evaluate(`localStorage.setItem('homeyear.save.v4', ${JSON.stringify(ended.save)}); localStorage.setItem('homeyear.tutorial','seen'); location.reload()`);
     if (!await ready(`!!document.querySelector('[data-testid=continue]')`)) failures.push('continue missing');
     else {
       await cdp.evaluate(`document.querySelector('[data-testid=continue]').click()`);
@@ -211,6 +214,7 @@ fs.mkdirSync(outDir, {recursive: true});
     }
   }
   const report = {notes, consoleErrors, failures, screenshots: fs.readdirSync(outDir).filter(name => name.endsWith('.png'))};
+  fs.writeFileSync(path.join(outDir, 'review-report.json'), JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));
   await edge.cleanup();
   if (failures.length || consoleErrors.length) process.exitCode = 1;

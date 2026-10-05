@@ -1,0 +1,2033 @@
+{
+  "prior": {
+    "version": 4,
+    "rulesVersion": "0.5",
+    "seed": "B-SWAN-0",
+    "difficulty": "standard",
+    "week": 45,
+    "cash": 234000,
+    "capacity": 20,
+    "warehouse": "room",
+    "revision": 44,
+    "status": "playing",
+    "house": null,
+    "result": null,
+    "rng": {
+      "market": 2044184824,
+      "events": 2410764155,
+      "visual": 16802186,
+      "listing": 269428257
+    },
+    "inventory": {
+      "rice": {
+        "qty": 0,
+        "cost": 0
+      },
+      "pork": {
+        "qty": 0,
+        "cost": 0
+      },
+      "eggs": {
+        "qty": 0,
+        "cost": 0
+      },
+      "fruit": {
+        "qty": 0,
+        "cost": 0
+      },
+      "phone": {
+        "qty": 0,
+        "cost": 0
+      },
+      "gpu": {
+        "qty": 0,
+        "cost": 0
+      },
+      "watch": {
+        "qty": 0,
+        "cost": 0
+      },
+      "collectible": {
+        "qty": 0,
+        "cost": 0
+      },
+      "coat": {
+        "qty": 0,
+        "cost": 0
+      },
+      "ac": {
+        "qty": 0,
+        "cost": 0
+      },
+      "umbrella": {
+        "qty": 0,
+        "cost": 0
+      },
+      "mask": {
+        "qty": 0,
+        "cost": 0
+      }
+    },
+    "market": {
+      "rice": {
+        "price": 18652,
+        "previous": 20295,
+        "trend": -0.00036109165788009677,
+        "history": [
+          20166,
+          18777,
+          17643,
+          18613,
+          19106,
+          19979,
+          20799,
+          20561,
+          19317,
+          20225,
+          20295,
+          18652
+        ],
+        "low": 12650,
+        "high": 21057
+      },
+      "pork": {
+        "price": 12080,
+        "previous": 13135,
+        "trend": -0.029068454660862057,
+        "history": [
+          13476,
+          13101,
+          15111,
+          15458,
+          13815,
+          12122,
+          11798,
+          11506,
+          11448,
+          11567,
+          13135,
+          12080
+        ],
+        "low": 6433,
+        "high": 15458
+      },
+      "eggs": {
+        "price": 7843,
+        "previous": 8343,
+        "trend": -0.0022466887479148604,
+        "history": [
+          6662,
+          6241,
+          6477,
+          6702,
+          6458,
+          8059,
+          7609,
+          7940,
+          7768,
+          8186,
+          8343,
+          7843
+        ],
+        "low": 4475,
+        "high": 10228
+      },
+      "fruit": {
+        "price": 15267,
+        "previous": 14133,
+        "trend": 0.0349222334254041,
+        "history": [
+          19773,
+          17795,
+          17660,
+          18021,
+          17649,
+          16716,
+          14936,
+          13166,
+          12898,
+          12138,
+          14133,
+          15267
+        ],
+        "low": 10208,
+        "high": 25703
+      },
+      "phone": {
+        "price": 52820,
+        "previous": 59745,
+        "trend": 0.0016437087454159779,
+        "history": [
+          60862,
+          51572,
+          64109,
+          59884,
+          54736,
+          58054,
+          66136,
+          65488,
+          54043,
+          52632,
+          59745,
+          52820
+        ],
+        "low": 51572,
+        "high": 103054
+      },
+      "gpu": {
+        "price": 92541,
+        "previous": 80143,
+        "trend": -0.02340445057053966,
+        "history": [
+          85354,
+          89511,
+          81521,
+          77272,
+          79925,
+          86506,
+          73599,
+          64119,
+          63912,
+          70944,
+          80143,
+          92541
+        ],
+        "low": 52209,
+        "high": 122740
+      },
+      "watch": {
+        "price": 50000,
+        "previous": 79078,
+        "trend": -0.10235291952457656,
+        "history": [
+          233029,
+          275873,
+          240171,
+          182578,
+          158500,
+          161859,
+          111082,
+          87557,
+          74495,
+          67016,
+          79078,
+          50000
+        ],
+        "low": 50000,
+        "high": 275873
+      },
+      "collectible": {
+        "price": 17488,
+        "previous": 43622,
+        "trend": -0.0393237318468934,
+        "history": [
+          57397,
+          64612,
+          49159,
+          42538,
+          88733,
+          73141,
+          47024,
+          43460,
+          37194,
+          41869,
+          43622,
+          17488
+        ],
+        "low": 17488,
+        "high": 183995
+      },
+      "coat": {
+        "price": 21501,
+        "previous": 20701,
+        "trend": -0.0002187316381206182,
+        "history": [
+          14293,
+          14094,
+          13324,
+          13005,
+          14506,
+          14502,
+          14381,
+          14326,
+          16006,
+          17634,
+          20701,
+          21501
+        ],
+        "low": 13005,
+        "high": 43037
+      },
+      "ac": {
+        "price": 76769,
+        "previous": 87359,
+        "trend": -0.00058917610230877,
+        "history": [
+          77571,
+          73051,
+          74620,
+          85180,
+          85353,
+          96210,
+          93273,
+          90202,
+          91578,
+          95941,
+          87359,
+          76769
+        ],
+        "low": 33408,
+        "high": 107383
+      },
+      "umbrella": {
+        "price": 9578,
+        "previous": 9852,
+        "trend": -0.03853951508359464,
+        "history": [
+          11732,
+          11275,
+          11667,
+          11262,
+          10067,
+          10338,
+          10299,
+          10376,
+          10156,
+          10544,
+          9852,
+          9578
+        ],
+        "low": 7452,
+        "high": 12713
+      },
+      "mask": {
+        "price": 7660,
+        "previous": 7926,
+        "trend": 0.009425763479210258,
+        "history": [
+          14002,
+          13548,
+          13840,
+          11837,
+          11739,
+          10696,
+          12117,
+          9509,
+          10338,
+          8815,
+          7926,
+          7660
+        ],
+        "low": 3554,
+        "high": 23673
+      }
+    },
+    "activeEvents": [
+      {
+        "id": "weak",
+        "started": 45,
+        "until": 48
+      }
+    ],
+    "macro": 1.002927638910268,
+    "season": "秋",
+    "personal": 0,
+    "personalEvent": null,
+    "news": [
+      {
+        "id": "weak",
+        "title": "奢侈柜台前的人少了",
+        "reliability": "normal",
+        "week": 45,
+        "kind": "headline",
+        "productId": "collectible",
+        "changeBps": -5991,
+        "fresh": true
+      },
+      {
+        "id": "move",
+        "title": "名表本周价格已经明显变动",
+        "reliability": "normal",
+        "week": 45,
+        "kind": "holding",
+        "productId": "watch",
+        "changeBps": -3677,
+        "fresh": true
+      },
+      {
+        "id": "listing",
+        "title": "新到货：大米；暂时缺货：鸡蛋",
+        "reliability": "normal",
+        "week": 45,
+        "kind": "listing",
+        "productId": "rice",
+        "changeBps": -810,
+        "fresh": true
+      }
+    ],
+    "history": [
+      {
+        "week": 1,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 2,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 3,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 4,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 5,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 6,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 7,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 8,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 9,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 10,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 11,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 12,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 13,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 14,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 15,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 16,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 17,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 18,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 19,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 20,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 21,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 22,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 23,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 24,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 25,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 26,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 27,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 28,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 29,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 30,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 31,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 32,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 33,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 34,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 35,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 36,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 37,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 38,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 39,
+        "cash": 258000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 258000
+      },
+      {
+        "week": 40,
+        "cash": 258000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 258000
+      },
+      {
+        "week": 41,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 42,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 43,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 44,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 45,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      }
+    ],
+    "stats": {
+      "bought": 0,
+      "sold": 0,
+      "profit": 0,
+      "grants": 0,
+      "expenses": 66000,
+      "hardship": 0,
+      "trades": 0,
+      "best": 0,
+      "worst": 0,
+      "peak": 300000,
+      "fees": 0,
+      "turnover": 0,
+      "houseWeek": 0,
+      "warehouseSpent": 0,
+      "upgrades": 0,
+      "maxDrawdown": 220000,
+      "byProduct": {
+        "rice": 0,
+        "pork": 0,
+        "eggs": 0,
+        "fruit": 0,
+        "phone": 0,
+        "gpu": 0,
+        "watch": 0,
+        "collectible": 0,
+        "coat": 0,
+        "ac": 0,
+        "umbrella": 0,
+        "mask": 0,
+        "oil": 0,
+        "milk": 0,
+        "console": 0,
+        "camera": 0,
+        "gold": 0,
+        "medicine": 0,
+        "battery": 0,
+        "food": 0
+      }
+    },
+    "listing": [
+      "rice",
+      "pork",
+      "phone",
+      "gpu",
+      "collectible",
+      "coat",
+      "ac",
+      "umbrella"
+    ],
+    "absence": {
+      "rice": 0,
+      "pork": 0,
+      "eggs": 1,
+      "fruit": 1,
+      "phone": 0,
+      "gpu": 0,
+      "watch": 1,
+      "collectible": 0,
+      "coat": 0,
+      "ac": 0,
+      "umbrella": 0,
+      "mask": 3
+    },
+    "onStreak": {
+      "rice": 1,
+      "pork": 2,
+      "eggs": 0,
+      "fruit": 0,
+      "phone": 1,
+      "gpu": 1,
+      "watch": 0,
+      "collectible": 4,
+      "coat": 3,
+      "ac": 2,
+      "umbrella": 3,
+      "mask": 0
+    },
+    "legacy": {
+      "oil": {
+        "qty": 0,
+        "cost": 0,
+        "price": 24000,
+        "previous": 24000,
+        "trend": 0,
+        "history": [
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000
+        ],
+        "low": 24000,
+        "high": 24000
+      },
+      "milk": {
+        "qty": 0,
+        "cost": 0,
+        "price": 11000,
+        "previous": 11000,
+        "trend": 0,
+        "history": [
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000
+        ],
+        "low": 11000,
+        "high": 11000
+      },
+      "console": {
+        "qty": 0,
+        "cost": 0,
+        "price": 50000,
+        "previous": 50000,
+        "trend": 0,
+        "history": [
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000
+        ],
+        "low": 50000,
+        "high": 50000
+      },
+      "camera": {
+        "qty": 0,
+        "cost": 0,
+        "price": 90000,
+        "previous": 90000,
+        "trend": 0,
+        "history": [
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000
+        ],
+        "low": 90000,
+        "high": 90000
+      },
+      "gold": {
+        "qty": 0,
+        "cost": 0,
+        "price": 120000,
+        "previous": 120000,
+        "trend": 0,
+        "history": [
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000
+        ],
+        "low": 120000,
+        "high": 120000
+      },
+      "medicine": {
+        "qty": 0,
+        "cost": 0,
+        "price": 16000,
+        "previous": 16000,
+        "trend": 0,
+        "history": [
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000
+        ],
+        "low": 16000,
+        "high": 16000
+      },
+      "battery": {
+        "qty": 0,
+        "cost": 0,
+        "price": 20000,
+        "previous": 20000,
+        "trend": 0,
+        "history": [
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000
+        ],
+        "low": 20000,
+        "high": 20000
+      },
+      "food": {
+        "qty": 0,
+        "cost": 0,
+        "price": 13000,
+        "previous": 13000,
+        "trend": 0,
+        "history": [
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000
+        ],
+        "low": 13000,
+        "high": 13000
+      }
+    },
+    "migration": null,
+    "upgrade": null,
+    "swanLog": [
+      {
+        "id": "swan_egg_short",
+        "week": 5
+      },
+      {
+        "id": "swan_egg_relief",
+        "week": 22
+      },
+      {
+        "id": "swan_protection",
+        "week": 29
+      },
+      {
+        "id": "swan_tariff",
+        "week": 36
+      }
+    ],
+    "priceBook": {
+      "id": "0.2",
+      "houses": {
+        "studio": 650000,
+        "flat": 1000000,
+        "two": 1400000,
+        "city": 1900000,
+        "dream": 2500000
+      },
+      "warehouses": {
+        "room": 0,
+        "small": 70000,
+        "normal": 220000,
+        "large": 500000
+      }
+    }
+  },
+  "state": {
+    "version": 4,
+    "rulesVersion": "0.5",
+    "seed": "B-SWAN-0",
+    "difficulty": "standard",
+    "week": 46,
+    "cash": 234000,
+    "capacity": 20,
+    "warehouse": "room",
+    "revision": 45,
+    "status": "playing",
+    "house": null,
+    "result": null,
+    "rng": {
+      "market": 3305516164,
+      "events": 1309733629,
+      "visual": 16802186,
+      "listing": 799027845
+    },
+    "inventory": {
+      "rice": {
+        "qty": 0,
+        "cost": 0
+      },
+      "pork": {
+        "qty": 0,
+        "cost": 0
+      },
+      "eggs": {
+        "qty": 0,
+        "cost": 0
+      },
+      "fruit": {
+        "qty": 0,
+        "cost": 0
+      },
+      "phone": {
+        "qty": 0,
+        "cost": 0
+      },
+      "gpu": {
+        "qty": 0,
+        "cost": 0
+      },
+      "watch": {
+        "qty": 0,
+        "cost": 0
+      },
+      "collectible": {
+        "qty": 0,
+        "cost": 0
+      },
+      "coat": {
+        "qty": 0,
+        "cost": 0
+      },
+      "ac": {
+        "qty": 0,
+        "cost": 0
+      },
+      "umbrella": {
+        "qty": 0,
+        "cost": 0
+      },
+      "mask": {
+        "qty": 0,
+        "cost": 0
+      }
+    },
+    "market": {
+      "rice": {
+        "price": 19587,
+        "previous": 18652,
+        "trend": 0.019427121653450327,
+        "history": [
+          18777,
+          17643,
+          18613,
+          19106,
+          19979,
+          20799,
+          20561,
+          19317,
+          20225,
+          20295,
+          18652,
+          19587
+        ],
+        "low": 12650,
+        "high": 21057
+      },
+      "pork": {
+        "price": 11144,
+        "previous": 12080,
+        "trend": -0.04365419583850608,
+        "history": [
+          13101,
+          15111,
+          15458,
+          13815,
+          12122,
+          11798,
+          11506,
+          11448,
+          11567,
+          13135,
+          12080,
+          11144
+        ],
+        "low": 6433,
+        "high": 15458
+      },
+      "eggs": {
+        "price": 8342,
+        "previous": 7843,
+        "trend": 0.016185268115343092,
+        "history": [
+          6241,
+          6477,
+          6702,
+          6458,
+          8059,
+          7609,
+          7940,
+          7768,
+          8186,
+          8343,
+          7843,
+          8342
+        ],
+        "low": 4475,
+        "high": 10228
+      },
+      "fruit": {
+        "price": 14781,
+        "previous": 15267,
+        "trend": 0.02930487589812187,
+        "history": [
+          17795,
+          17660,
+          18021,
+          17649,
+          16716,
+          14936,
+          13166,
+          12898,
+          12138,
+          14133,
+          15267,
+          14781
+        ],
+        "low": 10208,
+        "high": 25703
+      },
+      "phone": {
+        "price": 45550,
+        "previous": 52820,
+        "trend": 0.014742087790276292,
+        "history": [
+          51572,
+          64109,
+          59884,
+          54736,
+          58054,
+          66136,
+          65488,
+          54043,
+          52632,
+          59745,
+          52820,
+          45550
+        ],
+        "low": 45550,
+        "high": 103054
+      },
+      "gpu": {
+        "price": 38465,
+        "previous": 92541,
+        "trend": 0.02435832418340225,
+        "history": [
+          89511,
+          81521,
+          77272,
+          79925,
+          86506,
+          73599,
+          64119,
+          63912,
+          70944,
+          80143,
+          92541,
+          38465
+        ],
+        "low": 38465,
+        "high": 122740
+      },
+      "watch": {
+        "price": 50000,
+        "previous": 50000,
+        "trend": -0.08829467084857713,
+        "history": [
+          275873,
+          240171,
+          182578,
+          158500,
+          161859,
+          111082,
+          87557,
+          74495,
+          67016,
+          79078,
+          50000,
+          50000
+        ],
+        "low": 50000,
+        "high": 275873
+      },
+      "collectible": {
+        "price": 19924,
+        "previous": 17488,
+        "trend": 0.021763690359108946,
+        "history": [
+          64612,
+          49159,
+          42538,
+          88733,
+          73141,
+          47024,
+          43460,
+          37194,
+          41869,
+          43622,
+          17488,
+          19924
+        ],
+        "low": 17488,
+        "high": 183995
+      },
+      "coat": {
+        "price": 23047,
+        "previous": 21501,
+        "trend": -0.0030784823053120625,
+        "history": [
+          14094,
+          13324,
+          13005,
+          14506,
+          14502,
+          14381,
+          14326,
+          16006,
+          17634,
+          20701,
+          21501,
+          23047
+        ],
+        "low": 13005,
+        "high": 43037
+      },
+      "ac": {
+        "price": 70782,
+        "previous": 76769,
+        "trend": 0.018282964161201235,
+        "history": [
+          73051,
+          74620,
+          85180,
+          85353,
+          96210,
+          93273,
+          90202,
+          91578,
+          95941,
+          87359,
+          76769,
+          70782
+        ],
+        "low": 33408,
+        "high": 107383
+      },
+      "umbrella": {
+        "price": 7826,
+        "previous": 9578,
+        "trend": -0.04752698994274633,
+        "history": [
+          11275,
+          11667,
+          11262,
+          10067,
+          10338,
+          10299,
+          10376,
+          10156,
+          10544,
+          9852,
+          9578,
+          7826
+        ],
+        "low": 7452,
+        "high": 12713
+      },
+      "mask": {
+        "price": 8129,
+        "previous": 7660,
+        "trend": -0.03791676065462468,
+        "history": [
+          13548,
+          13840,
+          11837,
+          11739,
+          10696,
+          12117,
+          9509,
+          10338,
+          8815,
+          7926,
+          7660,
+          8129
+        ],
+        "low": 3554,
+        "high": 23673
+      }
+    },
+    "activeEvents": [
+      {
+        "id": "weak",
+        "started": 45,
+        "until": 48
+      },
+      {
+        "id": "swan_efficiency",
+        "started": 46,
+        "until": 46
+      }
+    ],
+    "macro": 1.006381177226845,
+    "season": "秋",
+    "personal": 0,
+    "personalEvent": null,
+    "news": [
+      {
+        "id": "swan_efficiency",
+        "title": "新算法落地，旧算力订单突然撤回",
+        "reliability": "reliable",
+        "week": 46,
+        "kind": "headline",
+        "productId": "gpu",
+        "changeBps": -5843,
+        "fresh": true
+      },
+      {
+        "id": "move",
+        "title": "雨具本周价格已经明显变动",
+        "reliability": "normal",
+        "week": 46,
+        "kind": "holding",
+        "productId": "umbrella",
+        "changeBps": -1829,
+        "fresh": true
+      },
+      {
+        "id": "listing",
+        "title": "新到货：口罩；暂时缺货：城市藏品",
+        "reliability": "normal",
+        "week": 46,
+        "kind": "listing",
+        "productId": "mask",
+        "changeBps": 612,
+        "fresh": true
+      },
+      {
+        "id": "weak",
+        "title": "奢侈柜台前的人少了",
+        "reliability": "normal",
+        "week": 46,
+        "kind": "ongoing",
+        "productId": "collectible",
+        "changeBps": 1393,
+        "fresh": false
+      }
+    ],
+    "history": [
+      {
+        "week": 1,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 2,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 3,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 4,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 5,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 6,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 7,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 8,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 9,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 10,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 11,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 12,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 13,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 14,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 15,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 16,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 17,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 18,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 19,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 20,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 21,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 22,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 23,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 24,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 25,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 26,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 27,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 28,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 29,
+        "cash": 300000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 300000
+      },
+      {
+        "week": 30,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 31,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 32,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 33,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 34,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 35,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 36,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 37,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 38,
+        "cash": 276000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 276000
+      },
+      {
+        "week": 39,
+        "cash": 258000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 258000
+      },
+      {
+        "week": 40,
+        "cash": 258000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 258000
+      },
+      {
+        "week": 41,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 42,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 43,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 44,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 45,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      },
+      {
+        "week": 46,
+        "cash": 234000,
+        "inventory": 0,
+        "house": 0,
+        "assets": 234000
+      }
+    ],
+    "stats": {
+      "bought": 0,
+      "sold": 0,
+      "profit": 0,
+      "grants": 0,
+      "expenses": 66000,
+      "hardship": 0,
+      "trades": 0,
+      "best": 0,
+      "worst": 0,
+      "peak": 300000,
+      "fees": 0,
+      "turnover": 0,
+      "houseWeek": 0,
+      "warehouseSpent": 0,
+      "upgrades": 0,
+      "maxDrawdown": 220000,
+      "byProduct": {
+        "rice": 0,
+        "pork": 0,
+        "eggs": 0,
+        "fruit": 0,
+        "phone": 0,
+        "gpu": 0,
+        "watch": 0,
+        "collectible": 0,
+        "coat": 0,
+        "ac": 0,
+        "umbrella": 0,
+        "mask": 0,
+        "oil": 0,
+        "milk": 0,
+        "console": 0,
+        "camera": 0,
+        "gold": 0,
+        "medicine": 0,
+        "battery": 0,
+        "food": 0
+      }
+    },
+    "listing": [
+      "rice",
+      "pork",
+      "phone",
+      "gpu",
+      "watch",
+      "ac",
+      "umbrella",
+      "mask"
+    ],
+    "absence": {
+      "rice": 0,
+      "pork": 0,
+      "eggs": 2,
+      "fruit": 2,
+      "phone": 0,
+      "gpu": 0,
+      "watch": 0,
+      "collectible": 1,
+      "coat": 1,
+      "ac": 0,
+      "umbrella": 0,
+      "mask": 0
+    },
+    "onStreak": {
+      "rice": 2,
+      "pork": 3,
+      "eggs": 0,
+      "fruit": 0,
+      "phone": 2,
+      "gpu": 2,
+      "watch": 1,
+      "collectible": 0,
+      "coat": 0,
+      "ac": 3,
+      "umbrella": 4,
+      "mask": 1
+    },
+    "legacy": {
+      "oil": {
+        "qty": 0,
+        "cost": 0,
+        "price": 24000,
+        "previous": 24000,
+        "trend": 0,
+        "history": [
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000,
+          24000
+        ],
+        "low": 24000,
+        "high": 24000
+      },
+      "milk": {
+        "qty": 0,
+        "cost": 0,
+        "price": 11000,
+        "previous": 11000,
+        "trend": 0,
+        "history": [
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000,
+          11000
+        ],
+        "low": 11000,
+        "high": 11000
+      },
+      "console": {
+        "qty": 0,
+        "cost": 0,
+        "price": 50000,
+        "previous": 50000,
+        "trend": 0,
+        "history": [
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000,
+          50000
+        ],
+        "low": 50000,
+        "high": 50000
+      },
+      "camera": {
+        "qty": 0,
+        "cost": 0,
+        "price": 90000,
+        "previous": 90000,
+        "trend": 0,
+        "history": [
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000,
+          90000
+        ],
+        "low": 90000,
+        "high": 90000
+      },
+      "gold": {
+        "qty": 0,
+        "cost": 0,
+        "price": 120000,
+        "previous": 120000,
+        "trend": 0,
+        "history": [
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000,
+          120000
+        ],
+        "low": 120000,
+        "high": 120000
+      },
+      "medicine": {
+        "qty": 0,
+        "cost": 0,
+        "price": 16000,
+        "previous": 16000,
+        "trend": 0,
+        "history": [
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000,
+          16000
+        ],
+        "low": 16000,
+        "high": 16000
+      },
+      "battery": {
+        "qty": 0,
+        "cost": 0,
+        "price": 20000,
+        "previous": 20000,
+        "trend": 0,
+        "history": [
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000,
+          20000
+        ],
+        "low": 20000,
+        "high": 20000
+      },
+      "food": {
+        "qty": 0,
+        "cost": 0,
+        "price": 13000,
+        "previous": 13000,
+        "trend": 0,
+        "history": [
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000,
+          13000
+        ],
+        "low": 13000,
+        "high": 13000
+      }
+    },
+    "migration": null,
+    "upgrade": null,
+    "swanLog": [
+      {
+        "id": "swan_egg_short",
+        "week": 5
+      },
+      {
+        "id": "swan_egg_relief",
+        "week": 22
+      },
+      {
+        "id": "swan_protection",
+        "week": 29
+      },
+      {
+        "id": "swan_tariff",
+        "week": 36
+      },
+      {
+        "id": "swan_efficiency",
+        "week": 46
+      }
+    ],
+    "priceBook": {
+      "id": "0.2",
+      "houses": {
+        "studio": 650000,
+        "flat": 1000000,
+        "two": 1400000,
+        "city": 1900000,
+        "dream": 2500000
+      },
+      "warehouses": {
+        "room": 0,
+        "small": 70000,
+        "normal": 220000,
+        "large": 500000
+      }
+    }
+  },
+  "diagnostic": {
+    "week": 46,
+    "eligible": true,
+    "swanAttempt": true,
+    "candidates": [
+      "swan_route",
+      "swan_efficiency"
+    ],
+    "filtered": {
+      "swan_egg_short": "used",
+      "swan_heat": "season",
+      "swan_tariff": "used",
+      "swan_protection": "used",
+      "swan_egg_relief": "used"
+    },
+    "ordinaryAttempt": false,
+    "started": "swan_efficiency",
+    "swan": true,
+    "changes": {
+      "rice": 501,
+      "pork": -775,
+      "eggs": 636,
+      "fruit": -318,
+      "phone": -1376,
+      "gpu": -5843,
+      "watch": 0,
+      "collectible": 1393,
+      "coat": 719,
+      "ac": -780,
+      "umbrella": -1829,
+      "mask": 612
+    },
+    "clipped": [
+      "watch"
+    ],
+    "persistCapped": []
+  }
+}

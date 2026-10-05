@@ -1,0 +1,1519 @@
+{
+  "kind": "targeted Node + real Edge file://; P2/P3 repair evidence",
+  "nodeChecks": [
+    {
+      "name": "v3+v2+v1 supported-old priority, no quarantine or writes",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 supported-old priority, no quarantine or writes",
+      "pass": true
+    },
+    {
+      "name": "bad v3 + valid v2 + v1 recognized v2, explicit migration",
+      "pass": true
+    },
+    {
+      "name": "unrecognized old formats + v1 remain rejected BAD",
+      "pass": true
+    },
+    {
+      "name": "unrecognized old formats + v1 remain rejected {\"version\":999}",
+      "pass": true
+    },
+    {
+      "name": "bad/future current v4 never falls back BROKEN",
+      "pass": true
+    },
+    {
+      "name": "bad/future current v4 never falls back {\"version\":9",
+      "pass": true
+    },
+    {
+      "name": "supported old does not consult throwing v1 getter; unrecognized reads fail strictly",
+      "pass": true
+    },
+    {
+      "name": "v1 read failure without recognized supported old remains structured rejection",
+      "pass": true
+    }
+  ],
+  "browserChecks": [
+    {
+      "name": "v3+v2+v1 load recognized supported old, state null",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "state": null,
+        "oldV3": true,
+        "legacy": true,
+        "quarantine": false,
+        "text": "这一年，安个家\n\n从出租屋的一角，到一扇属于自己的门。\n\n距离拥有自己的家，还有 52 周。\n\n城市生活 · 轻策略经营\n你的新生活，从这里开始\n这一局的种子\n生活节奏\n轻松 · 初始 ¥4,000.00\n标准 · 初始 ¥3,000.00\n挑战 · 初始 ¥2,500.00\n开始新的一年\n继续我的生活\n升级 v3 旧档\n明确从 v2 迁入\n继续不可用：还没有本地新档 · 另有旧规则存档，迁入前会另存备份，不覆盖原键\n玩法与帮助\n设置与存档\n暂无存档 · 完全离线，无账号"
+      }
+    },
+    {
+      "name": "v3+v2+v1 UI no false isolation",
+      "pass": true
+    },
+    {
+      "name": "v3+v2+v1 initial single explicit confirmation",
+      "pass": true
+    },
+    {
+      "name": "v3+v2+v1 cancel zero writes",
+      "pass": true
+    },
+    {
+      "name": "v3+v2+v1 one confirm finishes migration, no replacement dialog",
+      "pass": true
+    },
+    {
+      "name": "v3+v2+v1 all v1/v2/v3 raw originals unchanged",
+      "pass": true
+    },
+    {
+      "name": "v3+v2+v1 new v4 parses and current snapshot persisted",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 load recognized supported old, state null",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "state": null,
+        "oldV3": null,
+        "legacy": true,
+        "quarantine": false,
+        "text": "这一年，安个家\n\n从出租屋的一角，到一扇属于自己的门。\n\n距离拥有自己的家，还有 52 周。\n\n城市生活 · 轻策略经营\n你的新生活，从这里开始\n这一局的种子\n生活节奏\n轻松 · 初始 ¥4,000.00\n标准 · 初始 ¥3,000.00\n挑战 · 初始 ¥2,500.00\n开始新的一年\n继续我的生活\n迁入 v2 旧档\n继续不可用：还没有本地新档 · 另有旧规则存档，迁入前会另存备份，不覆盖原键\n玩法与帮助\n设置与存档\n暂无存档 · 完全离线，无账号"
+      }
+    },
+    {
+      "name": "v2+v1 UI no false isolation",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 initial single explicit confirmation",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 cancel zero writes",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 one confirm finishes migration, no replacement dialog",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 all v1/v2/v3 raw originals unchanged",
+      "pass": true
+    },
+    {
+      "name": "v2+v1 new v4 parses and current snapshot persisted",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 load recognized supported old, state null",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "state": null,
+        "oldV3": false,
+        "legacy": true,
+        "quarantine": false,
+        "text": "这一年，安个家\n\n从出租屋的一角，到一扇属于自己的门。\n\n距离拥有自己的家，还有 52 周。\n\n城市生活 · 轻策略经营\n你的新生活，从这里开始\n这一局的种子\n生活节奏\n轻松 · 初始 ¥4,000.00\n标准 · 初始 ¥3,000.00\n挑战 · 初始 ¥2,500.00\n开始新的一年\n继续我的生活\n明确从 v2 迁入\n继续不可用：还没有本地新档 · 旧档未通过原规则校验，不会改写\n玩法与帮助\n设置与存档\n暂无存档 · 完全离线，无账号"
+      }
+    },
+    {
+      "name": "bad-v3+v2+v1 UI no false isolation",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 initial single explicit confirmation",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 cancel zero writes",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 one confirm finishes migration, no replacement dialog",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 all v1/v2/v3 raw originals unchanged",
+      "pass": true
+    },
+    {
+      "name": "bad-v3+v2+v1 new v4 parses and current snapshot persisted",
+      "pass": true
+    },
+    {
+      "name": "unrecognized old + v1 browser rejects, no supported default entry",
+      "pass": true
+    },
+    {
+      "name": "actual bad v4 retains second replacement confirmation",
+      "pass": true
+    },
+    {
+      "name": "actual bad v4 second cancellation zero writes",
+      "pass": true
+    },
+    {
+      "name": "browser current-key read exception is structured, no write/fallback",
+      "pass": true
+    },
+    {
+      "name": "browser real localStorage getter exception is caught",
+      "pass": true
+    },
+    {
+      "name": "no runtime errors/external requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "beforeSaveSha256": "2e86a8650f6946e99ad68c89daa39ec1e5e7ceb375aeb09871ccab7459aa0109",
+  "withdrawnBefore": [
+    {
+      "name": "v3+v2+v1",
+      "load": {
+        "ok": false,
+        "error": "发现旧版存档：不支持自动迁移，请保留原档",
+        "recoverable": true,
+        "raw": null,
+        "legacy": {
+          "ok": true,
+          "state": {
+            "version": 2,
+            "rulesVersion": "0.2",
+            "seed": "V2-BASELINE-MIGRATE",
+            "difficulty": "standard",
+            "week": 4,
+            "cash": 6233900,
+            "capacity": 75,
+            "warehouse": "normal",
+            "revision": 45,
+            "status": "playing",
+            "house": "studio",
+            "result": null,
+            "rng": {
+              "market": 349624476,
+              "events": 2816825258,
+              "visual": 1104287127
+            },
+            "inventory": {
+              "rice": {
+                "qty": 1,
+                "cost": 18180
+              },
+              "oil": {
+                "qty": 1,
+                "cost": 24240
+              },
+              "pork": {
+                "qty": 1,
+                "cost": 12120
+              },
+              "eggs": {
+                "qty": 1,
+                "cost": 7070
+              },
+              "fruit": {
+                "qty": 1,
+                "cost": 14140
+              },
+              "milk": {
+                "qty": 1,
+                "cost": 11110
+              },
+              "phone": {
+                "qty": 1,
+                "cost": 65650
+              },
+              "gpu": {
+                "qty": 1,
+                "cost": 80800
+              },
+              "console": {
+                "qty": 1,
+                "cost": 50500
+              },
+              "camera": {
+                "qty": 1,
+                "cost": 90900
+              },
+              "gold": {
+                "qty": 1,
+                "cost": 121200
+              },
+              "watch": {
+                "qty": 1,
+                "cost": 151500
+              },
+              "collectible": {
+                "qty": 1,
+                "cost": 70700
+              },
+              "coat": {
+                "qty": 1,
+                "cost": 30300
+              },
+              "ac": {
+                "qty": 1,
+                "cost": 65650
+              },
+              "umbrella": {
+                "qty": 1,
+                "cost": 9090
+              },
+              "mask": {
+                "qty": 1,
+                "cost": 6060
+              },
+              "medicine": {
+                "qty": 1,
+                "cost": 16160
+              },
+              "battery": {
+                "qty": 1,
+                "cost": 20200
+              },
+              "food": {
+                "qty": 1,
+                "cost": 13130
+              }
+            },
+            "market": {
+              "rice": {
+                "price": 18885,
+                "previous": 18602,
+                "trend": -0.00677781735083554,
+                "history": [
+                  18000,
+                  18134,
+                  18602,
+                  18885
+                ],
+                "low": 18000,
+                "high": 18885
+              },
+              "oil": {
+                "price": 25394,
+                "previous": 24788,
+                "trend": -0.028095243652560747,
+                "history": [
+                  24000,
+                  24286,
+                  24788,
+                  25394
+                ],
+                "low": 24000,
+                "high": 25394
+              },
+              "pork": {
+                "price": 12642,
+                "previous": 12461,
+                "trend": -0.01819071736597689,
+                "history": [
+                  12000,
+                  12195,
+                  12461,
+                  12642
+                ],
+                "low": 12000,
+                "high": 12642
+              },
+              "eggs": {
+                "price": 6815,
+                "previous": 6974,
+                "trend": -0.021101808668335432,
+                "history": [
+                  7000,
+                  7018,
+                  6974,
+                  6815
+                ],
+                "low": 6815,
+                "high": 7018
+              },
+              "fruit": {
+                "price": 10951,
+                "previous": 11767,
+                "trend": -0.02569750760297757,
+                "history": [
+                  14000,
+                  12658,
+                  11767,
+                  10951
+                ],
+                "low": 10951,
+                "high": 14000
+              },
+              "milk": {
+                "price": 11326,
+                "previous": 11372,
+                "trend": 0.018179004584532234,
+                "history": [
+                  11000,
+                  11055,
+                  11372,
+                  11326
+                ],
+                "low": 11000,
+                "high": 11372
+              },
+              "phone": {
+                "price": 61778,
+                "previous": 60501,
+                "trend": -0.0334105219429126,
+                "history": [
+                  65000,
+                  64725,
+                  60501,
+                  61778
+                ],
+                "low": 60501,
+                "high": 65000
+              },
+              "gpu": {
+                "price": 67087,
+                "previous": 62627,
+                "trend": 0.03182568019554019,
+                "history": [
+                  80000,
+                  68383,
+                  62627,
+                  67087
+                ],
+                "low": 62627,
+                "high": 80000
+              },
+              "console": {
+                "price": 55826,
+                "previous": 55210,
+                "trend": -0.006471943449694663,
+                "history": [
+                  50000,
+                  54709,
+                  55210,
+                  55826
+                ],
+                "low": 50000,
+                "high": 55826
+              },
+              "camera": {
+                "price": 79870,
+                "previous": 85775,
+                "trend": -0.007580436121509406,
+                "history": [
+                  90000,
+                  87751,
+                  85775,
+                  79870
+                ],
+                "low": 79870,
+                "high": 90000
+              },
+              "gold": {
+                "price": 122808,
+                "previous": 122485,
+                "trend": 0.007267359788145404,
+                "history": [
+                  120000,
+                  121080,
+                  122485,
+                  122808
+                ],
+                "low": 120000,
+                "high": 122808
+              },
+              "watch": {
+                "price": 146796,
+                "previous": 139227,
+                "trend": -0.009087454908946527,
+                "history": [
+                  150000,
+                  145311,
+                  139227,
+                  146796
+                ],
+                "low": 139227,
+                "high": 150000
+              },
+              "collectible": {
+                "price": 54628,
+                "previous": 63267,
+                "trend": -0.07495047409227118,
+                "history": [
+                  70000,
+                  67264,
+                  63267,
+                  54628
+                ],
+                "low": 54628,
+                "high": 70000
+              },
+              "coat": {
+                "price": 37660,
+                "previous": 36476,
+                "trend": -0.007714306607469917,
+                "history": [
+                  30000,
+                  34051,
+                  36476,
+                  37660
+                ],
+                "low": 30000,
+                "high": 37660
+              },
+              "ac": {
+                "price": 44603,
+                "previous": 47323,
+                "trend": -0.03496346008772962,
+                "history": [
+                  65000,
+                  53166,
+                  47323,
+                  44603
+                ],
+                "low": 44603,
+                "high": 65000
+              },
+              "umbrella": {
+                "price": 7586,
+                "previous": 7780,
+                "trend": -0.011970654727413786,
+                "history": [
+                  9000,
+                  8245,
+                  7780,
+                  7586
+                ],
+                "low": 7586,
+                "high": 9000
+              },
+              "mask": {
+                "price": 8371,
+                "previous": 6689,
+                "trend": -0.03576485222345218,
+                "history": [
+                  6000,
+                  6387,
+                  6689,
+                  8371
+                ],
+                "low": 6000,
+                "high": 8371
+              },
+              "medicine": {
+                "price": 21631,
+                "previous": 18694,
+                "trend": 0.01615584339865017,
+                "history": [
+                  16000,
+                  17055,
+                  18694,
+                  21631
+                ],
+                "low": 16000,
+                "high": 21631
+              },
+              "battery": {
+                "price": 21476,
+                "previous": 20669,
+                "trend": 0.026429575591813775,
+                "history": [
+                  20000,
+                  20054,
+                  20669,
+                  21476
+                ],
+                "low": 20000,
+                "high": 21476
+              },
+              "food": {
+                "price": 12914,
+                "previous": 13547,
+                "trend": -0.037422014544764536,
+                "history": [
+                  13000,
+                  13521,
+                  13547,
+                  12914
+                ],
+                "low": 12914,
+                "high": 13547
+              }
+            },
+            "activeEvents": [
+              {
+                "id": "flu",
+                "started": 4,
+                "until": 6
+              }
+            ],
+            "macro": 0.9908934837147595,
+            "season": "冬",
+            "personal": 0,
+            "personalEvent": null,
+            "news": [
+              {
+                "id": "flu",
+                "title": "防护需求增加",
+                "reliability": "reliable",
+                "week": 4
+              }
+            ],
+            "history": [
+              {
+                "week": 1,
+                "cash": 6233900,
+                "inventory": 870000,
+                "house": 650000,
+                "assets": 7753900
+              },
+              {
+                "week": 2,
+                "cash": 6233900,
+                "inventory": 847048,
+                "house": 650000,
+                "assets": 7730948
+              },
+              {
+                "week": 3,
+                "cash": 6233900,
+                "inventory": 826234,
+                "house": 650000,
+                "assets": 7710134
+              },
+              {
+                "week": 4,
+                "cash": 6233900,
+                "inventory": 829047,
+                "house": 650000,
+                "assets": 7712947
+              }
+            ],
+            "stats": {
+              "bought": 1757400,
+              "sold": 861300,
+              "profit": -17400,
+              "grants": 7700000,
+              "expenses": 0,
+              "hardship": 0,
+              "trades": 40,
+              "best": 0,
+              "worst": -3000,
+              "peak": 8000000,
+              "fees": 26100,
+              "turnover": 2610000,
+              "houseWeek": 1,
+              "warehouseSpent": 220000,
+              "upgrades": 1,
+              "maxDrawdown": 36233,
+              "byProduct": {
+                "rice": -360,
+                "oil": -480,
+                "pork": -240,
+                "eggs": -140,
+                "fruit": -280,
+                "milk": -220,
+                "phone": -1300,
+                "gpu": -1600,
+                "console": -1000,
+                "camera": -1800,
+                "gold": -2400,
+                "watch": -3000,
+                "collectible": -1400,
+                "coat": -600,
+                "ac": -1300,
+                "umbrella": -180,
+                "mask": -120,
+                "medicine": -320,
+                "battery": -400,
+                "food": -260
+              }
+            }
+          }
+        },
+        "oldV3": {
+          "ok": true,
+          "state": {
+            "version": 3,
+            "rulesVersion": "0.4",
+            "seed": "REVIEW-V1",
+            "difficulty": "standard",
+            "week": 1,
+            "cash": 300000,
+            "capacity": 20,
+            "warehouse": "room",
+            "revision": 0,
+            "status": "playing",
+            "house": null,
+            "result": null,
+            "rng": {
+              "market": 506966201,
+              "events": 2569934812,
+              "visual": 364100417,
+              "listing": 3935439381
+            },
+            "inventory": {
+              "rice": {
+                "qty": 0,
+                "cost": 0
+              },
+              "pork": {
+                "qty": 0,
+                "cost": 0
+              },
+              "eggs": {
+                "qty": 0,
+                "cost": 0
+              },
+              "fruit": {
+                "qty": 0,
+                "cost": 0
+              },
+              "phone": {
+                "qty": 0,
+                "cost": 0
+              },
+              "gpu": {
+                "qty": 0,
+                "cost": 0
+              },
+              "watch": {
+                "qty": 0,
+                "cost": 0
+              },
+              "collectible": {
+                "qty": 0,
+                "cost": 0
+              },
+              "coat": {
+                "qty": 0,
+                "cost": 0
+              },
+              "ac": {
+                "qty": 0,
+                "cost": 0
+              },
+              "umbrella": {
+                "qty": 0,
+                "cost": 0
+              },
+              "mask": {
+                "qty": 0,
+                "cost": 0
+              }
+            },
+            "market": {
+              "rice": {
+                "price": 18000,
+                "previous": 18000,
+                "trend": 0,
+                "history": [
+                  18000
+                ],
+                "low": 18000,
+                "high": 18000
+              },
+              "pork": {
+                "price": 12000,
+                "previous": 12000,
+                "trend": 0,
+                "history": [
+                  12000
+                ],
+                "low": 12000,
+                "high": 12000
+              },
+              "eggs": {
+                "price": 7000,
+                "previous": 7000,
+                "trend": 0,
+                "history": [
+                  7000
+                ],
+                "low": 7000,
+                "high": 7000
+              },
+              "fruit": {
+                "price": 14000,
+                "previous": 14000,
+                "trend": 0,
+                "history": [
+                  14000
+                ],
+                "low": 14000,
+                "high": 14000
+              },
+              "phone": {
+                "price": 65000,
+                "previous": 65000,
+                "trend": 0,
+                "history": [
+                  65000
+                ],
+                "low": 65000,
+                "high": 65000
+              },
+              "gpu": {
+                "price": 80000,
+                "previous": 80000,
+                "trend": 0,
+                "history": [
+                  80000
+                ],
+                "low": 80000,
+                "high": 80000
+              },
+              "watch": {
+                "price": 150000,
+                "previous": 150000,
+                "trend": 0,
+                "history": [
+                  150000
+                ],
+                "low": 150000,
+                "high": 150000
+              },
+              "collectible": {
+                "price": 70000,
+                "previous": 70000,
+                "trend": 0,
+                "history": [
+                  70000
+                ],
+                "low": 70000,
+                "high": 70000
+              },
+              "coat": {
+                "price": 30000,
+                "previous": 30000,
+                "trend": 0,
+                "history": [
+                  30000
+                ],
+                "low": 30000,
+                "high": 30000
+              },
+              "ac": {
+                "price": 65000,
+                "previous": 65000,
+                "trend": 0,
+                "history": [
+                  65000
+                ],
+                "low": 65000,
+                "high": 65000
+              },
+              "umbrella": {
+                "price": 9000,
+                "previous": 9000,
+                "trend": 0,
+                "history": [
+                  9000
+                ],
+                "low": 9000,
+                "high": 9000
+              },
+              "mask": {
+                "price": 6000,
+                "previous": 6000,
+                "trend": 0,
+                "history": [
+                  6000
+                ],
+                "low": 6000,
+                "high": 6000
+              }
+            },
+            "activeEvents": [],
+            "macro": 1,
+            "season": "冬",
+            "personal": 0,
+            "personalEvent": null,
+            "news": [],
+            "history": [
+              {
+                "week": 1,
+                "cash": 300000,
+                "inventory": 0,
+                "house": 0,
+                "assets": 300000
+              }
+            ],
+            "stats": {
+              "bought": 0,
+              "sold": 0,
+              "profit": 0,
+              "grants": 0,
+              "expenses": 0,
+              "hardship": 0,
+              "trades": 0,
+              "best": 0,
+              "worst": 0,
+              "peak": 300000,
+              "fees": 0,
+              "turnover": 0,
+              "houseWeek": 0,
+              "warehouseSpent": 0,
+              "upgrades": 0,
+              "maxDrawdown": 0,
+              "byProduct": {
+                "rice": 0,
+                "pork": 0,
+                "eggs": 0,
+                "fruit": 0,
+                "phone": 0,
+                "gpu": 0,
+                "watch": 0,
+                "collectible": 0,
+                "coat": 0,
+                "ac": 0,
+                "umbrella": 0,
+                "mask": 0,
+                "oil": 0,
+                "milk": 0,
+                "console": 0,
+                "camera": 0,
+                "gold": 0,
+                "medicine": 0,
+                "battery": 0,
+                "food": 0
+              }
+            },
+            "listing": [
+              "rice",
+              "pork",
+              "fruit",
+              "phone",
+              "watch",
+              "collectible",
+              "ac",
+              "umbrella"
+            ],
+            "absence": {
+              "rice": 0,
+              "pork": 0,
+              "eggs": 1,
+              "fruit": 0,
+              "phone": 0,
+              "gpu": 1,
+              "watch": 0,
+              "collectible": 0,
+              "coat": 1,
+              "ac": 0,
+              "umbrella": 0,
+              "mask": 1
+            },
+            "onStreak": {
+              "rice": 1,
+              "pork": 1,
+              "eggs": 0,
+              "fruit": 1,
+              "phone": 1,
+              "gpu": 0,
+              "watch": 1,
+              "collectible": 1,
+              "coat": 0,
+              "ac": 1,
+              "umbrella": 1,
+              "mask": 0
+            },
+            "legacy": {
+              "oil": {
+                "qty": 0,
+                "cost": 0,
+                "price": 24000,
+                "previous": 24000,
+                "trend": 0,
+                "history": [
+                  24000
+                ],
+                "low": 24000,
+                "high": 24000
+              },
+              "milk": {
+                "qty": 0,
+                "cost": 0,
+                "price": 11000,
+                "previous": 11000,
+                "trend": 0,
+                "history": [
+                  11000
+                ],
+                "low": 11000,
+                "high": 11000
+              },
+              "console": {
+                "qty": 0,
+                "cost": 0,
+                "price": 50000,
+                "previous": 50000,
+                "trend": 0,
+                "history": [
+                  50000
+                ],
+                "low": 50000,
+                "high": 50000
+              },
+              "camera": {
+                "qty": 0,
+                "cost": 0,
+                "price": 90000,
+                "previous": 90000,
+                "trend": 0,
+                "history": [
+                  90000
+                ],
+                "low": 90000,
+                "high": 90000
+              },
+              "gold": {
+                "qty": 0,
+                "cost": 0,
+                "price": 120000,
+                "previous": 120000,
+                "trend": 0,
+                "history": [
+                  120000
+                ],
+                "low": 120000,
+                "high": 120000
+              },
+              "medicine": {
+                "qty": 0,
+                "cost": 0,
+                "price": 16000,
+                "previous": 16000,
+                "trend": 0,
+                "history": [
+                  16000
+                ],
+                "low": 16000,
+                "high": 16000
+              },
+              "battery": {
+                "qty": 0,
+                "cost": 0,
+                "price": 20000,
+                "previous": 20000,
+                "trend": 0,
+                "history": [
+                  20000
+                ],
+                "low": 20000,
+                "high": 20000
+              },
+              "food": {
+                "qty": 0,
+                "cost": 0,
+                "price": 13000,
+                "previous": 13000,
+                "trend": 0,
+                "history": [
+                  13000
+                ],
+                "low": 13000,
+                "high": 13000
+              }
+            },
+            "migration": null,
+            "priceBook": {
+              "id": "0.2",
+              "houses": {
+                "studio": 650000,
+                "flat": 1000000,
+                "two": 1400000,
+                "city": 1900000,
+                "dream": 2500000
+              },
+              "warehouses": {
+                "room": 0,
+                "small": 70000,
+                "normal": 220000,
+                "large": 500000
+              }
+            }
+          }
+        }
+      },
+      "quarantine": true,
+      "damaged": null,
+      "unchanged": true
+    },
+    {
+      "name": "v2+v1",
+      "load": {
+        "ok": false,
+        "error": "发现旧版存档：不支持自动迁移，请保留原档",
+        "recoverable": true,
+        "raw": null,
+        "legacy": {
+          "ok": true,
+          "state": {
+            "version": 2,
+            "rulesVersion": "0.2",
+            "seed": "V2-BASELINE-MIGRATE",
+            "difficulty": "standard",
+            "week": 4,
+            "cash": 6233900,
+            "capacity": 75,
+            "warehouse": "normal",
+            "revision": 45,
+            "status": "playing",
+            "house": "studio",
+            "result": null,
+            "rng": {
+              "market": 349624476,
+              "events": 2816825258,
+              "visual": 1104287127
+            },
+            "inventory": {
+              "rice": {
+                "qty": 1,
+                "cost": 18180
+              },
+              "oil": {
+                "qty": 1,
+                "cost": 24240
+              },
+              "pork": {
+                "qty": 1,
+                "cost": 12120
+              },
+              "eggs": {
+                "qty": 1,
+                "cost": 7070
+              },
+              "fruit": {
+                "qty": 1,
+                "cost": 14140
+              },
+              "milk": {
+                "qty": 1,
+                "cost": 11110
+              },
+              "phone": {
+                "qty": 1,
+                "cost": 65650
+              },
+              "gpu": {
+                "qty": 1,
+                "cost": 80800
+              },
+              "console": {
+                "qty": 1,
+                "cost": 50500
+              },
+              "camera": {
+                "qty": 1,
+                "cost": 90900
+              },
+              "gold": {
+                "qty": 1,
+                "cost": 121200
+              },
+              "watch": {
+                "qty": 1,
+                "cost": 151500
+              },
+              "collectible": {
+                "qty": 1,
+                "cost": 70700
+              },
+              "coat": {
+                "qty": 1,
+                "cost": 30300
+              },
+              "ac": {
+                "qty": 1,
+                "cost": 65650
+              },
+              "umbrella": {
+                "qty": 1,
+                "cost": 9090
+              },
+              "mask": {
+                "qty": 1,
+                "cost": 6060
+              },
+              "medicine": {
+                "qty": 1,
+                "cost": 16160
+              },
+              "battery": {
+                "qty": 1,
+                "cost": 20200
+              },
+              "food": {
+                "qty": 1,
+                "cost": 13130
+              }
+            },
+            "market": {
+              "rice": {
+                "price": 18885,
+                "previous": 18602,
+                "trend": -0.00677781735083554,
+                "history": [
+                  18000,
+                  18134,
+                  18602,
+                  18885
+                ],
+                "low": 18000,
+                "high": 18885
+              },
+              "oil": {
+                "price": 25394,
+                "previous": 24788,
+                "trend": -0.028095243652560747,
+                "history": [
+                  24000,
+                  24286,
+                  24788,
+                  25394
+                ],
+                "low": 24000,
+                "high": 25394
+              },
+              "pork": {
+                "price": 12642,
+                "previous": 12461,
+                "trend": -0.01819071736597689,
+                "history": [
+                  12000,
+                  12195,
+                  12461,
+                  12642
+                ],
+                "low": 12000,
+                "high": 12642
+              },
+              "eggs": {
+                "price": 6815,
+                "previous": 6974,
+                "trend": -0.021101808668335432,
+                "history": [
+                  7000,
+                  7018,
+                  6974,
+                  6815
+                ],
+                "low": 6815,
+                "high": 7018
+              },
+              "fruit": {
+                "price": 10951,
+                "previous": 11767,
+                "trend": -0.02569750760297757,
+                "history": [
+                  14000,
+                  12658,
+                  11767,
+                  10951
+                ],
+                "low": 10951,
+                "high": 14000
+              },
+              "milk": {
+                "price": 11326,
+                "previous": 11372,
+                "trend": 0.018179004584532234,
+                "history": [
+                  11000,
+                  11055,
+                  11372,
+                  11326
+                ],
+                "low": 11000,
+                "high": 11372
+              },
+              "phone": {
+                "price": 61778,
+                "previous": 60501,
+                "trend": -0.0334105219429126,
+                "history": [
+                  65000,
+                  64725,
+                  60501,
+                  61778
+                ],
+                "low": 60501,
+                "high": 65000
+              },
+              "gpu": {
+                "price": 67087,
+                "previous": 62627,
+                "trend": 0.03182568019554019,
+                "history": [
+                  80000,
+                  68383,
+                  62627,
+                  67087
+                ],
+                "low": 62627,
+                "high": 80000
+              },
+              "console": {
+                "price": 55826,
+                "previous": 55210,
+                "trend": -0.006471943449694663,
+                "history": [
+                  50000,
+                  54709,
+                  55210,
+                  55826
+                ],
+                "low": 50000,
+                "high": 55826
+              },
+              "camera": {
+                "price": 79870,
+                "previous": 85775,
+                "trend": -0.007580436121509406,
+                "history": [
+                  90000,
+                  87751,
+                  85775,
+                  79870
+                ],
+                "low": 79870,
+                "high": 90000
+              },
+              "gold": {
+                "price": 122808,
+                "previous": 122485,
+                "trend": 0.007267359788145404,
+                "history": [
+                  120000,
+                  121080,
+                  122485,
+                  122808
+                ],
+                "low": 120000,
+                "high": 122808
+              },
+              "watch": {
+                "price": 146796,
+                "previous": 139227,
+                "trend": -0.009087454908946527,
+                "history": [
+                  150000,
+                  145311,
+                  139227,
+                  146796
+                ],
+                "low": 139227,
+                "high": 150000
+              },
+              "collectible": {
+                "price": 54628,
+                "previous": 63267,
+                "trend": -0.07495047409227118,
+                "history": [
+                  70000,
+                  67264,
+                  63267,
+                  54628
+                ],
+                "low": 54628,
+                "high": 70000
+              },
+              "coat": {
+                "price": 37660,
+                "previous": 36476,
+                "trend": -0.007714306607469917,
+                "history": [
+                  30000,
+                  34051,
+                  36476,
+                  37660
+                ],
+                "low": 30000,
+                "high": 37660
+              },
+              "ac": {
+                "price": 44603,
+                "previous": 47323,
+                "trend": -0.03496346008772962,
+                "history": [
+                  65000,
+                  53166,
+                  47323,
+                  44603
+                ],
+                "low": 44603,
+                "high": 65000
+              },
+              "umbrella": {
+                "price": 7586,
+                "previous": 7780,
+                "trend": -0.011970654727413786,
+                "history": [
+                  9000,
+                  8245,
+                  7780,
+                  7586
+                ],
+                "low": 7586,
+                "high": 9000
+              },
+              "mask": {
+                "price": 8371,
+                "previous": 6689,
+                "trend": -0.03576485222345218,
+                "history": [
+                  6000,
+                  6387,
+                  6689,
+                  8371
+                ],
+                "low": 6000,
+                "high": 8371
+              },
+              "medicine": {
+                "price": 21631,
+                "previous": 18694,
+                "trend": 0.01615584339865017,
+                "history": [
+                  16000,
+                  17055,
+                  18694,
+                  21631
+                ],
+                "low": 16000,
+                "high": 21631
+              },
+              "battery": {
+                "price": 21476,
+                "previous": 20669,
+                "trend": 0.026429575591813775,
+                "history": [
+                  20000,
+                  20054,
+                  20669,
+                  21476
+                ],
+                "low": 20000,
+                "high": 21476
+              },
+              "food": {
+                "price": 12914,
+                "previous": 13547,
+                "trend": -0.037422014544764536,
+                "history": [
+                  13000,
+                  13521,
+                  13547,
+                  12914
+                ],
+                "low": 12914,
+                "high": 13547
+              }
+            },
+            "activeEvents": [
+              {
+                "id": "flu",
+                "started": 4,
+                "until": 6
+              }
+            ],
+            "macro": 0.9908934837147595,
+            "season": "冬",
+            "personal": 0,
+            "personalEvent": null,
+            "news": [
+              {
+                "id": "flu",
+                "title": "防护需求增加",
+                "reliability": "reliable",
+                "week": 4
+              }
+            ],
+            "history": [
+              {
+                "week": 1,
+                "cash": 6233900,
+                "inventory": 870000,
+                "house": 650000,
+                "assets": 7753900
+              },
+              {
+                "week": 2,
+                "cash": 6233900,
+                "inventory": 847048,
+                "house": 650000,
+                "assets": 7730948
+              },
+              {
+                "week": 3,
+                "cash": 6233900,
+                "inventory": 826234,
+                "house": 650000,
+                "assets": 7710134
+              },
+              {
+                "week": 4,
+                "cash": 6233900,
+                "inventory": 829047,
+                "house": 650000,
+                "assets": 7712947
+              }
+            ],
+            "stats": {
+              "bought": 1757400,
+              "sold": 861300,
+              "profit": -17400,
+              "grants": 7700000,
+              "expenses": 0,
+              "hardship": 0,
+              "trades": 40,
+              "best": 0,
+              "worst": -3000,
+              "peak": 8000000,
+              "fees": 26100,
+              "turnover": 2610000,
+              "houseWeek": 1,
+              "warehouseSpent": 220000,
+              "upgrades": 1,
+              "maxDrawdown": 36233,
+              "byProduct": {
+                "rice": -360,
+                "oil": -480,
+                "pork": -240,
+                "eggs": -140,
+                "fruit": -280,
+                "milk": -220,
+                "phone": -1300,
+                "gpu": -1600,
+                "console": -1000,
+                "camera": -1800,
+                "gold": -2400,
+                "watch": -3000,
+                "collectible": -1400,
+                "coat": -600,
+                "ac": -1300,
+                "umbrella": -180,
+                "mask": -120,
+                "medicine": -320,
+                "battery": -400,
+                "food": -260
+              }
+            }
+          }
+        },
+        "oldV3": null
+      },
+      "quarantine": true,
+      "damaged": null,
+      "unchanged": true
+    }
+  ],
+  "browser": "Edg/154.0.4258.53"
+}

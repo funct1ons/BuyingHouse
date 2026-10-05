@@ -8,10 +8,11 @@ const {launchEdge, delay} = require('./cdp-helper.cjs');
 
 const root = path.join(__dirname, '..');
 const url = pathToFileURL(path.join(root, 'index.html')).href;
-const outDir = path.join(root, 'docs', 'gameplay-d-evidence');
-const BIG = {seed: 'SURGE-45', week: 24, id: 'fruit', abs: 2500};
-const SMALL = {seed: 'SURGE-24', week: 5, id: 'mask', abs: 2499};
-const NONE = {seed: 'SURGE-49', week: 42};
+const outDir = path.resolve(process.env.UI_EVIDENCE_DIR || path.join(root, 'docs', 'gameplay-d-evidence'));
+// Rules 0.5 real committed paths; exact 2500/2499 thresholds remain unchanged.
+const BIG = {seed: 'SURGE-V5-81', week: 44, id: 'watch', abs: 2500};
+const SMALL = {seed: 'SURGE-V5-162', week: 25, id: 'mask', abs: 2499};
+const NONE = {seed: 'SURGE-V5-32', week: 15};
 
 (async () => {
   fs.mkdirSync(outDir, {recursive: true});
@@ -196,18 +197,14 @@ const NONE = {seed: 'SURGE-49', week: 42};
       if (ninth.dialogOpen) fail('key 9 opened a card when only 8 are visible ' + ninth.opened);
     }
 
+    // Legal migrated holdings expose >8 items without a hidden search/catalog path.
+    const rawV2 = fs.readFileSync(path.join(root,'docs/fixtures/v2-baseline-migrate.json'),'utf8');
+    const heldRaw = await cdp.evaluate(`JSON.stringify(HomeYear.migrateV2(JSON.parse(${JSON.stringify(rawV2)}),'homeyear.save.backup.keys'))`);
+    await importRaw(heldRaw);
     const searched = await cdp.evaluate(`(() => {
-      const e = document.querySelector('[data-testid=search]');
-      if (!e) return 'missing search';
-      e.value = '。';
-      e.dispatchEvent(new Event('input', {bubbles: true}));
-      e.blur();
-      const sort = document.querySelector('[data-testid=sort]');
-      if (!sort) return 'missing sort';
-      sort.value = 'price';
-      sort.dispatchEvent(new Event('change', {bubbles: true}));
-      sort.blur();
-      return [...document.querySelectorAll('#market-list [data-testid^=product-]')].map(el => el.dataset.id);
+      const view=document.querySelector('#view-filter');view.value='held';view.dispatchEvent(new Event('change',{bubbles:true}));view.blur();
+      const sort=document.querySelector('[data-testid=sort]');sort.value='price';sort.dispatchEvent(new Event('change',{bubbles:true}));sort.blur();
+      return [...document.querySelectorAll('#market-list [data-testid^=product-]')].map(el=>el.dataset.id);
     })()`);
     if (!Array.isArray(searched) || searched.length < 9) fail('price-sorted visible cards ' + JSON.stringify(searched));
     else if (searched[0] === shelf.catalog0) fail('price order still starts at catalog[0] ' + searched[0]);
@@ -227,11 +224,7 @@ const NONE = {seed: 'SURGE-49', week: 42};
     }
 
     await cdp.evaluate(`(() => {
-      const e = document.querySelector('[data-testid=search]');
-      if (!e) throw Error('missing search');
-      e.value = '';
-      e.dispatchEvent(new Event('input', {bubbles: true}));
-      e.blur();
+      const e=document.querySelector('#view-filter');e.value='all';e.dispatchEvent(new Event('change',{bubbles:true}));e.blur();
       const sort = document.querySelector('[data-testid=sort]');
       if (!sort) throw Error('missing sort');
       sort.value = 'default';

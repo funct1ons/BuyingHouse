@@ -3,7 +3,7 @@
 // offline renders tick the same Engine through OfflineAudioContext.suspend(); live checks use trusted CDP input.
 // Results are digital measurements only; they make no claim about loudspeaker output or how it sounds.
 const {launchEdge,delay}=require('./cdp-helper.cjs'),{pathToFileURL}=require('node:url'),path=require('node:path'),fs=require('node:fs/promises');
-const args=process.argv.slice(2),WAV=args.includes('--samples'),out=path.resolve(__dirname,'../docs/av-samples');
+const args=process.argv.slice(2),WAV=args.includes('--samples'),out=path.resolve(process.env.UI_EVIDENCE_DIR||path.join(__dirname,'../docs/av-samples'));
 const db=x=>x>0?20*Math.log10(x):-Infinity,r1=x=>Math.round(x*10)/10;
 const G=(screen,o)=>Object.assign({screen,status:'playing',house:null,progress:.1,week:5},o||{});
 const SC={menu:{screen:'start'},early:G('game',{week:5,progress:.1}),development:G('game',{week:24,progress:.3}),sprint:G('game',{week:47,progress:.6}),
@@ -168,6 +168,6 @@ try{
   check('after music off, all voices end and disconnect (live 0, no retiring instances)',n3.nodes.live===0&&n3.retiring===0,{nodes:n3.nodes,retiring:n3.retiring});
   check('no page exceptions',rep.errors.length===0,rep.errors.slice(0,3));
 }catch(e){rep.fatal=e.stack;console.error(e);}finally{if(b)await b.cleanup();
-  await fs.mkdir(out,{recursive:true});const file=path.resolve(__dirname,'../docs/av-samples/report.json');await fs.writeFile(file,JSON.stringify(rep,null,2));
+  await fs.mkdir(out,{recursive:true});const file=path.join(out,'report.json');await fs.writeFile(file,JSON.stringify(rep,null,2));
   const failed=rep.checks.filter(x=>!x.pass).length;console.log(`\n${rep.checks.length-failed}/${rep.checks.length} passed`);if(rep.fatal||failed)process.exitCode=1;}
 })();
