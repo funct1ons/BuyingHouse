@@ -1,0 +1,710 @@
+{
+  "kind": "Automated screenshots, including preserved failed attempts; not manual play",
+  "screenshots": [
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/ended.png",
+      "bytes": 630315,
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1000.png",
+      "bytes": 413948,
+      "sha256": "4a634e17954bd0f3a4fff924b4eea171a26090807851ae797f614ded2d8131b4"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1100.png",
+      "bytes": 570097,
+      "sha256": "06426fbde7308a8c37d649240f78534b9d710de1ae0b394a0d4cff68fa221ed4"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1280.png",
+      "bytes": 553816,
+      "sha256": "195f9d1f1fe6e77adf06a5db28b207d7a3d31661d5308bfa598828d6de627b91"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1366.png",
+      "bytes": 617924,
+      "sha256": "d6677960e2c97dd3dfb568761dd44cfc2257b43881c594bf47575c30f7ad4d99"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1536.png",
+      "bytes": 736714,
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1600.png",
+      "bytes": 784989,
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1920.png",
+      "bytes": 1014337,
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-2560.png",
+      "bytes": 1399889,
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-700.png",
+      "bytes": 300232,
+      "sha256": "5455923081f175a584ce224a0285cda9ea508936190ae75de7a117ae7204fb6f"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/new-progress-1366.png",
+      "bytes": 555891,
+      "sha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_efficiency-dialog.png",
+      "bytes": 386590,
+      "sha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_egg_relief-dialog.png",
+      "bytes": 387751,
+      "sha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_egg_short-dialog.png",
+      "bytes": 383446,
+      "sha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_heat-dialog.png",
+      "bytes": 366607,
+      "sha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_protection-dialog.png",
+      "bytes": 370242,
+      "sha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_route-dialog.png",
+      "bytes": 368972,
+      "sha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_tariff-dialog.png",
+      "bytes": 381664,
+      "sha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-50.png",
+      "bytes": 384880,
+      "sha256": "e1ad81a80f9c6b677bf2a19e1fc5ca894f2ab921fc37118d975d019d05ef8e3f"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-51.png",
+      "bytes": 374176,
+      "sha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-52.png",
+      "bytes": 377807,
+      "sha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/ended.png",
+      "bytes": 630315,
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1000.png",
+      "bytes": 412406,
+      "sha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1100.png",
+      "bytes": 570054,
+      "sha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1280.png",
+      "bytes": 553460,
+      "sha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1366.png",
+      "bytes": 618159,
+      "sha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1536.png",
+      "bytes": 736714,
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1600.png",
+      "bytes": 784989,
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1920.png",
+      "bytes": 1014337,
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-2560.png",
+      "bytes": 1399889,
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-700.png",
+      "bytes": 290475,
+      "sha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/new-progress-1366.png",
+      "bytes": 555891,
+      "sha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_efficiency-dialog.png",
+      "bytes": 386590,
+      "sha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_egg_relief-dialog.png",
+      "bytes": 387751,
+      "sha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_egg_short-dialog.png",
+      "bytes": 383446,
+      "sha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_heat-dialog.png",
+      "bytes": 366607,
+      "sha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_protection-dialog.png",
+      "bytes": 370242,
+      "sha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_route-dialog.png",
+      "bytes": 368972,
+      "sha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_tariff-dialog.png",
+      "bytes": 381664,
+      "sha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-50.png",
+      "bytes": 385536,
+      "sha256": "ca4aabf21193c5e245b44225b1ca1feab4af673bac458dcf282c98aa58f97844"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-51.png",
+      "bytes": 374176,
+      "sha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-52.png",
+      "bytes": 377807,
+      "sha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/ended.png",
+      "bytes": 630315,
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1280.png",
+      "bytes": 331782,
+      "sha256": "c015db3ab4f27a07dd1a07ad58658c46868acbadd36eb0921c754b3f0d77e943"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1366.png",
+      "bytes": 387168,
+      "sha256": "5bde8f0aadd104ecd622ef533aee6897a76b38299f4a9a0b0746906d703561a1"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1536.png",
+      "bytes": 474283,
+      "sha256": "1c0f87730032d3e3683f2b417382ef9c18a58a014267d04040be9f832c3229e9"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1600.png",
+      "bytes": 517758,
+      "sha256": "52615db1b8f9ac03e6a970a44aa197f79621cec6c4c8791c0235d366c3f6a160"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1920.png",
+      "bytes": 635021,
+      "sha256": "10c210c0d580c6805b2ee66417f9afe3456f7063321dc433279acf96d920c936"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-2560.png",
+      "bytes": 767977,
+      "sha256": "c3aa44ad96480fabab6c6104cd59a87e4e4ca2f81ffb3b73d6840e4bedd6a12e"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-700.png",
+      "bytes": 135028,
+      "sha256": "620c4bb430871b3eacd2c89c6d02ec79cd9208bf49bd9c2a04c3ac9a81c779ad"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1000.png",
+      "bytes": 412406,
+      "sha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1100.png",
+      "bytes": 570054,
+      "sha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1280.png",
+      "bytes": 553460,
+      "sha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1366.png",
+      "bytes": 618159,
+      "sha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1536.png",
+      "bytes": 736714,
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1600.png",
+      "bytes": 784989,
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1920.png",
+      "bytes": 1014337,
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-2560.png",
+      "bytes": 1399889,
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-700.png",
+      "bytes": 290475,
+      "sha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/new-progress-1366.png",
+      "bytes": 555932,
+      "sha256": "243e2dfbac0f0a006f823201f6a510d74fc3e1d60705b17b9ddbaf6a46f87cfd"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_efficiency-dialog-top.png",
+      "bytes": 395027,
+      "sha256": "4ff1eececad1e0ffff2239483d370998b8a12828469311706e92c420881ca615"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_efficiency-dialog.png",
+      "bytes": 391299,
+      "sha256": "d1f2541cb85f91ba5a23dd9f811ae5a83ab31bc71e7189d9581a358d426674a7"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_relief-dialog-top.png",
+      "bytes": 396697,
+      "sha256": "c54e83e516fcb157a7f2a49bade7788385f78f702cc80f65e543a89d2f9a06d7"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_relief-dialog.png",
+      "bytes": 393059,
+      "sha256": "99f6887933981dc56cbd0f3e919b7b97f8ca7e5d08ca3c0cf652a70cc35afb9d"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_short-dialog-top.png",
+      "bytes": 391835,
+      "sha256": "c91801174331f985f61db28d0050f5b481699722d9790579bc85a2ebbd080503"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_short-dialog.png",
+      "bytes": 388705,
+      "sha256": "6fa50eb44f73444cc1e0dd5b8044e8524066260d2a5f05776122fe262823c4cf"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_heat-dialog-top.png",
+      "bytes": 374732,
+      "sha256": "8725fb86ea4c4d4ef8cd1a28809bddd7f8127cf73b5dee3fb4bc07f80bb3b037"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_heat-dialog.png",
+      "bytes": 371407,
+      "sha256": "56489fac71b2eb090548c85aefc1cb7151f3da09796fb658c9edba31c8dd6d7d"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_protection-dialog-top.png",
+      "bytes": 377892,
+      "sha256": "b7040111834c87410a44e4a94e6a3a866e0397c1e699e240d340accd09c3486a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_protection-dialog.png",
+      "bytes": 375498,
+      "sha256": "64e7b9f09aca43164d98e185cd96b31f2edb921f656ff4890ca6949c1b38dac0"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_route-dialog-top.png",
+      "bytes": 375544,
+      "sha256": "33be01d2a780594678bc23bdc46d435ddaf4dac7508f50e457f14c80881c65e6"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_route-dialog.png",
+      "bytes": 373668,
+      "sha256": "6c1f11fd7b3cbafdbb4fd91bb0bdf7397fc54901e422e95777971014f2f5307a"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_tariff-dialog-top.png",
+      "bytes": 389355,
+      "sha256": "52867861c0a4580d0f7f8133c5a9da1cfa9bf407bf2e5c51a91550fcebb8ef64"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_tariff-dialog.png",
+      "bytes": 386023,
+      "sha256": "715c71996a86f614e15140577183aa3e520092cc4abf8bd7a16d7cb1bf346df1"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-50.png",
+      "bytes": 385814,
+      "sha256": "7d8823598b9af5772795b9f43b66a1aba8a73fdd9ecce1c4bce3853ee28f031d"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-51.png",
+      "bytes": 374669,
+      "sha256": "d77fe4dd47fbbf1bcac33c4c199dccf0813c1816d68f8999ef3cf50309d9dc28"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-52.png",
+      "bytes": 378254,
+      "sha256": "2862adb2dafcafcf726a2bf47899c94dabb8eb6b486975c9a372b346a9000b7e"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke/index-html.png",
+      "bytes": 771854,
+      "sha256": "92fc194c132a5b7c59aed0c8d3b34d9afb4017d728695e7ef75affb65e262830"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke/tests-browser-html.png",
+      "bytes": 38519,
+      "sha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final/index-html.png",
+      "bytes": 771739,
+      "sha256": "2d02c661f878f4d63ca07790422bfa0c60467afb90248f901a381bec3e7bb061"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final/tests-browser-html.png",
+      "bytes": 38519,
+      "sha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1366.png",
+      "bytes": 597710,
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1600.png",
+      "bytes": 743397,
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1920.png",
+      "bytes": 973315,
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-2560.png",
+      "bytes": 1345781,
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1366.png",
+      "bytes": 597710,
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1600.png",
+      "bytes": 743397,
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1920.png",
+      "bytes": 973315,
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-2560.png",
+      "bytes": 1345781,
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1366.png",
+      "bytes": 597710,
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1600.png",
+      "bytes": 743397,
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1920.png",
+      "bytes": 973315,
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-2560.png",
+      "bytes": 1345781,
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1366.png",
+      "bytes": 597710,
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1600.png",
+      "bytes": 743397,
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1920.png",
+      "bytes": 973315,
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-2560.png",
+      "bytes": 1345781,
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/result.png",
+      "bytes": 917530,
+      "sha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1366.png",
+      "bytes": 597710,
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1600.png",
+      "bytes": 743397,
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1920.png",
+      "bytes": 973315,
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-2560.png",
+      "bytes": 1345781,
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/result.png",
+      "bytes": 917530,
+      "sha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/current-sale.png",
+      "bytes": 624823,
+      "sha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/fallback-1000.png",
+      "bytes": 425566,
+      "sha256": "0ee8a73af74ebb98094195277be21238f7441c72359dbda332f539c6cbe9881e"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/fallback-650.png",
+      "bytes": 278439,
+      "sha256": "543bcccdd5536fa61863fe80e640ea9d0548a41cb08e5c4a2bf92403f1ea2def"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-filtered.png",
+      "bytes": 625628,
+      "sha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1280.png",
+      "bytes": 550679,
+      "sha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1366.png",
+      "bytes": 625339,
+      "sha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1536.png",
+      "bytes": 737252,
+      "sha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1600.png",
+      "bytes": 783840,
+      "sha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1920.png",
+      "bytes": 1013053,
+      "sha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-2560.png",
+      "bytes": 1421325,
+      "sha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1280x720.png",
+      "bytes": 901074,
+      "sha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1366x768.png",
+      "bytes": 555670,
+      "sha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1536x864.png",
+      "bytes": 852147,
+      "sha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1600x900.png",
+      "bytes": 691436,
+      "sha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1920x1080.png",
+      "bytes": 900128,
+      "sha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-2560x1440.png",
+      "bytes": 1240652,
+      "sha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/off-sale.png",
+      "bytes": 618944,
+      "sha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/p2-detail-clear-focus.png",
+      "bytes": 559117,
+      "sha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/personal-expanded-ongoing.png",
+      "bytes": 576533,
+      "sha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/current-sale.png",
+      "bytes": 624823,
+      "sha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/fallback-1000.png",
+      "bytes": 423602,
+      "sha256": "aa23b10ff154967d796eb86fc51794aa9a1fb3ca9acbaae3ce1db807b16e8cb7"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/fallback-650.png",
+      "bytes": 271890,
+      "sha256": "e65b9dcf4f40c6e51649b6b769bdfc7be9db17c602a1c44cf993a5f432119466"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-filtered.png",
+      "bytes": 625628,
+      "sha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1280.png",
+      "bytes": 550679,
+      "sha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1366.png",
+      "bytes": 625339,
+      "sha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1536.png",
+      "bytes": 737252,
+      "sha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1600.png",
+      "bytes": 783840,
+      "sha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1920.png",
+      "bytes": 1013053,
+      "sha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-2560.png",
+      "bytes": 1421325,
+      "sha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1280x720.png",
+      "bytes": 901074,
+      "sha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1366x768.png",
+      "bytes": 555670,
+      "sha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1536x864.png",
+      "bytes": 852147,
+      "sha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1600x900.png",
+      "bytes": 691436,
+      "sha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1920x1080.png",
+      "bytes": 900128,
+      "sha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-2560x1440.png",
+      "bytes": 1240652,
+      "sha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/off-sale.png",
+      "bytes": 618944,
+      "sha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/p2-detail-clear-focus.png",
+      "bytes": 559117,
+      "sha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1"
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/personal-expanded-ongoing.png",
+      "bytes": 576533,
+      "sha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "baseline": "f0fc8dcc39aad55f28f562db9ab36e049cf067e7",
+  "results": {
+    "core": {
+      "passed": 8,
+      "failed": 0
+    },
+    "browser": {
+      "passed": 326,
+      "failed": 0
+    },
+    "warehouse": {
+      "passed": 140,
+      "failed": 0
+    },
+    "uiInteractionChecks": 77,
+    "smoke": "smoke observations passed (NOT final gate)"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "2bf4a7004660888567e5d497abb5203bc6a852d8c419ce16078a5cd152cfc76f"
+    },
+    {
+      "path": "docs/ui.md",
+      "sha256": "51318545f3078fe4825473679e277c2f9272c49979a5028d870fa9bd489e30fe"
+    },
+    {
+      "path": "docs/gameplay-rules-0.6.md",
+      "sha256": "cdfa34406ed4d6771c76e0e91f293a0be11072368ea41018e15816ee0319c6b7"
+    },
+    {
+      "path": "docs/save-v5.md",
+      "sha256": "d8c9f91d643759422521f5ee3e6b570e73d4e4dd5ba4d017cfcef63bc0ac3287"
+    },
+    {
+      "path": "css/scenes.css",
+      "sha256": "7da91046c9d6ace7ab62e06603c820c80bc08136ea740d8b71f863113a7ade3f"
+    },
+    {
+      "path": "js/data.js",
+      "sha256": "66e26de46b9d36b1f073d39442e2b457b3a9f14a4b193ae517ea66edaadc5184"
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "d5f9d478519057df6a4e9cff4f8fde394fd9aa34cb07a11f3cc5f39b9e1dfa1b"
+    },
+    {
+      "path": "js/game.js",
+      "sha256": "40d486ffc692cfb9f716c6f6f49c56240d7c481d22094f48793d09e78b94fb03"
+    },
+    {
+      "path": "js/market.js",
+      "sha256": "8e77b151f4937f23720d5f046c609170557ae1b7352c2669f8e520bf2fa8f7ae"
+    },
+    {
+      "path": "js/validation.js",
+      "sha256": "aaf944e46a9019a92134c28dac96956b00de909969f0387093844be6a403c3dc"
+    },
+    {
+      "path": "js/save.js",
+      "sha256": "ddd3e7aa5076b6bb107a5f05e93a16058a6f8c98152976ef3c98806c8a194d89"
+    },
+    {
+      "path": "js/ui.js",
+      "sha256": "f8ba9c68db5316cfd8cdf06eb6b13895f60559139b253aeff9352a1237a6e399"
+    },
+    {
+      "path": "tests/suite.js",
+      "sha256": "a931fabd17d2b6be9b075d189bc5e49efd087017be7fc5900264b9de13e099cc"
+    },
+    {
+      "path": "tests/ui-interaction.cjs",
+      "sha256": "d5386fb8012a4501314865c0cdaacc401c7f68e6230e8639a5278a36877853d7"
+    },
+    {
+      "path": "tests/calendar-event-fixtures.cjs",
+      "sha256": "3a0171c5e60586a46a6f380799bbc63a516c0044d0548b0d88b07300179a5032"
+    },
+    {
+      "path": "tests/calendar-event.cjs",
+      "sha256": "2a5080ee8ba37e1b7e0411912b41a9f7bd6277abf427c178411759ee4203da10"
+    },
+    {
+      "path": "tests/calendar-event-browser.cjs",
+      "sha256": "bbcd127ee37750f060bb0cf6f63c9db8f883cde38c9460bbd4750a3736fef0ee"
+    },
+    {
+      "path": "tests/warehouse-current.cjs",
+      "sha256": "66aa4aac6036fce55778384a120e1087476013a24b0fd4237f0ea463d8104f7a"
+    }
+  ],
+  "protectedFiles": [
+    {
+      "path": "js/v2-baseline.js",
+      "sha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "unchanged": true
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "sha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379",
+      "unchanged": true
+    },
+    {
+      "path": "js/trading.js",
+      "sha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "unchanged": true
+    },
+    {
+      "path": "js/statistics.js",
+      "sha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "sha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "sha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan-simulation.cjs",
+      "sha256": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6",
+      "unchanged": true
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "sha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/gameplay-rules-0.5.md",
+      "sha256": "1e7edfc2eff928f4d876d52690430df800eda54683d802258bf390a596426579",
+      "unchanged": true
+    },
+    {
+      "path": "docs/save-v4.md",
+      "sha256": "1a7c570c3579efdba7e63aa471f78601c82e60736ee4ab22d9ba88f533f27cd6",
+      "unchanged": true
+    }
+  ],
+  "diffCheck": {
+    "command": "git diff --check",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "screenshotCount": 141
+}

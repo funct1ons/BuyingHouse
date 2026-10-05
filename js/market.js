@@ -98,7 +98,7 @@
     }
   };
   H.environment = s => {
-    s.season = H.seasonAt(s.week);
+    s.season = H.seasonAt(H.calendarWeek(s));
     s.macro = Math.max(.8, Math.min(1.2, s.macro * .8 + (.9 + .2 * H.random(s, 'market')) * .2));
   };
   // Only already-known scheduling state is read here; never cash, holdings, P&L or prices.
@@ -193,7 +193,7 @@
       persist = Math.max(-cap, Math.min(cap, persist));
       if (persist !== 0) persistProducts.push(p.id);
       if (starts) startedProducts.push(p.id);
-      const seasonal = 1 + p.season * Math.cos((s.week - 1) / 52 * Math.PI * 2 + p.phase);
+      const seasonal = 1 + p.season * Math.cos((H.calendarWeek(s) - 1) / 52 * Math.PI * 2 + p.phase);
       const center = p.base * seasonal * s.macro * structural * (1 + persist / 10000);
       const noise = Math.round(m.price * (m.trend * p.trendSensitivity + shock));
       m.previous = m.price;
@@ -223,6 +223,37 @@
     }
     return {clips, clipped, persistCapTriggers, persistCapped, persistProducts, startedProducts, specStarts, specStartClips,
       eventStarted: s.activeEvents.some(a => a.started === s.week)};
+  };
+  // Shared by real next and clone preview, including personal-event RNG draws.
+  H.advanceMarket = s => {
+    if (s.week >= 52 || s.status !== 'playing') throw Error('没有下一经营周');
+    s.week++;
+    H.environment(s); H.rotate(s);
+    const eventDiag = H.drawEvents(s); H.trends(s);
+    const pending = H.prices(s); pending.week = s.week;
+    return {eventDiag, pending};
+  };
+  H.previewMarket = s => {
+    const preview = H.clone(s);
+    H.advanceMarket(preview);
+    return preview;
+  };
+  H.makeRumors = s => {
+    if (s.week >= 52 || s.status !== 'playing') return [];
+    const preview = H.previewMarket(s), cfg = H.hintRules;
+    const candidates = s.listing.filter(id => Math.abs(H.changeBps(preview.market[id])) >= cfg.thresholdBps);
+    let x = H.seed(s.seed + ':hint:' + s.week);
+    const random = () => { x ^= x << 13; x ^= x >>> 17; x ^= x << 5; return (x >>> 0) / 4294967296; };
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+    const sources = Object.keys(H.hintSources);
+    return candidates.slice(0,cfg.limit).map(productId => {
+      let up = H.changeBps(preview.market[productId]) > 0;
+      if (random() < cfg.flipProbability) up = !up;
+      return {productId, direction:up ? 'up' : 'down', sourceId:sources[Math.floor(random()*sources.length)]};
+    });
   };
   H.personal = s => {
     if (s.personal < 0) {

@@ -1,0 +1,22 @@
+{
+  "kind": "0.6 independent in-memory regression, not simulation/balance evidence",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs"
+  ],
+  "checks": [
+    "all 52 seed-derived starts, every 52-week boundary, restore determinism and public projection",
+    "calendar derivation consumes none of four original RNG streams",
+    "price cosine uses calendar week including wrap",
+    "strict safe calendar start/seed/season/unknown fields; restore atomic rejection",
+    "summer heat scheduling and log validation use same calendar",
+    "current save5 read/write/export/import, old1/2/3/4 rejected without writes, old storage preserved",
+    "save failure is post-commit and exports remain usable",
+    "all seven natural event fixtures retain strict logs, real signed changes and complete static sources"
+  ],
+  "failures": [],
+  "summary": {
+    "passed": 8,
+    "failed": 0
+  }
+}

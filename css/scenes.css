@@ -26,11 +26,12 @@ h1,h2,h3{color:var(--ink-strong)}
 .brand-chip small{white-space:nowrap}
 .metrics{padding:6px 16px;border-radius:12px;gap:24px}
 .top-actions{gap:6px}.top-actions button{padding:6px 11px}
-.calendar{position:relative;flex-shrink:0;display:grid;justify-items:center;align-content:center;width:60px;height:60px;margin-left:auto;background:#fffaf0;border-radius:7px;border-top:9px solid #c8553d;box-shadow:var(--elev-1);line-height:1.02;color:var(--ink-strong)}
-.calendar small{font-size:10px;color:var(--text-secondary)}.calendar b{font-size:21px}
-.calendar .cal-rings{position:absolute;top:-13px;left:14px;right:14px;height:7px;background:radial-gradient(circle,#4a4f52 2px,transparent 2.6px) 0 0/16px 7px repeat-x}
-.calendar.countdown{border-radius:50%;border-top:0;color:var(--brass-ink)}.calendar.countdown .cal-rings{display:none}
-.cal-ring{position:absolute;inset:0;width:100%;height:100%;color:var(--brass);pointer-events:none}
+.year-progress{min-width:230px;flex:1;max-width:520px;padding:6px 12px;border-radius:10px;background:#fffaf0f2;box-shadow:var(--elev-1)}
+.year-progress-label{display:grid;gap:1px;font-variant-numeric:tabular-nums}
+.year-progress-label strong{font-size:14px}.year-progress-label small{font-size:12px;color:#43554b}
+.year-track{height:10px;background:#dcd5c2;border:1px solid #bbae92;border-radius:3px;margin-top:4px;overflow:hidden}
+.year-track i{display:block;height:100%;background:repeating-linear-gradient(90deg,#286c60 0 12px,#387d6b 12px 14px)}
+.year-warning{display:block;color:#943f2d;font-size:12px;line-height:1.3;margin-top:3px}
 
 /* ---------- left: my window ---------- */
 .window-panel{display:grid;gap:4px}.left .window-panel{padding:9px 11px 11px}
@@ -166,6 +167,10 @@ dialog[data-kind=houses]{width:min(1120px,95vw)}dialog[data-kind=result]{width:m
 .bulletin-line{display:block;padding:10px 0;font-size:13px;overflow-wrap:anywhere}
 .bulletin-line .down{color:#1d665a}
 .bulletin-line small{display:block;font-size:12px}.bulletin-line button{font-size:12px;padding:4px 8px;margin-top:5px}
+/* Unverified hints remain compact inside the decision column. */
+.rumor-section{padding-bottom:9px;margin-bottom:8px;border-bottom:1px dashed var(--border)}
+.rumor-section>small{display:block;font-size:11px;color:var(--text-secondary)}
+.rumor-line{font-size:12px;padding-top:7px;overflow-wrap:anywhere}.rumor-line button{font-size:11px;padding:2px 5px;margin-top:2px}
 .bulletin-body>h3{margin-top:10px;font-size:14px}
 .footer{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px}
 .footer .primary{width:240px;min-height:50px;box-shadow:0 3px 0 #164c42;font-weight:700;font-size:17px}
@@ -175,10 +180,22 @@ dialog[data-kind=houses]{width:min(1120px,95vw)}dialog[data-kind=result]{width:m
 @media(min-width:1800px){.workspace{grid-template-columns:290px minmax(0,1fr) 330px}}
 @media(max-width:1099px){body{height:auto;overflow:auto}.shell{height:auto;min-height:100vh;grid-template-rows:auto 1fr auto}.topbar{flex-wrap:wrap;padding:10px}.workspace{grid-template-columns:270px minmax(0,1fr);align-items:start}.left{grid-row:1/3;max-height:900px;height:calc(100vh - 180px);position:sticky;top:10px}.right{grid-column:2;grid-row:1;max-height:260px}.market-panel{grid-column:2;grid-row:2;min-height:480px}.bulletin-body{max-height:210px}.market-list{max-height:580px}.footer{position:sticky;bottom:0;background:var(--surface);padding:8px;z-index:2}}
 @media(max-width:700px){.workspace{display:flex;flex-direction:column}.right{order:-1;width:100%}.left{position:static;height:auto;max-height:none;width:100%}.warehouse-list{max-height:360px}.market-panel{width:100%}.market-list{grid-template-columns:1fr}.footer .primary{width:170px;font-size:14px}.footer small{display:none}.footer-save button{font-size:11px;padding:6px}.metrics{gap:10px}.metric strong{font-size:16px}.brand-chip{padding:6px}}
-/* Phase B: non-blocking one-shot emphasis, no overlay or new audio loop. */
+/* One-shot bulletin emphasis remains alongside the 0.6 informational event dialog. */
 .swan-news .major-label{color:#8a3a25;font-weight:700;letter-spacing:.06em}
 .swan-product{border-left:2px solid var(--border);padding-left:8px;margin-top:8px}
 .swan-emphasis{animation:hy-major 1.2s 1}
 @keyframes hy-major{0%,100%{background:transparent}35%{background:#f5e2bc}}
 body[data-animation="reduced"] .swan-emphasis,body[data-animation="off"] .swan-emphasis{animation:none}
 @media(prefers-reduced-motion:reduce){.swan-emphasis{animation:none}}
+/* Development 0.6: readable paper progress and source-backed informational modal. */
+.shell{grid-template-rows:90px minmax(0,1fr) 68px}
+.topbar{gap:10px}.brand-chip{flex-shrink:0}.brand-chip .brand{font-size:18px}.metrics{gap:16px;padding:6px 10px}.metric strong{font-size:18px;white-space:nowrap}
+.major-event-details{display:grid;gap:8px}.major-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.major-products .swan-product{margin:0;padding:10px;background:#fffdf7;border:1px solid var(--border);border-radius:8px}.major-products small{display:block}.origin-facts,.origin-adaptation{padding:12px;border:1px solid var(--border);border-left:4px solid var(--brass);border-radius:8px;overflow-wrap:anywhere}.origin-facts a{color:#235f56;text-decoration:underline}.origin-adaptation{border-left-color:#286c60}.major-event-details>.primary{justify-self:start}
+@media(max-height:800px){.shell{grid-template-rows:86px minmax(0,1fr) 64px}}
+@media(min-width:1100px) and (max-width:1350px){.brand-chip{padding:6px}.brand-chip .seal{display:none}.brand-chip .brand{font-size:16px}.metrics{gap:10px}.metric strong{font-size:16px}.top-actions{gap:4px}.top-actions button{padding:5px 7px}.year-progress{min-width:228px;padding:6px 8px}}
+@media(max-width:1099px){.shell{grid-template-rows:auto 1fr auto}.year-progress{max-width:none;order:3;flex-basis:100%}.metrics{margin-left:auto}.topbar{overflow:visible}.major-products{grid-template-columns:1fr}}
+@media(max-width:700px){.brand-chip .brand{font-size:16px}.brand-chip .seal{display:none}.metrics{padding:5px;gap:8px}.metric strong{font-size:14px}.top-actions{width:100%;justify-content:flex-end}.year-progress{min-width:0}.start{grid-template-columns:1fr;padding:20px;overflow:auto;height:auto;min-height:100vh}.start-copy{grid-column:1}.start-form{grid-column:1;grid-row:2}.trade-layout{grid-template-columns:1fr}}
+@media(max-width:1099px){html{scrollbar-gutter:stable both-edges}}
+dialog[open][data-kind=major-event]{display:flex;flex-direction:column;overflow:hidden}
+dialog[data-kind=major-event] .dialog-head{flex-shrink:0}
+dialog[data-kind=major-event] .dialog-body{min-height:0;flex:1;max-height:none;overflow:auto}

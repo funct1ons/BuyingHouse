@@ -1,0 +1,47 @@
+{
+  "kind": "Edge file:// regression, independent fixtures, not manual play or economic simulation",
+  "checks": [
+    {
+      "name": "old v4 simple incompatible notice not quarantined",
+      "pass": false
+    }
+  ],
+  "failures": [
+    "old v4 simple incompatible notice not quarantined"
+  ],
+  "errors": [
+    {
+      "timestamp": 1791172384005.77,
+      "exceptionDetails": {
+        "exceptionId": 1,
+        "text": "Uncaught SyntaxError: Missing } in template expression",
+        "lineNumber": 88,
+        "columnNumber": 200,
+        "scriptId": "21",
+        "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+        "executionContextId": 2
+      }
+    },
+    {
+      "timestamp": 1791172390199.139,
+      "exceptionDetails": {
+        "exceptionId": 2,
+        "text": "Uncaught SyntaxError: Missing } in template expression",
+        "lineNumber": 88,
+        "columnNumber": 200,
+        "scriptId": "40",
+        "url": "file:///C:/files/code/BuyingHouse/js/ui.js",
+        "executionContextId": 3
+      }
+    }
+  ],
+  "external": [],
+  "shots": [],
+  "layouts": [],
+  "browser": "Edg/154.0.4258.53",
+  "fatal": "Error: {\"exceptionId\":3,\"text\":\"Uncaught\",\"lineNumber\":0,\"columnNumber\":66,\"scriptId\":\"42\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"\",\"scriptId\":\"42\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":66},{\"functionName\":\"\",\"scriptId\":\"42\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":135}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"TypeError\",\"description\":\"TypeError: Cannot set properties of null (setting 'value')\\n    at <anonymous>:1:67\\n    at <anonymous>:1:136\",\"objectId\":\"-2103010191667401314.3.2\"}}\n    at CDP.evaluate (C:\\files\\code\\BuyingHouse\\tests\\cdp-helper.cjs:15:152)\n    at async C:\\files\\code\\BuyingHouse\\tests\\calendar-event-browser.cjs:17:602",
+  "summary": {
+    "passed": 0,
+    "failed": 1
+  }
+}

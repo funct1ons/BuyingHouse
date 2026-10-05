@@ -1,0 +1,1707 @@
+{
+  "kind": "0.7/save6 implementation self-verification; independent review pending",
+  "results": {
+    "core": "21/21",
+    "calendar": "8/8",
+    "mechanism": "8/8",
+    "browser": "331/0",
+    "warehouse": "140/0",
+    "ui": 77,
+    "smoke": "pass"
+  },
+  "authoritativeDirectories": [
+    "final/calendar",
+    "final/mechanism",
+    "browser-current",
+    "final/warehouse",
+    "final/ui",
+    "final/smoke"
+  ],
+  "protectedSummary": {
+    "files": 189,
+    "unchanged": 189,
+    "oldCalendarPng": 141
+  },
+  "protectedResults": [
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/ended.png",
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "actualSha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1000.png",
+      "sha256": "4a634e17954bd0f3a4fff924b4eea171a26090807851ae797f614ded2d8131b4",
+      "actualSha256": "4a634e17954bd0f3a4fff924b4eea171a26090807851ae797f614ded2d8131b4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1100.png",
+      "sha256": "06426fbde7308a8c37d649240f78534b9d710de1ae0b394a0d4cff68fa221ed4",
+      "actualSha256": "06426fbde7308a8c37d649240f78534b9d710de1ae0b394a0d4cff68fa221ed4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1280.png",
+      "sha256": "195f9d1f1fe6e77adf06a5db28b207d7a3d31661d5308bfa598828d6de627b91",
+      "actualSha256": "195f9d1f1fe6e77adf06a5db28b207d7a3d31661d5308bfa598828d6de627b91",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1366.png",
+      "sha256": "d6677960e2c97dd3dfb568761dd44cfc2257b43881c594bf47575c30f7ad4d99",
+      "actualSha256": "d6677960e2c97dd3dfb568761dd44cfc2257b43881c594bf47575c30f7ad4d99",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1536.png",
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "actualSha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1600.png",
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "actualSha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-1920.png",
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "actualSha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-2560.png",
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "actualSha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/late-long-700.png",
+      "sha256": "5455923081f175a584ce224a0285cda9ea508936190ae75de7a117ae7204fb6f",
+      "actualSha256": "5455923081f175a584ce224a0285cda9ea508936190ae75de7a117ae7204fb6f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/new-progress-1366.png",
+      "sha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6",
+      "actualSha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/report.json",
+      "sha256": "1c84f278af5dbb2342b67dcc5bd19c7e1fd79a04c1c5fbce8d6a4af4891db8f1",
+      "actualSha256": "1c84f278af5dbb2342b67dcc5bd19c7e1fd79a04c1c5fbce8d6a4af4891db8f1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/screenshot-manifest.json",
+      "sha256": "0d1457c3cf31029eff8f308afeafdeab465281ffc255c8b6314e81f83167901b",
+      "actualSha256": "0d1457c3cf31029eff8f308afeafdeab465281ffc255c8b6314e81f83167901b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_efficiency-dialog.png",
+      "sha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4",
+      "actualSha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_egg_relief-dialog.png",
+      "sha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff",
+      "actualSha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_egg_short-dialog.png",
+      "sha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321",
+      "actualSha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_heat-dialog.png",
+      "sha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302",
+      "actualSha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_protection-dialog.png",
+      "sha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384",
+      "actualSha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_route-dialog.png",
+      "sha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e",
+      "actualSha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/swan_tariff-dialog.png",
+      "sha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca",
+      "actualSha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-50.png",
+      "sha256": "e1ad81a80f9c6b677bf2a19e1fc5ca894f2ab921fc37118d975d019d05ef8e3f",
+      "actualSha256": "e1ad81a80f9c6b677bf2a19e1fc5ca894f2ab921fc37118d975d019d05ef8e3f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-51.png",
+      "sha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5",
+      "actualSha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1/week-52.png",
+      "sha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299",
+      "actualSha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt1-command.txt",
+      "sha256": "d82dda6069ea985f3ef82fe7d41afbf65da1df7730c00d6ac181913512d0d936",
+      "actualSha256": "d82dda6069ea985f3ef82fe7d41afbf65da1df7730c00d6ac181913512d0d936",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/ended.png",
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "actualSha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1000.png",
+      "sha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a",
+      "actualSha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1100.png",
+      "sha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c",
+      "actualSha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1280.png",
+      "sha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0",
+      "actualSha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1366.png",
+      "sha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557",
+      "actualSha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1536.png",
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "actualSha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1600.png",
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "actualSha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-1920.png",
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "actualSha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-2560.png",
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "actualSha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/late-long-700.png",
+      "sha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8",
+      "actualSha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/new-progress-1366.png",
+      "sha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6",
+      "actualSha256": "8d6c04c5f9df06ce757a469cca854ca2f9c914297d6351dfb95174246fcfabd6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/report.json",
+      "sha256": "c93f97d300f2f8476673b98595c23a27f6a6a01ba833ac2e5c47a09ae5db1090",
+      "actualSha256": "c93f97d300f2f8476673b98595c23a27f6a6a01ba833ac2e5c47a09ae5db1090",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/screenshot-manifest.json",
+      "sha256": "0d1457c3cf31029eff8f308afeafdeab465281ffc255c8b6314e81f83167901b",
+      "actualSha256": "0d1457c3cf31029eff8f308afeafdeab465281ffc255c8b6314e81f83167901b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_efficiency-dialog.png",
+      "sha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4",
+      "actualSha256": "2aedae4a684a789775688714b9690c5ae0c3711cf45488b5eb92c8d3c7522aa4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_egg_relief-dialog.png",
+      "sha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff",
+      "actualSha256": "62eee66707d2d36c2aeab84ec60970f98878ef48631b812276b44746635601ff",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_egg_short-dialog.png",
+      "sha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321",
+      "actualSha256": "51e2900f90fb5fd9212cbf8fd939b1c66f07f18d73f5d110dbe13a62a8978321",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_heat-dialog.png",
+      "sha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302",
+      "actualSha256": "c5748dc3477f76495ceca21c51c47d53ffb33c4f3dda7152faf873f1f504d302",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_protection-dialog.png",
+      "sha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384",
+      "actualSha256": "e1de25e101ae7efe506c2934d71c66b2a724d5fc2ce9ce56b8ebd4a7097f6384",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_route-dialog.png",
+      "sha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e",
+      "actualSha256": "7aa54fc0d46db1276624ef522ef2e63f3baea52a77521ae6fc547c20aad9af3e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/swan_tariff-dialog.png",
+      "sha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca",
+      "actualSha256": "5d7709938ba39eed016d3aefb24c831619ff897e4a55791369231a74557c55ca",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-50.png",
+      "sha256": "ca4aabf21193c5e245b44225b1ca1feab4af673bac458dcf282c98aa58f97844",
+      "actualSha256": "ca4aabf21193c5e245b44225b1ca1feab4af673bac458dcf282c98aa58f97844",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-51.png",
+      "sha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5",
+      "actualSha256": "2f176434e7050dd0d95f1ab53254a3dff85f3a9e012bd301e68af19d4476a4a5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2/week-52.png",
+      "sha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299",
+      "actualSha256": "2eba8f6ff95c7152b2f1748b0605f83022c4855dd5f2ba5bb58b82511880e299",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-attempt2-command.txt",
+      "sha256": "7d1f5a7bb055ca830fc2c6a0c5ee074479ddbbb9d1c60ea3d1aad04413de6b39",
+      "actualSha256": "7d1f5a7bb055ca830fc2c6a0c5ee074479ddbbb9d1c60ea3d1aad04413de6b39",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/ended.png",
+      "sha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "actualSha256": "d797f327d0390afdf8b8f5a8244fdab1fe396207b1199a9e3788c9052ac7218a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1280.png",
+      "sha256": "c015db3ab4f27a07dd1a07ad58658c46868acbadd36eb0921c754b3f0d77e943",
+      "actualSha256": "c015db3ab4f27a07dd1a07ad58658c46868acbadd36eb0921c754b3f0d77e943",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1366.png",
+      "sha256": "5bde8f0aadd104ecd622ef533aee6897a76b38299f4a9a0b0746906d703561a1",
+      "actualSha256": "5bde8f0aadd104ecd622ef533aee6897a76b38299f4a9a0b0746906d703561a1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1536.png",
+      "sha256": "1c0f87730032d3e3683f2b417382ef9c18a58a014267d04040be9f832c3229e9",
+      "actualSha256": "1c0f87730032d3e3683f2b417382ef9c18a58a014267d04040be9f832c3229e9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1600.png",
+      "sha256": "52615db1b8f9ac03e6a970a44aa197f79621cec6c4c8791c0235d366c3f6a160",
+      "actualSha256": "52615db1b8f9ac03e6a970a44aa197f79621cec6c4c8791c0235d366c3f6a160",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-1920.png",
+      "sha256": "10c210c0d580c6805b2ee66417f9afe3456f7063321dc433279acf96d920c936",
+      "actualSha256": "10c210c0d580c6805b2ee66417f9afe3456f7063321dc433279acf96d920c936",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-2560.png",
+      "sha256": "c3aa44ad96480fabab6c6104cd59a87e4e4ca2f81ffb3b73d6840e4bedd6a12e",
+      "actualSha256": "c3aa44ad96480fabab6c6104cd59a87e4e4ca2f81ffb3b73d6840e4bedd6a12e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/event-dialog-700.png",
+      "sha256": "620c4bb430871b3eacd2c89c6d02ec79cd9208bf49bd9c2a04c3ac9a81c779ad",
+      "actualSha256": "620c4bb430871b3eacd2c89c6d02ec79cd9208bf49bd9c2a04c3ac9a81c779ad",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1000.png",
+      "sha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a",
+      "actualSha256": "b864959fce07f96449ef724f5f6ccbfc8c87d7d303fdb7200e4cc6f71c19ce5a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1100.png",
+      "sha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c",
+      "actualSha256": "209b68894678b52d7a33589a39111fede6fac627827b4f81c0b7821eba057b1c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1280.png",
+      "sha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0",
+      "actualSha256": "eb1aad684edd6ab875f8ffe227609d771ccb1bf57424a0dba66baafe19cb48c0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1366.png",
+      "sha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557",
+      "actualSha256": "41b4bae66000b81756655e17f8fc1902aed98e2a0a2fb0601569aefe06e73557",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1536.png",
+      "sha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "actualSha256": "02260dc91610b5c18b64953cf2b49022566a4d5915374cdbcf326095461d4826",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1600.png",
+      "sha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "actualSha256": "55b4611c1071ca7e5009a21cb28ad1385ed91905dd51878068080a2622476141",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-1920.png",
+      "sha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "actualSha256": "97c736fc4b7ed6b6d97dce01687a8e1635c84f7e863d9972d34de8ee0b1602df",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-2560.png",
+      "sha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "actualSha256": "365b82a16b1a9923a9c91cddf5532e6351a1c8ce75fd1c56ba3d736664bb28af",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/late-long-700.png",
+      "sha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8",
+      "actualSha256": "4bf687d0df7c8fc0a65a48ba650908edfd951c7cdd7a6d3a8c6fba2cc9fe29c8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/new-progress-1366.png",
+      "sha256": "243e2dfbac0f0a006f823201f6a510d74fc3e1d60705b17b9ddbaf6a46f87cfd",
+      "actualSha256": "243e2dfbac0f0a006f823201f6a510d74fc3e1d60705b17b9ddbaf6a46f87cfd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/report.json",
+      "sha256": "c988dd798e28864ae4eac583758ba127d8aed076afdc917a9e91af0b259a0b7b",
+      "actualSha256": "c988dd798e28864ae4eac583758ba127d8aed076afdc917a9e91af0b259a0b7b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/screenshot-manifest.json",
+      "sha256": "e4ad41368620a042392b1a39e70f6f06dfe94930f8e5d385c2ee62d5eaa6f6ca",
+      "actualSha256": "e4ad41368620a042392b1a39e70f6f06dfe94930f8e5d385c2ee62d5eaa6f6ca",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_efficiency-dialog-top.png",
+      "sha256": "4ff1eececad1e0ffff2239483d370998b8a12828469311706e92c420881ca615",
+      "actualSha256": "4ff1eececad1e0ffff2239483d370998b8a12828469311706e92c420881ca615",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_efficiency-dialog.png",
+      "sha256": "d1f2541cb85f91ba5a23dd9f811ae5a83ab31bc71e7189d9581a358d426674a7",
+      "actualSha256": "d1f2541cb85f91ba5a23dd9f811ae5a83ab31bc71e7189d9581a358d426674a7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_relief-dialog-top.png",
+      "sha256": "c54e83e516fcb157a7f2a49bade7788385f78f702cc80f65e543a89d2f9a06d7",
+      "actualSha256": "c54e83e516fcb157a7f2a49bade7788385f78f702cc80f65e543a89d2f9a06d7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_relief-dialog.png",
+      "sha256": "99f6887933981dc56cbd0f3e919b7b97f8ca7e5d08ca3c0cf652a70cc35afb9d",
+      "actualSha256": "99f6887933981dc56cbd0f3e919b7b97f8ca7e5d08ca3c0cf652a70cc35afb9d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_short-dialog-top.png",
+      "sha256": "c91801174331f985f61db28d0050f5b481699722d9790579bc85a2ebbd080503",
+      "actualSha256": "c91801174331f985f61db28d0050f5b481699722d9790579bc85a2ebbd080503",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_egg_short-dialog.png",
+      "sha256": "6fa50eb44f73444cc1e0dd5b8044e8524066260d2a5f05776122fe262823c4cf",
+      "actualSha256": "6fa50eb44f73444cc1e0dd5b8044e8524066260d2a5f05776122fe262823c4cf",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_heat-dialog-top.png",
+      "sha256": "8725fb86ea4c4d4ef8cd1a28809bddd7f8127cf73b5dee3fb4bc07f80bb3b037",
+      "actualSha256": "8725fb86ea4c4d4ef8cd1a28809bddd7f8127cf73b5dee3fb4bc07f80bb3b037",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_heat-dialog.png",
+      "sha256": "56489fac71b2eb090548c85aefc1cb7151f3da09796fb658c9edba31c8dd6d7d",
+      "actualSha256": "56489fac71b2eb090548c85aefc1cb7151f3da09796fb658c9edba31c8dd6d7d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_protection-dialog-top.png",
+      "sha256": "b7040111834c87410a44e4a94e6a3a866e0397c1e699e240d340accd09c3486a",
+      "actualSha256": "b7040111834c87410a44e4a94e6a3a866e0397c1e699e240d340accd09c3486a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_protection-dialog.png",
+      "sha256": "64e7b9f09aca43164d98e185cd96b31f2edb921f656ff4890ca6949c1b38dac0",
+      "actualSha256": "64e7b9f09aca43164d98e185cd96b31f2edb921f656ff4890ca6949c1b38dac0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_route-dialog-top.png",
+      "sha256": "33be01d2a780594678bc23bdc46d435ddaf4dac7508f50e457f14c80881c65e6",
+      "actualSha256": "33be01d2a780594678bc23bdc46d435ddaf4dac7508f50e457f14c80881c65e6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_route-dialog.png",
+      "sha256": "6c1f11fd7b3cbafdbb4fd91bb0bdf7397fc54901e422e95777971014f2f5307a",
+      "actualSha256": "6c1f11fd7b3cbafdbb4fd91bb0bdf7397fc54901e422e95777971014f2f5307a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_tariff-dialog-top.png",
+      "sha256": "52867861c0a4580d0f7f8133c5a9da1cfa9bf407bf2e5c51a91550fcebb8ef64",
+      "actualSha256": "52867861c0a4580d0f7f8133c5a9da1cfa9bf407bf2e5c51a91550fcebb8ef64",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/swan_tariff-dialog.png",
+      "sha256": "715c71996a86f614e15140577183aa3e520092cc4abf8bd7a16d7cb1bf346df1",
+      "actualSha256": "715c71996a86f614e15140577183aa3e520092cc4abf8bd7a16d7cb1bf346df1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-50.png",
+      "sha256": "7d8823598b9af5772795b9f43b66a1aba8a73fdd9ecce1c4bce3853ee28f031d",
+      "actualSha256": "7d8823598b9af5772795b9f43b66a1aba8a73fdd9ecce1c4bce3853ee28f031d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-51.png",
+      "sha256": "d77fe4dd47fbbf1bcac33c4c199dccf0813c1816d68f8999ef3cf50309d9dc28",
+      "actualSha256": "d77fe4dd47fbbf1bcac33c4c199dccf0813c1816d68f8999ef3cf50309d9dc28",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final/week-52.png",
+      "sha256": "2862adb2dafcafcf726a2bf47899c94dabb8eb6b486975c9a372b346a9000b7e",
+      "actualSha256": "2862adb2dafcafcf726a2bf47899c94dabb8eb6b486975c9a372b346a9000b7e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/browser-final-command.txt",
+      "sha256": "317a243256dc0088c39361d5bcf7d9c3c3314043d54f784c3de6dccc679be43e",
+      "actualSha256": "317a243256dc0088c39361d5bcf7d9c3c3314043d54f784c3de6dccc679be43e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/core/core-report.json",
+      "sha256": "763e10b8d79e9a006e513c2df7ef8b7265bde97ca3e180c299cd1980786ccd58",
+      "actualSha256": "763e10b8d79e9a006e513c2df7ef8b7265bde97ca3e180c299cd1980786ccd58",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/core/fixtures.json",
+      "sha256": "f4662f83b06de5f3d164881bda374174527d8660385cb31d801595ed600d4ac8",
+      "actualSha256": "f4662f83b06de5f3d164881bda374174527d8660385cb31d801595ed600d4ac8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/core-command.txt",
+      "sha256": "1204922c14f1d70a6de1e77457ad63ef598dadbd0cbba71ecbc5c4a10823128a",
+      "actualSha256": "1204922c14f1d70a6de1e77457ad63ef598dadbd0cbba71ecbc5c4a10823128a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/manifest-command.txt",
+      "sha256": "a38082b665187e7d9c323b1d1a44a9332eb1e598263bd81032f17daf8578118c",
+      "actualSha256": "a38082b665187e7d9c323b1d1a44a9332eb1e598263bd81032f17daf8578118c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/report.md",
+      "sha256": "03b7d457390ccdeb760238013fd6d4ebea0e5c609ae38214ae37eed47395deff",
+      "actualSha256": "03b7d457390ccdeb760238013fd6d4ebea0e5c609ae38214ae37eed47395deff",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/screenshot-manifest.json",
+      "sha256": "bb822dd6cd7bca07d2a1fe23c3aefccf2dc5938ea3a44156c41d75bc22214a7a",
+      "actualSha256": "bb822dd6cd7bca07d2a1fe23c3aefccf2dc5938ea3a44156c41d75bc22214a7a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke/index-html.png",
+      "sha256": "92fc194c132a5b7c59aed0c8d3b34d9afb4017d728695e7ef75affb65e262830",
+      "actualSha256": "92fc194c132a5b7c59aed0c8d3b34d9afb4017d728695e7ef75affb65e262830",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke/report.json",
+      "sha256": "cd8e3cf31b2c5fbaf7035e72ced74e37f41a478e8eee6d5cf96aca05ad3708a5",
+      "actualSha256": "cd8e3cf31b2c5fbaf7035e72ced74e37f41a478e8eee6d5cf96aca05ad3708a5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke/tests-browser-html.png",
+      "sha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd",
+      "actualSha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-command.txt",
+      "sha256": "9f3628be36738b27748568c3cf00b58f586706069fc63109563fdf4239b48bdd",
+      "actualSha256": "9f3628be36738b27748568c3cf00b58f586706069fc63109563fdf4239b48bdd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final/index-html.png",
+      "sha256": "2d02c661f878f4d63ca07790422bfa0c60467afb90248f901a381bec3e7bb061",
+      "actualSha256": "2d02c661f878f4d63ca07790422bfa0c60467afb90248f901a381bec3e7bb061",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final/report.json",
+      "sha256": "a491b3c2d157e4eb69043a1fd96de54de1f3a12ee6f55df9fc7f476da30537fd",
+      "actualSha256": "a491b3c2d157e4eb69043a1fd96de54de1f3a12ee6f55df9fc7f476da30537fd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final/tests-browser-html.png",
+      "sha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd",
+      "actualSha256": "9ad6a46d70de0b39a398107145dbd5fd8f4c6f2e9ba935ce679e62e6d0da3abd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/smoke-final-command.txt",
+      "sha256": "ed6f1c02ed2f5a0e3beecf6e258471dce5746fbd0bbcf76175a6b1f305ff1a53",
+      "actualSha256": "ed6f1c02ed2f5a0e3beecf6e258471dce5746fbd0bbcf76175a6b1f305ff1a53",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/suite-command.txt",
+      "sha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1",
+      "actualSha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/suite-final-command.txt",
+      "sha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1",
+      "actualSha256": "3422bf1896f8e4748e7afa7e31d7c8cc367442098d6666bd8a797b4b8af906c1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1366.png",
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "actualSha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1600.png",
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "actualSha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-1920.png",
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "actualSha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction/market-2560.png",
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "actualSha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1366.png",
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "actualSha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1600.png",
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "actualSha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-1920.png",
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "actualSha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2/market-2560.png",
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "actualSha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt2-command.txt",
+      "sha256": "f6d9127f462a6e86bc2337c310b48efb56ecf726316d886355cd2846e69909ff",
+      "actualSha256": "f6d9127f462a6e86bc2337c310b48efb56ecf726316d886355cd2846e69909ff",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1366.png",
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "actualSha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1600.png",
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "actualSha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-1920.png",
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "actualSha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3/market-2560.png",
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "actualSha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt3-command.txt",
+      "sha256": "b01df8b86e497503cae2b97f7bf0a9c340c0ba1e5eaf5f8f02d246a88e2fac00",
+      "actualSha256": "b01df8b86e497503cae2b97f7bf0a9c340c0ba1e5eaf5f8f02d246a88e2fac00",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1366.png",
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "actualSha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1600.png",
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "actualSha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-1920.png",
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "actualSha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/market-2560.png",
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "actualSha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/report.json",
+      "sha256": "fbebb683e6546447e052bd0df79d22bdb6a95cf873dc9407b4cb251bd0e1d86c",
+      "actualSha256": "fbebb683e6546447e052bd0df79d22bdb6a95cf873dc9407b4cb251bd0e1d86c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4/result.png",
+      "sha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98",
+      "actualSha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-attempt4-command.txt",
+      "sha256": "6a6f91afde7af998b10e233d06b11d606add53e076ea84dfaa6bbe31c9ba5623",
+      "actualSha256": "6a6f91afde7af998b10e233d06b11d606add53e076ea84dfaa6bbe31c9ba5623",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-command.txt",
+      "sha256": "7fe72f1ad6c604f5efc67af9d6b31387f1d38f747621577ea798e2ea481a78f9",
+      "actualSha256": "7fe72f1ad6c604f5efc67af9d6b31387f1d38f747621577ea798e2ea481a78f9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1366.png",
+      "sha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "actualSha256": "f2d6235630827744877f2916b3d379b2b062737de784123ccfc25dcbb055f179",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1600.png",
+      "sha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "actualSha256": "bc849d36a2b0b166cfba4b1c70b1a58899286e2d0cd9c408beffe35d72cdd058",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-1920.png",
+      "sha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "actualSha256": "01a0d1a3048777bca3f4d29c1fa6e5c79b87475096b62068d755b6f4537db5d8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/market-2560.png",
+      "sha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "actualSha256": "8c73c2d04dc12988c2ffcb5eff6a81692785ff280264ae64a2ee6620989195ce",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/report.json",
+      "sha256": "fbebb683e6546447e052bd0df79d22bdb6a95cf873dc9407b4cb251bd0e1d86c",
+      "actualSha256": "fbebb683e6546447e052bd0df79d22bdb6a95cf873dc9407b4cb251bd0e1d86c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final/result.png",
+      "sha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98",
+      "actualSha256": "83fdf262c604d9a0d66e5f91fb639e1eea7aca93b045d312f9ccb7307ace6f98",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/ui-interaction-final-command.txt",
+      "sha256": "6a6f91afde7af998b10e233d06b11d606add53e076ea84dfaa6bbe31c9ba5623",
+      "actualSha256": "6a6f91afde7af998b10e233d06b11d606add53e076ea84dfaa6bbe31c9ba5623",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/verification-manifest.json",
+      "sha256": "e1f0aa6125d54185b809af7086d5d4161d49e228f8202122092022869ee03ba9",
+      "actualSha256": "e1f0aa6125d54185b809af7086d5d4161d49e228f8202122092022869ee03ba9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/current-sale.png",
+      "sha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc",
+      "actualSha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/fallback-1000.png",
+      "sha256": "0ee8a73af74ebb98094195277be21238f7441c72359dbda332f539c6cbe9881e",
+      "actualSha256": "0ee8a73af74ebb98094195277be21238f7441c72359dbda332f539c6cbe9881e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/fallback-650.png",
+      "sha256": "543bcccdd5536fa61863fe80e640ea9d0548a41cb08e5c4a2bf92403f1ea2def",
+      "actualSha256": "543bcccdd5536fa61863fe80e640ea9d0548a41cb08e5c4a2bf92403f1ea2def",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-filtered.png",
+      "sha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd",
+      "actualSha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1280.png",
+      "sha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63",
+      "actualSha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1366.png",
+      "sha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d",
+      "actualSha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1536.png",
+      "sha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef",
+      "actualSha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1600.png",
+      "sha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657",
+      "actualSha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-1920.png",
+      "sha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5",
+      "actualSha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/full-current-long-2560.png",
+      "sha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254",
+      "actualSha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1280x720.png",
+      "sha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6",
+      "actualSha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1366x768.png",
+      "sha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5",
+      "actualSha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1536x864.png",
+      "sha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96",
+      "actualSha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1600x900.png",
+      "sha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb",
+      "actualSha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-1920x1080.png",
+      "sha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018",
+      "actualSha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/new-2560x1440.png",
+      "sha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b",
+      "actualSha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/off-sale.png",
+      "sha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135",
+      "actualSha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/p2-detail-clear-focus.png",
+      "sha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1",
+      "actualSha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/personal-expanded-ongoing.png",
+      "sha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b",
+      "actualSha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1/report.json",
+      "sha256": "d653b6f6c85b373cba5ebe4b7ef46e446b3e14361927e204201a58cf0f03f7b5",
+      "actualSha256": "d653b6f6c85b373cba5ebe4b7ef46e446b3e14361927e204201a58cf0f03f7b5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-attempt1-command.txt",
+      "sha256": "f6178902cafaf65cc7dc0301617a9d8a555a4a8daa8ade2af812b0c787a61774",
+      "actualSha256": "f6178902cafaf65cc7dc0301617a9d8a555a4a8daa8ade2af812b0c787a61774",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/current-sale.png",
+      "sha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc",
+      "actualSha256": "cd92b1b4e49b73bf96366f37f196a4ce94a264273e423f26b8394d90b32ba3bc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/fallback-1000.png",
+      "sha256": "aa23b10ff154967d796eb86fc51794aa9a1fb3ca9acbaae3ce1db807b16e8cb7",
+      "actualSha256": "aa23b10ff154967d796eb86fc51794aa9a1fb3ca9acbaae3ce1db807b16e8cb7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/fallback-650.png",
+      "sha256": "e65b9dcf4f40c6e51649b6b769bdfc7be9db17c602a1c44cf993a5f432119466",
+      "actualSha256": "e65b9dcf4f40c6e51649b6b769bdfc7be9db17c602a1c44cf993a5f432119466",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-filtered.png",
+      "sha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd",
+      "actualSha256": "99aca28a72dec2b9f142647642ad21bbc676b2b85ce1d93f4f5b51e3eb2d80fd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1280.png",
+      "sha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63",
+      "actualSha256": "b9a5e3e797b5b44200ac2d73c4a6ed195998a55a1dd404d77900408275f41c63",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1366.png",
+      "sha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d",
+      "actualSha256": "5af42926f2e33287b98c8810d49bed7ff6d2f61815e0a02d58e6f2790068635d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1536.png",
+      "sha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef",
+      "actualSha256": "481abce00f76e736d509c8f7a680c0d7a1a78c8c2b640af36eb48e9be7bb3fef",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1600.png",
+      "sha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657",
+      "actualSha256": "4a11e074d1789115156392e5ac12f4441f0a001b6a4ec9a0700ea1d845ff1657",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-1920.png",
+      "sha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5",
+      "actualSha256": "bfefdfe972e0d34dac5ea040a99d92f9fbd2c6f0d83509f77d6308a128f315f5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/full-current-long-2560.png",
+      "sha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254",
+      "actualSha256": "418d4993c6dea9409a52662e43b53d91a14914403a9b728f60593e03c959a254",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1280x720.png",
+      "sha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6",
+      "actualSha256": "c3b70493e682ae9e422a899ca4f9f127cf776408ae6dc33b58def766b734a9c6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1366x768.png",
+      "sha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5",
+      "actualSha256": "a25c9fb76db6bb7d67e673dbcd8361193b5944a0a6f5d03f7904a17c8d5041d5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1536x864.png",
+      "sha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96",
+      "actualSha256": "60768bbf05e82a2d0d4d4d01d6b8134259d801acb7669215c40b8d728d1ffa96",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1600x900.png",
+      "sha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb",
+      "actualSha256": "335292f20d5d17b83228050044448039d872f916aae8b0369c1d854ff2ce34bb",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-1920x1080.png",
+      "sha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018",
+      "actualSha256": "9e1cb85d178fc047f25da9662cd359f089bf6fe8381dd8d3d11a733687f75018",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/new-2560x1440.png",
+      "sha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b",
+      "actualSha256": "8a6785c6319987fa7e0f7e011b3d5936685874c754be3ced7ff985c3eb771d4b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/off-sale.png",
+      "sha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135",
+      "actualSha256": "a9abdcf77568b8a40295eb369d623a6af0b20976b3738be42d5a00da4ea2e135",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/p2-detail-clear-focus.png",
+      "sha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1",
+      "actualSha256": "347f851668fd73b7eda086dd6be5fda926a6d50e01b68b93c394c5f4b5ce09b1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/personal-expanded-ongoing.png",
+      "sha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b",
+      "actualSha256": "84fbc64278f9393720311f9699628d508f0d52db1bb7949e620ab1b886dca16b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final/report.json",
+      "sha256": "d653b6f6c85b373cba5ebe4b7ef46e446b3e14361927e204201a58cf0f03f7b5",
+      "actualSha256": "d653b6f6c85b373cba5ebe4b7ef46e446b3e14361927e204201a58cf0f03f7b5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/calendar-event-evidence/iteration-20261005/warehouse-final-command.txt",
+      "sha256": "f6178902cafaf65cc7dc0301617a9d8a555a4a8daa8ade2af812b0c787a61774",
+      "actualSha256": "f6178902cafaf65cc7dc0301617a9d8a555a4a8daa8ade2af812b0c787a61774",
+      "unchanged": true
+    },
+    {
+      "path": "docs/gameplay-rules-0.6.md",
+      "sha256": "cdfa34406ed4d6771c76e0e91f293a0be11072368ea41018e15816ee0319c6b7",
+      "actualSha256": "cdfa34406ed4d6771c76e0e91f293a0be11072368ea41018e15816ee0319c6b7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/save-v5.md",
+      "sha256": "d8c9f91d643759422521f5ee3e6b570e73d4e4dd5ba4d017cfcef63bc0ac3287",
+      "actualSha256": "d8c9f91d643759422521f5ee3e6b570e73d4e4dd5ba4d017cfcef63bc0ac3287",
+      "unchanged": true
+    },
+    {
+      "path": "js/v2-baseline.js",
+      "sha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "actualSha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328",
+      "unchanged": true
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "sha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379",
+      "actualSha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379",
+      "unchanged": true
+    },
+    {
+      "path": "js/trading.js",
+      "sha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "actualSha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc",
+      "unchanged": true
+    },
+    {
+      "path": "js/statistics.js",
+      "sha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "actualSha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd",
+      "unchanged": true
+    },
+    {
+      "path": "simulation/black-swan-policy.cjs",
+      "sha256": "6d96b47695fa92dcd3e261237defd0191163ad9a2e0c54e317c421b22c137afb",
+      "actualSha256": "6d96b47695fa92dcd3e261237defd0191163ad9a2e0c54e317c421b22c137afb",
+      "unchanged": true
+    },
+    {
+      "path": "simulation/black-swan.cjs",
+      "sha256": "89abe5c1b5999df228348a012261582aad8714f78a9cad6d8776a9e3843f1da9",
+      "actualSha256": "89abe5c1b5999df228348a012261582aad8714f78a9cad6d8776a9e3843f1da9",
+      "unchanged": true
+    },
+    {
+      "path": "simulation/c1.cjs",
+      "sha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "actualSha256": "43f9dd9a8f67e45bd9cce7c2dd4fa9a40187364e08daef62580b0861cbc19479",
+      "unchanged": true
+    },
+    {
+      "path": "simulation/report.cjs",
+      "sha256": "125f1e048a3d7db526833f902a021449d4b1369567e1c37227d5fd63f12fa5b8",
+      "actualSha256": "125f1e048a3d7db526833f902a021449d4b1369567e1c37227d5fd63f12fa5b8",
+      "unchanged": true
+    },
+    {
+      "path": "simulation/run.cjs",
+      "sha256": "acac7182d95f827ca1a94df1324e450d05109a575520a19f15f5a5101453bda2",
+      "actualSha256": "acac7182d95f827ca1a94df1324e450d05109a575520a19f15f5a5101453bda2",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "sha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9",
+      "actualSha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "sha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee",
+      "actualSha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee",
+      "unchanged": true
+    },
+    {
+      "path": "tests/black-swan-simulation.cjs",
+      "sha256": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6",
+      "actualSha256": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6",
+      "unchanged": true
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "sha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a",
+      "actualSha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a",
+      "unchanged": true
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "973e09777bb5c24bc84eb028d15f8a3a0e887ea99a887141f3177bf6f1143506"
+    },
+    {
+      "path": "css/main.css",
+      "sha256": "9d9d5252b4eaf9290b753f5a0d723fd736632cfa7ebe5e0bbae00d92db49a008"
+    },
+    {
+      "path": "css/scenes.css",
+      "sha256": "4107d78dd6f1faa4fc4d67f75abc820a3cba9d56aa8f8a9bb99419716252ec0c"
+    },
+    {
+      "path": "docs/gameplay-rules-0.7.md",
+      "sha256": "aec1ecf36315f041651a546b8e825d69c0cba4b878c45f9867917ea4727f619e"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/ended.png",
+      "sha256": "f2cbff8b7f87bbbe9419b549aae3619a93f18b1e3103af286a15359badc20df2"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-1280.png",
+      "sha256": "15cfc07d41991a0a2cef28e00520601426f6af545e8be52aa182e3720228e9b7"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-1366.png",
+      "sha256": "30f7eae2b559d611f3a2cdfd2afb62dc4ae91c743cb0f503fc8c8ec38bac8ac5"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-1536.png",
+      "sha256": "d7b78eb939a48af93288630de336548726fe0e0f9c8aee6842340e83f23f54d5"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-1600.png",
+      "sha256": "e3ed990b73ec2cf6d1b2e256981e0e8b6ed27eaa210a020d4e82e931fb35c6bc"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-1920.png",
+      "sha256": "5e3451cf9e777fe0f973a21be7dbbd81860ff057ab8c72103a43f326851cd6b9"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-2560.png",
+      "sha256": "6dd83806e0dba8c7a3a2d25d3c8e56c875b8570bba31d2bb081c7c875374c5dc"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/event-dialog-700.png",
+      "sha256": "932b90bdb17f1eb24f74322965327988d95fea8111062d0692e0330b77c33482"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1000.png",
+      "sha256": "2aa1d730117182d4498340752b31a171d9a91e52ceae2490ae8546c47826dd53"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1100.png",
+      "sha256": "41811dde6d774ec676e5e9ddcc0b68e6af01b59b150827737408f8ffa02bfa8f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1280.png",
+      "sha256": "ce4b16449331fd3ddd6963f893968e0ddaeb3323aa1a3efe217c8f6878308fe4"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1366.png",
+      "sha256": "2ee0f2ad253af7cc4ab2ed61285ed4eff6b4279ef2932311dc616b9b20ad16a6"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1536.png",
+      "sha256": "9a68f67f56634ae56035006d55dfcfbb67b51b0af2c2c2ad28bf50aa97416d4e"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1600.png",
+      "sha256": "be000a520cc835062109e11503850bcad74674739519b4740dd37a54f4e119e0"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-1920.png",
+      "sha256": "4d91d885783c6e017b8d76f371fdb62ecd54dd29ac85da07c00390ddc33f2f99"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-2560.png",
+      "sha256": "eaea3cfd7ade0af080d4e7ad1ca0ff30e16d52f340e336b45bf4c0ce9a2e77be"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/late-long-700.png",
+      "sha256": "58f73baecc0294b130de5aea217d5087c9902e746e97bcbd6bf4711e1bd6ba1f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/new-progress-1366.png",
+      "sha256": "2c37bbd8a734c550904523342eea7d6c46f58cbb5bebde11354c69cf83d0c998"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/report.json",
+      "sha256": "4df6d1d3163915f8a0db7a3e48ce26f148ea99b7c5b65afc9b4e5ce8d33fc49c"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/rumor-source.png",
+      "sha256": "bd2c64369c6099ef439cff89b67246feb0c70f8925c2c4d7f5aaf187dbfc5179"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/rumors-1366.png",
+      "sha256": "b2ed0a52d24ce864080920ffebf951037a0b113f6ac61743e44d96c057d98867"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/screenshot-manifest.json",
+      "sha256": "eea832ea1febaf8c6f53b914f119a4bfa9850a0f7dc4cf640f8aee144f94d095"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_efficiency-dialog-top.png",
+      "sha256": "1734c178556eb9202de337a4b4b2be3464957544f23cdb03517e0d9dbc37b6d0"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_efficiency-dialog.png",
+      "sha256": "00b7a984e973e0ff0664890c551e935cc9b2a2271d51389b7a351f0090cfac8a"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_egg_relief-dialog-top.png",
+      "sha256": "a400e3115dfdf30cb529060e8a22692f80eeee1084445cd41cbfbd817433baab"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_egg_relief-dialog.png",
+      "sha256": "3ff04a9c0987835bc2787ef411dcabb2bc084723540747c0a04c9f787a9d3f2f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_egg_short-dialog-top.png",
+      "sha256": "fa8de968fae207714bf5b9dfed32e842ade40c0d3057f0f7af659416767a4423"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_egg_short-dialog.png",
+      "sha256": "9df4b62739e7321ae62ec34e625e47bccd30396828c6f28bfd959e84e3e4164d"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_heat-dialog-top.png",
+      "sha256": "209b3d84bc9ca5deea9f176db93ea3fd3337b4c7f3075afa48e15553858a74ff"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_heat-dialog.png",
+      "sha256": "7d0d3b6f6f55d00fad0ae11d8033c5f12d8dd52c31e3a1823ff559b4504cc02c"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_protection-dialog-top.png",
+      "sha256": "d8dcc4f45bd3a2e1730fc3d82e05f7e62c04a70a6bc307d0b23a68ea43055a26"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_protection-dialog.png",
+      "sha256": "85973caff765c9bbc2a86202c07bbc5ce060ebe84ca5c3ffb55fa35661aa7387"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_route-dialog-top.png",
+      "sha256": "d1ffda67edee5c986d1c4c6422cc4bbb03df294a529edb72584ffb11cad34891"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_route-dialog.png",
+      "sha256": "05a818940d69dc5054a8eb4202abf022a939725ff97cb2ec84279563308bd826"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_tariff-dialog-top.png",
+      "sha256": "194daba0e756238aefac07c3c4a8e259cdd3a26ba4038cc8e7f5702735b285df"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/swan_tariff-dialog.png",
+      "sha256": "461a9634fafd880d3b01d5ea8936ba238795748c259441b7a4cb2eb765fa92c2"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/week-50.png",
+      "sha256": "5dabd45b08cec4e25970b8c33deb39b2b31642402fe701241d51179be22c85be"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/week-51.png",
+      "sha256": "098f7543aaa64be0901a640d7c58698b97bdf7b96dbf659cd80d8b0f6af33971"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/browser-current/week-52.png",
+      "sha256": "d08750db76a625d7fccc0c8dfffe5e3cf7cb655313d9e347f6fe1206d762eb56"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/calendar-evidence-erratum.md",
+      "sha256": "2451a92d8943f605b5c3f8179a027109a6339cc51a90c0fbdd52762cd7111848"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/current-delivery.md",
+      "sha256": "45806994a7a2ce38fffe65505926d89acdfedb8badf14fb04c8fe3f29b368f44"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/calendar/core-report.json",
+      "sha256": "6cd4d9b2985987a782dd97d418684869d9fb22cc46223c0b770560804b862274"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/calendar/fixtures.json",
+      "sha256": "3aa0aa6ed97f03d91591be9e7f81821fa737f268f26e5eeb2c0a7ef3fd09c9f1"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/mechanism/mechanism-report.json",
+      "sha256": "f53abe98da772839fecbd0d32c4103204059388a673cdcbe03a0dc7c53446b4f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/smoke/index-html.png",
+      "sha256": "b95463364b488cb925fde4a7b157e9653a2a9d68e1ead8dc7632e5736705035f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/smoke/report.json",
+      "sha256": "aed10f23ef33a07a13c354e64727e9f3ca33742b449e4df1ffbe274af07599b7"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/smoke/tests-browser-html.png",
+      "sha256": "8b61b9de5ecf1c198681c019708ba774c0f7b5b27c19b15726a8551216e6451f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/market-1366.png",
+      "sha256": "3b940e577fad63c848028e61de25fe300cece09212ccd2b3f587a3e06402136e"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/market-1600.png",
+      "sha256": "7f6e2a7643f7b8c8a60d6e457dfb8fa1f3d59ead40c4676f33256b63bc0b50f5"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/market-1920.png",
+      "sha256": "25d5de73f73852a9d3785f1d0a1addac8587ddd1a8abe4592bde84392f9f0d01"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/market-2560.png",
+      "sha256": "cf2b0f124d2a7227de81faf55715303105d5ae95b0514837332a72d860d0204a"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/report.json",
+      "sha256": "17cffbd52af580adfc6bcb94434ba01f81c2e582ca51ee874f7de124c3418969"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/ui/result.png",
+      "sha256": "92c759d9ccf2e6c0cfa4df5a1a450af8e53be072f856650f8b04082105db3d1b"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/current-sale.png",
+      "sha256": "8534da9ab163a115ce3bd65a43ba5b9e3f1abc34d15b23eae99966ad4c8698cc"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/fallback-1000.png",
+      "sha256": "73225b1592fed50fa81718759a4769746036d91b7c2f1173a55807e4d795fc52"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/fallback-650.png",
+      "sha256": "de421bb74d96b18d3235dca345076e3cc81a3b9eedafd573f97bcf46953052f6"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-filtered.png",
+      "sha256": "ed945f5d7723eb3553cfdf5bcd56ecdae8a24e760b7a93b58078d1482466bc88"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-1280.png",
+      "sha256": "e280968b936800f0ab809c226e50affdbd8a699d20c53ce81a9155734ef47514"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-1366.png",
+      "sha256": "98cebda0a27c8c2cc59285eaae7c145f22e1069f8d57b699d80817cc00406a0f"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-1536.png",
+      "sha256": "34cc5df0b0645e020218381bea2676758bdcc73510d46d1d4e01c5dd21cb41c4"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-1600.png",
+      "sha256": "e163756863158609f1eff2237eb8be8d10d45abc395c3329543757c23aefa16a"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-1920.png",
+      "sha256": "fdd00f9b0795c05caadb00796106c839b18f693cae84074c6d42f1b712f568cd"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/full-current-long-2560.png",
+      "sha256": "00994c8446046a2e431760ed337949c1afa5eac33f024e2d1f4c9b4632b1ad09"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-1280x720.png",
+      "sha256": "df1d74f33df95a082d0b50eea13ceb3b480bd42dd97fbadc3bac0e169d650588"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-1366x768.png",
+      "sha256": "866598b43790cce456797d66d9eb6f38f46e784af1b8a777ab39f85525e27891"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-1536x864.png",
+      "sha256": "14c333e1c77432eb180106817ff9db103a6b4c5b522e0610925fa94d7c1f2fa8"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-1600x900.png",
+      "sha256": "2f0d90b80efa455d495848950d7de2302f91f8fd9cae8de6c520937e360ad138"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-1920x1080.png",
+      "sha256": "ab3f7d375ec3c0fd3dbc45ebf9d789f2bb43fdd2b674faabbd4dd8044f2169a7"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/new-2560x1440.png",
+      "sha256": "57d1abbe7f25c9c0a19e3917b52c1460fea4dd2d407aacb79210916cf8e0a2cd"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/off-sale.png",
+      "sha256": "80208543cde1aaff0ef72e24e6b8b7820b8a8d72271cb6fef866ca63b7994f04"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/p2-detail-clear-focus.png",
+      "sha256": "2c28d41f3a30a18f3f265f2f514349b26814977c08ebe79d6b879e723ab1a2b1"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/personal-expanded-ongoing.png",
+      "sha256": "f1ebdfa548e7594d4f8e8de9ec6f8a6c8d6732ec7ba73660b53f1f17f645ef69"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/final/warehouse/report.json",
+      "sha256": "45f8e3bd32f71081c8bd5b2039000ca505f818da236b50e61077c9fe298fa440"
+    },
+    {
+      "path": "docs/rumor-shock-evidence/iteration-20261005/report.md",
+      "sha256": "85b13dddbb71e606f7e8037a19a438f88102e2151ed38f7740866969b65ea71f"
+    },
+    {
+      "path": "docs/save-v6.md",
+      "sha256": "7bd45d856afccb45802cda37b23e68fbc7faf8d4afe5e1f2edde390671675378"
+    },
+    {
+      "path": "docs/ui.md",
+      "sha256": "9c9962604a618f34a3ae7ab15ef55e98620aa727fa8694f50e52c78c1889f794"
+    },
+    {
+      "path": "index.html",
+      "sha256": "05415247138d003bd7fe80e73a01df78980cde714fde6a4bdf2c91e20dab1dec"
+    },
+    {
+      "path": "js/art-kit.js",
+      "sha256": "d493e0ee31765bc8b48992f73c2a9f0d26cd4f209d3d59d3b030299a3c7cae6e"
+    },
+    {
+      "path": "js/art-scenes.js",
+      "sha256": "1f22d3158205d9dec858aae85b0a6d40e2d69c5e5ae00b0228202febe07d898f"
+    },
+    {
+      "path": "js/art.js",
+      "sha256": "4891ea4457587a72ee0f1889d9002d731ae590b36c60c6a9535d4aa1755fbeba"
+    },
+    {
+      "path": "js/audio-director.js",
+      "sha256": "bd97f6825d35a3741a622ba58132cce21d0527812caf951d742d9cc6816b6c27"
+    },
+    {
+      "path": "js/audio-instruments.js",
+      "sha256": "00350b14ec59fefdc8ebdb39b73008cab93d3b5a550e7aaa99d4e4cbbcaf43e6"
+    },
+    {
+      "path": "js/audio-score.js",
+      "sha256": "a9eecdba1a45089975ed74346ecc95b0c9a7f62cf1bb49424959414f864509ca"
+    },
+    {
+      "path": "js/audio.js",
+      "sha256": "85f9621a4ee48eb5553e61994c43f078cdfd2334e7f28383f36f89a814b62785"
+    },
+    {
+      "path": "js/data.js",
+      "sha256": "3aaeac21881aa0a0f13db429ce1a292e82fd7f435b0988cb99aa65941fdbdf76"
+    },
+    {
+      "path": "js/game.js",
+      "sha256": "27d3729db73c0cf5de5afbd3da8a0ca1758360ec6a29fdf3ff803596b74def4d"
+    },
+    {
+      "path": "js/market.js",
+      "sha256": "6519ccc8a21616adc1aeff41e31385054e410be87ee4e61b4587277591dc822b"
+    },
+    {
+      "path": "js/math.js",
+      "sha256": "d5f9d478519057df6a4e9cff4f8fde394fd9aa34cb07a11f3cc5f39b9e1dfa1b"
+    },
+    {
+      "path": "js/save.js",
+      "sha256": "edbcdf87f84940ff4fe4fe3672496efb4effe66fac10879c117c2b8de31b482d"
+    },
+    {
+      "path": "js/statistics.js",
+      "sha256": "b5793938a98ba9a0f868bfe2934132350f7bffe741a201ce43141f3ca11416dd"
+    },
+    {
+      "path": "js/trading.js",
+      "sha256": "632d6505017900c8337189f5be4c85681bf485855287e556ef9b19916a9627bc"
+    },
+    {
+      "path": "js/ui.js",
+      "sha256": "c7e9759804f848c8cbb07658d8db6441b82dcf0e71e3705136150db0ff6b255e"
+    },
+    {
+      "path": "js/v2-baseline.js",
+      "sha256": "b2f20c009100fde73428902c3a14df8a395cd214cc1afbf06e77b6bddd901328"
+    },
+    {
+      "path": "js/v3-baseline.js",
+      "sha256": "429f1d8f6bf57de67fc73961b4e1c6fefb22188616a42cf89b56919d7d86b379"
+    },
+    {
+      "path": "js/validation.js",
+      "sha256": "5a3589d667329f361dbf602c598f6a2f1c759e3acbc6a28548fc7ffa31b5ab97"
+    },
+    {
+      "path": "tests/acceptance-final.cjs",
+      "sha256": "71dea62d8bb0453cfbd8222219589806696e0398c4fe94a641f0f495758f654f"
+    },
+    {
+      "path": "tests/acceptance-supplement.cjs",
+      "sha256": "a179b9770246b038e00bf09536df715ca64821279438a5b1de34833fbb5f3e02"
+    },
+    {
+      "path": "tests/audio-diagnostic.cjs",
+      "sha256": "b0db785940fbd7a22118d76ccb821c204c61c8d34f195c4fda47457186cf4ee1"
+    },
+    {
+      "path": "tests/av-audio-director.cjs",
+      "sha256": "5a67b857d0a6b08e725a3b23ab5c968e38cad4cc283992c0b7917d790a75feea"
+    },
+    {
+      "path": "tests/av-audio.cjs",
+      "sha256": "74c315a64b8ea96efdd0ec56dd11fa1339b5481eef251867bc2133863fa3faed"
+    },
+    {
+      "path": "tests/av-integration.cjs",
+      "sha256": "090e22dfb32efd61f25b468b0da456c8ac2c57c77443bc31b12b015e315f5714"
+    },
+    {
+      "path": "tests/av-preview.html",
+      "sha256": "1926539842f308e8cca53856519d6352aabf4121dc37e34d94e976782746f791"
+    },
+    {
+      "path": "tests/av-visual-gallery.cjs",
+      "sha256": "9107b864ab307d25cb37161ee8df5583a2acaee35d073b3a851c8ba5310ebeff"
+    },
+    {
+      "path": "tests/av-visual-gallery.html",
+      "sha256": "338fdc472be41123a9ebff3dd66272fb762846a1c0e0896bca5888c8ef45ec9a"
+    },
+    {
+      "path": "tests/av-visual-grain.cjs",
+      "sha256": "1708b7da29a5aa3432ddcd1a4f56ded56419a2b8a84feb77628a385a9943a1f9"
+    },
+    {
+      "path": "tests/av-visual.cjs",
+      "sha256": "33ce9a07f2c389ba8228f85197d385af0cde057a11d8fe361a95f10b545a2362"
+    },
+    {
+      "path": "tests/black-swan-browser.cjs",
+      "sha256": "328115fcb717c087e298d27ebfc0706f0a200963ca5183bdd5dc2052fa2239ee"
+    },
+    {
+      "path": "tests/black-swan-simulation.cjs",
+      "sha256": "f0ac8fe591601e8e3cacf3e47e480eede24b8114af9e088aa2b547c03461c8e6"
+    },
+    {
+      "path": "tests/black-swan.cjs",
+      "sha256": "fbc19471588484627285f0a37bcc0a646dccf325bda9c072778084cd864135f9"
+    },
+    {
+      "path": "tests/browser.html",
+      "sha256": "0104bdb708ebb3d589c3cad38d1e6930d7512879664fb2a6df575ac6db9f8efc"
+    },
+    {
+      "path": "tests/browser.js",
+      "sha256": "fd6fee99bf3b4a00b195841ba226e9009278b24992cd81842c68e21635812d53"
+    },
+    {
+      "path": "tests/calendar-event-browser.cjs",
+      "sha256": "b00a96e5b43ba99e88b668f527da1af7c689eef99598a257e2f68809c6bb0e18"
+    },
+    {
+      "path": "tests/calendar-event-fixtures.cjs",
+      "sha256": "3a0171c5e60586a46a6f380799bbc63a516c0044d0548b0d88b07300179a5032"
+    },
+    {
+      "path": "tests/calendar-event.cjs",
+      "sha256": "073e4a520335371fd5b76bb4e6a8e19d154ca6209a0d86e8c8eca50690968596"
+    },
+    {
+      "path": "tests/cdp-helper.cjs",
+      "sha256": "ba13e3c84e6df2b12ebc43d6d616b445e38acffecb99729c10940cded27a6d10"
+    },
+    {
+      "path": "tests/cdp-smoke.cjs",
+      "sha256": "df8628badbf4dcafa8c4c37649c9a51cfc7694ba1515951fad66427228189dc7"
+    },
+    {
+      "path": "tests/milestone-b-edge-migrate.cjs",
+      "sha256": "e6b557e67c9ebbcc20e11fc7c13bba47cb9e1785f91df2cd84eae806cb27362e"
+    },
+    {
+      "path": "tests/milestone-b-edge-review.cjs",
+      "sha256": "293f792499b3f89fbe423606b7f6bfa012df614fe347aab52ac984c25ca53aec"
+    },
+    {
+      "path": "tests/milestone-b-edge.cjs",
+      "sha256": "98ce8eeb26bdff2b1bb2e135823d3e7943115fa3310f6b03a46eaa8cae319a23"
+    },
+    {
+      "path": "tests/milestone-b.cjs",
+      "sha256": "7b5b14f4a0c7bf49354469bd94ca5c5f697a849f931bdf82844956f310457e2f"
+    },
+    {
+      "path": "tests/milestone-d-edge.cjs",
+      "sha256": "26b078a08966b8ddb21139156349f6a1afeee1dc92ad4a18e3f6d70b5f7c100f"
+    },
+    {
+      "path": "tests/recapture-1600-bulletin.cjs",
+      "sha256": "96e8c7ff898204359348e203032867ccabcf5aad884ef86805f7d3d152802d28"
+    },
+    {
+      "path": "tests/review-b2.cjs",
+      "sha256": "5a354ee5931bf25b4e561c0fbd1a54e2112ad11b3054a88a34f6dc76d793bc36"
+    },
+    {
+      "path": "tests/review-fixes.cjs",
+      "sha256": "922b0359ba47cff9497c683cb67b4f72ab61d088bb90bbcbd182a5a95f526b5f"
+    },
+    {
+      "path": "tests/review-save-v1.cjs",
+      "sha256": "0bde1e6c9d8d23afa3a5fe205015e2b51ac7da29f18ad9d7eb8958842662fd1b"
+    },
+    {
+      "path": "tests/rumor-shock.cjs",
+      "sha256": "f2556217786e8c2b609713be93ae27ff17c05ec4313bc25359af2b66c814fa3c"
+    },
+    {
+      "path": "tests/run.cjs",
+      "sha256": "e4ab28dc395c924ed9335c9fc84c4cd6e0dfc3ab09735a5d6618684019bea059"
+    },
+    {
+      "path": "tests/suite.js",
+      "sha256": "ae7c695394a696e1d71eca67f671542a03a83726a2f717e34dce171880298bbf"
+    },
+    {
+      "path": "tests/system-browser.cjs",
+      "sha256": "0f24f2016d015485b0a9da07b18ef6ce5db74c2619ae2601f7ba094e1d496d84"
+    },
+    {
+      "path": "tests/ui-gameplay-improvements.cjs",
+      "sha256": "96a5eec8dbc1a354b32d7d2ec93d09423b8cf537a0b719f83e48733299f6516a"
+    },
+    {
+      "path": "tests/ui-interaction.cjs",
+      "sha256": "6eb6a5ba0e3ef856ef6b6117be5734cdd75b790cf14161adf8f2bbece8fd301e"
+    },
+    {
+      "path": "tests/warehouse-current.cjs",
+      "sha256": "5ebde1005abcacc11bdeb558f61624e05da37d8fb7ecfdb86eacae2bca87848e"
+    }
+  ]
+}

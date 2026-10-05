@@ -15,7 +15,7 @@
     function price(e,id,value) {
       const s=e.snapshot(),m=s.market[id];m.price=value;m.history[m.history.length-1]=value;
       if(s.week===1)m.previous=value;
-      m.low=Math.min(m.low,value);m.high=Math.max(m.high,value);H.record(s);e.restore(s);
+      m.low=Math.min(m.low,value);m.high=Math.max(m.high,value);s.rumors=H.makeRumors(s);H.record(s);e.restore(s);
     }
     function rejects(e,mutate) {
       const before=e.snapshot(),bad=H.clone(before);mutate(bad);
@@ -32,7 +32,7 @@
         const sorted=H.products.map(p=>p.id).filter(x=>trial.includes(x));
         if(!H.listingCovers(sorted))continue;
         s.listing=sorted;s.absence[id]=0;s.onStreak[id]=1;s.absence[outgoing]=1;s.onStreak[outgoing]=0;
-        H.record(s);e.restore(s);return;
+        s.rumors=H.makeRumors(s);H.record(s);e.restore(s);return;
       }
       throw Error('无法上架 '+id);
     }
@@ -85,7 +85,7 @@
       rejects(e,s=>{s.inventory.other={qty:0,cost:0};});
       rejects(e,s=>{s.history=[];});rejects(e,s=>{s.history[0].assets++;});
       rejects(e,s=>{s.market.rice.history=[];});rejects(e,s=>{s.market.rice.history.push(18000);});
-      rejects(e,s=>{s.market.rice.history[0]++;});rejects(e,s=>{s.season='夏';});
+      rejects(e,s=>{s.market.rice.history[0]++;});rejects(e,s=>{s.season=s.season==='夏'?'冬':'夏';});
       rejects(e,s=>{s.version=999;});rejects(e,s=>{s.rulesVersion='future';});
       rejects(e,s=>{s.result={};});rejects(e,s=>{s.status='ended';});
       op(e,'next');rejects(e,s=>{s.activeEvents=[{id:'chips',started:2,until:8}];});
@@ -129,6 +129,7 @@
       const a=new H.Engine('😀'),b=new H.Engine('😁');op(a,'next');op(b,'next');
       assert(JSON.stringify(a.snapshot().market)!==JSON.stringify(b.snapshot().market));
       const old=H.create('😀');for(const stream of ['market','events','visual'])old.rng[stream]=legacy(old.seed+':'+stream);
+      old.rumors=H.makeRumors(old);
       const c=new H.Engine('new'),d=new H.Engine('new');c.restore(old);d.restore(old);
       for(let w=1;w<52;w++){assert(op(c,'next').ok);assert(op(d,'next').ok);equal(c.snapshot(),d.snapshot());}
     });
@@ -189,7 +190,7 @@
         const s=H.create('clip-bound','standard');
         s.week=2;s.activeEvents=[];
         const rice=H.product('rice');
-        const seasonal=1+rice.season*Math.cos((s.week-1)/52*Math.PI*2+rice.phase);
+        const seasonal=1+rice.season*Math.cos((H.calendarWeek(s)-1)/52*Math.PI*2+rice.phase);
         s.macro=rice.max/(rice.base*seasonal);
         for(const p of H.products){s.market[p.id].trend=0;s.market[p.id].price=p.max;}
         s.market.rice.trend=0;s.market.rice.price=rice.max;
@@ -251,7 +252,7 @@
       assert(!saves.load().ok&&saves.damaged()==='BROKEN');assert(!saves.save(e.snapshot()).ok);assert(map.get(saves.key)==='BROKEN');
       assert(saves.save(e.snapshot(),{replaceDamaged:true}).ok&&saves.damaged()===null);
       assert(saves.remove().ok&&saves.load().state===null);
-      map.set('homeyear.save.v1','legacy');assert(!saves.load().ok&&!saves.save(e.snapshot()).ok);assert(map.get('homeyear.save.v1')==='legacy');
+      map.set('homeyear.save.v1','legacy');assert(saves.load().ok&&saves.load().notice===H.oldSaveNotice&&saves.save(e.snapshot()).ok);assert(map.get('homeyear.save.v1')==='legacy');
       assert(saves.remove().ok);
       const denied=new H.SaveAdapter({getItem:()=>{throw Error('denied');},setItem:()=>{throw Error('quota');},removeItem:()=>{throw Error('denied');}});
       assert(!denied.load().ok&&!denied.save(e.snapshot()).ok);assert(denied.export(e.snapshot()).includes('CITY-382741'));
@@ -294,7 +295,7 @@
         const sorted=H.products.map(p=>p.id).filter(id=>s.listing.includes(id)&&id!=='mask'||id===incoming.id);
         if(!H.listingCovers(sorted))continue;
         s.listing=sorted;s.absence.mask=1;s.onStreak.mask=0;s.absence[incoming.id]=0;s.onStreak[incoming.id]=1;
-        e.restore(s);replaced=true;break;
+        s.rumors=H.makeRumors(s);e.restore(s);replaced=true;break;
       }
       assert(replaced&&!e.snapshot().listing.includes('mask'));
       const cash=e.snapshot().cash,fees=e.snapshot().stats.fees,turnover=e.snapshot().stats.turnover,fee=H.fee(1380);

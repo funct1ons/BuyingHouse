@@ -1,0 +1,29 @@
+{
+  "kind": "0.6 independent in-memory regression, not simulation/balance evidence",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs"
+  ],
+  "checks": [
+    "all 52 seed-derived starts, every 52-week boundary, restore determinism and public projection",
+    "calendar derivation consumes none of four original RNG streams",
+    "price cosine uses calendar week including wrap",
+    "strict safe calendar start/seed/season/unknown fields; restore atomic rejection",
+    "summer heat scheduling and log validation use same calendar",
+    "all seven natural event fixtures retain strict logs, real signed changes and complete static sources"
+  ],
+  "failures": [
+    {
+      "name": "current save5 read/write/export/import, old1/2/3/4 rejected without writes, old storage preserved",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'homeyear.save.v6'\n- 'homeyear.save.v5'\n                  ^\n\n    at C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:14:295\n    at test (C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:6:28)\n    at Object.<anonymous> (C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1812:14)\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47"
+    },
+    {
+      "name": "save failure is post-commit and exports remain usable",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n6 !== 5\n\n    at C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:15:366\n    at test (C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:6:28)\n    at Object.<anonymous> (C:\\files\\code\\BuyingHouse\\tests\\calendar-event.cjs:15:1)\n    at Module._compile (node:internal/modules/cjs/loader:1812:14)\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 2
+  }
+}

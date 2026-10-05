@@ -36,12 +36,15 @@
     if (week === 1 && m.previous !== m.price) throw Error('初周前价无效');
   }
   H.validate = function (s) {
-    keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
-      'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'history', 'stats',
+    keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'calendarStartWeek', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
+      'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'rumors', 'history', 'stats',
       'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'priceBook'], '存档');
     if (s.version !== H.rules.saveVersion || s.rulesVersion !== H.rules.version) throw Error('存档版本不兼容（不支持旧版或未来版本）');
     if (typeof s.seed !== 'string' || !s.seed.length || s.seed.length > 128) throw Error('种子无效');
     if (!Object.prototype.hasOwnProperty.call(H.difficulties, s.difficulty)) throw Error('难度无效');
+    H.int(s.calendarStartWeek, 1, 52);
+    if (s.calendarStartWeek !== H.calendarStart(s.seed)) throw Error('日历起点与种子不一致');
+    if (s.migration !== null || s.upgrade !== null) throw Error(H.oldSaveNotice);
     H.int(s.week, 1, 52); H.int(s.cash); H.int(s.revision);
     const warehouse = H.warehouses.find(w => w.id === s.warehouse);
     if (!warehouse || s.capacity !== warehouse.capacity) throw Error('仓储等级与容量不一致');
@@ -76,7 +79,7 @@
       keys(entry, ['id', 'week'], '重大事件日志');
       const e = H.events.find(e => e.id === entry.id && e.tier === 'swan');
       H.int(entry.week, 4, Math.min(50, s.week));
-      if (!e || swanIds.has(entry.id) || entry.week - swanWeek < 6 || (e.season && H.seasonAt(entry.week) !== e.season)) throw Error('重大事件日志冲突');
+      if (!e || swanIds.has(entry.id) || entry.week - swanWeek < 6 || (e.season && H.seasonAt(H.calendarWeek(s, entry.week)) !== e.season)) throw Error('重大事件日志冲突');
       if ((s.upgrade && entry.week <= s.upgrade.atWeek) || (!s.upgrade && s.migration && entry.week <= s.migration.atWeek)) throw Error('规则升级前不能有重大事件');
       swanIds.add(entry.id); swanWeek = entry.week;
     }
@@ -111,7 +114,7 @@
     }
     if (H.used(s) > s.capacity) throw Error('容量溢出');
     finite(s.macro, .8, 1.2, '宏观');
-    if (s.season !== H.seasonAt(s.week)) throw Error('本周季节无效');
+    if (s.season !== H.seasonAt(H.calendarWeek(s))) throw Error('本周季节无效');
     if (!Array.isArray(s.activeEvents) || s.activeEvents.length > H.events.length) throw Error('持续事件无效');
     const unique = new Set();
     for (const a of s.activeEvents) {
@@ -214,6 +217,15 @@
     if (headlines > 1) throw Error('新闻内容无效');
     const bulletinRows = s.news.filter(n => n.kind === 'headline' || n.kind === 'holding' || n.kind === 'listing');
     if (bulletinRows.length > 3 || bulletinRows.filter(n => n.kind === 'listing').length > 1) throw Error('快报超过三行');
+    if (!Array.isArray(s.rumors) || s.rumors.length > H.hintRules.limit) throw Error('传闻数量无效');
+    const rumorIds = new Set();
+    for (const rumor of s.rumors) {
+      keys(rumor, ['productId','direction','sourceId'], '传闻');
+      if (!s.listing.includes(rumor.productId) || rumorIds.has(rumor.productId) ||
+          !['up','down'].includes(rumor.direction) || !Object.prototype.hasOwnProperty.call(H.hintSources,rumor.sourceId)) throw Error('传闻内容无效');
+      rumorIds.add(rumor.productId);
+    }
+    if (!same(s.rumors,H.makeRumors(s))) throw Error('传闻与本周市场不一致');
     if (s.status === 'ended' && !same(s.result, H.summary(s))) throw Error('结算与状态不一致');
     return true;
   };

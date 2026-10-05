@@ -82,5 +82,8 @@
     return qty ? H.add(n, H.channelNet(s,p.id,qty)) : n;
   }, 0);
   H.changeBps = m => m.previous ? Math.round((m.price - m.previous) / m.previous * 10000) : 0;
-  H.seasonAt = week => ['冬','春','夏','秋'][Math.floor((week-1)/13)];
+  // Dedicated seed derivation: does not advance any economic or visual stream.
+  H.calendarStart = seed => H.seed(seed + ':calendar') % 52 + 1;
+  H.calendarWeek = (s, week = s.week) => (s.calendarStartWeek + week - 2) % 52 + 1;
+  H.seasonAt = calendarWeek => ['冬','春','夏','秋'][Math.floor((calendarWeek-1)/13)];
 })(window.HomeYear);

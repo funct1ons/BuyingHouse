@@ -1,0 +1,1359 @@
+{
+  "browser": "Edg/154.0.4258.53",
+  "shots": [
+    {
+      "file": "new-progress-1366.png",
+      "sha256": "2c37bbd8a734c550904523342eea7d6c46f58cbb5bebde11354c69cf83d0c998",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 1,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "0",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "swan_egg_short-dialog-top.png",
+      "sha256": "fa8de968fae207714bf5b9dfed32e842ade40c0d3057f0f7af659416767a4423",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 8,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "7",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_egg_short-dialog.png",
+      "sha256": "9df4b62739e7321ae62ec34e625e47bccd30396828c6f28bfd959e84e3e4164d",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 8,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "7",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_egg_relief-dialog-top.png",
+      "sha256": "a400e3115dfdf30cb529060e8a22692f80eeee1084445cd41cbfbd817433baab",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 21,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "20",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_egg_relief-dialog.png",
+      "sha256": "3ff04a9c0987835bc2787ef411dcabb2bc084723540747c0a04c9f787a9d3f2f",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 21,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "20",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_heat-dialog-top.png",
+      "sha256": "209b3d84bc9ca5deea9f176db93ea3fd3337b4c7f3075afa48e15553858a74ff",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 29,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "28",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_heat-dialog.png",
+      "sha256": "7d0d3b6f6f55d00fad0ae11d8033c5f12d8dd52c31e3a1823ff559b4504cc02c",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 29,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "28",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_protection-dialog-top.png",
+      "sha256": "d8dcc4f45bd3a2e1730fc3d82e05f7e62c04a70a6bc307d0b23a68ea43055a26",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 35,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "34",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_protection-dialog.png",
+      "sha256": "85973caff765c9bbc2a86202c07bbc5ce060ebe84ca5c3ffb55fa35661aa7387",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 35,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "34",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_tariff-dialog-top.png",
+      "sha256": "194daba0e756238aefac07c3c4a8e259cdd3a26ba4038cc8e7f5702735b285df",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_tariff-dialog.png",
+      "sha256": "461a9634fafd880d3b01d5ea8936ba238795748c259441b7a4cb2eb765fa92c2",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_route-dialog-top.png",
+      "sha256": "d1ffda67edee5c986d1c4c6422cc4bbb03df294a529edb72584ffb11cad34891",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 7,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "6",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_route-dialog.png",
+      "sha256": "05a818940d69dc5054a8eb4202abf022a939725ff97cb2ec84279563308bd826",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 7,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "6",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_efficiency-dialog-top.png",
+      "sha256": "1734c178556eb9202de337a4b4b2be3464957544f23cdb03517e0d9dbc37b6d0",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 27,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "26",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "swan_efficiency-dialog.png",
+      "sha256": "00b7a984e973e0ff0664890c551e935cc9b2a2271d51389b7a351f0090cfac8a",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 27,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "26",
+      "warningRect": null,
+      "progressRect": {
+        "left": 272.34375,
+        "top": 19,
+        "right": 792.34375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "week-50.png",
+      "sha256": "5dabd45b08cec4e25970b8c33deb39b2b31642402fe701241d51179be22c85be",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 702,
+        "right": 803,
+        "bottom": 750,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "week-51.png",
+      "sha256": "098f7543aaa64be0901a640d7c58698b97bdf7b96dbf659cd80d8b0f6af33971",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 51,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "50",
+      "warning": "含本周还可经营2周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 702,
+        "right": 803,
+        "bottom": 750,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "week-52.png",
+      "sha256": "d08750db76a625d7fccc0c8dfffe5e3cf7cb655313d9e347f6fe1206d762eb56",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 702,
+        "right": 803,
+        "bottom": 750,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "ended.png",
+      "sha256": "f2cbff8b7f87bbbe9419b549aae3619a93f18b1e3103af286a15359badc20df2",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 52,
+      "status": "ended",
+      "dialogOpen": false,
+      "progress": "52",
+      "warningRect": null,
+      "progressRect": {
+        "left": 268.484375,
+        "top": 19,
+        "right": 788.484375,
+        "bottom": 85,
+        "width": 520,
+        "height": 66,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1366.png",
+      "sha256": "2ee0f2ad253af7cc4ab2ed61285ed4eff6b4279ef2932311dc616b9b20ad16a6",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 243.78125,
+        "top": 72.703125,
+        "right": 707.703125,
+        "bottom": 88.296875,
+        "width": 463.921875,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 231.78125,
+        "top": 9.703125,
+        "right": 719.703125,
+        "bottom": 94.296875,
+        "width": 487.921875,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1280.png",
+      "sha256": "ce4b16449331fd3ddd6963f893968e0ddaeb3323aa1a3efe217c8f6878308fe4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 191.90625,
+        "top": 72.703125,
+        "right": 695.90625,
+        "bottom": 88.296875,
+        "width": 504,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 183.90625,
+        "top": 9.703125,
+        "right": 703.90625,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 520,
+        "top": 655,
+        "right": 760,
+        "bottom": 703,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1536.png",
+      "sha256": "9a68f67f56634ae56035006d55dfcfbb67b51b0af2c2c2ad28bf50aa97416d4e",
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 295.75,
+        "top": 77.703125,
+        "right": 791.75,
+        "bottom": 93.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 283.75,
+        "top": 14.703125,
+        "right": 803.75,
+        "bottom": 99.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 648,
+        "top": 793,
+        "right": 888,
+        "bottom": 843,
+        "width": 240,
+        "height": 50,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1600.png",
+      "sha256": "be000a520cc835062109e11503850bcad74674739519b4740dd37a54f4e119e0",
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 317.09375,
+        "top": 77.703125,
+        "right": 813.09375,
+        "bottom": 93.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 305.09375,
+        "top": 14.703125,
+        "right": 825.09375,
+        "bottom": 99.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 680,
+        "top": 829,
+        "right": 920,
+        "bottom": 879,
+        "width": 240,
+        "height": 50,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1920.png",
+      "sha256": "4d91d885783c6e017b8d76f371fdb62ecd54dd29ac85da07c00390ddc33f2f99",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 428.421875,
+        "top": 85.703125,
+        "right": 924.421875,
+        "bottom": 101.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 416.421875,
+        "top": 22.703125,
+        "right": 936.421875,
+        "bottom": 107.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 840,
+        "top": 1001,
+        "right": 1080,
+        "bottom": 1051,
+        "width": 240,
+        "height": 50,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-2560.png",
+      "sha256": "eaea3cfd7ade0af080d4e7ad1ca0ff30e16d52f340e336b45bf4c0ce9a2e77be",
+      "viewport": {
+        "width": 2560,
+        "height": 1440
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 641.75,
+        "top": 85.703125,
+        "right": 1137.75,
+        "bottom": 101.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 629.75,
+        "top": 22.703125,
+        "right": 1149.75,
+        "bottom": 107.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 1160,
+        "top": 1361,
+        "right": 1400,
+        "bottom": 1411,
+        "width": 240,
+        "height": 50,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1100.png",
+      "sha256": "41811dde6d774ec676e5e9ddcc0b68e6af01b59b150827737408f8ffa02bfa8f",
+      "viewport": {
+        "width": 1100,
+        "height": 768
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 185.78125,
+        "top": 72.703125,
+        "right": 528.171875,
+        "bottom": 88.296875,
+        "width": 342.390625,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 177.78125,
+        "top": 9.703125,
+        "right": 536.171875,
+        "bottom": 94.296875,
+        "width": 358.390625,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 430,
+        "top": 703,
+        "right": 670,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-1000.png",
+      "sha256": "2aa1d730117182d4498340752b31a171d9a91e52ceae2490ae8546c47826dd53",
+      "viewport": {
+        "width": 1000,
+        "height": 720
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 49,
+        "top": 152,
+        "right": 951,
+        "bottom": 167.59375,
+        "width": 902,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 37,
+        "top": 89,
+        "right": 963,
+        "bottom": 173.59375,
+        "width": 926,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 380,
+        "top": 664,
+        "right": 620,
+        "bottom": 712,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "late-long-700.png",
+      "sha256": "58f73baecc0294b130de5aea217d5087c9902e746e97bcbd6bf4711e1bd6ba1f",
+      "viewport": {
+        "width": 700,
+        "height": 720
+      },
+      "week": 52,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "51",
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "warningRect": {
+        "left": 49,
+        "top": 194,
+        "right": 651,
+        "bottom": 209.59375,
+        "width": 602,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 37,
+        "top": 131,
+        "right": 663,
+        "bottom": 215.59375,
+        "width": 626,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 250,
+        "top": 664,
+        "right": 450,
+        "bottom": 712,
+        "width": 200,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "rumors-1366.png",
+      "sha256": "b2ed0a52d24ce864080920ffebf951037a0b113f6ac61743e44d96c057d98867",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": false,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": true
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": true
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": true
+      }
+    },
+    {
+      "file": "rumor-source.png",
+      "sha256": "bd2c64369c6099ef439cff89b67246feb0c70f8925c2c4d7f5aaf187dbfc5179",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-1366.png",
+      "sha256": "30f7eae2b559d611f3a2cdfd2afb62dc4ae91c743cb0f503fc8c8ec38bac8ac5",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 284.34375,
+        "top": 72.703125,
+        "right": 780.34375,
+        "bottom": 88.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 272.34375,
+        "top": 9.703125,
+        "right": 792.34375,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 563,
+        "top": 703,
+        "right": 803,
+        "bottom": 751,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-1280.png",
+      "sha256": "15cfc07d41991a0a2cef28e00520601426f6af545e8be52aa182e3720228e9b7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 237.46875,
+        "top": 72.703125,
+        "right": 741.46875,
+        "bottom": 88.296875,
+        "width": 504,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 229.46875,
+        "top": 9.703125,
+        "right": 749.46875,
+        "bottom": 94.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 520,
+        "top": 655,
+        "right": 760,
+        "bottom": 703,
+        "width": 240,
+        "height": 48,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-1536.png",
+      "sha256": "d7b78eb939a48af93288630de336548726fe0e0f9c8aee6842340e83f23f54d5",
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 347,
+        "top": 77.703125,
+        "right": 843,
+        "bottom": 93.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 335,
+        "top": 14.703125,
+        "right": 855,
+        "bottom": 99.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 648,
+        "top": 793,
+        "right": 888,
+        "bottom": 843,
+        "width": 240,
+        "height": 50,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-1600.png",
+      "sha256": "e3ed990b73ec2cf6d1b2e256981e0e8b6ed27eaa210a020d4e82e931fb35c6bc",
+      "viewport": {
+        "width": 1600,
+        "height": 900
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 368.34375,
+        "top": 77.703125,
+        "right": 864.34375,
+        "bottom": 93.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 356.34375,
+        "top": 14.703125,
+        "right": 876.34375,
+        "bottom": 99.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 680,
+        "top": 829,
+        "right": 920,
+        "bottom": 879,
+        "width": 240,
+        "height": 50,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-1920.png",
+      "sha256": "5e3451cf9e777fe0f973a21be7dbbd81860ff057ab8c72103a43f326851cd6b9",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 479.671875,
+        "top": 85.703125,
+        "right": 975.671875,
+        "bottom": 101.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 467.671875,
+        "top": 22.703125,
+        "right": 987.671875,
+        "bottom": 107.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 840,
+        "top": 1001,
+        "right": 1080,
+        "bottom": 1051,
+        "width": 240,
+        "height": 50,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-2560.png",
+      "sha256": "6dd83806e0dba8c7a3a2d25d3c8e56c875b8570bba31d2bb081c7c875374c5dc",
+      "viewport": {
+        "width": 2560,
+        "height": 1440
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 693,
+        "top": 85.703125,
+        "right": 1189,
+        "bottom": 101.296875,
+        "width": 496,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 681,
+        "top": 22.703125,
+        "right": 1201,
+        "bottom": 107.296875,
+        "width": 520,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 1160,
+        "top": 1361,
+        "right": 1400,
+        "bottom": 1411,
+        "width": 240,
+        "height": 50,
+        "visible": false
+      }
+    },
+    {
+      "file": "event-dialog-700.png",
+      "sha256": "932b90bdb17f1eb24f74322965327988d95fea8111062d0692e0330b77c33482",
+      "viewport": {
+        "width": 700,
+        "height": 720
+      },
+      "week": 50,
+      "status": "playing",
+      "dialogOpen": true,
+      "progress": "49",
+      "warning": "含本周还可经营3周",
+      "warningRect": {
+        "left": 49,
+        "top": 164,
+        "right": 651,
+        "bottom": 179.59375,
+        "width": 602,
+        "height": 15.59375,
+        "visible": false
+      },
+      "progressRect": {
+        "left": 37,
+        "top": 101,
+        "right": 663,
+        "bottom": 185.59375,
+        "width": 626,
+        "height": 84.59375,
+        "visible": false
+      },
+      "nextRect": {
+        "left": 250,
+        "top": 664,
+        "right": 450,
+        "bottom": 712,
+        "width": 200,
+        "height": 48,
+        "visible": false
+      }
+    }
+  ]
+}

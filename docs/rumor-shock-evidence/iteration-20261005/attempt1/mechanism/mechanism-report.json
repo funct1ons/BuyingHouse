@@ -1,0 +1,714 @@
+{
+  "kind": "0.7 fixed mechanism regression; not economic balance or observed accuracy",
+  "checks": [
+    "seven exact signed first hits, alias maxima, noise-free normal and clipped prices",
+    "persistent first hit never repeats; capped center and unchanged 15 percent reversion",
+    "clone preview equals real next market and all four RNG, including personal draws; no source mutation",
+    "preview invokes shared step without validation/dispatch/rumor recursion or personal accounting",
+    "fixed hint samples include correct, wrong, empty and off-sale target; final clipped threshold, three public fields",
+    "cash, holdings, revision do not select hints; same-week buy/sell/warehouse/house/read/save never redraw",
+    "strict rumor missing/extra keys, list/count/duplicates/enums/source, wrong direction and target52 atomic rejection",
+    "future/current damaged save6 quarantine and SecurityError/Quota post-commit, old v5 raw retained"
+  ],
+  "failures": [],
+  "samples": [
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 1,
+      "rumor": {
+        "productId": "ac",
+        "direction": "up",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": 1782,
+      "targetListed": true,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 1,
+      "rumor": {
+        "productId": "coat",
+        "direction": "up",
+        "sourceId": "queue"
+      },
+      "finalChangeBps": -1804,
+      "targetListed": true,
+      "matches": false
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 2,
+      "rumor": {
+        "productId": "gpu",
+        "direction": "down",
+        "sourceId": "street"
+      },
+      "finalChangeBps": 1962,
+      "targetListed": true,
+      "matches": false
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 2,
+      "rumor": {
+        "productId": "watch",
+        "direction": "down",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": 1866,
+      "targetListed": true,
+      "matches": false
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 3,
+      "rumor": {
+        "productId": "collectible",
+        "direction": "down",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": -1595,
+      "targetListed": true,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 3,
+      "rumor": {
+        "productId": "gpu",
+        "direction": "up",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": 2060,
+      "targetListed": true,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 4,
+      "rumor": {
+        "productId": "gpu",
+        "direction": "down",
+        "sourceId": "queue"
+      },
+      "finalChangeBps": -2967,
+      "targetListed": false,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 4,
+      "rumor": {
+        "productId": "collectible",
+        "direction": "up",
+        "sourceId": "queue"
+      },
+      "finalChangeBps": 1189,
+      "targetListed": true,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 5,
+      "rumor": {
+        "productId": "phone",
+        "direction": "up",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": 1824,
+      "targetListed": true,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 5,
+      "rumor": {
+        "productId": "watch",
+        "direction": "up",
+        "sourceId": "street"
+      },
+      "finalChangeBps": 1335,
+      "targetListed": false,
+      "matches": true
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 6,
+      "rumor": {
+        "productId": "ac",
+        "direction": "up",
+        "sourceId": "street"
+      },
+      "finalChangeBps": -1418,
+      "targetListed": true,
+      "matches": false
+    },
+    {
+      "seed": "HINT-SAMPLE-0",
+      "week": 6,
+      "rumor": {
+        "productId": "collectible",
+        "direction": "up",
+        "sourceId": "stall"
+      },
+      "finalChangeBps": 1065,
+      "targetListed": false,
+      "matches": true
+    }
+  ],
+  "shocks": [
+    {
+      "id": "swan_route",
+      "productId": "phone",
+      "mode": "base",
+      "previous": 65000,
+      "raw": 182000,
+      "price": 182000,
+      "changeBps": 18000,
+      "clipped": false
+    },
+    {
+      "id": "swan_route",
+      "productId": "gpu",
+      "mode": "base",
+      "previous": 80000,
+      "raw": 176000,
+      "price": 176000,
+      "changeBps": 12000,
+      "clipped": false
+    },
+    {
+      "id": "swan_route",
+      "productId": "ac",
+      "mode": "base",
+      "previous": 65000,
+      "raw": 130000,
+      "price": 130000,
+      "changeBps": 10000,
+      "clipped": false
+    },
+    {
+      "id": "swan_route",
+      "productId": "phone",
+      "mode": "upper",
+      "previous": 1000000,
+      "raw": 2800000,
+      "price": 1000000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_route",
+      "productId": "gpu",
+      "mode": "upper",
+      "previous": 800000,
+      "raw": 1760000,
+      "price": 800000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_route",
+      "productId": "ac",
+      "mode": "upper",
+      "previous": 800000,
+      "raw": 1600000,
+      "price": 800000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_route",
+      "productId": "phone",
+      "mode": "lower",
+      "previous": 22000,
+      "raw": 61600,
+      "price": 61600,
+      "changeBps": 18000,
+      "clipped": false
+    },
+    {
+      "id": "swan_route",
+      "productId": "gpu",
+      "mode": "lower",
+      "previous": 20000,
+      "raw": 44000,
+      "price": 44000,
+      "changeBps": 12000,
+      "clipped": false
+    },
+    {
+      "id": "swan_route",
+      "productId": "ac",
+      "mode": "lower",
+      "previous": 20000,
+      "raw": 40000,
+      "price": 40000,
+      "changeBps": 10000,
+      "clipped": false
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "gpu",
+      "mode": "base",
+      "previous": 80000,
+      "raw": 24000,
+      "price": 24000,
+      "changeBps": -7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "phone",
+      "mode": "base",
+      "previous": 65000,
+      "raw": 35750,
+      "price": 35750,
+      "changeBps": -4500,
+      "clipped": false
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "gpu",
+      "mode": "upper",
+      "previous": 800000,
+      "raw": 240000,
+      "price": 240000,
+      "changeBps": -7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "phone",
+      "mode": "upper",
+      "previous": 1000000,
+      "raw": 550000,
+      "price": 550000,
+      "changeBps": -4500,
+      "clipped": false
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "gpu",
+      "mode": "lower",
+      "previous": 20000,
+      "raw": 6000,
+      "price": 20000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_efficiency",
+      "productId": "phone",
+      "mode": "lower",
+      "previous": 22000,
+      "raw": 12100,
+      "price": 22000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "eggs",
+      "mode": "base",
+      "previous": 7000,
+      "raw": 21000,
+      "price": 21000,
+      "changeBps": 20000,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "rice",
+      "mode": "base",
+      "previous": 18000,
+      "raw": 27000,
+      "price": 27000,
+      "changeBps": 5000,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "eggs",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 300000,
+      "price": 100000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "rice",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 150000,
+      "price": 100000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "eggs",
+      "mode": "lower",
+      "previous": 2500,
+      "raw": 7500,
+      "price": 7500,
+      "changeBps": 20000,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_short",
+      "productId": "rice",
+      "mode": "lower",
+      "previous": 7000,
+      "raw": 10500,
+      "price": 10500,
+      "changeBps": 5000,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "ac",
+      "mode": "base",
+      "previous": 65000,
+      "raw": 208000,
+      "price": 208000,
+      "changeBps": 22000,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "fruit",
+      "mode": "base",
+      "previous": 14000,
+      "raw": 23800,
+      "price": 23800,
+      "changeBps": 7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "umbrella",
+      "mode": "base",
+      "previous": 9000,
+      "raw": 4950,
+      "price": 4950,
+      "changeBps": -4500,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "ac",
+      "mode": "upper",
+      "previous": 800000,
+      "raw": 2560000,
+      "price": 800000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_heat",
+      "productId": "fruit",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 170000,
+      "price": 100000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_heat",
+      "productId": "umbrella",
+      "mode": "upper",
+      "previous": 27000,
+      "raw": 14850,
+      "price": 14850,
+      "changeBps": -4500,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "ac",
+      "mode": "lower",
+      "previous": 20000,
+      "raw": 64000,
+      "price": 64000,
+      "changeBps": 22000,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "fruit",
+      "mode": "lower",
+      "previous": 4000,
+      "raw": 6800,
+      "price": 6800,
+      "changeBps": 7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_heat",
+      "productId": "umbrella",
+      "mode": "lower",
+      "previous": 2500,
+      "raw": 1375,
+      "price": 2500,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "phone",
+      "mode": "base",
+      "previous": 65000,
+      "raw": 162500,
+      "price": 162500,
+      "changeBps": 15000,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "watch",
+      "mode": "base",
+      "previous": 150000,
+      "raw": 52500,
+      "price": 52500,
+      "changeBps": -6500,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "collectible",
+      "mode": "base",
+      "previous": 70000,
+      "raw": 21000,
+      "price": 21000,
+      "changeBps": -7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "phone",
+      "mode": "upper",
+      "previous": 1000000,
+      "raw": 2500000,
+      "price": 1000000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "watch",
+      "mode": "upper",
+      "previous": 350000,
+      "raw": 122500,
+      "price": 122500,
+      "changeBps": -6500,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "collectible",
+      "mode": "upper",
+      "previous": 250000,
+      "raw": 75000,
+      "price": 75000,
+      "changeBps": -7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "phone",
+      "mode": "lower",
+      "previous": 22000,
+      "raw": 55000,
+      "price": 55000,
+      "changeBps": 15000,
+      "clipped": false
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "watch",
+      "mode": "lower",
+      "previous": 50000,
+      "raw": 17500,
+      "price": 50000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_tariff",
+      "productId": "collectible",
+      "mode": "lower",
+      "previous": 12000,
+      "raw": 3600,
+      "price": 12000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_protection",
+      "productId": "mask",
+      "mode": "base",
+      "previous": 6000,
+      "raw": 30000,
+      "price": 30000,
+      "changeBps": 40000,
+      "clipped": false
+    },
+    {
+      "id": "swan_protection",
+      "productId": "rice",
+      "mode": "base",
+      "previous": 18000,
+      "raw": 32400,
+      "price": 32400,
+      "changeBps": 8000,
+      "clipped": false
+    },
+    {
+      "id": "swan_protection",
+      "productId": "eggs",
+      "mode": "base",
+      "previous": 7000,
+      "raw": 11200,
+      "price": 11200,
+      "changeBps": 6000,
+      "clipped": false
+    },
+    {
+      "id": "swan_protection",
+      "productId": "mask",
+      "mode": "upper",
+      "previous": 200000,
+      "raw": 1000000,
+      "price": 200000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_protection",
+      "productId": "rice",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 180000,
+      "price": 100000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_protection",
+      "productId": "eggs",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 160000,
+      "price": 100000,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_protection",
+      "productId": "mask",
+      "mode": "lower",
+      "previous": 1500,
+      "raw": 7500,
+      "price": 7500,
+      "changeBps": 40000,
+      "clipped": false
+    },
+    {
+      "id": "swan_protection",
+      "productId": "rice",
+      "mode": "lower",
+      "previous": 7000,
+      "raw": 12600,
+      "price": 12600,
+      "changeBps": 8000,
+      "clipped": false
+    },
+    {
+      "id": "swan_protection",
+      "productId": "eggs",
+      "mode": "lower",
+      "previous": 2500,
+      "raw": 4000,
+      "price": 4000,
+      "changeBps": 6000,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "eggs",
+      "mode": "base",
+      "previous": 7000,
+      "raw": 2100,
+      "price": 2500,
+      "changeBps": -6429,
+      "clipped": true
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "rice",
+      "mode": "base",
+      "previous": 18000,
+      "raw": 11700,
+      "price": 11700,
+      "changeBps": -3500,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "eggs",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 30000,
+      "price": 30000,
+      "changeBps": -7000,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "rice",
+      "mode": "upper",
+      "previous": 100000,
+      "raw": 65000,
+      "price": 65000,
+      "changeBps": -3500,
+      "clipped": false
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "eggs",
+      "mode": "lower",
+      "previous": 2500,
+      "raw": 750,
+      "price": 2500,
+      "changeBps": 0,
+      "clipped": true
+    },
+    {
+      "id": "swan_egg_relief",
+      "productId": "rice",
+      "mode": "lower",
+      "previous": 7000,
+      "raw": 4550,
+      "price": 7000,
+      "changeBps": 0,
+      "clipped": true
+    }
+  ],
+  "personalDraws": 56,
+  "coverage": {
+    "correct": 1378,
+    "wrong": 519,
+    "empty": 25,
+    "offSale": 572,
+    "note": "fixed regression sample counts, not accuracy or balance evidence"
+  },
+  "summary": {
+    "passed": 8,
+    "failed": 0
+  }
+}

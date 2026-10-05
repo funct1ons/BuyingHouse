@@ -3,12 +3,14 @@
 ## 设计与实现
 温暖纸色、青绿经营主色与陶红涨幅，系统中文字体。固定高度三栏主场景：左侧紧凑住房目标与统一仓库，中部紧凑生活来信和市场商品卡片，右侧街区快报与“仍在影响”。仓库/市场/快报分别内部滚动，桌面页本身不滚动；1100px以下降级布局允许纵向页面滚动。底栏三段式Grid让下一周按钮真正水平居中。原创城市、20商品和5住房SVG来自 `HomeYear.Art`，脚本位于UI之前；没有fetch或远程依赖。
 
-`index.html`、`css/main.css`、`js/ui.js`、`js/audio.js` 是界面层。阶段 A 未修改引擎、商品经济配置、存档校验或协议；阶段 B 当前协议为规则 0.5 / save 4，见 [现行规则](gameplay-rules-0.5.md) 与 [存档保护](save-v4.md)。全部交易通过Engine.dispatch，数量预览调用同一费用/容量/难度价格辅助函数。
+`index.html`、`css/main.css`、`js/ui.js`、`js/audio.js` 是界面层。阶段 A 未修改引擎、商品经济配置、存档校验或协议；当前内测协议为规则0.7/save6，见[现行规则](gameplay-rules-0.7.md)与[存档保护](save-v6.md)。全部交易通过Engine.dispatch，数量预览调用同一费用/容量/难度价格辅助函数。
 
+- 顶部横向纸本进度条表示已完成经营周数（playing week-1，ended52），本季剩余含本周与下一季按随机起始日历计算，末3/2/1周持续提醒；结算改“已结算”。
+- 黑天鹅新发生成功next后打开只读来源弹窗，所有受影响商品分别显示实际涨跌；事实来源/原创映射分区，内置摘要无fetch，快报可重开。关闭及商品查看后精确返回下一周入口，使用原Esc/Tab焦点设施。初局/继续/导入/设置/交易/ongoing不自动重播。
 - 开始页包含种子、三难度、新局、继续禁用原因、设置、帮助。
 - 商品卡包含体积、价格涨幅、持仓、均价、浮盈和最近12周曲线；支持分类、持仓/关注过滤、五种排序和持久化关注；搜索输入、状态和监听已删除。
 - 左侧仓库展示全部保留/退出持仓、渠道、容量、成本、单价和卖全部净额。卖1/5/全部直接通过同一 `act()` 提交；自定义数量内联校验/确认。报价用 `channelUnit/channelGross/channelNet/fee/costOf/liquidValue`，部分成本采用与引擎一致的BigInt分摊。成功更新逻辑焦点与仓库滚动；清仓落到相邻卡或仓库标题，不落到下一周。草稿仅活在UI内存，换局/导入/周推进清理；保存失败是已成交未保存，只需重试保存。
-- 右侧保留引擎最多三条主摘要，额外展示原 `ongoing` 分组，不新增新闻或预测。到货/缺货行不附百分比；其他快报百分比紧邻商品名并用实际 `changeBps`。中央来信只保留个人事件，不把应扣金额误称实付。
+- 右侧顶部另设紧凑“下周传闻”区，最多两条当前在售商品方向；明确仅供判断、可能错误、不等于交易净收益，不展示未来幅度或未来上架信息。来源为未核实闲谈，点击只打开信息说明，不交易或推进。传闻同周不刷新，保存和恢复保留。下方“本周事实 · 已发生”保留引擎最多三条主摘要，额外展示原 `ongoing` 分组。到货/缺货行不附百分比；其他快报百分比紧邻商品名并用实际 `changeBps`。中央来信只保留个人事件，不把应扣金额误称实付。
 - 详情同时提供商品策略指南和买卖模式，数量1/5/最大或全部、整数容错、费用/资金/容量预览，禁用原因；成功操作有音效及toast。
 - 住房原创插画浏览、旧价全额抵扣、差额/现金缺口/进度；仓储累计投入与差价明确标注投入不可回收。
 - 帮助、四步可跳过/重看的教程、显式Tab/ShiftTab焦点循环dialog（每次动态筛选可见enabled控件，无控件时聚焦dialog本体）、Esc关闭和焦点返回、自制toast/tooltip/confirm，不使用原生弹窗。
@@ -23,17 +25,23 @@
 - `seed`, `difficulty`, `new-game`, `continue`
 - `cash`, `storage-status`, `market-list`, `product-<商品id>`（不再提供 `search`）
 - `trade-qty`, `trade-submit`, `next-week`, `save`
-- `warehouse`, `warehouse-list`, `personal-letter`, `bulletin`
+- `warehouse`, `warehouse-list`, `personal-letter`, `bulletin`, `rumors`
 - `houses`, `warehouses`, `house-<住房id>`, `warehouse-<仓储id>`
-- `confirm-yes`, `tour-next`, `save-text`, `import`, `save-status`, `restart`, `audio-volume`
+- `year-progress`, `year-warning`, `major-close`, `confirm-yes`, `tour-next`, `save-text`, `import`, `save-status`, `restart`, `audio-volume`
 
 通用 `data-action`：close/help/settings/home/trade/favorite/category/trade-mode/quantity/submit-trade/buy-house/buy-warehouse/next/save/export/damaged/replace/delete/import/restart/tutorial/tour-finish，以及 quick-sell/custom-sell/custom-submit/reset-filter。仓库快捷数量为 data-qty=1/5/all，持仓卡为 data-holding，内联输入为 data-sale-input。交易mode用data-mode=buy/sell，数量用data-qty=1/5/max，商品用data-id。设置控件data-setting=autoSave/sound/music/animation/numberFormat。system-browser已使用当前界面选择器，不再保留旧调试页面选择器。
 
-## 阶段A新证据（2026-10-04）
+## 当前0.7证据（2026-10-05）
+
+见[当前交付](rumor-shock-evidence/iteration-20261005/current-delivery.md)。机制回归、七事件真实CDP next、来源/实际涨跌/焦点键盘、最后周、多视口和当前12商品仓库安全回归均使用独立输出。旧档不兼容，无迁移入口。0.6证据保留原字节，其末周三图的可见性声明已撤销，详见[勘误](rumor-shock-evidence/iteration-20261005/calendar-evidence-erratum.md)。
+
+## 历史阶段A证据（2026-10-04）
 
 当前实施与结果见 [`ui-improvement-evidence/phase-a-20261004/report.md`](ui-improvement-evidence/phase-a-20261004/report.md)。六种桌面视口含125%/150%等效，1366新局四张完整卡片，主按钮中心偏差0px。新脚本覆盖直接出售、回收、旧持仓、自定义边界、原生重复按键/双击、焦点滚动、保存失败、信息分组和 `a538345` 全经济状态比较。自动化和截图不是人工试玩。
 
-## 阶段 B 核心（2026-10-04，待独立复核）
+## 历史阶段 B 核心（2026-10-04，0.5/save4）
+
+以下描述仅记录当时0.5；“不弹窗”和旧档迁移已被当前0.6需求替代。
 
 重大快报用非阻塞“重大事件”标签，同一条内对所有受影响商品分别展示实际本周涨跌、渠道/持仓/净额及查看入口；持续分组保留“仍在影响”。只在成功 next 后的一次渲染附短暂强调，不开弹窗、不循环音乐、不新增音效。导入/继续/迁移不重播；动画设置、系统减动效和隐藏页面停用强调。静音保留原用户偏好。
 

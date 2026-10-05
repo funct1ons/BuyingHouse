@@ -1,0 +1,801 @@
+{
+  "kind": "Automated Edge file://; not manual play",
+  "checks": [
+    {
+      "name": "search absent incl hidden controls",
+      "pass": true
+    },
+    {
+      "name": "help no search",
+      "pass": true
+    },
+    {
+      "name": "layout centered/visible/no overflow 1366",
+      "pass": true,
+      "detail": {
+        "width": 1366,
+        "height": 768,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 4,
+        "positions": {
+          "warehouse": 12,
+          "letter": 305,
+          "bulletin": 1054
+        }
+      }
+    },
+    {
+      "name": "new1366 at least four complete cards",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "layout centered/visible/no overflow 1600",
+      "pass": true,
+      "detail": {
+        "width": 1600,
+        "height": 900,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 4,
+        "positions": {
+          "warehouse": 18,
+          "letter": 328,
+          "bulletin": 1272
+        }
+      }
+    },
+    {
+      "name": "layout centered/visible/no overflow 1920",
+      "pass": true,
+      "detail": {
+        "width": 1920,
+        "height": 1080,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 8,
+        "positions": {
+          "warehouse": 32,
+          "letter": 352,
+          "bulletin": 1558
+        }
+      }
+    },
+    {
+      "name": "layout centered/visible/no overflow 2560",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "height": 1440,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 8,
+        "positions": {
+          "warehouse": 32,
+          "letter": 352,
+          "bulletin": 2198
+        }
+      }
+    },
+    {
+      "name": "layout centered/visible/no overflow 1536",
+      "pass": true,
+      "detail": {
+        "width": 1536,
+        "height": 864,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 4,
+        "positions": {
+          "warehouse": 18,
+          "letter": 328,
+          "bulletin": 1208
+        }
+      }
+    },
+    {
+      "name": "layout centered/visible/no overflow 1280",
+      "pass": true,
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "center": 0,
+        "visible": true,
+        "overflow": false,
+        "full": 4,
+        "positions": {
+          "warehouse": 12,
+          "letter": 305,
+          "bulletin": 968
+        }
+      }
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "whole-order fee visible on focus",
+      "pass": true,
+      "detail": "5 件 · 货款 ¥377.30 · 手续费 ¥3.78 · 净回款 ¥373.52 · 分摊成本 ¥378.56 · 盈亏 ¥-5.04"
+    },
+    {
+      "name": "exact full sale state eggs x5",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x5",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "clear holding focus not next",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "sell5 availability 1",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "sell5 availability 4",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "sell5 availability 5",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "sell5 availability 9",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 0",
+      "pass": true
+    },
+    {
+      "name": "invalid custom -1",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 1.5",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 1e2",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 10",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 100000001",
+      "pass": true
+    },
+    {
+      "name": "invalid custom ",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x3",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "quantity Space not next",
+      "pass": true
+    },
+    {
+      "name": "new week clears drafts",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "native held Enter sells once, no next",
+      "pass": true,
+      "detail": {
+        "before": 2,
+        "after": 3,
+        "qty": 8,
+        "active": "<button data-action=\"quick-sell\" data-id=\"eggs\" data-qty=\"1\" data-focus=\"sell-eggs-1\">卖 1</button>"
+      }
+    },
+    {
+      "name": "independent key gesture still sells",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "native held   sells once, no next",
+      "pass": true,
+      "detail": {
+        "before": 2,
+        "after": 3,
+        "qty": 8,
+        "active": "<button data-action=\"quick-sell\" data-id=\"eggs\" data-qty=\"1\" data-focus=\"sell-eggs-1\">卖 1</button>"
+      }
+    },
+    {
+      "name": "independent key gesture still sells",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "held clear cannot sell neighbour",
+      "pass": true
+    },
+    {
+      "name": "clear focus has warehouse fallback",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "native double click >220ms sells once",
+      "pass": true
+    },
+    {
+      "name": "normal independent clicks continue selling",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "all twelve current holdings accessible",
+      "pass": true
+    },
+    {
+      "name": "filters do not hide warehouse",
+      "pass": true
+    },
+    {
+      "name": "UI only state immutable",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state rice x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "scroll preserved and logical focus retained",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 same product same sell1 button",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x5",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 disabled sell5 returns same-product sell1",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x6",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 disabled custom confirmation returns same-product input",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "P2 rice detail sell1 close same detail entrance",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state rice x9",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 quick clear position 0",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "P2 detail clear position 0",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state watch x3",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 quick clear position 6",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "P2 detail clear position 6",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state mask x3",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "P2 quick clear position 11",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "P2 detail clear position 11",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "P2 final detail clear returns warehouse title",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x5",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "save failure toast accurate SecurityError",
+      "pass": true
+    },
+    {
+      "name": "export available after save failure SecurityError",
+      "pass": true
+    },
+    {
+      "name": "save retry no new transaction SecurityError",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "save failure toast accurate QuotaExceededError",
+      "pass": true
+    },
+    {
+      "name": "export available after save failure QuotaExceededError",
+      "pass": true
+    },
+    {
+      "name": "save retry no new transaction QuotaExceededError",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x1",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "autosave off accurate pending status",
+      "pass": true
+    },
+    {
+      "name": "week52 fixture actually off-sale",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "exact full sale state eggs x11",
+      "pass": true
+    },
+    {
+      "name": "quick sale no dialog",
+      "pass": true
+    },
+    {
+      "name": "week52 confirm without end",
+      "pass": true
+    },
+    {
+      "name": "week52 cancel no result",
+      "pass": true
+    },
+    {
+      "name": "week52 ends exactly once",
+      "pass": true
+    },
+    {
+      "name": "ended next is result only",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "body Space held advances once",
+      "pass": true
+    },
+    {
+      "name": "native save Enter no next",
+      "pass": true
+    },
+    {
+      "name": "native save   no next",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "clear held Enter cannot sell next card",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "clear held   cannot sell next card",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "rapid cross-button gesture respects submission guard",
+      "pass": true
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "long amounts/full warehouse 1366",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "long amounts/full warehouse 1600",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "long amounts/full warehouse 1920",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "long amounts/full warehouse 2560",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "long amounts/full warehouse 1536",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "long amounts/full warehouse 1280",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "overlap": false,
+        "next": true
+      }
+    },
+    {
+      "name": "import complete snapshot",
+      "pass": true
+    },
+    {
+      "name": "personal once central and ongoing once right",
+      "pass": true
+    },
+    {
+      "name": "listing no percentage",
+      "pass": true
+    },
+    {
+      "name": "other news percentages bind actual name and change",
+      "pass": true
+    },
+    {
+      "name": "small-screen horizontal no overflow 1000",
+      "pass": true
+    },
+    {
+      "name": "small-screen horizontal no overflow 650",
+      "pass": true
+    },
+    {
+      "name": "no errors or external requests",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "external": []
+      }
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1366,
+      "height": 768,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 4,
+      "positions": {
+        "warehouse": 12,
+        "letter": 305,
+        "bulletin": 1054
+      }
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 4,
+      "positions": {
+        "warehouse": 18,
+        "letter": 328,
+        "bulletin": 1272
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 8,
+      "positions": {
+        "warehouse": 32,
+        "letter": 352,
+        "bulletin": 1558
+      }
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 8,
+      "positions": {
+        "warehouse": 32,
+        "letter": 352,
+        "bulletin": 2198
+      }
+    },
+    {
+      "width": 1536,
+      "height": 864,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 4,
+      "positions": {
+        "warehouse": 18,
+        "letter": 328,
+        "bulletin": 1208
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "center": 0,
+      "visible": true,
+      "overflow": false,
+      "full": 4,
+      "positions": {
+        "warehouse": 12,
+        "letter": 305,
+        "bulletin": 968
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "shots": [
+    "new-1366x768.png",
+    "new-1600x900.png",
+    "new-1920x1080.png",
+    "new-2560x1440.png",
+    "new-1536x864.png",
+    "new-1280x720.png",
+    "full-current-filtered.png",
+    "current-sale.png",
+    "p2-detail-clear-focus.png",
+    "off-sale.png",
+    "full-current-long-1366.png",
+    "full-current-long-1600.png",
+    "full-current-long-1920.png",
+    "full-current-long-2560.png",
+    "full-current-long-1536.png",
+    "full-current-long-1280.png",
+    "personal-expanded-ongoing.png",
+    "fallback-1000.png",
+    "fallback-650.png"
+  ],
+  "rules": "0.7",
+  "provenance": "Adapted current-only warehouse tests; historical migration suite remains unchanged",
+  "browser": "Edg/154.0.4258.53",
+  "summary": {
+    "passed": 140,
+    "failed": 0
+  }
+}

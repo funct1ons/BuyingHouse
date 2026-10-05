@@ -10,7 +10,7 @@
     return (a >>> 0).toString(16).padStart(8, '0') + (b >>> 0).toString(16).padStart(8, '0');
   };
   H.SaveAdapter = function (storage) {
-    const key = 'homeyear.save.v4', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1';
+    const key = 'homeyear.save.v6', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1';
     let quarantined = false, damagedRaw = null;
     this.key = key;
     this.legacyKey = legacyKey;
@@ -37,6 +37,7 @@
       try {
         if (typeof raw !== 'string' || raw.length > 2000000) throw Error('存档文本为空或过大');
         const value = JSON.parse(raw);
+        if (value && [1,2,3,4,5].includes(value.version)) throw Error(H.oldSaveNotice);
         H.validate(value);
         return {ok: true, state: H.clone(value)};
       } catch (e) { return failure(e); }
@@ -64,34 +65,21 @@
       try {
         const store = getStorage();
         raw = store.getItem(key);
-        // A valid current save is authoritative even when an unrelated old-key read fails.
-        const readOld = (oldKey, parse) => {
-          try { const text = store.getItem(oldKey); return text === null ? null : parse(text); }
-          catch (e) { return failure(e); }
-        };
-        const oldV3 = readOld(v3Key, this.parseV3);
-        const legacy = readOld(legacyKey, this.parseLegacy);
         if (raw === null) {
-          // Recognized v3/v2 saves take precedence over an unrelated v1 remnant.
-          // Only consult v1 when neither supported old format validated successfully.
-          if (!(oldV3 && oldV3.ok) && !(legacy && legacy.ok) && store.getItem(v1Key) !== null) throw Error('发现旧版存档：不支持自动迁移，请保留原档');
+          let oldPresent = false;
+          for (const oldKey of ['homeyear.save.v5','homeyear.save.v4', v3Key, legacyKey, v1Key]) {
+            if (store.getItem(oldKey) !== null) oldPresent = true;
+          }
           quarantined = false; damagedRaw = null;
-          return {ok: true, state: null, legacy, oldV3};
+          return {ok:true, state:null, oldPresent, notice:oldPresent ? H.oldSaveNotice : null};
         }
         const parsed = this.parse(raw);
         if (!parsed.ok) throw Error(parsed.error);
         quarantined = false; damagedRaw = null;
-        return {...parsed, legacy, oldV3};
+        return parsed;
       } catch (e) {
         quarantined = true; damagedRaw = raw;
-        let legacy = null;
-        try {
-          const legacyRaw = getStorage().getItem(legacyKey);
-          if (legacyRaw !== null) legacy = this.parseLegacy(legacyRaw);
-        } catch (ignore) {}
-        let oldV3 = null;
-        try { const oldRaw = getStorage().getItem(v3Key); if (oldRaw !== null) oldV3 = this.parseV3(oldRaw); } catch (ignore) {}
-        return {...failure(e), raw, legacy, oldV3};
+        return {...failure(e), raw};
       }
     };
     this.readKey = storageKey => {
@@ -106,10 +94,15 @@
       return read.ok ? read.raw : null;
     };
     this.oldRaw = () => {
-      const read = this.readKey(v3Key);
-      return read.ok && read.raw !== null ? read.raw : this.legacyRaw();
+      for (const oldKey of ['homeyear.save.v5','homeyear.save.v4',v3Key,legacyKey,v1Key]) {
+        const read = this.readKey(oldKey);
+        if (read.ok && read.raw !== null) return read.raw;
+      }
+      return null;
     };
+    // Historical conversion implementation retained, explicitly disabled for 0.6.
     const stage = (raw, version) => {
+      return failure(Error(H.oldSaveNotice));
       try {
         const store = getStorage();
         let beforeLegacy, beforeV3;
@@ -198,7 +191,7 @@
       let parsed;
       try {
         const version = JSON.parse(raw).version;
-        parsed = version === 2 || version === 3 ? this.stageOld(raw) : this.parse(raw);
+        parsed = this.parse(raw);
       } catch (e) { return failure(e); }
       if (!parsed.ok) return parsed;
       try { engine.restore(parsed.state); return {ok: true}; } catch (e) { return failure(e); }

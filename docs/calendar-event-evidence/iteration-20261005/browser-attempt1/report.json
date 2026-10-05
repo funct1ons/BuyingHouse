@@ -1,0 +1,1449 @@
+{
+  "kind": "Edge file:// regression, independent fixtures, not manual play or economic simulation",
+  "checks": [
+    {
+      "name": "old v4 simple incompatible notice not quarantined",
+      "pass": true
+    },
+    {
+      "name": "new w1 no automatic event and old original preserved",
+      "pass": true
+    },
+    {
+      "name": "import exact w7",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w8",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_short settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w20",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w21",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_egg_relief settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w28",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_heat automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_heat full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_heat all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_heat ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_heat Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_heat reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_heat trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w29",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_heat continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_heat settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w34",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_protection automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_protection full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_protection all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_protection ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_protection Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_protection reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_protection trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w35",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_protection continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_protection settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w49",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w50",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_tariff settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w6",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_route automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_route full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_route all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_route Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_route ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_route Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_route reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_route trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w7",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_route continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_route settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w26",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency automatic on successful real next",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency full economic state equal after popup",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency all actual changes/channel/holdings/source safely rendered",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Tab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 0",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 1",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 2",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 3",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 4",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 5",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 6",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 7",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 8",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 9",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 10",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency ShiftTab trapped 11",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency Esc returns next and no change",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency reopens read-only",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency trade replaces not nests dialog",
+      "pass": true
+    },
+    {
+      "name": "import exact w27",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency continue no replay",
+      "pass": true
+    },
+    {
+      "name": "swan_efficiency settings no replay",
+      "pass": true
+    },
+    {
+      "name": "import exact w49",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "held next Enter once and event remains open",
+      "pass": true
+    },
+    {
+      "name": "held next Enter close focus next",
+      "pass": true
+    },
+    {
+      "name": "import exact w49",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "held next   once and event remains open",
+      "pass": true
+    },
+    {
+      "name": "held next   close focus next",
+      "pass": true
+    },
+    {
+      "name": "import exact w49",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "double next event once and stays open",
+      "pass": true
+    },
+    {
+      "name": "import exact w3",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "ordinary next no event modal",
+      "pass": true
+    },
+    {
+      "name": "import exact w29",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "ongoing next no automatic modal",
+      "pass": true
+    },
+    {
+      "name": "ongoing can manually reopen",
+      "pass": true
+    },
+    {
+      "name": "import exact w1",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "quick sale held key exact fee ledger once no next",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 0 disabled",
+      "pass": true
+    },
+    {
+      "name": "invalid custom -1 disabled",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 1.5 disabled",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 1e2 disabled",
+      "pass": true
+    },
+    {
+      "name": "invalid custom 999999 disabled",
+      "pass": true
+    },
+    {
+      "name": "custom sale full fees/cost exact",
+      "pass": true
+    },
+    {
+      "name": "invalid import atomic [\"version\",\"rulesVersion\",\"seed\",\"difficulty\",\"calendarStartWeek\",\"week\",\"cash\",\"capacity\",\"warehouse\",\"revision\",\"status\",\"house\",\"result\",\"rng\",\"inventory\",\"market\",\"activeEvents\",\"macro\",\"season\",\"personal\",\"personalEvent\",\"news\",\"history\",\"stats\",\"listing\",\"absence\",\"onStreak\",\"legacy\",\"migration\",\"upgrade\",\"swanLog\",\"priceBook\"]",
+      "pass": true
+    },
+    {
+      "name": "invalid import atomic [\"version\",\"rulesVersion\",\"seed\",\"difficulty\",\"calendarStartWeek\",\"week\",\"cash\",\"capacity\",\"warehouse\",\"revision\",\"status\",\"house\",\"result\",\"rng\",\"inventory\",\"market\",\"activeEvents\",\"macro\",\"season\",\"personal\",\"personalEvent\",\"news\",\"history\",\"stats\",\"listing\",\"absence\",\"onStreak\",\"legacy\",\"migration\",\"upgrade\",\"swanLog\",\"priceBook\",\"extra\"]",
+      "pass": true
+    },
+    {
+      "name": "invalid import atomic [\"version\",\"rulesVersion\",\"seed\",\"difficulty\",\"week\",\"cash\",\"capacity\",\"warehouse\",\"revision\",\"status\",\"house\",\"result\",\"rng\",\"inventory\",\"market\",\"activeEvents\",\"macro\",\"season\",\"personal\",\"personalEvent\",\"news\",\"history\",\"stats\",\"listing\",\"absence\",\"onStreak\",\"legacy\",\"migration\",\"upgrade\",\"swanLog\",\"priceBook\"]",
+      "pass": true
+    },
+    {
+      "name": "invalid import atomic [\"version\",\"rulesVersion\",\"seed\",\"difficulty\",\"calendarStartWeek\",\"week\",\"cash\",\"capacity\",\"warehouse\",\"revision\",\"status\",\"house\",\"result\",\"rng\",\"inventory\",\"market\",\"activeEvents\",\"macro\",\"season\",\"personal\",\"personalEvent\",\"news\",\"history\",\"stats\",\"listing\",\"absence\",\"onStreak\",\"legacy\",\"migration\",\"upgrade\",\"swanLog\",\"priceBook\"]",
+      "pass": true
+    },
+    {
+      "name": "import exact w49",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "last 50 persistent warning and toast",
+      "pass": true
+    },
+    {
+      "name": "last 51 persistent warning and toast",
+      "pass": true
+    },
+    {
+      "name": "last 52 persistent warning and toast",
+      "pass": true
+    },
+    {
+      "name": "week52 still trades exact ledger",
+      "pass": true
+    },
+    {
+      "name": "week52 end requires confirm",
+      "pass": true
+    },
+    {
+      "name": "cancel ending preserves state",
+      "pass": true
+    },
+    {
+      "name": "ended52 progress100 no warning",
+      "pass": true
+    },
+    {
+      "name": "import exact w52",
+      "pass": true
+    },
+    {
+      "name": "import never replays event",
+      "pass": true
+    },
+    {
+      "name": "layout 1366",
+      "pass": true,
+      "detail": {
+        "width": 1366,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1280",
+      "pass": true,
+      "detail": {
+        "width": 1280,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1536",
+      "pass": true,
+      "detail": {
+        "width": 1536,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1600",
+      "pass": true,
+      "detail": {
+        "width": 1600,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1920",
+      "pass": true,
+      "detail": {
+        "width": 1920,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 2560",
+      "pass": true,
+      "detail": {
+        "width": 2560,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1100",
+      "pass": true,
+      "detail": {
+        "width": 1100,
+        "overflow": false,
+        "overlap": false,
+        "center": 0,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 1000",
+      "pass": false,
+      "detail": {
+        "width": 1000,
+        "overflow": false,
+        "overlap": false,
+        "center": 7.5,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "layout 700",
+      "pass": false,
+      "detail": {
+        "width": 700,
+        "overflow": false,
+        "overlap": false,
+        "center": 7.5,
+        "visible": true,
+        "barVisible": true,
+        "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+        "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+      }
+    },
+    {
+      "name": "no runtime errors or external requests",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "external": []
+      }
+    }
+  ],
+  "failures": [
+    "layout 1000",
+    "layout 700"
+  ],
+  "errors": [],
+  "external": [],
+  "shots": [
+    "new-progress-1366.png",
+    "swan_egg_short-dialog.png",
+    "swan_egg_relief-dialog.png",
+    "swan_heat-dialog.png",
+    "swan_protection-dialog.png",
+    "swan_tariff-dialog.png",
+    "swan_route-dialog.png",
+    "swan_efficiency-dialog.png",
+    "week-50.png",
+    "week-51.png",
+    "week-52.png",
+    "ended.png",
+    "late-long-1366.png",
+    "late-long-1280.png",
+    "late-long-1536.png",
+    "late-long-1600.png",
+    "late-long-1920.png",
+    "late-long-2560.png",
+    "late-long-1100.png",
+    "late-long-1000.png",
+    "late-long-700.png"
+  ],
+  "layouts": [
+    {
+      "width": 1366,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1536,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1600,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1920,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 2560,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1100,
+      "overflow": false,
+      "overlap": false,
+      "center": 0,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 1000,
+      "overflow": false,
+      "overlap": false,
+      "center": 7.5,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    },
+    {
+      "width": 700,
+      "overflow": false,
+      "overlap": false,
+      "center": 7.5,
+      "visible": true,
+      "barVisible": true,
+      "warning": "含本周还可经营1周 · 仍可交易，结束须确认",
+      "season": "秋季剩余 3 周（含本周） · 下一季：冬季"
+    }
+  ],
+  "browser": "Edg/154.0.4258.53",
+  "summary": {
+    "passed": 304,
+    "failed": 2
+  }
+}
