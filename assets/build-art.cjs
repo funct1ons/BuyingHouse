@@ -39,6 +39,19 @@ if(H.Art.scene('studio')!==H.Art.scene('house-0')||H.Art.scene('nope')!==H.Art.s
 // Scenes must differ per house (independent compositions) and per season (accessory layer).
 if(new Set(['rent','house-0','house-1','house-2','house-3','house-4'].map(id=>H.Art.scene(id))).size!==6)throw Error('Housing scenes not distinct');
 if(new Set(H.Art.seasons.map(s=>H.Art.scene('house-0',{season:s}))).size!==4)throw Error('Season variants not distinct');
+const storyScenes=['credit','scratch-stand','housing-closed'];
+const storyArt=storyScenes.map(id=>{const s=H.Art.scene(id);check(s,id);if(!s.includes('viewBox="0 0 480 300"')||!s.includes('class="art-scene'))throw Error('Scene frame: '+id);return s;});
+if(new Set(storyArt).size!==3)throw Error('Story scenes not distinct');
+if(storyArt.some(s=>s===H.Art.scene('city')))throw Error('Story scene fell back to city');
+for(const id of storyScenes){
+  if(new Set(H.Art.seasons.map(season=>H.Art.scene(id,{season,phase:'development'}))).size!==4)throw Error('Season ignored: '+id);
+  if(new Set(H.Art.tones.map(tone=>H.Art.scene(id,{tone}))).size!==H.Art.tones.length)throw Error('Tone ignored: '+id);
+}
+const lotIds=['lot-empty','lot-egg','lot-red','lot-umbrella','lot-watch','lot-key'];
+const lotArt=lotIds.map(id=>{const s=H.Art.icon(id);check(s,id);return s;});
+if(new Set(lotArt).size!==6)throw Error('Lot icons not distinct');
+if(lotIds.some(id=>H.Art.productIconIds.includes(id)))throw Error('Lot icons must stay out of productIconIds');
+if(H.Art.icon('lot-egg')===H.Art.icon('eggs')||H.Art.icon('lot-umbrella')===H.Art.icon('umbrella')||H.Art.icon('lot-watch')===H.Art.icon('watch'))throw Error('Lot icon repeats a product drawing');
 fs.writeFileSync(path.join(out,'defs.svg'),`<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">${defs}</svg>\n`);
 console.log(`PASS: 20 distinct product icons; ${H.Art.sceneIds.length} scenes (${H.Art.sceneIds.join(', ')}); ${count} base files + ${variants.length} season/phase variants exported with embedded hy- defs.`);
 console.log('Scene element counts: '+JSON.stringify(elements));

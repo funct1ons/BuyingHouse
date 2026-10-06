@@ -82,7 +82,7 @@ h1,h2,h3{color:var(--ink-strong)}
 /* ---------- dialogs ---------- */
 dialog{background:var(--paper-grain),#fffaf0;box-shadow:var(--elev-3);border-color:#e0d4bc}
 .dialog-head{background:#fffaf0}
-dialog[data-kind=houses]{width:min(1120px,95vw)}dialog[data-kind=result]{width:min(1180px,95vw)}dialog[data-kind=trade]{width:min(860px,94vw)}
+dialog[data-kind=houses]{width:min(1120px,95vw)}dialog[data-kind=result]{width:min(1180px,95vw)}dialog[data-kind=trade]{width:min(860px,94vw)}dialog[data-kind=credit],dialog[data-kind=lottery]{width:min(560px,calc(100vw - 24px))}
 .counter{display:flex;gap:16px;align-items:flex-end;padding:12px 16px 0;border-radius:12px;background:linear-gradient(#f2e8d4 0 calc(100% - 16px),#b98a5c calc(100% - 16px) calc(100% - 10px),#8a6040 calc(100% - 10px));box-shadow:inset 0 0 0 1px #e0d2b4}
 .counter>div:last-child{padding-bottom:20px}
 .trade-icon{width:120px;height:120px;flex-shrink:0;filter:drop-shadow(0 6px 4px #3a2a1a30)}
@@ -191,7 +191,7 @@ body[data-animation="reduced"] .swan-emphasis,body[data-animation="off"] .swan-e
 .shell{grid-template-rows:90px minmax(0,1fr) 68px}
 .topbar{gap:10px}.brand-chip{flex-shrink:0}.brand-chip .brand{font-size:18px}.metrics{gap:16px;padding:6px 10px}.metric strong{font-size:18px;white-space:nowrap}
 .major-event-details{display:grid;gap:8px}.major-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.major-products .swan-product{margin:0;padding:10px;background:#fffdf7;border:1px solid var(--border);border-radius:8px}.major-products small{display:block}.origin-facts,.origin-adaptation{padding:12px;border:1px solid var(--border);border-left:4px solid var(--brass);border-radius:8px;overflow-wrap:anywhere}.origin-facts a{color:#235f56;text-decoration:underline}.origin-adaptation{border-left-color:#286c60}.major-event-details>.primary{justify-self:start}
-@media(max-height:800px){.shell{grid-template-rows:86px minmax(0,1fr) 64px}}
+@media(max-height:800px){.shell{grid-template-rows:auto minmax(0,1fr) 64px}}
 @media(min-width:1100px) and (max-width:1350px){.brand-chip{padding:6px}.brand-chip .seal{display:none}.brand-chip .brand{font-size:16px}.metrics{gap:10px}.metric strong{font-size:16px}.top-actions{gap:4px}.top-actions button{padding:5px 7px}.year-progress{min-width:228px;padding:6px 8px}}
 @media(max-width:1099px){.shell{grid-template-rows:auto 1fr auto}.year-progress{max-width:none;order:3;flex-basis:100%}.metrics{margin-left:auto}.topbar{overflow:visible}.major-products{grid-template-columns:1fr}}
 @media(max-width:700px){.brand-chip .brand{font-size:16px}.brand-chip .seal{display:none}.metrics{padding:5px;gap:8px}.metric strong{font-size:14px}.top-actions{width:100%;justify-content:flex-end}.year-progress{min-width:0}.start{grid-template-columns:1fr;padding:20px;overflow:auto;height:auto;min-height:100vh}.start-copy{grid-column:1}.start-form{grid-column:1;grid-row:2}.trade-layout{grid-template-columns:1fr}}
@@ -282,8 +282,8 @@ button,[role=button],.product{-webkit-user-select:none;user-select:none;-webkit-
   .product-head{gap:8px}.product-icon{width:46px;height:46px}
   .tabs{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:3px}
   .tabs::-webkit-scrollbar{display:none}.tabs button{flex:0 0 auto;padding-inline:12px}
-  .footer{position:sticky;bottom:0;display:flex;align-items:center;gap:8px;min-height:60px;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));background:var(--surface);z-index:2}
-  .footer>div:first-child{flex:1;min-width:0}.footer .primary{flex:0 1 180px;width:auto;min-width:150px;min-height:48px}.footer-save{flex:0 0 auto}.footer-save button{padding-inline:10px}
+  .footer{position:sticky;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;min-height:60px;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));background:var(--surface);z-index:2}
+  .footer>div:first-child{min-width:0}.footer .primary{grid-column:2;justify-self:center;width:auto;min-width:150px;min-height:48px}.footer-save{grid-column:3;justify-self:end}.footer-save button{padding-inline:10px}
   dialog{border-radius:16px}
   .dialog-head{padding:12px 14px}.dialog-head h2{font-size:20px}.dialog-body{padding:14px}
   /* Trading first, historical detail second; no need to scroll past the chart to buy. */

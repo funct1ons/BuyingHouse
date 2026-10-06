@@ -35,6 +35,7 @@
     s.stats.trades = H.add(s.stats.trades,1);
   };
   H.buyHouse = function (s,id) {
+    if (H.loanOpen(s)) throw Error('售楼处暂停接待，请先还清信用社贷款');
     const index = H.houses.findIndex(h => h.id === id), old = H.houses.findIndex(h => h.id === s.house);
     if (index < 0 || index <= old) throw Error('仅允许首次购买或升级住房');
     const price = H.housePrice(s, H.houses[index]);

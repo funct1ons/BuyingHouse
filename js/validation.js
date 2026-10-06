@@ -38,7 +38,7 @@
   H.validate = function (s) {
     keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'calendarStartWeek', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
       'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'rumors', 'history', 'stats',
-      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'housingLog', 'purchases', 'houseBasis', 'priceBook'], '存档');
+      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'housingLog', 'purchases', 'houseBasis', 'priceBook', 'loan'], '存档');
     if (s.version !== H.rules.saveVersion || s.rulesVersion !== H.rules.version) throw Error('存档版本不兼容（不支持旧版或未来版本）');
     if (typeof s.seed !== 'string' || !s.seed.length || s.seed.length > 128) throw Error('种子无效');
     if (!Object.prototype.hasOwnProperty.call(H.difficulties, s.difficulty)) throw Error('难度无效');
@@ -96,8 +96,11 @@
       previousHousingWeek = entry.week;
     }
     for (const id of Object.keys(published.houses)) if (s.priceBook.houses[id] !== H.houseQuote(s, id)) throw Error('住房价与公式不一致');
-    keys(s.rng, ['market', 'events', 'visual', 'listing', 'housing'], '随机流');
-    for (const key of ['market', 'events', 'visual', 'listing', 'housing']) H.int(s.rng[key], 1, 4294967295);
+    keys(s.rng, ['market', 'events', 'visual', 'listing', 'housing', 'lottery'], '随机流');
+    for (const key of ['market', 'events', 'visual', 'listing', 'housing', 'lottery']) H.int(s.rng[key], 1, 4294967295);
+    keys(s.loan, ['principal', 'interestDue'], '贷款');
+    H.int(s.loan.principal, 0, H.loanRules.maxPrincipal);
+    H.int(s.loan.interestDue);
     const ids = H.products.map(p => p.id);
     const legacyIds = H.legacyProducts.map(p => p.id);
     keys(s.inventory, ids, '库存'); keys(s.market, ids, '市场'); keys(s.legacy, legacyIds, '退出商品');
@@ -202,12 +205,21 @@
         (trades > 0n && (turnover === 0n || fees === 0n || turnover < floorGross * trades)) ||
         big(st.best) > sold || -big(st.worst) > realized ||
         big(st.profit) > big(st.best) * trades || big(st.profit) < big(st.worst) * trades) throw Error('交易次数或最佳最差统计不一致');
+    if (s.loan.principal !== st.loanDrawn - st.loanPrincipalPaid || s.loan.interestDue !== st.loanInterestAccrued - st.loanInterestPaid) throw Error('贷款本息与统计不一致');
+    if (s.loan.principal === 0 && s.loan.interestDue !== 0) throw Error('无本金不能留有利息');
+    if (st.loanDrawn % H.loanRules.repayAmount !== 0) throw Error('贷款发放不是档位倍数');
+    const maxWeekly = Math.floor((H.loanRules.maxPrincipal * H.loanRules.weeklyNumer + H.loanRules.weeklyDenom - 1) / H.loanRules.weeklyDenom);
+    // 51 next charges plus the closing week, each capped at the largest tier.
+    if (st.loanInterestAccrued > H.rules.weeks * maxWeekly) throw Error('贷款利息超出一年上限');
+    const topPrize = H.lotteryRules.symbols.reduce((n, row) => Math.max(n, row.prize), 0);
+    if (big(st.lotterySpent) !== big(st.lotteryCount) * big(H.lotteryRules.price)) throw Error('刮刮乐支出不一致');
+    if (big(st.lotteryWon) > big(st.lotteryCount) * big(topPrize)) throw Error('刮刮乐奖金不可达');
     const unit = s.migration ? Math.max(...H.v2.catalog.products.map(p => Math.ceil(p.max / p.size))) : Math.max(...H.products.map(p => Math.ceil(p.max / p.size)));
     const maxStock = trades === 0n ? 0n : big(s.capacity) * big(unit);
-    if (st.peak < H.difficulty(s).initialCash || big(st.peak) > big(H.difficulty(s).initialCash) + big(st.grants) + sold + maxStock + big(H.maxHouseValue(s.difficulty))) throw Error('资产峰值不可达');
+    if (st.peak < H.difficulty(s).initialCash || big(st.peak) > big(H.difficulty(s).initialCash) + big(st.grants) + sold + maxStock + big(H.maxHouseValue(s.difficulty)) + big(st.loanDrawn) + big(st.lotteryWon)) throw Error('资产峰值不可达');
     const minimumDrawdown = st.peak ? Math.round((st.peak - H.assets(s)) / st.peak * 1000000) : 0;
     if (st.maxDrawdown < minimumDrawdown) throw Error('最大回撤小于当前回撤');
-    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - s.houseBasis - s.stats.warehouseSpent;
+    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - s.houseBasis - s.stats.warehouseSpent + s.stats.loanDrawn - s.stats.loanPrincipalPaid - s.stats.loanInterestPaid + s.stats.lotteryWon - s.stats.lotterySpent;
     if (!Number.isSafeInteger(expectedCash) || expectedCash !== s.cash) throw Error('现金与收支统计不一致');
     if (!Array.isArray(s.history) || s.history.length !== s.week) throw Error('资产历史长度无效');
     for (let index = 0; index < s.history.length; index++) {

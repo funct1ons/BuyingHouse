@@ -6,7 +6,7 @@ const {pathToFileURL}=require('node:url'),{launchEdge,delay}=require('./cdp-help
 const root=path.resolve(__dirname,'..'),out=path.resolve(process.env.UI_EVIDENCE_DIR||path.join(root,'docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/targeted'));
 const beforePath=path.join(root,'docs/black-swan-evidence/phase-b-20261004/review-fixes-v1/save-before.js');
 const raw2=fs.readFileSync(path.join(root,'docs/fixtures/v2-baseline-migrate.json'),'utf8'),raw1=' V1-ORIGINAL \n';
-function core(before=false){const c=vm.createContext({console});c.window=c;for(const f of ['data','math','v2-baseline','v3-baseline','market','trading','statistics','validation','game','save'])vm.runInContext(fs.readFileSync(before&&f==='save'?beforePath:path.join(root,'js/'+f+'.js'),'utf8'),c);return c.HomeYear;}
+function core(before=false){const c=vm.createContext({console});c.window=c;for(const f of ['data','math','v2-baseline','v3-baseline','market','trading','statistics','street','validation','game','save'])vm.runInContext(fs.readFileSync(before&&f==='save'?beforePath:path.join(root,'js/'+f+'.js'),'utf8'),c);return c.HomeYear;}
 function memory(entries,read){const map=new Map(entries);return {map,getItem(k){if(read)return read(k,map);return map.has(k)?map.get(k):null;},setItem(k,v){map.set(k,v);},removeItem(k){map.delete(k);}};}
 const H=core(),old=core(true),raw3='\n '+JSON.stringify(H.v3.create('REVIEW-V1'),null,2)+'\n';
 const report={kind:'targeted Node + real Edge file://; P2/P3 repair evidence',nodeChecks:[],browserChecks:[],errors:[],external:[],beforeSaveSha256:crypto.createHash('sha256').update(fs.readFileSync(beforePath)).digest('hex')};

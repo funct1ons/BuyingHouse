@@ -1,7 +1,8 @@
 (function (H) {
   'use strict';
   H.statFields = ['bought','sold','profit','grants','expenses','hardship','trades','best','worst','peak','fees','turnover',
-    'houseWeek','warehouseSpent','upgrades','maxDrawdown'];
+    'houseWeek','warehouseSpent','upgrades','maxDrawdown',
+    'loanDrawn','loanPrincipalPaid','loanInterestAccrued','loanInterestPaid','lotterySpent','lotteryWon','lotteryCount'];
   H.record = s => {
     const point = {week:s.week, cash:s.cash, inventory:H.inventoryValue(s), house:H.houseValue(s), assets:H.assets(s)};
     s.history[s.week-1] = point;
@@ -19,6 +20,11 @@
       best:s.stats.best, worst:s.stats.worst, bestProduct:ranked[0].id, worstProduct:ranked[ranked.length-1].id,
       peak:s.stats.peak, trades:s.stats.trades, houseWeek:s.stats.houseWeek, upgrades:s.stats.upgrades,
       maxDrawdown:s.stats.maxDrawdown, byProduct:H.clone(s.stats.byProduct), history:H.clone(s.history),
-      purchases:H.clone(s.purchases)};
+      purchases:H.clone(s.purchases),
+      loanPrincipal:s.loan.principal, loanInterestDue:s.loan.interestDue,
+      loanDrawn:s.stats.loanDrawn, loanPrincipalPaid:s.stats.loanPrincipalPaid,
+      loanInterestAccrued:s.stats.loanInterestAccrued, loanInterestPaid:s.stats.loanInterestPaid,
+      lotterySpent:s.stats.lotterySpent, lotteryWon:s.stats.lotteryWon, lotteryCount:s.stats.lotteryCount,
+      assetsAfterLoan:H.assets(s) - s.loan.principal - s.loan.interestDue};
   };
 })(window.HomeYear);

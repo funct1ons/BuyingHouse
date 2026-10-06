@@ -641,8 +641,173 @@
     return K.svg(s, '0 0 480 300', 'art-scene art-house');
   }
 
-  const builders = {city: [city, 'dusk'], street: [street, 'day'], rent: [rent, 'morning'], 'house-0': [house0, 'morning'], 'house-1': [house1, 'day'], 'house-2': [house2, 'golden'], 'house-3': [house3, 'evening'], 'house-4': [house4, 'golden'], warehouse: [warehouse, 'day'], 'house-5': [house5, 'golden'], 'house-6': [house6, 'morning'], 'house-7': [house7, 'day'], 'house-8': [house8, 'golden']};
-  const seeds = {city: 101, street: 202, rent: 303, 'house-0': 404, 'house-1': 505, 'house-2': 606, 'house-3': 707, 'house-4': 808, warehouse: 909, 'house-5': 1005, 'house-6': 1006, 'house-7': 1007, 'house-8': 1008};
+  // Unscratched card: plain paper and a blank silver film, never a prize mark.
+  function blankCard(x, y, w, h, rot) {
+    const tf = `rotate(${rot} ${n(x + w / 2)} ${n(y + h / 2)})`;
+    return rect(x, y, w, h, '#f6f0e4', {rx: 2, transform: tf})
+      + rect(x + w * .14, y + h * .3, w * .72, h * .4, '#d8dbdf', {rx: 1.5, transform: tf})
+      + rect(x + w * .18, y + h * .36, w * .22, h * .12, '#fff', {opacity: .4, transform: tf});
+  }
+  // Neighborhood credit co-op: close interior, wood counter, cage, lamp, passbook, ink pad.
+  function credit(c) {
+    const W = 480, Hh = 300, t = c.t, wall = K.mat('#e6d3b8', t), wood = K.mat('#a8734a', t);
+    const ink = mix('#3a2e2a', t.ink, .35);
+    let s = rect(0, 0, W, Hh, wall.mid);
+    s += rect(0, 0, W, 150, 'url(#hy-facelight)');
+    s += rect(0, 0, W, 22, wall.deep) + rect(0, 22, W, 5, wall.shade) + rect(0, 0, 220, 22, wall.lit, {opacity: .2});
+    const wx = 26, wy = 36, ww = 84, wh = 50;
+    s += rect(wx - 5, wy - 5, ww + 10, wh + 12, wood.mid) + rect(wx - 5, wy - 5, ww + 10, wh + 12, 'url(#hy-wood)');
+    s += rect(wx, wy, ww, wh, `url(#hy-sky-${c.tid})`);
+    if (c.season === 'winter') {
+      s += circ(wx + 22, wy + 34, 1.5, '#fbfdff') + circ(wx + 48, wy + 28, 1.2, '#fbfdff') + circ(wx + 66, wy + 38, 1.1, '#fbfdff');
+    } else if (c.season === 'spring') {
+      s += ell(wx + 24, wy + 32, 3, 1.5, '#f6d2da', {transform: `rotate(-24 ${n(wx + 24)} ${n(wy + 32)})`});
+      s += ell(wx + 58, wy + 36, 2.6, 1.3, '#f1bccb', {transform: `rotate(28 ${n(wx + 58)} ${n(wy + 36)})`});
+    } else if (c.season === 'autumn') {
+      s += ell(wx + 30, wy + 38, 3.2, 1.4, c.L[0], {transform: `rotate(24 ${n(wx + 30)} ${n(wy + 38)})`});
+      s += ell(wx + 60, wy + 30, 2.6, 1.2, c.L[1], {transform: `rotate(-16 ${n(wx + 60)} ${n(wy + 30)})`});
+    }
+    if (t.night) s += circ(wx + 18, wy + 36, 1, '#fff6dc', {opacity: .85}) + circ(wx + 44, wy + 32, .7, '#fff6dc', {opacity: .6}) + circ(wx + 68, wy + 40, .8, '#fff6dc', {opacity: .75});
+    if (c.season === 'summer') s += rect(wx, wy, ww, wh * .45, 'url(#hy-reed)') + rect(wx, wy, ww, wh * .45, '#c9a46a', {opacity: .42});
+    s += rect(wx, wy, ww, wh, `url(#hy-glass-${c.tid})`, {opacity: .28}) + rect(wx, wy, ww, wh, 'url(#hy-shine)', {opacity: .3});
+    s += rect(wx + ww / 2 - 1.2, wy, 2.4, wh, wood.mid) + rect(wx, wy + wh * .42, ww, 2.2, wood.mid);
+    s += rect(wx - 8, wy + wh + 3, ww + 16, 5, wood.lit);
+    if (c.season === 'winter') s += rect(wx - 6, wy - 2, ww + 12, 3.2, '#f6f9fb');
+    s += rect(22, 108, 92, 40, wood.shade) + rect(22, 108, 92, 5, wood.mid);
+    ['#c96a52', '#7a9b8a', '#e3b55f', '#6f7fa3', '#d9cbb0', '#8a6040'].forEach((col, i) => { s += rect(26 + i * 14, 115, 12, 30, col); });
+    s += rect(372, 40, 90, 108, wood.mid) + rect(372, 40, 90, 108, 'url(#hy-wood)') + rect(372, 40, 8, 108, wood.lit, {opacity: .4});
+    for (let i = 0; i < 3; i++) s += rect(384, 50 + i * 30, 68, 24, wood.lit, {opacity: .32}) + line(384, 50 + i * 30, 452, 50 + i * 30, wood.deep, 1) + circ(418, 62 + i * 30, 2.2, '#e2b45a');
+    s += rect(128, 78, 204, 72, mix('#243038', t.ink, .4));
+    s += circ(214, 112, 22, 'url(#hy-lamp)', {opacity: t.night ? .55 : .22});
+    s += rect(128, 78, 204, 72, 'url(#hy-grille)');
+    s += rect(124, 74, 212, 80, 'none', {stroke: ink, 'stroke-width': 4});
+    s += rect(120, 146, 220, 10, wood.mid) + rect(120, 146, 220, 10, 'url(#hy-wood)') + rect(120, 144, 220, 4, wood.lit);
+    const lx = 196;
+    s += circ(lx, 108, 74, 'url(#hy-lamp)', {opacity: n(t.night ? .9 : .48)});
+    s += circ(lx, 96, 26, 'url(#hy-glow)', {opacity: n(Math.max(t.glow, .3) * .5)});
+    s += line(lx, 22, lx, 44, ink, 1.3);
+    s += path(`M${lx - 24} 44H${lx + 24}L${lx + 14} 62H${lx - 14}Z`, mix('#f0d7a0', t.lit, .25));
+    s += path(`M${lx - 18} 46H${lx - 8}L${lx - 6} 60H${lx - 16}Z`, '#fff', {opacity: .35});
+    s += rect(0, 156, W, 58, wood.mid) + rect(0, 156, W, 58, 'url(#hy-wood)');
+    s += rect(0, 156, 140, 58, wood.lit, {opacity: .16}) + rect(340, 156, 140, 58, wood.shade, {opacity: .25});
+    s += rect(0, 152, W, 8, wood.lit);
+    s += path('M16 198H464L432 246H48Z', wood.lit) + path('M16 198H464L432 246H48Z', 'url(#hy-wood)', {opacity: .6});
+    s += path('M16 198H170L78 246H48Z', '#fff', {opacity: .12});
+    s += path('M48 246H432L410 286H70Z', wood.mid) + path('M48 246H432L410 286H70Z', 'url(#hy-wood)', {opacity: .4});
+    s += path('M300 246H432L410 286H330Z', wood.shade, {opacity: .28});
+    s += rect(0, 286, W, 14, mix('#6d5344', t.ink, .35)) + rect(0, 286, W, 14, 'url(#hy-wood)', {opacity: .35});
+    s += rect(52, 214, 16, 12, '#b5654b') + circ(54, 208, 8, c.L[2]) + circ(64, 204, 7, c.L[1]) + circ(56, 198, 5, c.L[0]);
+    if (c.season === 'spring') s += circ(50, 196, 1.6, '#f2b7c4') + circ(66, 194, 1.4, '#fff2f5');
+    let book = path('M-8 3H66L70 44H-4Z', '#2f6a5c') + path('M-6 6L4 6L2 42L-4 42Z', '#3e8f7c');
+    book += path('M0 0H64L68 40H4Z', '#f4efe3') + path('M0 0H64L68 40H4Z', 'url(#hy-paper)');
+    book += path('M68 0H136L132 40H72Z', '#fffaf2') + path('M68 0H136L132 40H72Z', 'url(#hy-paper)');
+    book += path('M64 0H72V40H64Z', '#c9b18a');
+    for (let i = 0; i < 4; i++) {
+      book += line(10, 8 + i * 8, 56, 10 + i * 8, '#d5c4a4', .9);
+      book += line(80, 8 + i * 8, 126, 10 + i * 8, '#d5c4a4', .9);
+    }
+    book += line(12, 2, 14, 38, '#c9453a', 1.2);
+    s += grp(book, {transform: 'translate(128 206) rotate(-7)'});
+    s += grp(ell(0, 10, 24, 8, t.shade, {opacity: .22}) + path('M-26 0H26L22 14H-22Z', '#6e342e') + ell(0, 0, 20, 8, '#f6efe4') + ell(0, -1, 14, 5.5, '#c9453a') + ell(-5, -3, 5, 2, '#ee8d82', {opacity: .8}), {transform: 'translate(360 222)'});
+    s += rect(404, 206, 14, 18, '#d9d2c6') + rect(406, 202, 10, 6, '#c9c0b2') + rect(408, 198, 6, 5, '#b7ad9e');
+    s += frameVignette(W, Hh, t.night ? .85 : .4);
+    return K.svg(s, '0 0 480 300', 'art-scene art-credit');
+  }
+  // Street-corner scratch stall: shade cloth as a banner, blank cards, a hand, a coin jar.
+  function scratchStand(c) {
+    const W = 480, Hh = 300, t = c.t, wood = K.mat('#a8734a', t);
+    const ink = mix('#3a2e2a', t.ink, .4), cloth = mix('#d15a42', t.ambient, .22), stripe = mix('#f3e0b8', t.lit, .28);
+    let s = sky(c, W, Hh, [78, 42, 16]) + skyline(c, W, 150, 22, 64, .55, [32, 68]);
+    const back = box(c, 392, 108, 108, 100, '#d9cbb3', {pattern: 'tile', depth: 0});
+    s += back.s + win(c, 408, 122, 26, 32, {lit: t.on > .45, transom: false, grille: true}) + win(c, 448, 122, 26, 32, {lit: false, transom: false});
+    s += tree(c, 4, 204, .68);
+    s += ground(c, W, 196, 104, {pave: '#cfc6b6', road: 286});
+    s += rect(62, 56, 8, 150, ink) + rect(346, 52, 8, 154, ink);
+    s += rect(58, 52, 16, 6, wood.lit) + rect(342, 48, 16, 6, wood.lit);
+    s += path('M56 62H370Q358 84 370 106H56Q70 84 56 62Z', cloth);
+    s += path('M56 76H370Q364 88 370 98H56Q64 88 56 76Z', stripe, {opacity: .92});
+    s += path('M300 62H370Q358 84 370 106H300Q312 84 300 62Z', mix(cloth, t.shade, .4), {opacity: .4});
+    s += path('M56 100H370L362 122Q200 144 64 122Z', cloth);
+    s += path('M56 100H150L96 122Q70 112 64 122L56 100Z', mix('#f0c2b4', t.lit, .35), {opacity: .4});
+    s += stroke('M118 64Q126 92 112 124', '#fff', 2.2, {opacity: .28});
+    s += stroke('M210 68Q218 98 200 132', mix('#8a3030', t.ink, .35), 1.4, {opacity: .4});
+    s += stroke('M292 64Q300 94 282 124', '#fff', 2, {opacity: .22});
+    for (let i = 0; i < 8; i++) s += stroke(`M${78 + i * 36} 120Q${94 + i * 36} 136 ${110 + i * 36} 120`, mix('#8a3030', t.ink, .3), 1.15);
+    if (c.season === 'winter') s += path('M56 58H374Q300 72 56 64Z', '#f7fafc', {opacity: .88});
+    if (c.season === 'autumn') s += ell(168, 130, 3.2, 1.5, c.L[0], {transform: 'rotate(28 168 130)'});
+    if (c.season === 'spring') s += ell(240, 126, 2.8, 1.4, '#f6d2da', {transform: 'rotate(-20 240 126)'});
+    s += ell(220, 228, 120, 10, t.shade, {opacity: .2});
+    s += path('M78 174H358L398 232H30Z', wood.mid) + path('M78 174H358L398 232H30Z', 'url(#hy-wood)', {opacity: .58});
+    s += path('M78 174H190L86 232H30Z', '#fff', {opacity: .12});
+    s += path('M30 232H398L384 260H48Z', wood.shade) + path('M30 232H398L384 260H48Z', 'url(#hy-wood)', {opacity: .32});
+    s += rect(78, 252, 10, 34, wood.deep) + rect(352, 250, 10, 36, wood.deep);
+    const jx = 96, jy = 180;
+    s += ell(jx + 16, jy + 30, 7, 3, '#c98a3a') + ell(jx + 24, jy + 26, 7, 3, '#e2b45a') + ell(jx + 12, jy + 24, 6, 2.5, '#d5d8dc') + ell(jx + 20, jy + 20, 6.5, 2.6, '#e8c56a');
+    s += path(`M${jx + 2} ${jy + 8}H${jx + 38}L${jx + 44} ${jy + 40}H${jx - 4}Z`, mix('#d5e7ec', t.lit, .3), {opacity: .5});
+    s += path(`M${jx + 2} ${jy + 8}H${jx + 38}L${jx + 44} ${jy + 40}H${jx - 4}Z`, 'url(#hy-shine)', {opacity: .4});
+    s += ell(jx + 20, jy + 8, 18, 5, mix('#eef6f8', t.lit, .4)) + ell(jx + 20, jy + 40, 24, 6, mix('#c5d5da', t.shade, .3), {opacity: .75});
+    s += ell(jx + 20, jy + 6, 7, 2.4, '#e2b45a');
+    s += ell(162, 222, 7, 3, '#e2b45a') + ell(154, 228, 6, 2.5, '#d5d8dc');
+    s += ell(214, 214, 40, 6, t.shade, {opacity: .18});
+    for (let i = 0; i < 5; i++) s += blankCard(174 + i * 2, 196 - i * 3, 64, 36, 0);
+    s += blankCard(214, 214, 72, 40, -8);
+    const skin = mix('#e6b898', t.lit, .22), skinShade = mix('#c48968', t.shade, .3);
+    s += path('M188 186C206 162 250 158 286 176C304 188 310 210 292 226C270 244 236 236 228 220C214 232 196 228 190 214C176 208 174 196 188 186Z', skin);
+    s += stroke('M214 176C210 190 206 200 200 210M236 170C232 188 228 202 224 214M258 174C256 190 252 204 248 216', mix('#b88870', skinShade, .45), 1.15);
+    s += path('M228 210C210 218 206 236 224 242C242 240 246 222 236 210Z', skinShade);
+    s += path('M286 188C330 176 400 182 430 174L434 198C360 206 320 202 292 214Z', skin);
+    s += path('M360 182L430 174L432 192L358 198Z', skinShade, {opacity: .4});
+    s += path('M420 170L474 164L478 198L424 204Z', mix('#3f6d78', t.ambient, .25));
+    s += path('M424 174L452 168L454 184L426 188Z', '#fff', {opacity: .16});
+    s += path('M206 168C196 162 192 170 200 176C210 174 214 172 206 168Z', '#fff', {opacity: .45});
+    s += weather(c, W, Hh, 16) + frameVignette(W, Hh, t.night ? .8 : .38);
+    return K.svg(s, '0 0 480 300', 'art-scene art-scratch');
+  }
+  // Sales office shut for the day: shutter halfway, blank door paper, someone turned away.
+  function housingClosed(c) {
+    const W = 480, Hh = 300, t = c.t;
+    let s = sky(c, W, Hh, [90, 44, 16]) + skyline(c, W, 150, 18, 56, .55, [30, 62]);
+    const b = box(c, 78, 56, 324, 198, '#e6d7c2', {pattern: 'tile', depth: 12});
+    s += b.s;
+    s += rect(96, 106, 292, 12, mix('#2f6d60', t.ambient, .25)) + rect(96, 106, 292, 3, mix('#cfe8df', t.lit, .45), {opacity: .75});
+    s += win(c, 118, 68, 42, 30, {lit: t.on > .35, transom: false});
+    s += win(c, 186, 68, 42, 30, {lit: false, blind: true, transom: false});
+    s += win(c, 308, 68, 42, 30, {lit: t.on > .6, transom: false});
+    const wx = 112, wy = 128, ww = 108, wh = 112;
+    const room = mix(t.night ? '#e7b56a' : '#c6a07a', t.ambient, t.night ? .12 : .32);
+    s += rect(wx - 6, wy - 6, ww + 12, wh + 14, mix('#efe6d6', t.lit, .25));
+    s += rect(wx, wy, ww, wh, room);
+    if (t.night || c.tid === 'golden') s += circ(wx + 64, wy + 58, 42, 'url(#hy-glow)', {opacity: t.night ? .5 : .25});
+    s += rect(wx + 8, wy + 14, 26, 4, mix('#8a6040', t.ink, .25)) + rect(wx + 8, wy + 34, 26, 4, mix('#8a6040', t.ink, .25));
+    s += rect(wx + 10, wy + 18, 14, 14, '#f4ecd8') + rect(wx + 14, wy + 38, 14, 12, '#e7d8c0');
+    s += rect(wx + ww - 28, wy + 16, 16, 20, '#f7f1e4') + rect(wx + ww - 24, wy + 20, 10, 14, '#e4d5bc');
+    s += rect(wx, wy + wh - 14, ww, 14, mix('#8a6040', t.ink, .28)) + rect(wx, wy + wh - 14, ww, 14, 'url(#hy-wood)', {opacity: .4});
+    s += person(c, wx + 62, wy + wh - 12, 1.12, {color: '#52616c'});
+    s += rect(wx, wy, ww, wh, `url(#hy-glass-${c.tid})`, {opacity: .18}) + rect(wx, wy, ww, wh, 'url(#hy-shine)', {opacity: .2});
+    s += path(`M${wx} ${wy}h${ww}v3h${n(-ww + 2)}v${n(wh - 3)}h-2z`, t.shade, {opacity: .28});
+    s += rect(wx - 6, wy + wh + 2, ww + 12, 5, mix('#d9cbb8', t.lit, .3));
+    const dx = 268, dy = 152, dw = 84, dh = 100, half = dh * .5;
+    s += rect(dx - 4, dy - 4, dw + 8, dh + 6, mix('#efe6d6', t.lit, .2));
+    s += rect(dx, dy, dw, dh, mix('#2a3338', t.ink, .35));
+    s += rect(dx + 5, dy + half, dw - 10, half - 4, t.on > .25 ? mix('#f0c48a', t.win, .3) : `url(#hy-glass-${c.tid})`);
+    s += rect(dx + 4, dy, dw - 8, half, K.mat('#c5c6be', t).mid) + rect(dx + 4, dy, dw - 8, half, 'url(#hy-shutter)');
+    s += rect(dx + dw - 18, dy, 12, half, t.shade, {opacity: .16});
+    s += rect(dx + 4, dy + half - 4, dw - 8, 5, mix('#3e464a', t.ink, .3));
+    s += rect(dx + dw / 2 - 6, dy + half - 2, 12, 3, '#d9b15a');
+    s += rect(dx - 6, dy - 12, dw + 12, 12, mix('#343a3e', t.ink, .3)) + rect(dx - 6, dy - 12, dw + 12, 3, mix('#8a9296', t.lit, .35));
+    s += grp(rect(0, 0, 36, 28, '#f7f1e4') + rect(0, 0, 36, 28, 'url(#hy-paper)') + circ(18, 3.2, 2.3, '#c9453a'), {transform: `translate(${n(dx + 22)} ${n(dy + 64)}) rotate(-5)`});
+    s += rect(dx + dw - 16, dy + half + 22, 4, 16, '#d9b15a');
+    if (t.night) s += rect(dx + 8, dy + dh, dw - 10, 12, '#ffd994', {opacity: .16});
+    s += ground(c, W, 252, 48, {pave: '#cfc6b6'});
+    s += path(`M${dx - 10} 252H${dx + dw + 10}L${dx + dw + 24} 270H${dx - 24}Z`, mix('#d9d0c2', t.lit, .22));
+    s += path(`M${dx - 10} 252H${dx + dw + 10}L${dx + dw + 24} 270H${dx - 24}Z`, 'url(#hy-tile)', {opacity: .65});
+    s += tree(c, 16, 254, .78) + shrub(c, 246, 252, .5) + lampPost(c, 442, 274, 62);
+    s += weather(c, W, Hh, 14) + frameVignette(W, Hh, t.night ? .85 : .4);
+    return K.svg(s, '0 0 480 300', 'art-scene art-closed');
+  }
+
+  const builders = {city: [city, 'dusk'], street: [street, 'day'], rent: [rent, 'morning'], 'house-0': [house0, 'morning'], 'house-1': [house1, 'day'], 'house-2': [house2, 'golden'], 'house-3': [house3, 'evening'], 'house-4': [house4, 'golden'], warehouse: [warehouse, 'day'], 'house-5': [house5, 'golden'], 'house-6': [house6, 'morning'], 'house-7': [house7, 'day'], 'house-8': [house8, 'golden'], credit: [credit, 'golden'], 'scratch-stand': [scratchStand, 'day'], 'housing-closed': [housingClosed, 'evening']};
+  const seeds = {city: 101, street: 202, rent: 303, 'house-0': 404, 'house-1': 505, 'house-2': 606, 'house-3': 707, 'house-4': 808, warehouse: 909, 'house-5': 1005, 'house-6': 1006, 'house-7': 1007, 'house-8': 1008, credit: 1110, 'scratch-stand': 1220, 'housing-closed': 1330};
   const cache = new Map();
   function scene(kind, opts) {
     const o = opts || {}, key = kind + '|' + (o.phase || '') + '|' + (o.tone || '') + '|' + (o.season || '') + '|' + (o.lamps ? 1 : 0);

@@ -10,7 +10,7 @@ function endedSave() {
   const vm = require('node:vm');
   const context = vm.createContext({console});
   context.window = context;
-  for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/save.js']) {
+  for (const file of ['js/data.js','js/math.js','js/v2-baseline.js','js/v3-baseline.js','js/market.js','js/trading.js','js/statistics.js','js/street.js','js/validation.js','js/game.js','js/save.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
   }
   const H = context.HomeYear;

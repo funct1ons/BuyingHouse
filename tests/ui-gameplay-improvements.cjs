@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cp=r
 const {pathToFileURL}=require('node:url'),{launchEdge,delay}=require('./cdp-helper.cjs');
 const root=path.resolve(__dirname,'..'),out=path.resolve(process.env.UI_EVIDENCE_DIR||path.join(root,'docs/ui-improvement-evidence/phase-a-20261004/new-ui'));
 const report={kind:'Automated Edge file://; not manual play',checks:[],layouts:[],errors:[],external:[],shots:[],baseline:'a538345'};
-function core(baseline){const ctx=vm.createContext({console});ctx.window=ctx;for(const f of ['data','math','v2-baseline',...(baseline?[]:['v3-baseline']),'market','trading','statistics','validation','game','save'])vm.runInContext(baseline?cp.execFileSync('git',['show','a538345:js/'+f+'.js'],{cwd:root,encoding:'utf8'}):fs.readFileSync(path.join(root,'js/'+f+'.js'),'utf8'),ctx);return ctx.HomeYear;}
+function core(baseline){const ctx=vm.createContext({console});ctx.window=ctx;for(const f of ['data','math','v2-baseline',...(baseline?[]:['v3-baseline']),'market','trading','statistics',...(baseline?[]:['street']),'validation','game','save'])vm.runInContext(baseline?cp.execFileSync('git',['show','a538345:js/'+f+'.js'],{cwd:root,encoding:'utf8'}):fs.readFileSync(path.join(root,'js/'+f+'.js'),'utf8'),ctx);return ctx.HomeYear;}
 const H=core(false),old=core(true);
 const check=(name,pass,detail)=>{report.checks.push({name,pass:!!pass,detail});if(!pass)console.error('FAIL',name,detail);};
 // Full historical 0.4 state equality: immutable v3 context versus git a538345.

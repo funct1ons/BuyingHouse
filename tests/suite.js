@@ -36,9 +36,9 @@
       }
       throw Error('无法上架 '+id);
     }
-    test('12轮换池/8退出商品/45事件/9住房/4仓储与价格簿',()=>{
-      // 规则0.5仅新增7重大事件；0.9再加8个。0.4完整目录冻结，不用于现行事件抽取。住房冲击不进入 H.events。
-      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===45&&H.houses.length===9&&H.warehouses.length===4);
+    test('12轮换池/8退出商品/75事件/9住房/4仓储与价格簿',()=>{
+      // 规则0.5新增7个重大事件；0.9再加8个；0.10把黑天鹅池加到45个。0.4完整目录冻结，不用于现行事件抽取。住房冲击不进入 H.events。
+      assert(H.products.length===12&&H.legacyProducts.length===8&&H.events.length===75&&H.houses.length===9&&H.warehouses.length===4);
       assert(!H.events.some(e=>e.id==='housing_stimulus'||e.id==='housing_first'||e.id==='housing_default'||e.id==='housing_index'));
       assert(H.v3.catalog.events.length===30&&H.v3.catalog.rules.saveVersion===3);
       assert(H.v2.catalog.products.length===20&&H.v2.catalog.events.length===40&&H.v2.catalog.rules.saveVersion===2);

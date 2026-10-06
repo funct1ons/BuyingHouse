@@ -126,6 +126,15 @@ try{
   if(WAV&&st.wav)await fs.writeFile(path.join(out,'stinger-house.wav'),Buffer.from(st.wav,'base64'));
   if(WAV&&fx.wav)await fs.writeFile(path.join(out,'sfx-all.wav'),Buffer.from(fx.wav,'base64'));
 
+  // Loan and lottery cues use the same ceilings. Kept off the six-SFX timeline above.
+  {
+    const kinds=['credit-open','loan','repay','refuse','lottery-open','scratch','prize-none','prize-small','prize-mid','prize-key'];
+    const quiet=await render({seconds:14,scene:SC.early,seed:2,music:false,timeline:kinds.map((k,i)=>({at:1+i*1.2,sfx:k}))});
+    check('loan/lottery SFX peak <= -6 dBFS',db(quiet.peak)<=LIMITS.sfxPeakDb,r1(db(quiet.peak)));
+    const over=await render({seconds:16,scene:SC.development,seed:2,timeline:[{at:8,sfx:'prize-key'}]});
+    check('prize-key stays below -1 dBFS on top of development music',db(over.peak)<=LIMITS.peakDb,r1(db(over.peak)));
+  }
+
   // 6. Live lifecycle with trusted input on the real AudioContext.
   await c.send('Page.navigate',{url:pathToFileURL(path.resolve(__dirname,'av-preview.html')).href});await delay(900);
   const ev=x=>c.evaluate(x),click=async sel=>{const p=await ev(`(()=>{const r=document.querySelector(${JSON.stringify(sel)}).getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);await c.send('Input.dispatchMouseEvent',{type:'mousePressed',...p,button:'left',clickCount:1});await c.send('Input.dispatchMouseEvent',{type:'mouseReleased',...p,button:'left',clickCount:1});await delay(150);};

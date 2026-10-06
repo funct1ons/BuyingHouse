@@ -2,10 +2,25 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.9', saveVersion: 8, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.11', saveVersion: 10, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
+  H.loanRules = Object.freeze({
+    weeklyNumer: 15, weeklyDenom: 1000, maxPrincipal: 300000, repayAmount: 50000,
+    tiers: Object.freeze({'500': 50000, '1000': 100000, '2000': 200000, '3000': 300000})
+  });
+  H.lotteryRules = Object.freeze({
+    price: 3000, cells: 9, matches: 3, maxRepeat: 2,
+    symbols: Object.freeze([
+      Object.freeze({id: 'empty', name: '空信封', prize: 0, weight: 400}),
+      Object.freeze({id: 'egg', name: '鸡蛋', prize: 1200, weight: 380}),
+      Object.freeze({id: 'red', name: '红包', prize: 4000, weight: 150}),
+      Object.freeze({id: 'umbrella', name: '雨伞', prize: 10000, weight: 50}),
+      Object.freeze({id: 'watch', name: '金表', prize: 25000, weight: 17}),
+      Object.freeze({id: 'key', name: '房门钥匙', prize: 120000, weight: 3})
+    ])
+  });
   H.roleHalf = {daily: 0.08, industry: 0.14, spec: 0.20};
   H.persistCap = {daily: 3000, industry: 6000, spec: 8000};
   H.difficulties = {
@@ -127,12 +142,43 @@
     ['swan_grain','黑海粮食船重新出海，米价预期松了一截','黑海粮食出口恢复的协议已经宣布。这不是任何短缺事件的定时后续。本周变化以成交价为准。',1,['rice'],null,{rice:fx('immediate',-7000),pork:fx('immediate',-3500)}],
     ['swan_meat','猪价冲上公开指数的高位，屠宰柜台抬价','猪价冲高已经记入当月食品价格指数。大米不在这场冲击里。本周变化以成交价为准。',1,['pork'],null,{pork:fx('immediate',16000)}],
     ['swan_rates','政策利率上调落地，橱窗里的奢侈品先冷却','政策利率目标区间上调已经公布。奢侈品回落是本城映射，不是利率本身。本周变化以成交价为准。',1,['watch'],null,{watch:fx('immediate',-8000),collectible:fx('immediate',-9000)}],
-    ['swan_bank','一家科技银行突然关门，风险偏好当周收缩','银行已被关闭并指定接管人。藏品和显卡的回落只是本城情绪映射。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',-9500),gpu:fx('immediate',-5000)}]
+    ['swan_bank','一家科技银行突然关门，风险偏好当周收缩','银行已被关闭并指定接管人。藏品和显卡的回落只是本城情绪映射。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',-9500),gpu:fx('immediate',-5000)}],
+    ['swan_unbox','开箱视频把新机说成必须第一天拿到手','全面屏新机开售那周，开箱视频已经铺满视频网站。本周变化以成交价为准。',1,['phone'],null,{phone:fx('immediate',12000)}],
+    ['swan_recall','一批新机被通报有起火隐患，柜台立刻凉了','官方召回已经公布。本周变化以成交价为准。',1,['phone'],null,{phone:fx('immediate',-6000)}],
+    ['swan_mining','显卡被拿去挖矿，货架上长期没卡','显卡被拿去挖矿，玩家长期买不到新卡。本周变化以成交价为准。',2,['gpu'],null,{gpu:fx('persist',14000)}],
+    ['swan_dump','矿卡失去用途，二手卡涌进市场','挖矿需求退潮，二手矿卡已经涌进市场。本周变化以成交价为准。',1,['gpu'],null,{gpu:fx('immediate',-6000)}],
+    ['swan_instaegg','一枚鸡蛋的照片盖过了名人帖','一张鸡蛋照片的点赞已经超过当时的名人帖。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',14000)}],
+    ['swan_rumoregg','「假鸡蛋」图片传开，蛋筐暂时没人碰','假鸡蛋图片已经在传。公开说明那些图片不能证明市面上的蛋是假的，但观望已经发生。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',-5500)}],
+    ['swan_mukbang','吃播一个人吃完整桌肉，肉柜跟着热','吃播已经把整桌肉吃进镜头。本周变化以成交价为准。',1,['pork'],null,{pork:fx('immediate',12000)}],
+    ['swan_veganuary','一月吃素的活动又开始了，肉柜冷清','一月吃素的活动已经重新变热。本周变化以成交价为准。',1,['pork'],null,{pork:fx('immediate',-5000)}],
+    ['swan_tanghulu','糖葫芦视频把水果摊围了起来','糖壳水果的做法已经被大量翻拍。本周变化以成交价为准。',2,['fruit'],null,{fruit:fx('persist',8000)}],
+    ['swan_avocado','牛油果吐司被说成乱花钱，水果摊被笑话','那句把买不起房怪到牛油果吐司上的话已经传开。本周变化以成交价为准。',1,['fruit'],null,{fruit:fx('immediate',-4500)}],
+    ['swan_salmonrice','剩饭拌鱼的视频被照着做，米袋脱销','隔夜米饭拌剩鱼的做法已经被大量照着做。本周变化以成交价为准。',1,['rice'],null,{rice:fx('immediate',8000)}],
+    ['swan_keto','不吃主食的吃法走红，米饭被说成负担','几乎不吃主食的吃法已经走红。本周变化以成交价为准。',1,['rice'],null,{rice:fx('immediate',-4000)}],
+    ['swan_puffer','圆标羽绒服成为冬天的队，柜台被围住','圆标厚羽绒服已经变成这个冬天显眼的行头。本周变化以成交价为准。',2,['coat'],'冬',{coat:fx('persist',12000)}],
+    ['swan_ugly','圆标羽绒服被笑土，这批衣不好出手','圆标羽绒服被嘲笑土、贵的说法已经传开。本周变化以成交价为准。',1,['coat'],null,{coat:fx('immediate',-5000)}],
+    ['swan_fans','热浪里风扇被搬空，制冷柜跟着紧','热浪期间风扇被买空的消息已经传开。本周变化以成交价为准。',2,['ac'],'夏',{ac:fx('persist',10000)}],
+    ['swan_leak','外机悬挂的视频看多了，装空调的人犹豫','空调外机悬挂、坠落的短视频已经看过很多。本周变化以成交价为准。',1,['ac'],null,{ac:fx('immediate',-5500)}],
+    ['swan_film','动画里的透明伞被模仿，雨具柜台变忙','透明伞和暴雨的画面已经被大量模仿。本周变化以成交价为准。',1,['umbrella'],null,{umbrella:fx('immediate',9000)}],
+    ['swan_mangkhut','台风里的伞被吹翻，轻便伞一时卖不动','台风把街上的伞吹翻的视频已经传开。本周变化以成交价为准。',2,['umbrella'],null,{umbrella:fx('persist',-4000)}],
+    ['swan_blindbox','长牙小怪物的隐藏款挂满了包','长牙小怪物的盲盒已经挂满包带。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',12000)}],
+    ['swan_emptybox','拆出一堆重复款，藏品摊冷了下来','重复普通款和「像赌博」的批评已经让藏品摊冷下来。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',-6000)}],
+    ['swan_steel','钢款运动表被炒出配货队','钢款运动表在二级市场被炒高的讨论已经铺开。本周变化以成交价为准。',1,['watch'],null,{watch:fx('immediate',7000)}],
+    ['swan_fakewatch','鉴定直播拆穿高仿表，名表柜台安静了','当众拆开高仿名表的鉴定直播已经很常见。本周变化以成交价为准。',1,['watch'],null,{watch:fx('immediate',-5500)}],
+    ['swan_runway','口罩被当成穿搭，防护柜台变时装店','带设计的口罩已经被当成穿搭。本周变化以成交价为准。',1,['mask'],null,{mask:fx('immediate',15000)}],
+    ['swan_maskne','「口罩痘」传开，罩被留在家里','「口罩痘」的说法已经传开。本周变化以成交价为准。',1,['mask'],null,{mask:fx('immediate',-4500)}],
+    ['swan_bundle','社区群接龙把米和肉捆成套餐','社区团购已经把米和肉捆成补贴套餐。本周变化以成交价为准。',1,['rice'],null,{rice:fx('immediate',6000),pork:fx('immediate',8000)}],
+    ['swan_station','团购补贴退了，自提点堆着没人取的货','社区团购补贴退潮，自提点的货已经堆住。本周变化以成交价为准。',1,['pork'],null,{rice:fx('immediate',-4000),pork:fx('immediate',-5000)}],
+    ['swan_charm','手机挂件和包上的玩偶一起走红','手机链和挂在包上的玩偶已经一起走红。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',7000),phone:fx('immediate',5000)}],
+    ['swan_blackout','大社交网络突然从互联网上消失','这家社交网络当天从互联网上消失。本周变化以成交价为准。',1,['gpu'],null,{gpu:fx('immediate',-4500),phone:fx('immediate',-4000),watch:fx('immediate',-3500)}],
+    ['swan_haul','「买了一大堆」的开箱里堆满表和藏品','堆满手表和收藏品的开箱视频已经是固定类型。本周变化以成交价为准。',1,['watch'],null,{watch:fx('immediate',6500),collectible:fx('immediate',8000)}],
+    ['swan_spinner','指尖陀螺从小摊转到每个人手里','指尖陀螺已经从小摊转到办公室。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',9000)}]
   ];
   H.events.push(...swans.map(r => ({id:r[0], type:'market', tier:'swan', title:r[1], situation:r[2], description:r[2],
     duration:r[3], primaryProducts:r[4], season:r[5], effects:r[6], fade:'none', reliability:'reliable', weight:1})));
   // Built-in factual summaries only: no network requests during offline play.
-  const origin = (name, date, agency, title, url, facts, adaptation) => Object.freeze({name,date,agency,title,url,facts,adaptation});
+  const origin = (name, date, agency, title, url, facts, adaptation) => Object.freeze({kind:'verified', name, date, agency, title, url, facts, adaptation});
+  const buzz = (name, date, facts, adaptation) => Object.freeze({kind:'original', name, date, agency:'当年的公开热度', title:name, url:'', facts, adaptation});
   const eggURL = 'https://ers.usda.gov/data-products/charts-of-note/112677';
   H.swanOrigins = Object.freeze({
     swan_route: origin('苏伊士运河 Ever Given 堵塞','2021-03-23—04-01','IMO','MV Ever Given incident – 23 March 2021','https://www.imo.org/en/MediaCentre/SecretaryGeneral/Pages/MV-Ever-Given-incident.aspx','3月23日事故导致航道临时关闭；4月1日声明记录恢复通行。','进口耐用品延迟及游戏商品变化为原创映射，不是新闻实测零售价或固定恢复倒计时。'),
@@ -149,7 +195,37 @@
     swan_grain: origin('黑海粮食出口协议','2022-07-22','联合国新闻','Black Sea grain exports deal ‘a beacon of hope’ amid Ukraine war - Guterres','https://news.un.org/en/story/2022/07/1123062','2022年7月22日，联合国新闻称一项前所未有的协议使乌克兰粮食得以经黑海恢复出口。','大米与猪肉的跌幅是虚构供给缓解映射，不是协议里的粮价，也不与任何短缺事件配对。不写伤亡，不构成买卖建议。'),
     swan_meat: origin('粮农组织食品价格指数三月跃升','2022-04-08','FAO','FAO Food Price Index posts significant leap in March','https://www.fao.org/newsroom/detail/fao-food-price-index-posts-significant-leap-in-march/en','页面 CreatedOn 为2022-04-08。正文称2022年3月世界食品商品价格大幅跃升；肉类价格指数当月上涨4.8%并创纪录，西欧屠宰猪短缺推动猪肉价格。同期大米价格指数几乎没有变化。','游戏只抬猪肉，幅度是虚构映射，不是指数里的4.8%，也不把几乎没变的大米写成同向冲击。'),
     swan_rates: origin('美联储公开市场委员会声明','2022-09-21','美联储','Federal Reserve issues FOMC statement','https://www.federalreserve.gov/newsevents/pressreleases/monetary20220921a.htm','2022年9月21日FOMC声明将联邦基金利率目标区间上调至3%至3.25%。','名表与藏品跌幅是虚构消费冷却映射，不是利率变动的幅度，也不是对后市的预测。'),
-    swan_bank: origin('FDIC接管硅谷银行受保存款人','2023-03-10','FDIC','FDIC Creates a Deposit Insurance National Bank of Santa Clara to Protect Insured Depositors of Silicon Valley Bank, Santa Clara, California','https://www.fdic.gov/news/press-releases/2023/pr23016.html','2023年3月10日，加州金融保护与创新局关闭位于圣克拉拉的硅谷银行，并指定FDIC为接管人，以保护受保存款人。','藏品与显卡跌幅是虚构风险偏好映射，不是存款保险范围，也不是买卖建议。')
+    swan_bank: origin('FDIC接管硅谷银行受保存款人','2023-03-10','FDIC','FDIC Creates a Deposit Insurance National Bank of Santa Clara to Protect Insured Depositors of Silicon Valley Bank, Santa Clara, California','https://www.fdic.gov/news/press-releases/2023/pr23016.html','2023年3月10日，加州金融保护与创新局关闭位于圣克拉拉的硅谷银行，并指定FDIC为接管人，以保护受保存款人。','藏品与显卡跌幅是虚构风险偏好映射，不是存款保险范围，也不是买卖建议。'),
+    swan_unbox: buzz('全面屏新机开箱周','2017-11','2017年11月，全面屏新机开售那周，开箱视频铺满视频网站，第一天拿到手本身成了节目。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_recall: origin('三星 Galaxy Note7 召回','2016-09-15','CPSC','Samsung Recalls Galaxy Note7 Smartphones Due to Serious Fire and Burn Hazards','https://www.cpsc.gov/Recalls/2016/Samsung-Recalls-Galaxy-Note7-Smartphones','2016年9月15日，美国消费品安全委员会公布召回：约100万部 Galaxy Note7 因严重起火和烫伤风险，可以退款或更换。','手机跌幅是强行对应到本城柜台的虚构映射，不是召回数量，也不渲染受伤。'),
+    swan_mining: buzz('显卡挖矿短缺','2020—2021','2020年到2021年，显卡被拿去挖矿，玩家长期买不到新卡。这是当时科技讨论里最响的牢骚之一。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_dump: buzz('以太坊停止靠显卡挖矿','2022-09-15','2022年9月15日，以太坊改成权益证明，不再靠显卡挖矿。矿卡失去用途后，二手卡涌进市场。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_instaegg: buzz('一枚鸡蛋的点赞记录','2019-01','2019年1月，一张鸡蛋的照片在社交网站上超过了当时点赞最高的名人帖，变成全球笑话。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_rumoregg: buzz('人造鸡蛋图片','2017','2017年前后，中文社交网络反复流传「人造鸡蛋」的图片。公开说明那些图片不能证明市面上的蛋是假的，但慌张已经让一些人暂时不敢买。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。不把谣言写成事实。'),
+    swan_mukbang: buzz('吃播','2010年代中后期','韩国的吃播在2010年代中后期传到全球视频网站。一个人吃掉整桌肉的节目成为固定类型。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_veganuary: buzz('一月吃素','2010年代末—2020年代初','英国有一项从一月开始吃素一个月的公开活动。2010年代末到2020年代初，它每年都会重新变热，肉被说成这个月该放下的东西。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_tanghulu: buzz('糖葫芦短视频','2023','2023年，把葡萄、草莓裹上糖壳串成糖葫芦的视频在短视频平台上大量翻拍。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_avocado: buzz('牛油果吐司笑话','2017-05','2017年5月，澳洲开发商蒂姆·古纳在采访里说，年轻人买不起房，是因为钱花在牛油果吐司上。这句话变成全球嘲讽。','姓名是替换过的相近假名。价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_salmonrice: buzz('隔夜米饭拌剩鱼','2021','2021年，短视频作者埃玛丽把隔夜米饭、剩三文鱼、酱油、蛋黄酱和海苔拌在一起。那条视频被大量照着做。','姓名是替换过的相近假名。价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_keto: buzz('几乎不吃主食','2010年代末','2010年代末，「几乎不吃主食」的饮食法在英文互联网上很红，米饭被写成该躲开的东西。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_puffer: buzz('圆标羽绒服','2010年代中后期','2010年代中后期，带圆标的厚羽绒服在中国城市的冬天变成显眼的行头，店门口会排起试穿的队。人们叫它「大鹅」。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_ugly: buzz('圆标被笑土','2010年代末','圆标羽绒服穿的人多了以后，中文互联网开始嘲笑那个大标志土、贵。热度从炫耀转成躲着走。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_fans: buzz('热浪里的风扇','2022-07','2022年7月英国热浪期间，风扇和移动制冷设备被报道买空。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_leak: buzz('悬挂的空调外机','短视频常驻类型','中文短视频里长期有一类高播放：空调外机挂在防盗窗上，或用绳子吊着。看过坠落片段的人会犹豫要不要装。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_film: buzz('透明伞与暴雨动画','2019-07-19','2019年7月19日，新海成的《天气之子》在日本上映。透明伞和暴雨的画面被大量模仿。','姓名是替换过的相近假名。价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_mangkhut: buzz('台风山竹里的伞','2018-09','2018年9月台风山竹过境时，街上雨伞被吹翻的视频传得很广。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。轻便伞卖不动是强行对应，片子本身只显示伞被吹坏。'),
+    swan_blindbox: buzz('长牙小怪物盲盒','2024','香港画师龙家声画的长牙小怪物被做成盲盒。2024年人们把玩偶挂在包上，隐藏款的讨论占满社交平台。','姓名是替换过的相近假名。价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_emptybox: buzz('拆到重复款','盲盒热期间','盲盒热起来以后，重复的普通款和「像赌博」的批评一直跟着。买到不想要的那款时，二手摊会冷一截。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_steel: buzz('钢款运动表配货','2021—2022','2021年到2022年，钢款运动表在二级市场被炒到明显高于专柜价，排队和配货成了手表圈的日常话题。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。游戏涨幅不是二级市场溢价。'),
+    swan_fakewatch: buzz('拆穿高仿表的直播','约2020起','大约从2020年起，中文短视频里当众拆开高仿名表的鉴定直播非常常见。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_runway: buzz('口罩变成穿搭','2020','2020年口罩成为日常以后，带标志和设计感的口罩被当成穿搭，时装店也卖起了装饰口罩。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_maskne: buzz('口罩痘','2020','2020年，「口罩痘」这个说法在护肤讨论里传开。闷出痘的人开始能不戴就不戴。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。不构成护肤建议。'),
+    swan_bundle: buzz('社区团购','2020','2020年，社区团购在中国迅速做大。平台用补贴把米和肉捆成很便宜的套餐，邻居在群里接龙。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_station: buzz('社区团购退潮','2021','2021年补贴退潮，多家社区团购收缩。自提点没人取的菜和肉被拍下来，变成团购退了的证据。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_charm: buzz('手机链和包挂玩偶','2024—2025','2024年到2025年，手机链、串珠挂绳，以及把玩偶挂在手机和包上，在东亚街头非常显眼。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_blackout: origin('脸书网络从互联网上消失','2021-10-04','Cloudflare','Understanding how Facebook disappeared from the Internet','https://blog.cloudflare.com/october-2021-facebook-outage/','2021年10月4日，Cloudflare 记录到脸书网络的流量消失，并说明当天这家网络从互联网上消失。','手机、显卡和名表的回落是强行对应，不是这篇记录里的流量，也不是零售价。'),
+    swan_haul: buzz('买了一大堆的开箱','2019—2021','2019年到2021年，「买了一大堆」的开箱视频在视频网站上是固定类型，手表和收藏品经常被堆在镜头前。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。'),
+    swan_spinner: buzz('指尖陀螺','2017','2017年，指尖陀螺从校园传到办公室，小摊上的塑料陀螺一度被抢购。','价格是强行对应到本城货架上的货，不是当年的实测零售价或带货数据。')
   });
   H.housingRules = Object.freeze({probability:.12, firstWeek:6, lastWeek:46, gap:8, limit:3});
   H.housingEvents = Object.freeze([
@@ -167,6 +243,13 @@
   // Fail at catalog load, not after an invalid event enters a saved game.
   for (const e of H.events) for (const [id, effect] of Object.entries(e.effects)) {
     if (!H.products.some(p => p.id === id) || !['immediate','persist','structural'].includes(effect.kind) || !Number.isSafeInteger(effect.bps) || effect.bps <= -10000) throw Error('事件目录无效');
+  }
+  for (const e of H.events) if (e.tier === 'swan' && !H.swanOrigins[e.id]) throw Error('黑天鹅缺少出处');
+  for (const [id, o] of Object.entries(H.swanOrigins)) {
+    if (!H.events.some(e => e.id === id && e.tier === 'swan')) throw Error('出处没有事件');
+    if (o.kind === 'verified') { if (typeof o.url !== 'string' || !/^https:\/\//.test(o.url)) throw Error('核实出处缺少链接'); }
+    else if (o.kind === 'original') { if (o.url !== '') throw Error('热度原型不能带外链'); }
+    else throw Error('出处类型无效');
   }
   const personal = [
     ['rent','临时租住维护费',-18000],['repair','手机维修',-24000],['ill','看诊支出',-20000],
@@ -210,5 +293,5 @@
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
   H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
   H.oldSaveNotice = '内测规则更新，旧档不兼容，请开始新游戏';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v8。请先导出损坏原文。确认替换？';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v10。请先导出损坏原文。确认替换？';
 })(window);

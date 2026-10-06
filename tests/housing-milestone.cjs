@@ -3,7 +3,7 @@ const fs = require('node:fs'), vm = require('node:vm'), path = require('node:pat
 const context = vm.createContext({console});
 context.window = context;
 const root = path.join(__dirname, '..');
-for (const file of ['js/data.js', 'js/math.js', 'js/v2-baseline.js', 'js/v3-baseline.js', 'js/market.js', 'js/trading.js', 'js/statistics.js', 'js/validation.js', 'js/game.js', 'js/save.js']) {
+for (const file of ['js/data.js', 'js/math.js', 'js/v2-baseline.js', 'js/v3-baseline.js', 'js/market.js', 'js/trading.js', 'js/statistics.js', 'js/street.js', 'js/validation.js', 'js/game.js', 'js/save.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename: file});
 }
 const H = context.HomeYear;
@@ -43,7 +43,7 @@ for (const [id, price] of Object.entries(H.priceBooks['0.3'].standard.houses)) {
 assert.equal(H.houseAt(base, 52, []), halfUp(base, 52, []));
 assert.equal(Object.keys(H.priceBooks['0.2'].standard.houses).length, 5);
 assert.equal(H.priceBooks['0.2'].standard.houses.studio, 650000);
-assert.equal(H.events.length, 45);
+assert.equal(H.events.length, 75);
 assert.equal(H.events.some(e => String(e.id).startsWith('housing_')), false);
 
 const shock = [{id: 'housing_stimulus', week: 6}];

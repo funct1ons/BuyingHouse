@@ -3,7 +3,7 @@
 // public-state director. No browser needed; loads the same classic scripts the game uses.
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const ctx=vm.createContext({console});ctx.window=ctx;
-for(const f of ['js/data.js','js/math.js','js/market.js','js/trading.js','js/statistics.js','js/validation.js','js/game.js','js/audio-score.js','js/audio-director.js'])
+for(const f of ['js/data.js','js/math.js','js/market.js','js/trading.js','js/statistics.js','js/street.js','js/validation.js','js/game.js','js/audio-score.js','js/audio-director.js'])
   vm.runInContext(fs.readFileSync(path.join(__dirname,'..',f),'utf8'),ctx,{filename:f});
 const H=ctx.HomeYear,D=H.AudioDirector,checks=[];
 const check=(name,pass,detail)=>{checks.push({name,pass:!!pass,detail});console.log((pass?'PASS ':'FAIL ')+name+(detail!==undefined?' '+JSON.stringify(detail):''));};
