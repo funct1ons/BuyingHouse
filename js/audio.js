@@ -121,7 +121,11 @@ Engine.prototype.sfx=function(kind,t,out){
     return;
   }
   if(kind==='loan'){
+    // Stamp thud: wood knock + short paper rustle (filtered noise) + ink-pad chord.
     I.play('wood',ac,dest,t,base,.06,.45,{});
+    // Paper rustle: short burst of filtered noise at stamp moment
+    const buf=ac.createBuffer(1,ac.sampleRate*.08,ac.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*.18*(1-i/d.length);
+    const src=ac.createBufferSource();src.buffer=buf;const flt=ac.createBiquadFilter();flt.type='bandpass';flt.frequency.value=800;flt.Q.value=1.2;const g=ac.createGain();g.gain.value=.5;src.connect(flt);flt.connect(g);g.connect(dest);src.start(t+.01);
     I.play('epiano',ac,dest,t+.03,base,.28,.48,{});I.play('epiano',ac,dest,t+.03,base+7,.28,.48,{});
     return;
   }
@@ -138,25 +142,50 @@ Engine.prototype.sfx=function(kind,t,out){
     return;
   }
   if(kind==='scratch'){
-    I.play('hiss',ac,dest,t,base,.1,.35,{});
+    // Foil scrape: short filtered noise burst — papery, not metallic.
+    const buf=ac.createBuffer(1,ac.sampleRate*.07,ac.sampleRate);const d=buf.getChannelData(0);
+    // two-layer: mid-frequency scratch body + high shimmer
+    for(let i=0;i<d.length;i++){const env=Math.pow(1-i/d.length,1.4);d[i]=(Math.random()*2-1)*.28*env;}
+    const src=ac.createBufferSource();src.buffer=buf;
+    const flt=ac.createBiquadFilter();flt.type='peaking';flt.frequency.value=2800;flt.gain.value=9;flt.Q.value=1.4;
+    const flt2=ac.createBiquadFilter();flt2.type='highshelf';flt2.frequency.value=5000;flt2.gain.value=5;
+    const g=ac.createGain();g.gain.value=.52;
+    src.connect(flt);flt.connect(flt2);flt2.connect(g);g.connect(dest);src.start(t);
     return;
   }
   if(kind==='prize-none'){
-    I.play('marimba',ac,dest,t,base+7,.18,.5,{});I.play('marimba',ac,dest,t+.16,base+2,.24,.46,{});
+    // Empty envelope: dull thud + descending two-note "nope"
+    I.play('wood',ac,dest,t,base-12,.09,.42,{});
+    I.play('marimba',ac,dest,t+.06,base+4,.18,.35,{});
+    I.play('marimba',ac,dest,t+.22,base+0,.20,.32,{});
     return;
   }
   if(kind==='prize-small'){
-    I.play('glock',ac,dest,t,base+12,.4,.55,{});
+    // Small win: bright single bell, slight music nudge
+    I.play('glock',ac,dest,t,base+12,.38,.58,{});
+    I.play('epiano',ac,dest,t+.05,base+7,.24,.44,{});
     return;
   }
   if(kind==='prize-mid'){
-    I.play('glock',ac,dest,t,base+12,.42,.5,{});I.play('epiano',ac,dest,t,base+7,.36,.46,{});
+    // Medium win: two-note bell chord, short duck
+    const bar=this.current?this.current.barDur:2.6;
+    this.duck.gain.cancelScheduledValues(t);
+    this.duck.gain.setTargetAtTime(.78,t,.03);
+    this.duck.gain.setTargetAtTime(1,t+bar*.6,.25);
+    I.play('glock',ac,dest,t,base+12,.44,.52,{});
+    I.play('epiano',ac,dest,t,base+7,.36,.48,{});
+    I.play('glock',ac,dest,t+.28,base+16,.38,.46,{});
     return;
   }
   if(kind==='prize-key'){
     // Shallower than house (0.7, not 0.5) and only one bar, not two.
     const bar=this.current?this.current.barDur:2.6;this.duck.gain.cancelScheduledValues(t);this.duck.gain.setTargetAtTime(.7,t,.04);this.duck.gain.setTargetAtTime(1,t+bar,.2);
     [[0,0],[.1,4],[.2,7],[.32,12]].forEach(([dt,iv])=>I.play('bell',ac,dest,t+dt,base+12+iv,.45,.36,{}));
+    return;
+  }
+  // step: soft wood tok for next-week footstep feel (called alongside 'next').
+  if(kind==='step'){
+    I.play('wood',ac,dest,t,base-5,.05,.28,{});
     return;
   }
   const list=SFX[kind]||SFX.click,name=kind==='error'?'bass':kind==='news'||kind==='next'?'glock':'marimba';

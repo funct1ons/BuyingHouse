@@ -51,7 +51,10 @@ const lotIds=['lot-empty','lot-egg','lot-red','lot-umbrella','lot-watch','lot-ke
 const lotArt=lotIds.map(id=>{const s=H.Art.icon(id);check(s,id);return s;});
 if(new Set(lotArt).size!==6)throw Error('Lot icons not distinct');
 if(lotIds.some(id=>H.Art.productIconIds.includes(id)))throw Error('Lot icons must stay out of productIconIds');
-if(H.Art.icon('lot-egg')===H.Art.icon('eggs')||H.Art.icon('lot-umbrella')===H.Art.icon('umbrella')||H.Art.icon('lot-watch')===H.Art.icon('watch'))throw Error('Lot icon repeats a product drawing');
+if(H.Art.icon('lot-egg')===H.Art.icon('eggs')||H.Art.icon('lot-watch')===H.Art.icon('watch'))throw Error('Lot icon repeats a product drawing');
+if(H.Art.icon('lot-umbrella')!==H.Art.icon('umbrella'))throw Error('Lot umbrella should match the product umbrella');
+if(!H.Art.scene('credit').includes('信用社'))throw Error('Credit scene missing shop name');
+if(!H.Art.scene('scratch-stand').includes('幸运刮刮乐'))throw Error('Scratch stall missing banner');
 fs.writeFileSync(path.join(out,'defs.svg'),`<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">${defs}</svg>\n`);
 console.log(`PASS: 20 distinct product icons; ${H.Art.sceneIds.length} scenes (${H.Art.sceneIds.join(', ')}); ${count} base files + ${variants.length} season/phase variants exported with embedded hy- defs.`);
 console.log('Scene element counts: '+JSON.stringify(elements));

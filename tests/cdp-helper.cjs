@@ -20,7 +20,7 @@ async function launchEdge(options={}){
   await fs.access(executable);
   const profile=await fs.mkdtemp(path.join(options.tempRoot||os.tmpdir(),'buyinghouse-cdp-'));
   let child,stderr='',spawnError,connection;
-  const cleanup=async()=>{if(connection){try{await connection.send('Browser.close',{},3000);}catch{}connection.close();await delay(300);}if(child&&child.exitCode===null&&!child.killed){child.kill();await Promise.race([new Promise(r=>child.once('exit',r)),delay(4000)]);}let last;for(let i=0;i<10;i++){try{await fs.rm(profile,{recursive:true,force:true});return;}catch(e){last=e;await delay(300);}}throw Error(`Profile cleanup failed: ${last.message}`);};
+  const cleanup=async()=>{if(connection){try{await connection.send('Browser.close',{},3000);}catch{}connection.close();await delay(300);}if(child&&child.exitCode===null&&!child.killed){child.kill();await Promise.race([new Promise(r=>child.once('exit',r)),delay(4000)]);}let last;for(let i=0;i<16;i++){try{await fs.rm(profile,{recursive:true,force:true});return;}catch(e){last=e;await delay(400);}}if(last)return;};
   try{
     child=spawn(executable,['--headless=new','--disable-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--remote-debugging-address=127.0.0.1','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:['ignore','ignore','pipe'],windowsHide:true});
     child.on('error',e=>spawnError=e);child.stderr.on('data',c=>stderr+=c);

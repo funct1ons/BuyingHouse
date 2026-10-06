@@ -342,3 +342,548 @@ dialog[data-kind=milestones],dialog[data-kind=housing-event]{width:min(860px,94v
   dialog[data-kind=houses] .house-group-far{scroll-margin-bottom:12px}
   .goal-price .goal-change{white-space:normal}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   街面质感补丁 v2 — 信用社 · 刮刮乐逐格 · 售楼处打烊 · 按钮纸色统一
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ---------- 全局按钮：纸色底，而非纯白 ---------- */
+button:not(.primary):not(.danger):not(.star):not(.scratch-cell):not(.mobile-nav a){
+  background:linear-gradient(180deg,#fdfaf3,#f5edd8);
+  border-color:#d6c9a8;
+}
+button:not(.primary):not(.danger):not(.star):not(.scratch-cell):hover:not(:disabled){
+  background:linear-gradient(180deg,#f5edd8,#ecdbc0);
+  border-color:#c4b48a;
+}
+
+/* ---------- 信用社：柜台台面 + 存折 + 盖章动画 ---------- */
+dialog[data-kind=credit] .passbook{
+  background:#fffcf2;
+  background-image:
+    repeating-linear-gradient(#0000 0 27px,#d9c9a8 27px 28px);
+  border:1px solid #c9b48a;
+  border-radius:6px 6px 4px 4px;
+  box-shadow:inset 0 0 0 6px #f5edd8, var(--elev-1);
+  padding:6px 88px 6px 14px;
+  /* red thread binding at left edge */
+  border-left:4px solid #b8352a;
+  margin:10px 0 6px;
+}
+dialog[data-kind=credit] .passbook::before{
+  content:none; /* removed: "存　折" vertical watermark was visually confusing */
+}
+/* Seal: bigger, bolder, with stamp-press animation on .stamped */
+dialog[data-kind=credit] .passbook-seal{
+  right:10px;top:50%;
+  transform:translateY(-50%) rotate(-8deg);
+  width:64px;height:64px;
+  border:3px solid #c23a32;
+  border-radius:4px;
+  font-size:11px;letter-spacing:.14em;
+  background:#fff6f4e8;
+  box-shadow:inset 0 0 0 1px #c23a3244, 0 1px 4px #c23a3230;
+  transition:transform .18s cubic-bezier(.3,1.8,.5,1), box-shadow .18s;
+}
+dialog[data-kind=credit] .passbook-seal.stamped{
+  animation:hy-stamp .38s cubic-bezier(.3,1.6,.5,1) both;
+}
+@keyframes hy-stamp{
+  0%  {transform:translateY(-50%) rotate(-8deg) scale(1.35);opacity:.5}
+  55% {transform:translateY(-50%) rotate(-8deg) scale(.94);opacity:1}
+  75% {transform:translateY(-50%) rotate(-8deg) scale(1.04)}
+  100%{transform:translateY(-50%) rotate(-8deg) scale(1)}
+}
+/* Counter/teller bar above buttons */
+dialog[data-kind=credit] .bank-block{
+  background:linear-gradient(180deg,#f8f0de,#ede0c4 calc(100% - 10px),#c49a6a calc(100% - 10px),#a07848);
+  border-radius:10px 10px 6px 6px;
+  padding:10px 14px 22px;
+  box-shadow:inset 0 0 0 1px #ddd0b0, var(--elev-1);
+  margin-top:8px;
+}
+dialog[data-kind=credit] .bank-block .bank-row{gap:10px}
+dialog[data-kind=credit] .bank-block button{
+  background:linear-gradient(180deg,#fdfaf3,#f0e4c8);
+  border-color:#c4a870;
+  font-weight:700;
+}
+dialog[data-kind=credit] .bank-block button:hover:not(:disabled){
+  background:linear-gradient(180deg,#f5edd8,#e4d0a8);
+}
+dialog[data-kind=credit] .bank-note{
+  margin-top:8px;
+  font-size:12px;
+  color:#6a5a48;
+  border-top:1px dashed #d0c0a0;
+  padding-top:6px;
+}
+
+/* ---------- 刮刮乐：彩票纸、银箔更金属、空格落空标记 ---------- */
+dialog[data-kind=lottery] .street-art{
+  border-radius:10px;overflow:hidden;margin:0 0 8px;
+}
+dialog[data-kind=lottery] .scratch-grid{
+  background:linear-gradient(160deg,#f5eddc,#ede0c0);
+  border:2px solid #c4a870;
+  border-radius:10px;
+  padding:10px;
+  box-shadow:inset 0 2px 6px #a88a5022, var(--elev-1);
+  margin:8px auto;
+}
+/* Ticket header strip above grid */
+dialog[data-kind=lottery] .lot-price{
+  font-size:13px;font-weight:800;letter-spacing:.08em;
+  color:#fff;
+  background:linear-gradient(90deg,#c95a48,#a84030);
+  border-radius:6px;
+  padding:3px 12px;
+  display:inline-block;
+  box-shadow:0 1px 4px #a8403044;
+  margin-bottom:4px;
+}
+/* Individual cell: warmer paper base */
+.scratch-cell{
+  background:linear-gradient(160deg,#fdfaf4,#f5edd8);
+  border:1px solid #c4b48a;
+  box-shadow:inset 0 1px 0 #fff8, var(--elev-1);
+  border-radius:9px;
+}
+/* Silver foil: more convincing metallic shimmer */
+.scratch-cell .foil{
+  background:
+    repeating-linear-gradient(105deg,#ffffff28 0 1px,#0000 1px 3px),
+    repeating-linear-gradient(  0deg,#00000012 0 1px,#0000 1px 4px),
+    linear-gradient(135deg,
+      #e8edf0 0%,
+      #c0ccd4 18%,
+      #f0f5f8 32%,
+      #8fa0ab 52%,
+      #d0dce4 68%,
+      #b8c8d2 82%,
+      #e4ecf0 100%);
+}
+/* Empty cell after scratch: muted dull stamp feel */
+.scratch-cell.open:not(.win){
+  background:linear-gradient(160deg,#ede8dc,#e2d8c4);
+  box-shadow:inset 0 1px 4px #a8906055;
+}
+.scratch-cell.open:not(.win) .scratch-icon{opacity:.55;filter:grayscale(.4)}
+/* Win cell: gold frame pulse */
+.scratch-cell.win{
+  box-shadow:inset 0 0 0 3px #d28a3c, 0 0 12px #d28a3c66;
+  animation:hy-win-pulse .7s ease both;
+}
+@keyframes hy-win-pulse{
+  0%  {box-shadow:inset 0 0 0 3px #d28a3c,0 0 0 #d28a3c00}
+  50% {box-shadow:inset 0 0 0 3px #d28a3c,0 0 18px #d28a3c88}
+  100%{box-shadow:inset 0 0 0 3px #d28a3c,0 0 12px #d28a3c66}
+}
+/* Prize legend line */
+dialog[data-kind=lottery] .lot-table{
+  font-size:12px;color:#6a5a48;
+  background:#f5edd8;
+  border-radius:6px;
+  padding:5px 10px;
+  border:1px dashed #c4b48a;
+  margin:6px 0 2px;
+}
+
+/* ---------- 售楼处打烊：门面感 ---------- */
+dialog[data-kind=houses] .estate-closed{
+  position:relative;
+  border-radius:12px;overflow:hidden;
+  background:linear-gradient(180deg,#3a3028,#2a221c);
+  box-shadow:var(--elev-2);
+  padding:0;
+  margin:0 0 14px;
+}
+/* Dark overlay on scene art to suggest evening/closed */
+dialog[data-kind=houses] .estate-closed .street-art{
+  margin:0;border-radius:0;
+  filter:brightness(.55) saturate(.7);
+}
+/* Closed sign board */
+.closed-sign{
+  position:absolute;
+  right:18px;top:50%;transform:translateY(-50%) rotate(6deg);
+  background:#fffaf0;
+  border:3px solid #b8352a;
+  border-radius:6px;
+  padding:4px 14px 6px;
+  font-weight:800;letter-spacing:.18em;
+  color:#b8352a;
+  font-size:15px;
+  box-shadow:0 4px 14px #0006, inset 0 0 0 1px #b8352a44;
+  pointer-events:none;
+}
+.closed-sign::before{
+  content:"";
+  display:block;
+  width:28px;height:3px;
+  background:#b8352a55;
+  margin:0 auto 3px;
+  border-radius:2px;
+}
+/* Text below closed scene */
+dialog[data-kind=houses] .estate-closed-body{
+  padding:12px 16px 14px;
+  background:linear-gradient(180deg,#2a221c,#1e1a16);
+  color:#d4c8b0;
+}
+dialog[data-kind=houses] .estate-closed-body p{
+  margin:3px 0;font-size:14px;
+}
+dialog[data-kind=houses] .estate-closed-body strong{
+  color:#e8c878;
+}
+dialog[data-kind=houses] .estate-closed-body .row{
+  margin-top:10px;
+}
+dialog[data-kind=houses] .estate-closed-body button{
+  background:linear-gradient(180deg,#f0e4c8,#e4d0a8);
+  border-color:#c4a870;color:#3a2a1a;font-weight:700;
+}
+
+/* ---------- 顶栏 / 市场 / 邮件 按钮内联纸色对齐 ---------- */
+.top-actions button{
+  background:linear-gradient(180deg,#fdfaf3,#f5edd8);
+  border-color:#d6c9a8;
+}
+.top-actions button:hover:not(:disabled){
+  background:linear-gradient(180deg,#f5edd8,#ecdbc0);
+}
+.window-actions button{
+  background:linear-gradient(180deg,#fdfaf3,#f0e4c8);
+  border-color:#d0c4a0;
+  font-size:12px;
+}
+.sale-buttons button,.sale-secondary button{
+  background:linear-gradient(180deg,#fdfaf3,#f0e4c8);
+  border-color:#cfc3a0;
+}
+.tabs button:not(.active){
+  background:linear-gradient(180deg,#fdfaf3,#f0e4c8);
+  border-color:#d0c4a0;
+}
+
+/* ---------- 留白 & 圆角统一 ---------- */
+dialog[data-kind=credit] .dialog-body,
+dialog[data-kind=lottery] .dialog-body{
+  padding:16px 20px 20px;
+}
+.bank-choice{display:grid;gap:3px;align-items:start}
+
+/* ---------- 响应式修正 ---------- */
+@media(max-width:700px){
+  dialog[data-kind=credit] .passbook{padding-right:80px}
+  .closed-sign{right:10px;font-size:13px;padding:3px 10px 4px}
+  dialog[data-kind=lottery] .scratch-grid{padding:7px}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   刮刮乐 v2 — 场景、彩票票面、逐格刮擦、进度、信用社强化
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ---------- 刮刮乐：场景区 + 票面头部 ---------- */
+/* lottery() uses scene() directly → DOM: div.lot-scene > svg.art-scratch
+   (no scene-slot/scene-host layer because lottery() doesn't call mountSlots) */
+.lot-scene{
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  margin:0 0 8px;
+  background:#c4b89a;
+  line-height:0;
+  height:210px;
+}
+/* Direct SVG child (scene() inline). meet + fixed box keeps 幸运刮刮乐 and the vendor in frame. */
+.lot-scene>svg{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:none;
+}
+/* Also handle if slot/host layer ever appears here */
+.lot-scene .scene-slot,
+.lot-scene .scene-host{
+  display:block;width:100%;height:100%;line-height:0;
+}
+.lot-scene .scene-host>svg{
+  display:block;width:100%;height:100%;max-height:none;
+}
+.lot-ticket-header{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 12px;
+  background:linear-gradient(0deg,#1a1a1488,transparent);
+}
+.lot-badge{
+  font-size:13px;font-weight:800;letter-spacing:.12em;
+  color:#fff;
+  background:linear-gradient(90deg,#c95a48,#a84030);
+  border-radius:4px;
+  padding:2px 10px;
+  box-shadow:0 1px 4px #00000044;
+}
+.lot-price-tag{
+  font-size:12px;font-weight:700;
+  color:#f6e8c8;
+  background:#00000055;
+  border-radius:4px;
+  padding:2px 8px;
+  letter-spacing:.04em;
+}
+
+/* ---------- 刮刮乐：会话行 ---------- */
+.lot-session-line{
+  font-size:13px;color:var(--text-secondary);
+  margin:2px 0 6px;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- 刮刮乐：空状态 ---------- */
+.lot-empty{
+  text-align:center;
+  color:var(--text-secondary);
+  padding:18px 0 10px;
+  font-size:14px;
+}
+
+/* ---------- 刮刮乐：九宫格 ---------- */
+dialog[data-kind=lottery] .scratch-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  background:linear-gradient(160deg,#f8f0da,#ede0be);
+  border:2px solid #c4a870;
+  border-radius:12px;
+  padding:12px;
+  box-shadow:inset 0 2px 8px #a88a5026,var(--elev-1);
+  margin:4px auto 8px;
+  max-width:340px;
+  touch-action:none;
+}
+
+/* ---------- 刮刮乐：单格 ---------- */
+.scratch-cell{
+  position:relative;
+  aspect-ratio:1;
+  border-radius:10px;
+  background:linear-gradient(160deg,#fdfaf3,#f2e8d0);
+  border:1.5px solid #c8b888;
+  box-shadow:inset 0 1px 0 #fff9,var(--elev-1);
+  overflow:hidden;
+  cursor:crosshair;
+  transition:transform .12s,box-shadow .12s;
+}
+.scratch-cell:focus-visible{
+  outline:3px solid #dda960;
+  outline-offset:2px;
+}
+/* pressing: visual feedback while dwell timer runs */
+.scratch-cell.pressing{
+  transform:scale(.95);
+  box-shadow:inset 0 2px 8px #a88a5044;
+}
+/* Dwell progress ring — CSS animation driven by SCRATCH_DWELL */
+.scratch-cell.pressing::after{
+  content:"";
+  position:absolute;inset:0;
+  border-radius:inherit;
+  background:conic-gradient(#d28a3c88 0%,transparent 0%);
+  animation:hy-dwell-fill .32s linear forwards;
+  pointer-events:none;
+}
+@keyframes hy-dwell-fill{
+  0%  {background:conic-gradient(#d28a3c66 0%,transparent 0%)}
+  100%{background:conic-gradient(#d28a3c66 100%,transparent 100%)}
+}
+/* Open cell — muted paper after reveal */
+.scratch-cell.open:not(.win){
+  background:linear-gradient(160deg,#ede6d6,#e0d4be);
+  border-color:#b8aa88;
+  box-shadow:inset 0 1px 6px #a89068aa;
+  cursor:default;
+}
+.scratch-cell.open:not(.win) .scratch-icon{
+  opacity:.52;
+  filter:grayscale(.45) brightness(.92);
+}
+/* Win cell — gold glow */
+.scratch-cell.win{
+  background:linear-gradient(160deg,#fdf8ec,#f8edcc);
+  border-color:#d28a3c;
+  box-shadow:inset 0 0 0 2.5px #d28a3c,0 0 14px #d28a3c55;
+  animation:hy-win-pulse .65s ease both;
+}
+@keyframes hy-win-pulse{
+  0%  {box-shadow:inset 0 0 0 2.5px #d28a3c,0 0 0 #d28a3c00}
+  50% {box-shadow:inset 0 0 0 2.5px #d28a3c,0 0 22px #d28a3c88}
+  100%{box-shadow:inset 0 0 0 2.5px #d28a3c,0 0 14px #d28a3c55}
+}
+/* Silver foil — directional metallic shimmer */
+.scratch-cell .foil{
+  position:absolute;inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(108deg,#ffffff30 0 1px,#0000 1px 3px),
+    repeating-linear-gradient(  0deg,#00000014 0 1px,#0000 1px 4px),
+    linear-gradient(135deg,
+      #e0e8ec 0%,
+      #b8c8d2 16%,
+      #ecf2f6 30%,
+      #8898a4 48%,
+      #ccdae4 64%,
+      #b0c0cc 80%,
+      #e4ecf2 100%);
+  transition:opacity .22s ease-out;
+  opacity:1;
+}
+.scratch-cell.open .foil{opacity:0;}
+
+/* Icon inside cell */
+.scratch-cell .scratch-icon{
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  pointer-events:none;
+  transition:opacity .18s,filter .18s;
+}
+.scratch-cell .art-icon{width:58%;height:58%}
+
+/* ---------- 刮刮乐：结果行 ---------- */
+.lot-result{
+  text-align:center;
+  font-size:14px;
+  font-weight:600;
+  padding:6px 0 2px;
+  min-height:24px;
+  transition:color .2s;
+}
+.lot-result:not(.muted){color:#8a5a20;font-size:15px;}
+.lot-result.muted{color:var(--text-secondary);font-weight:400;}
+
+/* ---------- 刮刮乐：奖金图例 ---------- */
+dialog[data-kind=lottery] .lot-table{
+  font-size:12px;
+  color:#6a5a48;
+  background:#f5ecd8;
+  border-radius:8px;
+  padding:6px 12px;
+  border:1px dashed #c4b488;
+  margin:6px 0 2px;
+  line-height:1.7;
+}
+
+/* ---------- 信用社：整体布局强化 ---------- */
+dialog[data-kind=credit] .street-art{
+  border-radius:10px;overflow:hidden;
+  margin:0 0 12px;
+  /* Tall enough to show the counter (y≈156 in the 480×300 scene) */
+  height:200px;
+  background:#c8baa0;
+}
+dialog[data-kind=credit] .street-art svg,
+dialog[data-kind=credit] .street-art .scene-host>svg{
+  display:block;
+  width:100%;
+  height:auto;
+  min-height:100%;
+}
+
+/* Passbook: tighter rows, stronger ruled lines, red binding */
+dialog[data-kind=credit] .passbook{
+  position:relative;
+  margin:0 0 10px;
+  padding:4px 90px 4px 16px;
+  border:1px solid #c9b48a;
+  border-left:5px solid #b8352a;
+  border-radius:6px;
+  background:#fffcf2;
+  background-image:repeating-linear-gradient(#0000 0 27px,#d9c9a8 27px 28px);
+  box-shadow:inset 0 0 0 5px #f8f0e0,var(--elev-1);
+}
+/* Passbook rows: tabular numbers, no extra margin */
+dialog[data-kind=credit] .passbook-row{
+  min-height:28px;
+  font-variant-numeric:tabular-nums;
+  font-size:14px;
+}
+dialog[data-kind=credit] .passbook-row span{color:var(--text-secondary);font-size:13px;}
+dialog[data-kind=credit] .passbook-row b{font-size:15px;color:var(--ink-strong);}
+
+/* Seal: absolute in passbook, bigger stamp */
+dialog[data-kind=credit] .passbook-seal{
+  position:absolute;
+  right:12px;top:50%;
+  transform:translateY(-50%) rotate(-9deg);
+  width:66px;height:66px;
+  display:grid;place-items:center;
+  color:#c23a32;
+  border:3.5px solid #c23a32;
+  border-radius:4px;
+  font-size:11px;font-weight:800;letter-spacing:.14em;
+  background:#fff8f6e8;
+  box-shadow:inset 0 0 0 1px #c23a3240,0 1px 6px #c23a3228;
+}
+dialog[data-kind=credit] .passbook-seal.stamped{
+  animation:hy-stamp .42s cubic-bezier(.3,1.6,.5,1) both;
+}
+@keyframes hy-stamp{
+  0%  {transform:translateY(-50%) rotate(-9deg) scale(1.4);opacity:.45;filter:blur(1px)}
+  55% {transform:translateY(-50%) rotate(-9deg) scale(.93);opacity:1;filter:none}
+  75% {transform:translateY(-50%) rotate(-9deg) scale(1.05)}
+  100%{transform:translateY(-50%) rotate(-9deg) scale(1)}
+}
+
+/* Counter/teller bar: wood-grain edge at bottom */
+dialog[data-kind=credit] .bank-block{
+  background:linear-gradient(180deg,#f8f0de,#ede0c4 calc(100% - 12px),#c49a6a calc(100% - 12px),#9a7040 calc(100% - 7px),#7a5030);
+  border-radius:10px 10px 5px 5px;
+  padding:10px 14px 24px;
+  box-shadow:inset 0 0 0 1px #ddd0b0,var(--elev-1);
+  margin-top:8px;
+}
+dialog[data-kind=credit] .bank-block .bank-row{
+  gap:8px;flex-wrap:wrap;
+}
+dialog[data-kind=credit] .bank-block button{
+  background:linear-gradient(180deg,#fdfaf3,#f0e4c8);
+  border-color:#c4a870;
+  font-weight:700;
+  font-size:13px;
+}
+dialog[data-kind=credit] .bank-block button:hover:not(:disabled){
+  background:linear-gradient(180deg,#f5edd8,#e0d0a0);
+  border-color:#a88040;
+}
+dialog[data-kind=credit] .bank-block button:disabled{
+  opacity:.42;
+}
+/* Repay block: slightly different tint to distinguish from borrow */
+dialog[data-kind=credit] .bank-block:last-of-type{
+  background:linear-gradient(180deg,#eef6f2,#daeee6 calc(100% - 12px),#6aaa88 calc(100% - 12px),#4a8868 calc(100% - 7px),#3a6848);
+}
+dialog[data-kind=credit] .bank-block:last-of-type button{
+  background:linear-gradient(180deg,#f3fbf7,#daeee6);
+  border-color:#6aaa88;
+}
+dialog[data-kind=credit] .bank-block:last-of-type button:hover:not(:disabled){
+  background:linear-gradient(180deg,#daeee6,#baded2);
+  border-color:#4a8868;
+}
+
+dialog[data-kind=credit] .bank-note{
+  font-size:12px;color:#6a5a48;
+  border-top:1px dashed #d0c0a0;
+  padding-top:6px;margin-top:8px;
+}
+
+/* ---------- 响应式补充 ---------- */
+@media(max-width:700px){
+  dialog[data-kind=lottery] .scratch-grid{max-width:100%;gap:8px;padding:10px}
+  dialog[data-kind=credit] .passbook{padding-right:84px}
+  dialog[data-kind=credit] .passbook-seal{width:58px;height:58px;font-size:10px}
+  .lot-scene .lot-ticket-header{padding:4px 8px}
+}

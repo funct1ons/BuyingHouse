@@ -648,6 +648,31 @@
       + rect(x + w * .14, y + h * .3, w * .72, h * .4, '#d8dbdf', {rx: 1.5, transform: tf})
       + rect(x + w * .18, y + h * .36, w * .22, h * .12, '#fff', {opacity: .4, transform: tf});
   }
+  function foilCard(x, y, w, h, rot, paper) {
+    const tf = `rotate(${rot} ${n(x + w / 2)} ${n(y + h / 2)})`;
+    return rect(x, y, w, h, paper, {rx: 2, transform: tf})
+      + rect(x + 3, y + 3, 5.5, h - 6, '#c6cad0', {rx: 1, transform: tf})
+      + rect(x + 4.2, y + 5, 2.2, h * .3, '#fff', {opacity: .45, transform: tf})
+      + rect(x + w * .26, y + h * .3, w * .6, h * .36, '#d8dbdf', {rx: 1.2, transform: tf});
+  }
+  function dollarBill(c, x, y, w, h, rot) {
+    const paper = mix('#6f9a84', c.t.ambient, .14), deep = mix('#2f7a68', c.t.ink, .16), light = mix('#d7eadc', c.t.lit, .18);
+    const ink = mix('#3a2e2a', c.t.ink, .25);
+    let b = rect(0, 0, w, h, paper, {rx: 1.4, stroke: ink, 'stroke-width': .6, 'stroke-opacity': .45});
+    b += rect(0, 0, w, h, 'url(#hy-paper)', {rx: 1.4, opacity: .3});
+    b += rect(1.8, 1.8, w - 3.6, h - 3.6, 'none', {stroke: light, 'stroke-width': .85, rx: 1});
+    b += circ(w * .26, h * .5, h * .3, 'none', {stroke: deep, 'stroke-width': 1});
+    b += circ(w * .26, h * .5, h * .18, light, {opacity: .7});
+    b += signText(w * .26, h * .54, '$', deep, Math.max(8, h * .4));
+    b += circ(w * .78, h * .5, h * .16, 'none', {stroke: deep, 'stroke-width': .8, opacity: .7});
+    b += rect(w * .46, h * .22, w * .16, h * .12, light, {opacity: .45, rx: .4});
+    b += rect(w * .46, h * .42, w * .2, h * .08, deep, {opacity: .18, rx: .4});
+    b += rect(w * .46, h * .58, w * .14, h * .1, light, {opacity: .35, rx: .4});
+    return grp(b, {transform: `translate(${n(x)} ${n(y)}) rotate(${rot} ${n(w / 2)} ${n(h / 2)})`});
+  }
+  function signText(x, y, label, fill, size) {
+    return `<text x="${n(x)}" y="${n(y)}" text-anchor="middle" dominant-baseline="middle" font-family="Microsoft YaHei,sans-serif" font-size="${size}" font-weight="700" fill="${fill}">${label}</text>`;
+  }
   // Neighborhood credit co-op: close interior, wood counter, cage, lamp, passbook, ink pad.
   function credit(c) {
     const W = 480, Hh = 300, t = c.t, wall = K.mat('#e6d3b8', t), wood = K.mat('#a8734a', t);
@@ -688,6 +713,9 @@
     s += line(lx, 22, lx, 44, ink, 1.3);
     s += path(`M${lx - 24} 44H${lx + 24}L${lx + 14} 62H${lx - 14}Z`, mix('#f0d7a0', t.lit, .25));
     s += path(`M${lx - 18} 46H${lx - 8}L${lx - 6} 60H${lx - 16}Z`, '#fff', {opacity: .35});
+    s += rect(148, 84, 164, 30, wood.deep) + rect(148, 84, 164, 30, 'url(#hy-wood)');
+    s += rect(152, 87, 156, 24, mix('#6a3a24', t.ink, .08));
+    s += signText(230, 100, '信用社', '#f6e4c8', 18);
     s += rect(0, 156, W, 58, wood.mid) + rect(0, 156, W, 58, 'url(#hy-wood)');
     s += rect(0, 156, 140, 58, wood.lit, {opacity: .16}) + rect(340, 156, 140, 58, wood.shade, {opacity: .25});
     s += rect(0, 152, W, 8, wood.lit);
@@ -713,7 +741,7 @@
     s += frameVignette(W, Hh, t.night ? .85 : .4);
     return K.svg(s, '0 0 480 300', 'art-scene art-credit');
   }
-  // Street-corner scratch stall: shade cloth as a banner, blank cards, a hand, a coin jar.
+  // Street-corner scratch stall: shade-cloth banner, blank cards, dollar bills and coin jar on the table.
   function scratchStand(c) {
     const W = 480, Hh = 300, t = c.t, wood = K.mat('#a8734a', t);
     const ink = mix('#3a2e2a', t.ink, .4), cloth = mix('#d15a42', t.ambient, .22), stripe = mix('#f3e0b8', t.lit, .28);
@@ -736,6 +764,7 @@
     if (c.season === 'winter') s += path('M56 58H374Q300 72 56 64Z', '#f7fafc', {opacity: .88});
     if (c.season === 'autumn') s += ell(168, 130, 3.2, 1.5, c.L[0], {transform: 'rotate(28 168 130)'});
     if (c.season === 'spring') s += ell(240, 126, 2.8, 1.4, '#f6d2da', {transform: 'rotate(-20 240 126)'});
+    s += signText(213, 118, '幸运刮刮乐', '#f7efe2', 18);
     s += ell(220, 228, 120, 10, t.shade, {opacity: .2});
     s += path('M78 174H358L398 232H30Z', wood.mid) + path('M78 174H358L398 232H30Z', 'url(#hy-wood)', {opacity: .58});
     s += path('M78 174H190L86 232H30Z', '#fff', {opacity: .12});
@@ -751,15 +780,13 @@
     s += ell(214, 214, 40, 6, t.shade, {opacity: .18});
     for (let i = 0; i < 5; i++) s += blankCard(174 + i * 2, 196 - i * 3, 64, 36, 0);
     s += blankCard(214, 214, 72, 40, -8);
-    const skin = mix('#e6b898', t.lit, .22), skinShade = mix('#c48968', t.shade, .3);
-    s += path('M188 186C206 162 250 158 286 176C304 188 310 210 292 226C270 244 236 236 228 220C214 232 196 228 190 214C176 208 174 196 188 186Z', skin);
-    s += stroke('M214 176C210 190 206 200 200 210M236 170C232 188 228 202 224 214M258 174C256 190 252 204 248 216', mix('#b88870', skinShade, .45), 1.15);
-    s += path('M228 210C210 218 206 236 224 242C242 240 246 222 236 210Z', skinShade);
-    s += path('M286 188C330 176 400 182 430 174L434 198C360 206 320 202 292 214Z', skin);
-    s += path('M360 182L430 174L432 192L358 198Z', skinShade, {opacity: .4});
-    s += path('M420 170L474 164L478 198L424 204Z', mix('#3f6d78', t.ambient, .25));
-    s += path('M424 174L452 168L454 184L426 188Z', '#fff', {opacity: .16});
-    s += path('M206 168C196 162 192 170 200 176C210 174 214 172 206 168Z', '#fff', {opacity: .45});
+    s += ell(304, 208, 50, 7, t.shade, {opacity: .16});
+    s += blankCard(248, 186, 58, 32, 12);
+    s += blankCard(270, 194, 60, 34, -9);
+    s += foilCard(300, 188, 56, 30, 7, mix('#efe0c4', t.lit, .1));
+    s += dollarBill(c, 274, 196, 54, 24, -16);
+    s += dollarBill(c, 300, 202, 56, 25, 11);
+    s += dollarBill(c, 282, 208, 50, 22, -5);
     s += weather(c, W, Hh, 16) + frameVignette(W, Hh, t.night ? .8 : .38);
     return K.svg(s, '0 0 480 300', 'art-scene art-scratch');
   }
@@ -813,7 +840,8 @@
     const o = opts || {}, key = kind + '|' + (o.phase || '') + '|' + (o.tone || '') + '|' + (o.season || '') + '|' + (o.lamps ? 1 : 0);
     if (cache.has(key)) return cache.get(key);
     const [fn, tone] = builders[kind];
-    const out = fn(ctx(o, seeds[kind], tone)).replace(/^<svg /, kind === 'city' || kind === 'street' ? '<svg ' : '<svg preserveAspectRatio="xMidYMid slice" ');
+    const slice = kind !== 'city' && kind !== 'street' && kind !== 'scratch-stand';
+    const out = fn(ctx(o, seeds[kind], tone)).replace(/^<svg /, slice ? '<svg preserveAspectRatio="xMidYMid slice" ' : '<svg ');
     if (cache.size > 80) cache.clear();
     cache.set(key, out);
     return out;

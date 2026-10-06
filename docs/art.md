@@ -88,8 +88,8 @@ HomeYear.Art.mount(document);                    // 插入共享 defs + 生成�
 
 | id | 画面 |
 |---|---|
-| `credit` | 信用社柜台 |
-| `scratch-stand` | 纸摊横幅 |
+| `credit` | 信用社柜台，匾额写「信用社」 |
+| `scratch-stand` | 横幅「幸运刮刮乐」，桌上放彩票和美金 |
 | `housing-closed` | 售楼处关门。纸条文字不画进 SVG |
 
 | id | 图案 |
@@ -97,6 +97,6 @@ HomeYear.Art.mount(document);                    // 插入共享 defs + 生成�
 | `lot-empty` | 空信封 |
 | `lot-egg` | 鸡蛋 |
 | `lot-red` | 红包 |
-| `lot-umbrella` | 雨伞 |
+| `lot-umbrella` | 与商品雨伞同一把撑开的伞 |
 | `lot-watch` | 金表 |
 | `lot-key` | 房门钥匙 |

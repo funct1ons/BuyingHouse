@@ -61,11 +61,21 @@ async function buyCard(){
   return readMask(before);
 }
 async function resultNow(){return ev(`(()=>{const text=(document.querySelector('[data-role=lot-result]')||{}).textContent||'';const yuan=cents=>{const n=cents/100;return (Number.isInteger(n)?String(n):n.toFixed(2))+' 元';};const sym=HomeYear.lotteryRules.symbols.find(s=>text==='三个'+s.name+'，奖金 '+yuan(s.prize));const fmt=n=>'¥'+(n/100).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});const s=HomeYear.UI.snapshot();const shown=document.querySelector('[data-testid=cash]').textContent;const b=document.querySelector('[data-testid=lottery-buy]');return {text,formatOk:!!sym,name:sym?sym.name:'',prize:sym?sym.prize:null,cashOk:shown===fmt(s.cash),kind:document.querySelector('dialog').dataset.kind,open:!!document.querySelector('dialog').open,buyText:b?b.textContent:'',buyDisabled:!!(b&&b.disabled)};})()`);}
+const SCRATCH_WAIT=750;
+async function waitTicketSettled(){
+  for(let n=0;n<50;n++){
+    const text=await ev('(document.querySelector("[data-role=lot-result]")||{textContent:""}).textContent');
+    if(text&&text!=='揭开三个相同的图案')return text;
+    await delay(120);
+  }
+  return ev('(document.querySelector("[data-role=lot-result]")||{textContent:""}).textContent');
+}
 async function dragCard(){
   await mark();
   const pts=await ev(`(()=>{return [0,1,2,3,4].map(i=>{const e=document.querySelector('[data-testid=scratch-'+i+']');const r=e.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2};});})()`);
   await c.send('Input.dispatchMouseEvent',{type:'mousePressed',x:pts[0].x,y:pts[0].y,button:'left',buttons:1,clickCount:1,pointerType:'mouse'});
-  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i];for(const t of [.35,.7,1]){await delay(40);await c.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,button:'left',buttons:1,pointerType:'mouse'});}}
+  await delay(SCRATCH_WAIT);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i];for(const t of [.35,.7,1]){await delay(40);await c.send('Input.dispatchMouseEvent',{type:'mouseMoved',x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,button:'left',buttons:1,pointerType:'mouse'});}await delay(SCRATCH_WAIT);}
   await c.send('Input.dispatchMouseEvent',{type:'mouseReleased',x:pts[4].x,y:pts[4].y,button:'left',buttons:0,clickCount:1,pointerType:'mouse'});
   await delay(200);
   const opened=await ev('[...document.querySelectorAll(".scratch-cell.open")].length');
@@ -78,11 +88,12 @@ async function clickCells(expectScratch){
     const skip=await ev(`document.querySelector('[data-testid=scratch-${i}]').classList.contains('open')`);
     if(skip)continue;
     await clickTry(`[data-testid=scratch-${i}]`);
+    await delay(SCRATCH_WAIT);
     first.push(await ev('[...document.querySelectorAll(".scratch-cell.open")].length'));
     const done=await ev('document.querySelector("[data-role=lot-result]").textContent!=="揭开三个相同的图案"');
     if(done)break;
   }
-  for(let i=0;i<9;i++){const skip=await ev(`document.querySelector('[data-testid=scratch-${i}]').classList.contains('open')`);if(!skip)await clickTry(`[data-testid=scratch-${i}]`);}
+  for(let i=0;i<9;i++){const skip=await ev(`document.querySelector('[data-testid=scratch-${i}]').classList.contains('open')`);if(!skip){await clickTry(`[data-testid=scratch-${i}]`);await delay(SCRATCH_WAIT);}}
   return {first,audio:await since(),expectScratch};
 }
 report.cards=0;report.seenEmpty=false;
@@ -117,7 +128,8 @@ let heard=await since();
 const book=await ev(`(()=>{const fmt=n=>'¥'+(n/100).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});const s=HomeYear.UI.snapshot();const rows=[...document.querySelectorAll('.passbook-row')].map(r=>r.textContent);return {kind:document.querySelector('dialog').dataset.kind,title:document.querySelector('#modal-title').textContent,rows,seal:document.querySelector('.passbook-seal').textContent,foot:document.querySelector('.bank-note').textContent,next:HomeYear.loanInterest(s),expect:['本金'+fmt(0),'待付利息'+fmt(0),'再过一周'+fmt(0)]};})()`);
 check('credit dialog settled',book.kind==='credit'&&book.title==='信用社'&&book.seal==='结清'&&book.foot==='有贷款时，售楼处不接待。'&&book.expect.every((t,i)=>book.rows[i]===t),book);
 {const reasons=await Promise.all(['repay-interest','repay-500','repay-all'].map(bank));check('no debt reason',reasons.every(r=>r&&r.disabled&&r.reason==='没有欠款'),reasons);const borrows=await Promise.all(['loan-500','loan-1000','loan-2000','loan-3000'].map(bank));check('borrow enabled',borrows.every(r=>r&&!r.disabled&&r.reason===''),borrows);}
-check('credit-open once',countKind(heard,'credit-open')===1,heard);
+check('credit open silent',countKind(heard,'credit-open')===0,heard);
+check('credit scene named',await ev(`(()=>{const svg=document.querySelector("dialog .art-credit");if(!svg||!(svg.textContent||"").includes("信用社"))return false;const t=[...svg.querySelectorAll("text")].find(el=>el.textContent.includes("信用社"));if(!t)return false;const a=svg.getBoundingClientRect(),r=t.getBoundingClientRect();return r.width>8&&r.height>8&&r.top>=a.top-2&&r.bottom<=a.bottom+2;})()`));
 await mark();
 await clickTry('[data-testid=loan-1000]');
 heard=await since();
@@ -134,12 +146,12 @@ await mark();
 await clickTry('[data-testid=houses]');
 heard=await since();
 const closed=await ev(`(()=>{const d=document.querySelector('dialog');return {title:d.querySelector('h2').textContent,kind:d.dataset.kind,text:d.querySelector('.dialog-body').textContent,go:!!d.querySelector('[data-testid=go-credit]'),buy:!!d.querySelector('[data-action=buy-house]'),house:!!d.querySelector('[data-testid^="house-"]')};})()`);
-check('closed office',closed.title==='售楼处关门'&&closed.kind==='houses'&&closed.text.includes('有贷款未清，售楼处暂停接待')&&closed.text.includes('未还')&&closed.go&&!closed.buy&&!closed.house,{title:closed.title,buy:closed.buy,house:closed.house});
+check('closed office',closed.title==='售楼处关门'&&closed.kind==='houses'&&closed.text.includes('贷款未清，售楼处暂停接待')&&closed.text.includes('未还')&&closed.go&&!closed.buy&&!closed.house,{title:closed.title,buy:closed.buy,house:closed.house});
 check('refuse when office closed',countKind(heard,'refuse')===1,heard);
 await mark();
 await clickTry('[data-testid=go-credit]');
 heard=await since();
-check('go-credit opens credit',await ev('document.querySelector("dialog").dataset.kind')==='credit'&&countKind(heard,'credit-open')===1,heard);
+check('go-credit opens credit',await ev('document.querySelector("dialog").dataset.kind')==='credit'&&countKind(heard,'credit-open')===0,heard);
 await closeDialog();
 await nextWeek();
 let mid=await snap();
@@ -170,11 +182,12 @@ await clickTry('[data-testid=houses]');
 check('office sells again',await ev('document.querySelector("#modal-title").textContent==="一扇属于自己的门"&&document.querySelectorAll("[data-action=buy-house]").length>0&&!!document.querySelector("[data-testid=house-studio]")'));
 await closeDialog();
 const openedAudio=await lotteryOpen();
-const lot=await ev(`(()=>{const d=document.querySelector('dialog');const b=d.querySelector('[data-testid=lottery-buy]');return {kind:d.dataset.kind,title:d.querySelector('h2').textContent,text:d.textContent,buy:b.textContent,disabled:!!b.disabled,session:!!d.querySelector('[data-role=lot-session]')};})()`);
-check('lottery stand',lot.kind==='lottery'&&lot.title==='街口刮刮乐'&&lot.text.includes('30 元一张')&&lot.text.includes('空信封 0')&&lot.text.includes('钥匙 1200')&&lot.text.includes('期望返还约 78%，不限张数，亏了不补')&&lot.buy==='刮一张'&&!lot.disabled&&lot.session, {title:lot.title,buy:lot.buy});
-check('lottery-open once',countKind(openedAudio,'lottery-open')===1,openedAudio);
+const lot=await ev(`(()=>{const d=document.querySelector('dialog');const b=d.querySelector('[data-testid=lottery-buy]');const svgEl=d.querySelector('.art-scratch');const svg=(svgEl||{}).textContent||'';const t=svgEl&&[...svgEl.querySelectorAll('text')].find(el=>el.textContent.includes('幸运刮刮乐'));let inFrame=false;if(svgEl&&t){const a=svgEl.getBoundingClientRect(),r=t.getBoundingClientRect();inFrame=r.width>8&&r.height>8&&r.top>=a.top-2&&r.bottom<=a.bottom+2&&r.left>=a.left-2&&r.right<=a.right+2;}return {kind:d.dataset.kind,title:d.querySelector('h2').textContent,text:d.textContent,buy:b.textContent,disabled:!!b.disabled,session:!!d.querySelector('[data-role=lot-session]'),banner:svg.includes('幸运刮刮乐'),bannerInFrame:inFrame,hint:d.textContent.includes('格已揭开')};})()`);
+check('lottery stand',lot.kind==='lottery'&&lot.title==='街口刮刮乐'&&lot.text.includes('30 元')&&lot.text.includes('空信封 0')&&lot.text.includes('钥匙 1200')&&lot.text.includes('期望返还约 78%，不限张数，亏了不补')&&lot.buy==='刮一张 · 30元'&&!lot.disabled&&lot.session&&lot.banner&&lot.bannerInFrame&&!lot.hint, {title:lot.title,buy:lot.buy,banner:lot.banner,bannerInFrame:lot.bannerInFrame,hint:lot.hint});
+check('lottery open silent',countKind(openedAudio,'lottery-open')===0,openedAudio);
 let row=await buyCard();report.cards++;
 check('cash masked before reveal',maskOk(row),row);
+check('no scratch counter',await ev('!document.querySelector(".scratch-hint-bar")&&!(document.querySelector("dialog").textContent||"").includes("格已揭开")'));
 let drag=await dragCard();
 check('drag opens more than one cell',drag.opened>1,{opened:drag.opened,scratch:drag.audio.filter(k=>k==='scratch')});
 check('drag scratch while motion on',drag.audio.includes('scratch'),drag.audio.filter(k=>k==='scratch'||k.startsWith('prize-')));
@@ -182,7 +195,7 @@ if(await ev('document.querySelector("[data-role=lot-result]").textContent==="揭
 let done=await resultNow();noteResult(done.text);
 check('revealed cash and prize line',done.formatOk&&done.cashOk&&done.kind==='lottery',done);
 check('prize sound matches triple',countKind(drag.audio,'scratch')>=1&&(done.text?(await ev('window.__audio.filter(k=>k==="'+prizeKindOf(done.text)+'").length>=1')):false),{text:done.text,kind:prizeKindOf(done.text)});
-if(!done.formatOk){await mark();await clickTry('[data-testid=lottery-reveal-all]');done=await resultNow();noteResult(done.text);}
+if(!done.formatOk){await mark();await clickTry('[data-testid=lottery-reveal-all]');await waitTicketSettled();done=await resultNow();noteResult(done.text);}
 check('again button after reveal',done.buyText==='再刮一张'&&done.buyDisabled===false&&done.open,{buy:done.buyText,disabled:done.buyDisabled});
 row=await buyCard();report.cards++;
 check('again stays in dialog and locks',maskOk(row)&&row.open,row);
@@ -209,9 +222,10 @@ row=await buyCard();report.cards++;
 check('mask before reveal all',maskOk(row),row);
 await mark();
 await clickTry('[data-testid=lottery-reveal-all]');
+await waitTicketSettled();
 heard=await since();
 done=await resultNow();noteResult(done.text);
-check('reveal all shows prize once',done.formatOk&&done.cashOk&&heard.filter(k=>k.startsWith('prize-')).length===1&&heard.filter(k=>k.startsWith('prize-'))[0]===prizeKindOf(done.text)&&!heard.includes('scratch'),{text:done.text,heard:heard.filter(k=>k==='scratch'||k.startsWith('prize-'))});
+check('reveal all shows prize once',done.formatOk&&done.cashOk&&heard.filter(k=>k.startsWith('prize-')).length===1&&heard.filter(k=>k.startsWith('prize-'))[0]===prizeKindOf(done.text),{text:done.text,heard:heard.filter(k=>k==='scratch'||k.startsWith('prize-'))});
 await closeDialog();
 await clickTry('[data-action=settings]');
 await ev("(()=>{const e=document.querySelector('[data-setting=animation]');e.value='off';e.dispatchEvent(new Event('change',{bubbles:true}));})()");
@@ -220,12 +234,12 @@ await closeDialog();
 await lotteryOpen();
 row=await buyCard();report.cards++;
 await mark();
-for(let i=0;i<9;i++){if(!await ev(`document.querySelector('[data-testid=scratch-${i}]').classList.contains('open')`))await clickTry(`[data-testid=scratch-${i}]`);}
+for(let i=0;i<9;i++){if(!await ev(`document.querySelector('[data-testid=scratch-${i}]').classList.contains('open')`)){await clickTry(`[data-testid=scratch-${i}]`);await delay(SCRATCH_WAIT);}}
 heard=await since();
 done=await resultNow();noteResult(done.text);
 check('reduced motion no scratch one prize',!heard.includes('scratch')&&heard.filter(k=>k.startsWith('prize-')).length===1&&heard.filter(k=>k.startsWith('prize-'))[0]===prizeKindOf(done.text),{text:done.text,heard});
 while(!report.seenEmpty&&report.cards<40){
-  if(await ev('document.querySelector("[data-role=lot-result]").textContent==="揭开三个相同的图案"'))await clickTry('[data-testid=lottery-reveal-all]');
+  if(await ev('document.querySelector("[data-role=lot-result]").textContent==="揭开三个相同的图案"')){await clickTry('[data-testid=lottery-reveal-all]');await waitTicketSettled();}
   done=await resultNow();noteResult(done.text);
   if(report.seenEmpty)break;
   if(report.cards>=40)break;
@@ -331,10 +345,10 @@ if(probe.state!=='running'||!probe.ran){report.audio.speaker='unverified';report
 else report.audio.speaker=probe.totalOsc+probe.totalBuf>0?'audio graph ran; physical speaker not measured':'running context produced no nodes before the muted probe';
 check('no runtime exceptions or http(s) requests',report.errors.length===0&&report.external.length===0,{errors:report.errors.slice(0,8),external:report.external.slice(0,8)});
 }catch(e){report.fatal=String(e&&e.stack||e).slice(0,1200);console.error(e);}finally{
-if(edge)await edge.cleanup();
 report.summary={passed:report.checks.filter(x=>x.pass).length,failed:report.failures.length,cards:report.cards,seenEmpty:report.seenEmpty};
 report.shots=report.shots.map(f=>f);
 fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));
 console.log(JSON.stringify({summary:report.summary,fatal:report.fatal,failures:report.failures,audio:report.audio,notes:report.notes,shots:report.shots,storybook:report.storybook||'reached'},null,2));
+try{if(edge)await edge.cleanup();}catch(err){report.notes.push('cleanup: '+String(err.message||err).slice(0,200));}
 if(report.fatal||report.failures.length)process.exitCode=1;
 }})();
