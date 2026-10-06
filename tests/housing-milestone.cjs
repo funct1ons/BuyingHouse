@@ -32,17 +32,26 @@ function halfUp(base, week, shocks) {
   }
   return Number((num + den / 2n) / den);
 }
-const base = H.priceBooks['0.3'].standard.houses.studio;
+const base = H.priceBooks['0.4'].standard.houses.studio;
 const week1 = H.create('housing-week1', 'standard');
-assert.equal(week1.priceBook.id, '0.3');
+assert.equal(week1.priceBook.id, '0.4');
 assert.equal(week1.priceBook.houses.studio, base);
+assert.equal(base, 420000);
 assert.equal(H.houseAt(base, 1, []), base);
-for (const [id, price] of Object.entries(H.priceBooks['0.3'].standard.houses)) {
+for (const [id, price] of Object.entries(H.priceBooks['0.4'].standard.houses)) {
   assert.equal(H.houseQuote(week1, id, 1), price);
 }
 assert.equal(H.houseAt(base, 52, []), halfUp(base, 52, []));
 assert.equal(Object.keys(H.priceBooks['0.2'].standard.houses).length, 5);
 assert.equal(H.priceBooks['0.2'].standard.houses.studio, 650000);
+assert.equal(H.priceBooks['0.4'].easy.houses.studio, 520000);
+assert.equal(H.priceBooks['0.4'].standard.houses.two, 700000);
+assert.equal(H.priceBooks['0.4'].challenge.houses.studio, 525000);
+assert.equal(H.priceBooks['0.4'].challenge.houses.two, 875000);
+for (const d of ['easy', 'standard', 'challenge']) {
+  const s = H.create('housing-cash-' + d, d);
+  assert.ok(s.cash < H.priceBooks['0.4'][d].houses.studio);
+}
 assert.equal(H.events.length, 75);
 assert.equal(H.events.some(e => String(e.id).startsWith('housing_')), false);
 
@@ -87,6 +96,7 @@ dispatch(climb, 'house', 'studio');
 const mid = climb.snapshot();
 const due = mid.priceBook.houses.flat - mid.priceBook.houses.studio;
 assert.notEqual(due, 350000);
+assert.notEqual(due, 160000);
 const upgraded = climb.dispatch({type: 'house', id: 'flat', revision: climb.visible().revision, token: 'housing-up'});
 assert.equal(upgraded.ok, true, upgraded.error);
 const after = climb.snapshot();

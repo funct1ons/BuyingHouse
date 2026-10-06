@@ -60,8 +60,8 @@
     ];
   };
   H.SaveAdapter = function (storage) {
-    const key = 'homeyear.save.v10', v9Key = 'homeyear.save.v9', v8Key = 'homeyear.save.v8', v7Key = 'homeyear.save.v7', v6Key = 'homeyear.save.v6', v5Key = 'homeyear.save.v5', v4Key = 'homeyear.save.v4', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1', milestoneKey = 'homeyear.milestones.v1';
-    const oldKeys = [v9Key, v8Key, v7Key, v6Key, v5Key, v4Key, v3Key, legacyKey, v1Key];
+    const key = 'homeyear.save.v11', v10Key = 'homeyear.save.v10', v9Key = 'homeyear.save.v9', v8Key = 'homeyear.save.v8', v7Key = 'homeyear.save.v7', v6Key = 'homeyear.save.v6', v5Key = 'homeyear.save.v5', v4Key = 'homeyear.save.v4', v3Key = 'homeyear.save.v3', legacyKey = 'homeyear.save.v2', v1Key = 'homeyear.save.v1', settingsKey = 'homeyear.settings.v1', milestoneKey = 'homeyear.milestones.v1';
+    const oldKeys = [v10Key, v9Key, v8Key, v7Key, v6Key, v5Key, v4Key, v3Key, legacyKey, v1Key];
     let quarantined = false, damagedRaw = null, milestoneQuarantined = false, milestoneDamaged = null;
     this.key = key;
     this.legacyKey = legacyKey;
@@ -88,7 +88,7 @@
       try {
         if (typeof raw !== 'string' || raw.length > 2000000) throw Error('存档文本为空或过大');
         const value = JSON.parse(raw);
-        if (value && [1,2,3,4,5,6,7,8,9].includes(value.version)) throw Error(H.oldSaveNotice);
+        if (value && [1,2,3,4,5,6,7,8,9,10].includes(value.version)) throw Error(H.oldSaveNotice);
         H.validate(value);
         return {ok: true, state: H.clone(value)};
       } catch (e) { return failure(e); }

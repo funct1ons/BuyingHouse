@@ -53,8 +53,8 @@
     if (s.status === 'playing' && s.result !== null) throw Error('未结束状态不能有结算');
     if (s.status === 'ended' && s.week !== 52) throw Error('结算周无效');
     keys(s.priceBook, ['id', 'houses', 'warehouses'], '价格簿');
-    if (s.priceBook.id !== '0.3') throw Error('价格簿无效');
-    const published = H.priceBooks['0.3'][s.difficulty];
+    if (s.priceBook.id !== '0.4') throw Error('价格簿无效');
+    const published = H.priceBooks['0.4'][s.difficulty];
     if (!published) throw Error('价格簿无效');
     keys(s.priceBook.houses, Object.keys(published.houses), '住房价');
     keys(s.priceBook.warehouses, Object.keys(published.warehouses), '仓储价');

@@ -246,7 +246,7 @@ test('同一周没有刮刮乐次数上限', () => {
   H.validate(s);
 });
 
-test('存档键是 v10，v9 原文拒绝且不被覆盖', () => {
+test('存档键是 v11，v10 原文拒绝且不被覆盖', () => {
   const map = new Map();
   const store = {
     getItem: k => map.has(k) ? map.get(k) : null,
@@ -254,14 +254,14 @@ test('存档键是 v10，v9 原文拒绝且不被覆盖', () => {
     removeItem: k => map.delete(k)
   };
   const saves = new H.SaveAdapter(store);
-  assert.equal(saves.key, 'homeyear.save.v10');
+  assert.equal(saves.key, 'homeyear.save.v11');
   const e = new H.Engine('loan-save');
   const fresh = e.snapshot();
   const legacy = H.clone(fresh);
-  legacy.version = 9;
+  legacy.version = 10;
   const raw = JSON.stringify(legacy);
-  const original = 'v9-original-must-stay';
-  map.set('homeyear.save.v9', original);
+  const original = 'v10-original-must-stay';
+  map.set('homeyear.save.v10', original);
   const parsed = saves.parse(raw);
   assert.equal(parsed.ok, false);
   assert.equal(parsed.error, H.oldSaveNotice);
@@ -269,16 +269,16 @@ test('存档键是 v10，v9 原文拒绝且不被覆盖', () => {
   assert.equal(imported.ok, false);
   assert.equal(imported.error, H.oldSaveNotice);
   assert.deepEqual(e.snapshot(), fresh);
-  assert.equal(map.get('homeyear.save.v9'), original);
-  assert.equal(map.has('homeyear.save.v10'), false);
+  assert.equal(map.get('homeyear.save.v10'), original);
+  assert.equal(map.has('homeyear.save.v11'), false);
   assert.equal(saves.save(fresh).ok, true);
-  assert.equal(map.get('homeyear.save.v9'), original);
-  assert.equal(typeof map.get('homeyear.save.v10'), 'string');
+  assert.equal(map.get('homeyear.save.v10'), original);
+  assert.equal(typeof map.get('homeyear.save.v11'), 'string');
   map.delete(saves.key);
   const loaded = saves.load();
   assert.equal(loaded.notice, H.oldSaveNotice);
   assert.equal(loaded.state, null);
-  assert.equal(map.get('homeyear.save.v9'), original);
+  assert.equal(map.get('homeyear.save.v10'), original);
 });
 
 let failed = 0;

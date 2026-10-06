@@ -4,8 +4,8 @@
     return {qty: 0, cost: 0, price: p.base, previous: p.base, trend: 0, history: [p.base], low: p.base, high: p.base};
   }
   function priceBook(difficulty) {
-    const published = H.priceBooks['0.3'][difficulty];
-    return {id: '0.3', houses: H.clone(published.houses), warehouses: H.clone(published.warehouses)};
+    const published = H.priceBooks['0.4'][difficulty];
+    return {id: '0.4', houses: H.clone(published.houses), warehouses: H.clone(published.warehouses)};
   }
   H.create = function (seed = 'CITY-382741', difficulty = 'standard') {
     if (typeof seed !== 'string' || !seed.length || seed.length > 128) throw Error('种子不能为空或过长');

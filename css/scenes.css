@@ -314,9 +314,11 @@ button,[role=button],.product{-webkit-user-select:none;user-select:none;-webkit-
 /* Housing ladder: group titles stay outside the price grid; the far tier remains in the scrolling column. */
 .house-group{display:block;min-width:0;margin-top:12px}
 .house-group-title{margin:0 0 8px;font-size:18px}
-.house-far-note{margin:0 0 8px;color:var(--text-secondary)}
+.house-near-note,.house-far-note{margin:0 0 8px;color:var(--text-secondary)}
 .house-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:14px}
 .flyer-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.flyer-year-end{margin:4px 0 0;font-size:12px;color:var(--text-secondary)}
+.loan-house-hint{display:block;width:100%;margin-top:4px;color:var(--text-secondary)}
 .flyer-price strong{white-space:nowrap}
 .goal-price{min-width:0}
 .goal-price .goal-change{margin-left:6px;font-size:12px;font-weight:700;white-space:nowrap}

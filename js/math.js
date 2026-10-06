@@ -90,7 +90,7 @@
     return Math.round((today - yesterday) / yesterday * 10000);
   };
   H.maxHouseValue = function (difficulty) {
-    const book = H.priceBooks['0.3'][difficulty];
+    const book = H.priceBooks['0.4'][difficulty];
     if (!book) throw Error('难度无效');
     const log = [{id: 'housing_stimulus', week: 6}, {id: 'housing_first', week: 6}];
     let max = 0;

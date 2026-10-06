@@ -22,7 +22,7 @@ check('住房仓储价读取本局priceBook整数', () => {
   if (H.housePrice(s, H.houses[0]) !== published + 7) throw Error('仍在读全局房价');
   if (H.warehousePrice(s, H.warehouses[1]) !== 222) throw Error('仍在读全局仓储价');
   const fresh = H.create();
-  if (H.housePrice(fresh, H.houses[1]) - H.housePrice(fresh, H.houses[0]) !== 350000) throw Error('标准差价被改动');
+  if (H.housePrice(fresh, H.houses[1]) - H.housePrice(fresh, H.houses[0]) !== 160000) throw Error('标准差价被改动');
 });
 check('结算名可解析全部20个商品', () => {
   for (const p of H.heldProducts()) {

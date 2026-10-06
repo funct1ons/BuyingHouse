@@ -179,7 +179,7 @@
       s.week=5;H.drawEvents(s);assert(!s.activeEvents.some(e=>e.id==='chips'&&e.started===2));
       assert(H.seasonAt(13)==='冬'&&H.seasonAt(14)==='春'&&H.seasonAt(27)==='夏'&&H.seasonAt(40)==='秋');
       const e=new H.Engine();const v=e.visible();assert(!('rng'in v)&&!('activeEvents'in v)&&!('onStreak'in v)&&!('absence'in v)&&!('macro'in v)&&!('personal'in v)&&!('stats'in v)&&!('trend'in v.market.rice)&&!('trend'in v.legacy.gold));
-      assert(v.priceBook&&v.priceBook.id==='0.3'&&H.housePrice(v,H.houses[0])===v.priceBook.houses.studio);
+      assert(v.priceBook&&v.priceBook.id==='0.4'&&H.housePrice(v,H.houses[0])===v.priceBook.houses.studio);
       const rngBefore=e.snapshot().rng;const marketBefore=JSON.stringify(e.snapshot().market);e.visible();e.diagnostics();const seen=e.snapshot();
       assert(rngBefore.market===seen.rng.market&&rngBefore.events===seen.rng.events&&rngBefore.visual===seen.rng.visual&&rngBefore.listing===seen.rng.listing&&rngBefore.housing===seen.rng.housing&&marketBefore===JSON.stringify(seen.market));
       for(let i=1;i<52;i++)assert(op(e,'next').ok);for(const n of e.snapshot().news)assert(H.reliability[n.reliability]);

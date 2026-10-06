@@ -2,7 +2,7 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.11', saveVersion: 10, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.12', saveVersion: 11, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
@@ -60,11 +60,11 @@
   H.products = rows.map(r => mapRow(r, r[14]));
   H.legacyProducts = legacyRows.map(r => mapRow(r, null));
   H.houses = [
-    {id:'studio', name:'老旧单间', price:650000, district:'旧街', description:'小，但房门属于自己。', icon:'⌂', ending:'勉强上车'},
-    {id:'flat', name:'普通公寓', price:1000000, district:'近郊', description:'有阳台，也有新的生活。', icon:'⌂', ending:'小有成就'},
-    {id:'two', name:'舒适两居', price:1400000, district:'河岸', description:'客厅不再兼任仓库。', icon:'⌂', ending:'安居有余'},
-    {id:'city', name:'城市住宅', price:1900000, district:'中心', description:'通勤与风景都更从容。', icon:'⌂', ending:'城市新贵'},
-    {id:'dream', name:'理想之家', price:2500000, district:'花园', description:'终于有地方安放所有梦想。', icon:'⌂', ending:'理想成真'},
+    {id:'studio', name:'老旧单间', price:420000, district:'旧街', description:'小，但房门属于自己。', icon:'⌂', ending:'有了自己的门'},
+    {id:'flat', name:'普通公寓', price:580000, district:'近郊', description:'有阳台，也有新的生活。', icon:'⌂', ending:'小有成就'},
+    {id:'two', name:'舒适两居', price:700000, district:'河岸', description:'客厅不再兼任仓库。', icon:'⌂', ending:'安居有余'},
+    {id:'city', name:'城市住宅', price:1200000, district:'中心', description:'通勤与风景都更从容。', icon:'⌂', ending:'城市新贵'},
+    {id:'dream', name:'理想之家', price:1900000, district:'花园', description:'终于有地方安放所有梦想。', icon:'⌂', ending:'理想成真'},
     {id:'townhouse', name:'市中心小洋楼', price:3600000, district:'梧桐街', description:'梧桐影落在自家的窗台上。', icon:'⌂', ending:'街角有自己的灯'},
     {id:'courtyard', name:'首都四合院', price:6200000, district:'旧城', description:'旧城的砖还在，门却是自己的。', icon:'⌂', ending:'一进院子，一片天'},
     {id:'island', name:'独立海岛', price:10800000, district:'外海', description:'四面潮水，屋子只这一间。', icon:'⌂', ending:'潮声代替闹钟'},
@@ -89,6 +89,12 @@
       easy: book({studio:520000, flat:800000, two:1120000, city:1520000, dream:2000000, townhouse:2880000, courtyard:4960000, island:8640000, mars:16000000}, {room:0, small:56000, normal:176000, large:400000}),
       standard: book({studio:650000, flat:1000000, two:1400000, city:1900000, dream:2500000, townhouse:3600000, courtyard:6200000, island:10800000, mars:20000000}, {room:0, small:70000, normal:220000, large:500000}),
       challenge: book({studio:812500, flat:1250000, two:1750000, city:2375000, dream:3125000, townhouse:4500000, courtyard:7750000, island:13500000, mars:25000000}, {room:0, small:84000, normal:264000, large:600000})
+    },
+    // 0.4 lowers standard 1–5. Easy 1–5 stay at 0.3. Challenge 1–5 = standard × 1.25. 6–9 and warehouses copy 0.3.
+    '0.4': {
+      easy: book({studio:520000, flat:800000, two:1120000, city:1520000, dream:2000000, townhouse:2880000, courtyard:4960000, island:8640000, mars:16000000}, {room:0, small:56000, normal:176000, large:400000}),
+      standard: book({studio:420000, flat:580000, two:700000, city:1200000, dream:1900000, townhouse:3600000, courtyard:6200000, island:10800000, mars:20000000}, {room:0, small:70000, normal:220000, large:500000}),
+      challenge: book({studio:525000, flat:725000, two:875000, city:1500000, dream:2375000, townhouse:4500000, courtyard:7750000, island:13500000, mars:25000000}, {room:0, small:84000, normal:264000, large:600000})
     }
   };
   for (const d of ['easy', 'standard', 'challenge']) {
@@ -97,7 +103,18 @@
     }
     for (const id of Object.keys(H.priceBooks['0.2'][d].warehouses)) {
       if (H.priceBooks['0.3'][d].warehouses[id] !== H.priceBooks['0.2'][d].warehouses[id]) throw Error('价格簿抄录错误');
+      if (H.priceBooks['0.4'][d].warehouses[id] !== H.priceBooks['0.3'][d].warehouses[id]) throw Error('价格簿抄录错误');
     }
+    for (const id of ['townhouse', 'courtyard', 'island', 'mars']) {
+      if (H.priceBooks['0.4'][d].houses[id] !== H.priceBooks['0.3'][d].houses[id]) throw Error('更远处房价被改动');
+    }
+  }
+  for (const id of ['studio', 'flat', 'two', 'city', 'dream']) {
+    if (H.priceBooks['0.4'].easy.houses[id] !== H.priceBooks['0.3'].easy.houses[id]) throw Error('轻松档城里房价被改动');
+    if (H.priceBooks['0.4'].challenge.houses[id] !== H.priceBooks['0.4'].standard.houses[id] * 125 / 100) throw Error('挑战档房价不是标准的 1.25 倍');
+  }
+  for (const h of H.houses) {
+    if (h.price !== H.priceBooks['0.4'].standard.houses[h.id]) throw Error('住房目录与标准价格簿不一致');
   }
   const fx = (kind, bps) => ({kind, bps});
   const market = [
@@ -293,5 +310,5 @@
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
   H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
   H.oldSaveNotice = '内测规则更新，旧档不兼容，请开始新游戏';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v10。请先导出损坏原文。确认替换？';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v11。请先导出损坏原文。确认替换？';
 })(window);

@@ -3,7 +3,7 @@
 // Outcome stats are measured after the decision. This file does not change house prices.
 const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
 const root = path.join(__dirname, '..'), window = {};
-const coreFiles = ['data', 'math', 'v2-baseline', 'market', 'trading', 'statistics', 'validation', 'game', 'save'];
+const coreFiles = ['data', 'math', 'v2-baseline', 'market', 'trading', 'statistics', 'validation', 'street', 'game', 'save'];
 for (const name of coreFiles) new Function('window', fs.readFileSync(path.join(root, 'js', name + '.js'), 'utf8'))(window);
 const H = window.HomeYear;
 const args = process.argv.slice(2);
@@ -24,6 +24,13 @@ for (const file of [out, reportOut]) {
   if (/balance-/i.test(norm) || historical.includes(norm)) throw Error('refusing to overwrite historical report ' + norm);
 }
 const strategies = ['conservative', 'random', 'momentum', 'value', 'event-aware', 'idle'];
+const allDifficulties = Object.keys(H.difficulties);
+const difficultyArg = get('difficulty', '');
+const strategyArg = get('strategy', '');
+if (difficultyArg && !allDifficulties.includes(difficultyArg)) throw Error('unknown difficulty ' + difficultyArg);
+if (strategyArg && !strategies.includes(strategyArg)) throw Error('unknown strategy ' + strategyArg);
+const difficulties = difficultyArg ? [difficultyArg] : allDifficulties;
+const runStrategies = strategyArg ? [strategyArg] : strategies;
 const parameters = {
   informationBoundary: 'Engine.visible 的公开字段，加商品资料 role、lowRef、basePrice、size、category。不读 snapshot、activeEvents、onStreak、absence、rng、trend，也不读下一周价格。',
   sellGain: '收益 = (H.channelNet(visible, id, qty) - cost) / cost。不用 price * 0.99。',
@@ -427,7 +434,7 @@ function warnGroup(group) {
 }
 function collect(rentWarehouse) {
   const groups = [];
-  for (const difficulty of Object.keys(H.difficulties)) for (const strategy of strategies) {
+  for (const difficulty of difficulties) for (const strategy of runStrategies) {
     const samples = [];
     for (let n = 0; n < count; n++) samples.push(run(prefix + '-' + n, difficulty, strategy, rentWarehouse));
     const group = buildGroup(samples, difficulty, strategy, rentWarehouse === false ? 'noWarehouse' : 'primary');
@@ -436,18 +443,17 @@ function collect(rentWarehouse) {
   }
   return groups;
 }
-const difficulties = Object.keys(H.difficulties);
-const totalGames = strategies.length * difficulties.length * count;
+const totalGames = runStrategies.length * difficulties.length * count;
 const format = mode === 'c1' ? 'gameplay-v4-c1-r2' : mode === 'primary' ? 'gameplay-v4-primary' : 'gameplay-v4-holdout';
 const hashes = Object.fromEntries([...coreFiles.map(f => ['js/' + f + '.js', crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'js', f + '.js'))).digest('hex')]),
   ['simulation/c1.cjs', crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'simulation/c1.cjs'))).digest('hex')]]);
 const report = {format, mode, createdAt: new Date().toISOString(), command: 'node simulation/c1.cjs ' + args.join(' '),
   seeds: count, prefix, totalGames, sensitivityGames: mode === 'c1' ? totalGames : 0,
-  rulesVersion: H.rules.version, priceBook: '0.2', housePricesUnchanged: true, eventParametersUnchanged: true, strategyThresholdsUnchanged: true,
+  rulesVersion: H.rules.version, priceBook: '0.4', housePricesUnchanged: false, eventParametersUnchanged: true, strategyThresholdsUnchanged: true,
   cohort: mode, holdoutUsed: mode === 'holdout', formal36000: false,
   pricePathNote: '涨跌分位的 n 是本难度 ' + count + ' 条价格路径的观测。六策略重复同一条路径，n 不乘 6。',
   concentrationNote: '官方份额是各局各商品正已实现利润求和。负贡献单独列出。legacyMeanNetShares 是旧的跨局均值口径，会抵消同商品负局。docs/gameplay-v4-c1.md 的名表 55.1% 只属于旧口径。',
-  parameters, sourceHashes: hashes, strategies, groups: [], sensitivityGroups: [], warnings: [], diagnosis: []};
+  parameters, sourceHashes: hashes, strategies: runStrategies, groups: [], sensitivityGroups: [], warnings: [], diagnosis: []};
 const start = Date.now();
 report.groups = collect(true);
 for (const group of report.groups) warnGroup(group);
@@ -462,7 +468,7 @@ for (const difficulty of difficulties) {
     if (row.clips.total !== base.clips.total || row.minAsk.p50 !== base.minAsk.p50) throw Error(difficulty + ' noWarehouse arm changed the price path');
   }
 }
-for (const strategy of strategies) for (const id of ['watch', 'collectible', 'phone']) {
+for (const strategy of runStrategies) for (const id of ['watch', 'collectible', 'phone']) {
   const rows = report.groups.filter(g => g.strategy === strategy);
   if (rows.length === 3 && rows.every(g => g.firstPositive && g.firstPositive.id === id && g.firstPositive.share > .35)) report.warnings.push(strategy + ' 在三种难度里 ' + id + ' 都是正部和第一且份额超过35%。诊断预警，不自动改事件。');
 }
@@ -479,15 +485,17 @@ if (mode === 'c1') {
   for (const difficulty of difficulties) {
     const rows = Object.fromEntries(report.groups.filter(g => g.difficulty === difficulty).map(g => [g.strategy, g]));
     const ev = rows['event-aware'], idle = rows.idle, cons = rows.conservative, mom = rows.momentum;
-    report.diagnosis.push(difficulty + '：事件感知买房率 ' + pct(ev.successRate) + '，' + band(ev, idle) + '不交易 ' + pct(idle.successRate) + '，' + band(ev, cons) + '保守 ' + pct(cons.successRate) + '。追涨买房周中位数 ' + num(mom.purchaseWeek.p50) + '。');
-    const ask = cons.minAsk, afford = cons.startingCashAffordUnits, clip = cons.clips;
+    const market = cons || report.groups.find(g => g.difficulty === difficulty);
+    if (ev && idle && cons) report.diagnosis.push(difficulty + '：事件感知买房率 ' + pct(ev.successRate) + '，' + band(ev, idle) + '不交易 ' + pct(idle.successRate) + '，' + band(ev, cons) + '保守 ' + pct(cons.successRate) + '。追涨买房周中位数 ' + num(mom ? mom.purchaseWeek.p50 : null) + '。');
+    const ask = market.minAsk, afford = market.startingCashAffordUnits, clip = market.clips;
     report.diagnosis.push(difficulty + '：在售最低买价 p10/p50/p90 为 ' + ask.p10 + '/' + ask.p50 + '/' + ask.p90 + ' 分。起步现金 ' + afford.initialCash + ' 分可买件数 p10/p50/p90 为 ' + afford.p10 + '/' + afford.p50 + '/' + afford.p90 + '。');
-    report.diagnosis.push(difficulty + '：价格钳制 ' + clip.total + ' / ' + clip.priceWrites + '（' + pct(clip.rate) + '）。persistCap 触发 ' + cons.persistCap.triggers + '，与钳制分开。' + (cons.persistCap.triggers ? '' : '这 ' + count + ' 条路径没有触发护栏，不能写成护栏永远不会触发。') + '投机品冲击首周钳制 ' + clip.specStartClips + ' / ' + clip.specStarts + '。');
-    report.diagnosis.push(difficulty + '：noNewEvent 观测 ' + cons.noNewEventMovesBps.n + '，newEvent 全池观测 ' + cons.newEventMovesBps.n + '，受影响品首冲观测 ' + cons.affectedFirstShockBps.n + '。这是 ' + count + ' 条路径，不是六策略相乘后的独立样本。');
+    report.diagnosis.push(difficulty + '：价格钳制 ' + clip.total + ' / ' + clip.priceWrites + '（' + pct(clip.rate) + '）。persistCap 触发 ' + market.persistCap.triggers + '，与钳制分开。' + (market.persistCap.triggers ? '' : '这 ' + count + ' 条路径没有触发护栏，不能写成护栏永远不会触发。') + '投机品冲击首周钳制 ' + clip.specStartClips + ' / ' + clip.specStarts + '。');
+    report.diagnosis.push(difficulty + '：noNewEvent 观测 ' + market.noNewEventMovesBps.n + '，newEvent 全池观测 ' + market.newEventMovesBps.n + '，受影响品首冲观测 ' + market.affectedFirstShockBps.n + '。这是 ' + count + ' 条路径，不是六策略相乘后的独立样本。');
   }
   for (const g of report.groups) if (g.purchaseWeek.p10 !== null && g.purchaseWeek.p10 < 20) report.diagnosis.push(g.difficulty + '/' + g.strategy + ' 买房周 p10 为 ' + g.purchaseWeek.p10 + '，中位数 ' + g.purchaseWeek.p50 + '。只记录，本轮不改价。');
   const roleBits = difficulties.map(difficulty => {
-    const g = report.groups.find(row => row.difficulty === difficulty && row.strategy === 'conservative');
+    const g = report.groups.find(row => row.difficulty === difficulty && row.strategy === 'conservative')
+      || report.groups.find(row => row.difficulty === difficulty);
     const fmt = role => (g.noNewEventByRole[role].absP50 / 100).toFixed(1) + '%';
     return difficulty + ' ' + fmt('daily') + '/' + fmt('industry') + '/' + fmt('spec');
   });
@@ -499,15 +507,15 @@ if (mode === 'c1') {
   }
   report.diagnosis.push('无租仓对照只看共同 80% 升级规则是否占用买房现金。不因此改房价，也不要求各策略买房率相等。');
 }
-report.diagnosis.push('房价、仓储标价、事件幅度和六个策略的买卖阈值本轮没有改。');
+report.diagnosis.push('城里 1–5 档底价改为价格簿 0.4；6–9 档、仓储、手续费、事件幅度和六个策略买卖阈值没有改。');
 report.elapsedSeconds = (Date.now() - start) / 1000;
 fs.mkdirSync(path.dirname(path.join(root, out)), {recursive: true});
 fs.writeFileSync(path.join(root, out), JSON.stringify(report, null, 2));
 const title = mode === 'c1' ? '# C1 计量修订 r2' : mode === 'primary' ? '# 正式主样本' : '# 正式留出样本';
 const intro = mode === 'c1'
-  ? totalGames + ' 局 = ' + strategies.length + ' 策略 × ' + difficulties.length + ' 难度 × ' + count + ' 主种子。另有同种子无租仓对照 ' + totalGames + ' 局，不是正式策略。未使用留出种子，不是正式 36000 局。'
+  ? totalGames + ' 局 = ' + runStrategies.length + ' 策略 × ' + difficulties.length + ' 难度 × ' + count + ' 主种子。另有同种子无租仓对照 ' + totalGames + ' 局，不是正式策略。未使用留出种子，不是正式 36000 局。'
   : '本文件是正式' + (mode === 'primary' ? '主样本' : '留出样本') + '单集，totalGames = ' + totalGames + '。6 策略 × 3 难度 × 1000 种子 = 18000，是一集，不是 36000，也不是 C1。另一集单独成文件。';
-const lines = [title, '', intro, '', '模式 ' + mode + '。规则版本 ' + H.rules.version + '，价格簿 0.2。耗时 ' + report.elapsedSeconds.toFixed(1) + ' 秒。', '', report.pricePathNote, report.concentrationNote, '', '## 参数', ''];
+const lines = [title, '', intro, '', '模式 ' + mode + '。规则版本 ' + H.rules.version + '，价格簿 0.4。耗时 ' + report.elapsedSeconds.toFixed(1) + ' 秒。', '', report.pricePathNote, report.concentrationNote, '', '## 参数', ''];
 for (const key of ['informationBoundary', 'sellGain', 'buyCheck', 'housing', 'warehouse', 'everLowCash', 'terminalLowCash', 'bankrupt', 'capacityStuck', 'newEventMoves', 'noNewEventMoves', 'affectedFirstShock', 'sampleDependence', 'clip', 'sensitivityNoWarehouse']) lines.push('- ' + parameters[key]);
 lines.push('- 保守：在售，且 role 为 daily 或 lowRef，且 price/base < ' + parameters.conservative.buyRatioBelow + '。仓位 ' + parameters.conservative.cashShare + '。卖出收益 >= ' + parameters.conservative.sellGainAtLeast + '，或价格/参考价 >= ' + parameters.conservative.sellRatioAtLeast + '，或收益 < ' + parameters.conservative.stopGainBelow + '。');
 lines.push('- 随机：卖出概率 ' + parameters.random.sellChance + '，买入概率 ' + parameters.random.buyChance + '，仓位 ' + parameters.random.cashShareMin + ' 到 ' + (parameters.random.cashShareMin + parameters.random.cashShareSpan) + '。' + parameters.random.rng + '。');
@@ -523,11 +531,11 @@ for (const g of report.groups) {
   const iv = g.successInterval;
   lines.push('|' + [g.difficulty, g.strategy, pct(g.successRate), iv.low === null ? '—' : pct(iv.low).replace('%', '') + '–' + pct(iv.high), num(g.purchaseWeek.p50), pct(g.upgradeRate), pct(g.capacityStuckRate), pct(g.everLowCashRate), pct(g.terminalLowCashRate), g.meanBuybacks.toFixed(2), g.minAsk.p50, g.clips.total, g.persistCap.triggers].join('|') + '|');
 }
-lines.push('', '年内低现金是 everLowCash，终局低现金是 terminalLowCash。前一版「极低现金」列是终局口径，而且漏记了买入、租仓和买房之后的现金。', '', '## 住房、仓储、回撤与正部和集中度', '', '|难度|策略|租/单间/公寓/两居/城/梦|仓储档计数|仓储投入|利润均值|回撤P50|破产|第一正部和|合份额|', '|---|---|---|---|---:|---:|---:|---:|---|---:|');
+lines.push('', '年内低现金是 everLowCash，终局低现金是 terminalLowCash。前一版「极低现金」列是终局口径，而且漏记了买入、租仓和买房之后的现金。', '', '## 住房、仓储、回撤与正部和集中度', '', '|难度|策略|租/单间/公寓/两居/城/梦/洋楼/四合/岛/火星|仓储档计数|仓储投入|利润均值|回撤P50|破产|第一正部和|合份额|', '|---|---|---|---|---:|---:|---:|---:|---|---:|');
 for (const g of report.groups) {
   const h = g.houses, w = g.warehouses;
   const first = g.firstPositive ? g.firstPositive.id + ' ' + pct(g.firstPositive.share) : '无正利润';
-  lines.push('|' + [g.difficulty, g.strategy, [h.renting, h.studio, h.flat, h.two, h.city, h.dream].join('/'),
+  lines.push('|' + [g.difficulty, g.strategy, [h.renting, h.studio, h.flat, h.two, h.city, h.dream, h.townhouse, h.courtyard, h.island, h.mars].join('/'),
     H.warehouses.map(x => w[x.id]).join('/'), yuan(g.meanWarehouseSpent), yuan(g.profit.mean),
     g.drawdownPpm.p50 === null ? '—' : (g.drawdownPpm.p50 / 10000).toFixed(1) + '%', pct(g.bankruptRate), first, pct(g.compactShare)].join('|') + '|');
 }
@@ -542,7 +550,8 @@ if (mode === 'c1') {
 }
 lines.push('## 涨跌分位', '', 'noNewEvent 是没有新事件头条的周，全池 12 品，仍可能有持续项。newEvent 是新事件头条周的全池涨跌，含未受影响商品。affected 只含冲击首周被效果命中的商品。n 不乘策略数。', '', '|难度|序列|n|p10|p50|p90|绝对p50|绝对p90|极端2500|', '|---|---|---:|---:|---:|---:|---:|---:|---:|');
 for (const difficulty of difficulties) {
-  const g = report.groups.find(row => row.difficulty === difficulty && row.strategy === 'conservative');
+  const g = report.groups.find(row => row.difficulty === difficulty && row.strategy === 'conservative')
+    || report.groups.find(row => row.difficulty === difficulty);
   for (const [name, row] of [['noNewEvent', g.noNewEventMovesBps], ['newEvent', g.newEventMovesBps], ['affected', g.affectedFirstShockBps]]) {
     lines.push('|' + [difficulty, name, row.n, num(row.p10), num(row.p50), num(row.p90), num(row.absP50), num(row.absP90), row.extreme2500].join('|') + '|');
   }
