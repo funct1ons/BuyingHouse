@@ -2,7 +2,7 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.8', saveVersion: 7, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.9', saveVersion: 8, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
@@ -111,7 +111,7 @@
   ];
   H.events = market.map(r => ({id:r[0], type:'market', title:r[1], situation:r[2], description:r[2],
     duration:r[3], fade:r[4], reliability:r[5], effects:r[6], weight:1}));
-  H.swanRules = Object.freeze({probability: .16, firstWeek: 4, lastWeek: 50, gap: 6, limit: 6});
+  H.swanRules = Object.freeze({probability: .42, firstWeek: 4, lastWeek: 50, gap: 4, limit: 8});
   const swans = [
     ['swan_route','主航道临时封航，进口柜台等不到货','在途货物延迟已经发生，进口耐用品供给收紧。本周变化以成交价为准。',3,['phone'],null,{phone:fx('persist',18000),gpu:fx('persist',12000),ac:fx('persist',10000)}],
     ['swan_efficiency','新算法落地，旧算力订单突然撤回','效率突破已改变旧硬件订单预期，部分订单已经撤回。本周变化以成交价为准。',1,['gpu'],null,{gpu:fx('immediate',-7000),phone:fx('immediate',-4500)}],
@@ -119,7 +119,15 @@
     ['swan_heat','异常热浪提前压城，制冷货源吃紧','热旱天气已牵动制冷、农产和雨具需求。本周变化以成交价为准。',3,['ac'],'夏',{ac:fx('persist',22000),fruit:fx('persist',7000),umbrella:fx('persist',-4500)}],
     ['swan_tariff','进口新规突然生效，柜台成本与消费预期分化','进口成本和可选消费预期已经分化，各商品可能有不同方向。本周变化以成交价为准。',2,['phone','collectible'],null,{phone:fx('persist',15000),watch:fx('persist',-6500),collectible:fx('persist',-7000)}],
     ['swan_protection','防护标准临时升级，常备用品突然紧俏','临时防护标准已经升级，常备用品需求挤压供给。本周变化以成交价为准。',1,['mask'],null,{mask:fx('immediate',40000),rice:fx('immediate',8000),eggs:fx('immediate',6000)}],
-    ['swan_egg_relief','加急蛋品到货，短缺预期迅速消退','到货与需求降温已缓解短缺预期，并非此前事件的定时后续。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',-7000),rice:fx('immediate',-3500)}]
+    ['swan_egg_relief','加急蛋品到货，短缺预期迅速消退','到货与需求降温已缓解短缺预期，并非此前事件的定时后续。本周变化以成交价为准。',1,['eggs'],null,{eggs:fx('immediate',-7000),rice:fx('immediate',-3500)}],
+    ['swan_export','先进芯片出口许可收紧，显卡柜台断档','部分先进计算与半导体制造物项的出口管制已经加码，货源收紧。本周变化以成交价为准。',2,['gpu'],null,{gpu:fx('persist',16000),phone:fx('persist',8000)}],
+    ['swan_redsea','红海航线遇袭，手机和名表改走远路','红海商船遇袭已经发生，部分进口货改道。本周变化以成交价为准。',2,['phone'],null,{phone:fx('persist',10000),watch:fx('persist',8000)}],
+    ['swan_gas','寒冬气源告急，冬衣柜台被提前搬空','天然气供应缺口的风险已经写进公开报告，取暖季的冬衣需求被提前拉高。本周变化以成交价为准。',3,['coat'],'冬',{coat:fx('persist',16000)}],
+    ['swan_nino','厄尔尼诺已经形成，果园和稻田一起紧张','热带太平洋的厄尔尼诺条件已经宣布，天气扰动牵动水果和大米。本周变化以成交价为准。',3,['fruit'],null,{fruit:fx('persist',9000),rice:fx('persist',5000)}],
+    ['swan_grain','黑海粮食船重新出海，米价预期松了一截','黑海粮食出口恢复的协议已经宣布。这不是任何短缺事件的定时后续。本周变化以成交价为准。',1,['rice'],null,{rice:fx('immediate',-7000),pork:fx('immediate',-3500)}],
+    ['swan_meat','猪价冲上公开指数的高位，屠宰柜台抬价','猪价冲高已经记入当月食品价格指数。大米不在这场冲击里。本周变化以成交价为准。',1,['pork'],null,{pork:fx('immediate',16000)}],
+    ['swan_rates','政策利率上调落地，橱窗里的奢侈品先冷却','政策利率目标区间上调已经公布。奢侈品回落是本城映射，不是利率本身。本周变化以成交价为准。',1,['watch'],null,{watch:fx('immediate',-8000),collectible:fx('immediate',-9000)}],
+    ['swan_bank','一家科技银行突然关门，风险偏好当周收缩','银行已被关闭并指定接管人。藏品和显卡的回落只是本城情绪映射。本周变化以成交价为准。',1,['collectible'],null,{collectible:fx('immediate',-9500),gpu:fx('immediate',-5000)}]
   ];
   H.events.push(...swans.map(r => ({id:r[0], type:'market', tier:'swan', title:r[1], situation:r[2], description:r[2],
     duration:r[3], primaryProducts:r[4], season:r[5], effects:r[6], fade:'none', reliability:'reliable', weight:1})));
@@ -133,7 +141,15 @@
     swan_egg_relief: origin('需求降温与批发蛋价回落','2025-03—04','USDA ERS','Retail egg prices fall, following declining wholesale prices',eggURL,'需求降温与新增禽流感病例暂停伴随批发价回落，零售价调整滞后；不是产能已恢复。','加急到货和大米联动是原创；不是先涨后跌的定时后续，不保证反弹或配对。'),
     swan_heat: origin('欧洲极端高温','2025-06—07','WMO','Extreme heat grips Europe','https://wmo.int/media/news/extreme-heat-grips-europe','欧洲多地出现极端高温与热浪。','制冷、农产与热旱雨具需求映射是原创，不证明空调、水果或雨具的现实实测价格。'),
     swan_tariff: origin('关税与贸易不确定性','2025-04-16','WTO','Temporary tariff pause mitigates trade contraction, but strong downside risks persist','https://www.wto.org/english/news_e/news25_e/tfore_16apr25_e.htm','关税与政策不确定性导致当时贸易展望下调。','贸易预测不是全年实际结果或商品零售价；手机、名表与藏品方向为原创设计。'),
-    swan_protection: origin('防护用品供给受扰','2020-03-03','WHO','Shortage of personal protective equipment endangering health workers worldwide','https://www.who.int/news/item/03-03-2020-shortage-of-personal-protective-equipment-endangering-health-workers-worldwide','防护用品供给受扰、需求上升，WHO呼吁增加生产。','虚构临时防护标准及常备需求，冲击非新闻实测幅度；不宣传囤积获利，不渲染伤亡。')
+    swan_protection: origin('防护用品供给受扰','2020-03-03','WHO','Shortage of personal protective equipment endangering health workers worldwide','https://www.who.int/news/item/03-03-2020-shortage-of-personal-protective-equipment-endangering-health-workers-worldwide','防护用品供给受扰、需求上升，WHO呼吁增加生产。','虚构临时防护标准及常备需求，冲击非新闻实测幅度；不宣传囤积获利，不渲染伤亡。'),
+    swan_export: origin('先进计算与半导体出口管制','2022-10-13','《联邦公报》（govinfo）','Implementation of Additional Export Controls: Certain Advanced Computing and Semiconductor Manufacturing Items; Supercomputer and Semiconductor End Use; Entity List Modification; Interim Final Rule','https://www.govinfo.gov/content/pkg/FR-2022-10-13/html/2022-21658.htm','2022年10月13日《联邦公报》第87卷第197期刊登临时最终规则，对部分先进计算和半导体制造物项、超级计算机与半导体最终用途加严出口管制，并调整实体清单。','显卡与手机的涨幅是虚构供给映射，不是公报里的价格或配额，也不构成买卖建议。'),
+    swan_redsea: origin('安理会谴责红海航运袭击','2024-01-10','联合国新闻','Security Council strongly condemns Houthi attacks on Red Sea shipping','https://news.un.org/en/story/2024/01/1145382','2024年1月10日，安理会通过决议，以最强烈措辞谴责胡塞武装在红海沿岸对商船的多次袭击。','手机与名表涨幅是虚构改道映射，不是决议里的运价或零售价。不描写伤亡，也不与运河搁浅事件绑成一对。'),
+    swan_gas: origin('欧盟如何避免天然气短缺','2022-12-12','IEA','How the European Union can avoid natural gas shortages in 2023','https://www.iea.org/news/how-the-european-union-can-avoid-natural-gas-shortages-in-2023','2022年12月12日IEA报告指出，若俄罗斯管道气降至零，欧盟2023年可能面临近300亿立方米的天然气供需缺口，并列出缩小缺口的行动。','羽绒服涨幅是虚构的取暖季映射，不是报告里的气价、缺口立方米数或服装零售价。'),
+    swan_nino: origin('世界气象组织宣布厄尔尼诺开始','2023-07-04','WMO','World Meteorological Organization declares onset of El Niño conditions','https://wmo.int/media/news/world-meteorological-organization-declares-onset-of-el-nino-conditions','2023年7月4日WMO宣布，热带太平洋时隔七年再次形成厄尔尼诺，并可能推高全球温度、扰乱天气与气候型态。','水果与大米涨幅是虚构农产映射，不是公报里的气温或零售价。'),
+    swan_grain: origin('黑海粮食出口协议','2022-07-22','联合国新闻','Black Sea grain exports deal ‘a beacon of hope’ amid Ukraine war - Guterres','https://news.un.org/en/story/2022/07/1123062','2022年7月22日，联合国新闻称一项前所未有的协议使乌克兰粮食得以经黑海恢复出口。','大米与猪肉的跌幅是虚构供给缓解映射，不是协议里的粮价，也不与任何短缺事件配对。不写伤亡，不构成买卖建议。'),
+    swan_meat: origin('粮农组织食品价格指数三月跃升','2022-04-08','FAO','FAO Food Price Index posts significant leap in March','https://www.fao.org/newsroom/detail/fao-food-price-index-posts-significant-leap-in-march/en','页面 CreatedOn 为2022-04-08。正文称2022年3月世界食品商品价格大幅跃升；肉类价格指数当月上涨4.8%并创纪录，西欧屠宰猪短缺推动猪肉价格。同期大米价格指数几乎没有变化。','游戏只抬猪肉，幅度是虚构映射，不是指数里的4.8%，也不把几乎没变的大米写成同向冲击。'),
+    swan_rates: origin('美联储公开市场委员会声明','2022-09-21','美联储','Federal Reserve issues FOMC statement','https://www.federalreserve.gov/newsevents/pressreleases/monetary20220921a.htm','2022年9月21日FOMC声明将联邦基金利率目标区间上调至3%至3.25%。','名表与藏品跌幅是虚构消费冷却映射，不是利率变动的幅度，也不是对后市的预测。'),
+    swan_bank: origin('FDIC接管硅谷银行受保存款人','2023-03-10','FDIC','FDIC Creates a Deposit Insurance National Bank of Santa Clara to Protect Insured Depositors of Silicon Valley Bank, Santa Clara, California','https://www.fdic.gov/news/press-releases/2023/pr23016.html','2023年3月10日，加州金融保护与创新局关闭位于圣克拉拉的硅谷银行，并指定FDIC为接管人，以保护受保存款人。','藏品与显卡跌幅是虚构风险偏好映射，不是存款保险范围，也不是买卖建议。')
   });
   H.housingRules = Object.freeze({probability:.12, firstWeek:6, lastWeek:46, gap:8, limit:3});
   H.housingEvents = Object.freeze([
@@ -194,5 +210,5 @@
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
   H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
   H.oldSaveNotice = '内测规则更新，旧档不兼容，请开始新游戏';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v7。请先导出损坏原文。确认替换？';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v8。请先导出损坏原文。确认替换？';
 })(window);

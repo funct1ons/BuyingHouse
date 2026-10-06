@@ -72,14 +72,14 @@
       if (s.migration && s.migration.atWeek > s.upgrade.atWeek) throw Error('迁移链周数不一致');
       if (typeof s.upgrade.backup !== 'string' || !/^homeyear\.save\.backup\.[0-9a-f]{16}(?:\.[1-9]\d{0,2})?$/.test(s.upgrade.backup)) throw Error('规则升级备份无效');
     }
-    if (!Array.isArray(s.swanLog) || s.swanLog.length > 6) throw Error('重大事件日志无效');
+    if (!Array.isArray(s.swanLog) || s.swanLog.length > H.swanRules.limit) throw Error('重大事件日志无效');
     const swanIds = new Set();
-    let swanWeek = -2;
+    let swanWeek = null;
     for (const entry of s.swanLog) {
       keys(entry, ['id', 'week'], '重大事件日志');
       const e = H.events.find(e => e.id === entry.id && e.tier === 'swan');
-      H.int(entry.week, 4, Math.min(50, s.week));
-      if (!e || swanIds.has(entry.id) || entry.week - swanWeek < 6 || (e.season && H.seasonAt(H.calendarWeek(s, entry.week)) !== e.season)) throw Error('重大事件日志冲突');
+      H.int(entry.week, H.swanRules.firstWeek, Math.min(H.swanRules.lastWeek, s.week));
+      if (!e || swanIds.has(entry.id) || (swanWeek !== null && entry.week - swanWeek < H.swanRules.gap) || (e.season && H.seasonAt(H.calendarWeek(s, entry.week)) !== e.season)) throw Error('重大事件日志冲突');
       if ((s.upgrade && entry.week <= s.upgrade.atWeek) || (!s.upgrade && s.migration && entry.week <= s.migration.atWeek)) throw Error('规则升级前不能有重大事件');
       swanIds.add(entry.id); swanWeek = entry.week;
     }

@@ -43,7 +43,7 @@ for (const [id, price] of Object.entries(H.priceBooks['0.3'].standard.houses)) {
 assert.equal(H.houseAt(base, 52, []), halfUp(base, 52, []));
 assert.equal(Object.keys(H.priceBooks['0.2'].standard.houses).length, 5);
 assert.equal(H.priceBooks['0.2'].standard.houses.studio, 650000);
-assert.equal(H.events.length, 37);
+assert.equal(H.events.length, 45);
 assert.equal(H.events.some(e => String(e.id).startsWith('housing_')), false);
 
 const shock = [{id: 'housing_stimulus', week: 6}];
