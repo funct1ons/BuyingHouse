@@ -11,11 +11,24 @@
     return a;
   }
   H.loanOpen = s => s.loan.principal > 0 || s.loan.interestDue > 0;
+  H.activeLoanRules = function (s) {
+    const extra = s && H.difficulties[s.difficulty] && H.difficulties[s.difficulty].loan;
+    const base = H.loanRules;
+    if (!extra) return base;
+    return {
+      weeklyNumer: extra.weeklyNumer != null ? extra.weeklyNumer : base.weeklyNumer,
+      weeklyDenom: extra.weeklyDenom != null ? extra.weeklyDenom : base.weeklyDenom,
+      maxPrincipal: extra.maxPrincipal != null ? extra.maxPrincipal : base.maxPrincipal,
+      repayAmount: extra.repayAmount != null ? extra.repayAmount : base.repayAmount,
+      tiers: extra.tiers || base.tiers
+    };
+  };
   H.loanInterest = function (s) {
     const principal = s.loan.principal;
     if (!principal) return 0;
-    const denom = H.loanRules.weeklyDenom;
-    return Math.floor((principal * H.loanRules.weeklyNumer + denom - 1) / denom);
+    const rules = H.activeLoanRules(s);
+    const denom = rules.weeklyDenom;
+    return Math.floor((principal * rules.weeklyNumer + denom - 1) / denom);
   };
   H.accrueLoan = function (s) {
     const interest = H.loanInterest(s);
@@ -24,9 +37,11 @@
     s.stats.loanInterestAccrued = H.add(s.stats.loanInterestAccrued, interest);
   };
   H.borrowLoan = function (s, id) {
-    if (typeof id !== 'string' || !Object.prototype.hasOwnProperty.call(H.loanRules.tiers, id)) throw Error('贷款档位无效');
+    const rules = H.activeLoanRules(s);
+    if (typeof id !== 'string' || !Object.prototype.hasOwnProperty.call(rules.tiers, id)) throw Error('贷款档位无效');
     if (H.loanOpen(s)) throw Error('请先还清当前贷款');
-    const amount = H.loanRules.tiers[id];
+    const amount = rules.tiers[id];
+    if (amount > rules.maxPrincipal) throw Error('贷款档位无效');
     s.cash = H.add(s.cash, amount);
     s.loan.principal = amount;
     s.stats.loanDrawn = H.add(s.stats.loanDrawn, amount);
@@ -36,8 +51,9 @@
     const principal = s.loan.principal, due = s.loan.interestDue, total = principal + due;
     if (total === 0) throw Error('没有未还贷款');
     if (id === 'interest' && due === 0) throw Error('没有待付利息');
-    const amount = id === 'interest' ? due : id === 'all' ? total : H.loanRules.repayAmount;
-    if (id === '500' && total < amount) throw Error('欠款不足 500 元，请还清全部');
+    const chunk = H.activeLoanRules(s).repayAmount;
+    const amount = id === 'interest' ? due : id === 'all' ? total : chunk;
+    if (id === '500' && total < amount) throw Error('欠款不足这一档，请还清全部');
     if (amount > total) throw Error('还款超过欠款');
     if (s.cash < amount) throw Error('还款资金不足');
     const toInterest = Math.min(due, amount), toPrincipal = amount - toInterest;

@@ -35,7 +35,7 @@
     s.stats.trades = H.add(s.stats.trades,1);
   };
   H.buyHouse = function (s,id) {
-    if (H.loanOpen(s)) throw Error('售楼处暂停接待，请先还清信用社贷款');
+    if (s.status === 'rebuy' && H.loanOpen(s)) throw Error('拍卖后仍有欠款，无法再次买房');
     const index = H.houses.findIndex(h => h.id === id), old = H.houses.findIndex(h => h.id === s.house);
     if (index < 0 || index <= old) throw Error('仅允许首次购买或升级住房');
     const price = H.housePrice(s, H.houses[index]);
@@ -48,6 +48,22 @@
     if (!Array.isArray(s.purchases)) s.purchases = [];
     s.purchases.push({houseId: id, week: s.week, price, paid: due});
     if (s.stats.houseWeek === 0) s.stats.houseWeek = s.week;
+  };
+  // Closing auction is a single transition. Keep purchase history for the annual ledger.
+  H.auctionHouse = function (s) {
+    const proceeds = H.houseValue(s);
+    s.auction = {houseId: s.house, proceeds, purchaseCount: s.purchases.length,
+      cashBefore: s.cash, principalBefore: s.loan.principal, interestBefore: s.loan.interestDue};
+    s.cash = H.add(s.cash, proceeds);
+    const interest = Math.min(s.cash, s.loan.interestDue);
+    const principal = Math.min(s.cash - interest, s.loan.principal);
+    s.cash -= interest + principal;
+    s.loan.interestDue -= interest;
+    s.loan.principal -= principal;
+    s.stats.loanInterestPaid = H.add(s.stats.loanInterestPaid, interest);
+    s.stats.loanPrincipalPaid = H.add(s.stats.loanPrincipalPaid, principal);
+    s.house = null;
+    s.status = 'rebuy';
   };
   H.upgradeWarehouse = function (s,id) {
     const index = H.warehouses.findIndex(w => w.id === id), old = H.warehouses.findIndex(w => w.id === s.warehouse);

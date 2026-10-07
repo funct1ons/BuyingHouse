@@ -3,6 +3,22 @@
   const marketEvents = () => H.events.filter(e => e.type === 'market' && e.tier !== 'swan');
   const personalEvents = () => H.events.filter(e => e.type === 'personal');
   const pick = (s, list) => list[Math.floor(H.random(s, 'events') * list.length)];
+  const favor = (u, strength) => {
+    const lifted = 1 - Math.pow(1 - u, 3);
+    return u * (1 - strength) + lifted * strength;
+  };
+  const eventScore = e => Object.values(e.effects || {}).reduce((n, fx) => n + (fx.bps || 0), 0);
+  const luckyPick = (s, list) => {
+    if (!H.difficulty(s).luck || list.length < 2) return pick(s, list);
+    const helpful = list.filter(e => eventScore(e) > 0);
+    if (!helpful.length || H.random(s, 'events') >= 0.8) return pick(s, list);
+    return helpful[Math.floor(H.random(s, 'events') * helpful.length)];
+  };
+  const luckyUnit = s => {
+    const u = H.random(s, 'market');
+    if (!H.difficulty(s).luck) return u;
+    return favor(u, 0.75);
+  };
   const poolIndex = id => H.products.findIndex(p => p.id === id);
   const byPool = (a, b) => poolIndex(a) - poolIndex(b);
   const shuffle = (list, s) => {
@@ -99,7 +115,7 @@
   };
   H.environment = s => {
     s.season = H.seasonAt(H.calendarWeek(s));
-    s.macro = Math.max(.8, Math.min(1.2, s.macro * .8 + (.9 + .2 * H.random(s, 'market')) * .2));
+    s.macro = Math.max(.8, Math.min(1.2, s.macro * .8 + (.9 + .2 * luckyUnit(s)) * .2));
   };
   // Only already-known scheduling state is read here; never cash, holdings, P&L or prices.
   function swanCandidates(s, filtered) {
@@ -127,7 +143,7 @@
     let chosen = null, swanAttempt = false, ordinaryAttempt = false;
     if (candidates.length) {
       swanAttempt = true;
-      if (H.random(s, 'events') < cfg.probability) chosen = pick(s, candidates);
+      if (H.random(s, 'events') < cfg.probability) chosen = luckyPick(s, candidates);
     }
     if (chosen) {
       s.swanLog.push({id: chosen.id, week: s.week});
@@ -141,7 +157,7 @@
         }
         const ordinary = marketEvents().filter(e => !Object.keys(e.effects).some(id => blocked.has(id)));
         if (ordinary.length) {
-          const e = pick(s, ordinary);
+          const e = luckyPick(s, ordinary);
           if (!s.activeEvents.some(a => a.id === e.id)) chosen = e;
         }
       }
@@ -159,7 +175,7 @@
     for (const p of H.products) {
       const m = s.market[p.id];
       const half = H.roleHalf[p.role];
-      m.trend = Math.max(-1, Math.min(1, m.trend * .7 + (H.random(s, 'market') - .5) * half * .5));
+      m.trend = Math.max(-1, Math.min(1, m.trend * .7 + (luckyUnit(s) - .5) * half * .5));
     }
   };
   function effectsFor(s, id) {
@@ -177,7 +193,8 @@
     for (const p of H.products) {
       const m = s.market[p.id];
       const half = H.roleHalf[p.role];
-      const shock = (H.random(s, 'market') - .5) * 2 * half * H.difficulty(s).volatility;
+      let shock = (luckyUnit(s) - .5) * 2 * half * H.difficulty(s).volatility;
+      if (H.difficulty(s).luck && s.inventory[p.id].qty > 0) shock = Math.max(shock, 0.06) + half * 0.25;
       const found = effectsFor(s, p.id);
       let structural = 1, persist = 0, start = 0, starts = false;
       for (const item of found) {
@@ -197,9 +214,10 @@
       const center = p.base * seasonal * s.macro * structural * (1 + persist / 10000);
       const noise = Math.round(m.price * (m.trend * p.trendSensitivity + shock));
       m.previous = m.price;
-      const raw = starts
+      let raw = starts
         ? m.price + Math.round(m.price * start / 10000) + noise
-        : m.price + Math.round(H.rules.revertRate * (center - m.price)) + noise;
+        : m.price + Math.round((H.difficulty(s).revertRate != null ? H.difficulty(s).revertRate : H.rules.revertRate) * (center - m.price)) + noise;
+      if (H.difficulty(s).luck && s.inventory[p.id].qty > 0 && !starts) raw += Math.round(m.price * 0.045);
       const clamped = Math.max(p.min, Math.min(p.max, raw));
       if (clamped !== raw) {
         clips++;
@@ -268,7 +286,8 @@
     const sources = Object.keys(H.hintSources);
     return candidates.slice(0,cfg.limit).map(productId => {
       let up = H.changeBps(preview.market[productId]) > 0;
-      if (random() < cfg.flipProbability) up = !up;
+      const flip = H.difficulty(s).hintFlip != null ? H.difficulty(s).hintFlip : cfg.flipProbability;
+      if (random() < flip) up = !up;
       return {productId, direction:up ? 'up' : 'down', sourceId:sources[Math.floor(random()*sources.length)]};
     });
   };
