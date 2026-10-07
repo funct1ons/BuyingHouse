@@ -36,6 +36,21 @@
       s.absence[p.id] = on ? 0 : 1;
       s.onStreak[p.id] = on ? 1 : 0;
     }
+    const startId = H.difficulties[difficulty].startWarehouse;
+    if (startId && startId !== 'room') {
+      const w = H.warehouses.find(x => x.id === startId);
+      const price = H.warehousePrice(s, w);
+      s.warehouse = w.id;
+      s.capacity = w.capacity;
+      s.cash -= price;
+      s.stats.warehouseSpent = price;
+      s.stats.upgrades = H.warehouses.findIndex(x => x.id === startId);
+    }
+    const startLoan = H.difficulties[difficulty].startLoan;
+    if (startLoan) {
+      H.borrowLoan(s, startLoan);
+      H.accrueLoan(s);
+    }
     s.rumors = H.makeRumors(s);
     H.record(s); H.validate(s);
     return s;
@@ -102,12 +117,16 @@
         if (op.type === 'end' && state.status === 'ended') return {ok: true, result: H.clone(state.result)};
         if (seen.has(op.token)) throw Error('重复提交');
         if (op.revision !== state.revision) throw Error('操作已过期');
-        if (state.status !== 'playing') throw Error('本年已结束');
+        if (state.status === 'ended') throw Error('本年已结束');
+        if (state.status === 'rebuy' && !['house', 'end'].includes(op.type)) throw Error('拍卖后仅可再买一次住房或结束结算');
         const next = H.clone(state);
         let pending = null, eventDiag = null, card = null;
         switch (op.type) {
           case 'buy': case 'sell': H.trade(next, op.type, op.id, op.qty); break;
-          case 'house': H.buyHouse(next, op.id); break;
+          case 'house':
+            H.buyHouse(next, op.id);
+            if (state.status === 'rebuy') next.status = 'ended';
+            break;
           case 'warehouse': H.upgradeWarehouse(next, op.id); break;
           case 'loan': H.borrowLoan(next, op.id); break;
           case 'repay': H.repayLoan(next, op.id); break;
@@ -120,10 +139,14 @@
             next.rumors = H.makeRumors(next); break;
           case 'end':
             if (next.week !== 52) throw Error('尚未到年底');
+            if (state.status === 'rebuy') { next.status = 'ended'; break; }
             if (next.loan.principal > 0) H.accrueLoan(next);
-            next.status = 'ended'; break;
+            if (H.loanOpen(next) && next.house) H.auctionHouse(next);
+            else next.status = 'ended';
+            break;
           default: throw Error('未知操作');
         }
+        if (H.difficulty(next).luck && next.status === 'playing' && next.week < 52 && op.type !== 'next') next.rumors = H.makeRumors(next);
         H.record(next); next.revision++;
         if (next.status === 'ended') next.result = H.summary(next);
         H.validate(next);
