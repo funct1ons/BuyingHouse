@@ -38,7 +38,7 @@
   H.validate = function (s) {
     keys(s, ['version', 'rulesVersion', 'seed', 'difficulty', 'calendarStartWeek', 'week', 'cash', 'capacity', 'warehouse', 'revision', 'status', 'house', 'result',
       'rng', 'inventory', 'market', 'activeEvents', 'macro', 'season', 'personal', 'personalEvent', 'news', 'rumors', 'history', 'stats',
-      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'housingLog', 'purchases', 'houseBasis', 'priceBook', 'loan'], '存档');
+      'listing', 'absence', 'onStreak', 'legacy', 'migration', 'upgrade', 'swanLog', 'housingLog', 'purchases', 'houseBasis', 'priceBook', 'loan', 'settlement'], '存档');
     if (s.version !== H.rules.saveVersion || s.rulesVersion !== H.rules.version) throw Error('存档版本不兼容（不支持旧版或未来版本）');
     if (typeof s.seed !== 'string' || !s.seed.length || s.seed.length > 128) throw Error('种子无效');
     if (!Object.prototype.hasOwnProperty.call(H.difficulties, s.difficulty)) throw Error('难度无效');
@@ -49,9 +49,9 @@
     const warehouse = H.warehouses.find(w => w.id === s.warehouse);
     if (!warehouse || s.capacity !== warehouse.capacity) throw Error('仓储等级与容量不一致');
     if (s.house !== null && !H.houses.some(h => h.id === s.house)) throw Error('住房无效');
-    if (!['playing', 'ended'].includes(s.status)) throw Error('状态无效');
-    if (s.status === 'playing' && s.result !== null) throw Error('未结束状态不能有结算');
-    if (s.status === 'ended' && s.week !== 52) throw Error('结算周无效');
+    if (!['playing', 'rebuy', 'ended'].includes(s.status)) throw Error('状态无效');
+    if (s.status !== 'ended' && s.result !== null) throw Error('未结束状态不能有结算');
+    if (s.status !== 'playing' && s.week !== 52) throw Error('结算周无效');
     keys(s.priceBook, ['id', 'houses', 'warehouses'], '价格簿');
     if (s.priceBook.id !== '0.4') throw Error('价格簿无效');
     const published = H.priceBooks['0.4'][s.difficulty];
@@ -157,28 +157,61 @@
     for (const k of H.statFields) H.int(s.stats[k], ['profit', 'worst'].includes(k) ? -Number.MAX_SAFE_INTEGER : 0);
     H.int(s.stats.worst, -Number.MAX_SAFE_INTEGER, 0);
     H.int(s.stats.houseWeek, 0, s.week); H.int(s.stats.upgrades, 0, 3); H.int(s.stats.maxDrawdown, 0, 1000000);
-    if ((s.house === null) !== (s.stats.houseWeek === 0)) throw Error('购房周数不一致');
+    if ((s.purchases.length === 0) !== (s.stats.houseWeek === 0)) throw Error('购房周数不一致');
     H.int(s.houseBasis, 0);
-    if (!Array.isArray(s.purchases) || s.purchases.length > H.houses.length) throw Error('购房记录无效');
+    if (!Array.isArray(s.purchases) || s.purchases.length > H.houses.length + 1) throw Error('购房记录无效');
+    const settlement = s.settlement;
+    if (s.status === 'playing') {
+      if (settlement !== null) throw Error('进行中不能有偿债记录');
+    } else {
+      keys(settlement, ['cashBefore', 'principalBefore', 'interestAfterAccrual', 'auction', 'purchaseCount'], '偿债记录');
+      H.int(settlement.cashBefore); H.int(settlement.principalBefore, 0, H.loanRules.maxPrincipal);
+      H.int(settlement.interestAfterAccrual); H.int(settlement.purchaseCount, 0, H.houses.length);
+      const lastInterest = H.loanInterest({loan: {principal: settlement.principalBefore}});
+      if (settlement.interestAfterAccrual < lastInterest || settlement.interestAfterAccrual > s.stats.loanInterestAccrued ||
+          settlement.principalBefore > s.stats.loanDrawn || (settlement.principalBefore === 0 && settlement.interestAfterAccrual !== 0)) throw Error('偿债起始本息无效');
+      if (settlement.auction !== null) {
+        keys(settlement.auction, ['houseId', 'proceeds'], '拍卖');
+        const row = s.purchases[settlement.purchaseCount - 1];
+        if (!row || settlement.auction.houseId !== row.houseId || settlement.auction.proceeds !== H.houseQuote(s, row.houseId) ||
+            settlement.cashBefore >= H.add(settlement.principalBefore, settlement.interestAfterAccrual)) throw Error('拍卖记录无效');
+      } else if (s.status === 'rebuy') throw Error('未拍卖不能回购');
+      const count = s.purchases.length - settlement.purchaseCount;
+      if (count < 0 || count > (settlement.auction && s.status === 'ended' ? 1 : 0)) throw Error('回购次数无效');
+      const available = H.add(settlement.cashBefore, settlement.auction ? settlement.auction.proceeds : 0);
+      const interestPaid = Math.min(available, settlement.interestAfterAccrual);
+      const principalPaid = Math.min(available - interestPaid, settlement.principalBefore);
+      const rebuyPaid = count ? s.purchases[s.purchases.length - 1].paid : 0;
+      if (s.cash !== available - interestPaid - principalPaid - rebuyPaid ||
+          s.loan.principal !== settlement.principalBefore - principalPaid || s.loan.interestDue !== settlement.interestAfterAccrual - interestPaid ||
+          s.stats.loanInterestPaid < interestPaid || s.stats.loanPrincipalPaid < principalPaid) throw Error('偿债金额不一致');
+      if (count && H.loanOpen(s)) throw Error('欠款未清不能回购');
+      if (!settlement.auction && s.house !== null && H.loanOpen(s)) throw Error('欠款住房必须拍卖');
+    }
+    const auction = settlement && settlement.auction;
     let paidSum = 0, previousTier = -1;
     for (let i = 0; i < s.purchases.length; i++) {
       const row = s.purchases[i];
       keys(row, ['houseId', 'week', 'price', 'paid'], '购房记录');
+      const rebuy = auction && i === settlement.purchaseCount;
+      if (rebuy) previousTier = -1;
+      if (rebuy && row.week !== 52) throw Error('回购周无效');
+      if (i > 0 && row.week < s.purchases[i - 1].week) throw Error('购房时间倒序');
       const index = H.houses.findIndex(h => h.id === row.houseId);
       if (index < 0 || index <= previousTier) throw Error('购房记录无效');
       H.int(row.week, 1, s.week);
       const log = s.housingLog.filter(entry => entry.week <= row.week);
       const price = H.houseAt(published.houses[row.houseId], row.week, log);
-      const prevPrice = i === 0 ? 0 : H.houseAt(published.houses[s.purchases[i - 1].houseId], row.week, log);
+      const prevPrice = i === 0 || rebuy ? 0 : H.houseAt(published.houses[s.purchases[i - 1].houseId], row.week, log);
       if (row.price !== price || row.paid !== price - prevPrice) throw Error('购房记录无效');
       H.int(row.price); H.int(row.paid);
       paidSum = H.add(paidSum, row.paid);
       previousTier = index;
     }
     if (paidSum !== s.houseBasis) throw Error('购房成本不一致');
-    if (s.house === null) {
-      if (s.purchases.length !== 0 || s.houseBasis !== 0) throw Error('购房记录无效');
-    } else if (!s.purchases.length || s.purchases[s.purchases.length - 1].houseId !== s.house || s.purchases[0].week !== s.stats.houseWeek) throw Error('购房记录无效');
+    const expectedHouse = auction && s.purchases.length === settlement.purchaseCount ? null :
+      (s.purchases.length ? s.purchases[s.purchases.length - 1].houseId : null);
+    if (s.house !== expectedHouse || (s.purchases.length && s.purchases[0].week !== s.stats.houseWeek)) throw Error('购房记录无效');
     if (s.stats.warehouseSpent !== H.warehousePrice(s, warehouse) || (s.warehouse === 'room') !== (s.stats.upgrades === 0)) throw Error('仓储统计不一致');
     keys(s.stats.byProduct, ids.concat(legacyIds), '商品利润');
     const st = s.stats, big = BigInt;
@@ -209,8 +242,9 @@
     if (s.loan.principal === 0 && s.loan.interestDue !== 0) throw Error('无本金不能留有利息');
     if (st.loanDrawn % H.loanRules.repayAmount !== 0) throw Error('贷款发放不是档位倍数');
     const maxWeekly = Math.floor((H.loanRules.maxPrincipal * H.loanRules.weeklyNumer + H.loanRules.weeklyDenom - 1) / H.loanRules.weeklyDenom);
-    // 51 next charges plus the closing week, each capped at the largest tier.
-    if (st.loanInterestAccrued > H.rules.weeks * maxWeekly) throw Error('贷款利息超出一年上限');
+    // At most one charge per elapsed week, plus the one closing charge.
+    const closingInterest = settlement ? H.loanInterest({loan: {principal: settlement.principalBefore}}) : 0;
+    if (st.loanInterestAccrued < closingInterest || st.loanInterestAccrued - closingInterest > (s.week - 1) * maxWeekly) throw Error('贷款利息超出周数上限');
     const topPrize = H.lotteryRules.symbols.reduce((n, row) => Math.max(n, row.prize), 0);
     if (big(st.lotterySpent) !== big(st.lotteryCount) * big(H.lotteryRules.price)) throw Error('刮刮乐支出不一致');
     if (big(st.lotteryWon) > big(st.lotteryCount) * big(topPrize)) throw Error('刮刮乐奖金不可达');
@@ -219,7 +253,7 @@
     if (st.peak < H.difficulty(s).initialCash || big(st.peak) > big(H.difficulty(s).initialCash) + big(st.grants) + sold + maxStock + big(H.maxHouseValue(s.difficulty)) + big(st.loanDrawn) + big(st.lotteryWon)) throw Error('资产峰值不可达');
     const minimumDrawdown = st.peak ? Math.round((st.peak - H.assets(s)) / st.peak * 1000000) : 0;
     if (st.maxDrawdown < minimumDrawdown) throw Error('最大回撤小于当前回撤');
-    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - s.houseBasis - s.stats.warehouseSpent + s.stats.loanDrawn - s.stats.loanPrincipalPaid - s.stats.loanInterestPaid + s.stats.lotteryWon - s.stats.lotterySpent;
+    const expectedCash = H.difficulty(s).initialCash - s.stats.bought + s.stats.sold + s.stats.grants - s.stats.expenses - s.houseBasis - s.stats.warehouseSpent + s.stats.loanDrawn - s.stats.loanPrincipalPaid - s.stats.loanInterestPaid + s.stats.lotteryWon - s.stats.lotterySpent + (auction ? auction.proceeds : 0);
     if (!Number.isSafeInteger(expectedCash) || expectedCash !== s.cash) throw Error('现金与收支统计不一致');
     if (!Array.isArray(s.history) || s.history.length !== s.week) throw Error('资产历史长度无效');
     for (let index = 0; index < s.history.length; index++) {

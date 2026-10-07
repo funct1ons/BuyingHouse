@@ -35,7 +35,7 @@
     s.stats.trades = H.add(s.stats.trades,1);
   };
   H.buyHouse = function (s,id) {
-    if (H.loanOpen(s)) throw Error('售楼处暂停接待，请先还清信用社贷款');
+    if (s.status === 'rebuy' && H.loanOpen(s)) throw Error('清偿贷款后才能重新置业');
     const index = H.houses.findIndex(h => h.id === id), old = H.houses.findIndex(h => h.id === s.house);
     if (index < 0 || index <= old) throw Error('仅允许首次购买或升级住房');
     const price = H.housePrice(s, H.houses[index]);
@@ -48,6 +48,29 @@
     if (!Array.isArray(s.purchases)) s.purchases = [];
     s.purchases.push({houseId: id, week: s.week, price, paid: due});
     if (s.stats.houseWeek === 0) s.stats.houseWeek = s.week;
+    if (s.status === 'rebuy') s.status = 'ended';
+  };
+  // Closing payments are partial and always interest first; inventory is untouched.
+  H.settleDebt = function (s) {
+    if (s.status !== 'playing' || s.week !== 52 || s.settlement !== null) throw Error('偿债阶段无效');
+    H.accrueLoan(s);
+    s.settlement = {cashBefore: s.cash, principalBefore: s.loan.principal,
+      interestAfterAccrual: s.loan.interestDue, auction: null, purchaseCount: s.purchases.length};
+    const pay = () => {
+      const interest = Math.min(s.cash, s.loan.interestDue);
+      s.cash -= interest; s.loan.interestDue -= interest;
+      s.stats.loanInterestPaid = H.add(s.stats.loanInterestPaid, interest);
+      const principal = Math.min(s.cash, s.loan.principal);
+      s.cash -= principal; s.loan.principal -= principal;
+      s.stats.loanPrincipalPaid = H.add(s.stats.loanPrincipalPaid, principal);
+    };
+    pay();
+    if (H.loanOpen(s) && s.house !== null) {
+      const proceeds = H.houseValue(s);
+      s.settlement.auction = {houseId: s.house, proceeds};
+      s.cash = H.add(s.cash, proceeds); s.house = null;
+      pay(); s.status = 'rebuy';
+    } else s.status = 'ended';
   };
   H.upgradeWarehouse = function (s,id) {
     const index = H.warehouses.findIndex(w => w.id === id), old = H.warehouses.findIndex(w => w.id === s.warehouse);
