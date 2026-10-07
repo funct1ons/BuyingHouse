@@ -15,7 +15,7 @@
       revision: 0, status: 'playing', house: null, result: null, rng: {}, inventory: {}, market: {}, activeEvents: [],
       macro: 1, season: H.seasonAt(H.calendarStart(seed)), personal: 0, personalEvent: null, news: [], rumors: [], history: [], stats: {},
       listing: [], absence: {}, onStreak: {}, legacy: {}, migration: null, upgrade: null, swanLog: [], housingLog: [], purchases: [], houseBasis: 0, priceBook: priceBook(difficulty),
-      loan: {principal: 0, interestDue: 0}};
+      loan: {principal: 0, interestDue: 0}, settlement: null};
     for (const key of H.statFields) s.stats[key] = 0;
     s.stats.byProduct = {};
     for (const stream of ['market', 'events', 'visual', 'listing', 'housing', 'lottery']) s.rng[stream] = H.seed(seed + ':' + stream);
@@ -93,6 +93,7 @@
       legacy: Object.fromEntries(H.legacyProducts.map(p => [p.id, {qty: state.legacy[p.id].qty, cost: state.legacy[p.id].cost, price: state.legacy[p.id].price, previous: state.legacy[p.id].previous}])),
       news: H.clone(state.news), rumors: H.clone(state.rumors), assets: H.assets(state), liquid: H.liquidValue(state),
       loan: {principal: state.loan.principal, interestDue: state.loan.interestDue, interestNext: H.loanInterest(state), open: H.loanOpen(state)},
+      settlement: H.clone(state.settlement),
       lottery: {price: H.lotteryRules.price, count: state.stats.lotteryCount},
       market: Object.fromEntries(H.products.map(p => { const m = state.market[p.id]; return [p.id,
         {price: m.price, previous: m.previous, history: m.history.slice(), low: m.low, high: m.high}]; }))});
@@ -102,7 +103,8 @@
         if (op.type === 'end' && state.status === 'ended') return {ok: true, result: H.clone(state.result)};
         if (seen.has(op.token)) throw Error('重复提交');
         if (op.revision !== state.revision) throw Error('操作已过期');
-        if (state.status !== 'playing') throw Error('本年已结束');
+        if (state.status === 'ended') throw Error('本年已结束');
+        if (state.status === 'rebuy' && !['house', 'end'].includes(op.type)) throw Error('年末回购仅允许购房或结束');
         const next = H.clone(state);
         let pending = null, eventDiag = null, card = null;
         switch (op.type) {
@@ -120,8 +122,9 @@
             next.rumors = H.makeRumors(next); break;
           case 'end':
             if (next.week !== 52) throw Error('尚未到年底');
-            if (next.loan.principal > 0) H.accrueLoan(next);
-            next.status = 'ended'; break;
+            if (next.status === 'rebuy') next.status = 'ended';
+            else H.settleDebt(next);
+            break;
           default: throw Error('未知操作');
         }
         H.record(next); next.revision++;

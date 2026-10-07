@@ -109,17 +109,15 @@ test('现金不够时还款整笔拒绝', () => {
   reject(e, 'repay', '500', '还款资金不足');
 });
 
-test('有贷款不能买房，还清且现金够房款后可以买', () => {
+test('带贷款可购房并升级，债务保持不变', () => {
   const e = new H.Engine('loan-house');
   must(e, 'loan', '1000');
-  reject(e, 'house', 'studio', '售楼处暂停接待，请先还清信用社贷款');
-  const s = e.snapshot();
-  const price = H.housePrice(s, H.houses.find(h => h.id === 'studio'));
-  fund(e, price + s.loan.principal + s.loan.interestDue);
-  must(e, 'repay', 'all');
-  assert.equal(H.loanOpen(e.snapshot()), false);
+  fund(e, 100000000);
+  const loan = e.snapshot().loan;
   must(e, 'house', 'studio');
-  assert.equal(e.snapshot().house, 'studio');
+  must(e, 'house', 'flat');
+  assert.equal(e.snapshot().house, 'flat');
+  assert.deepEqual(e.snapshot().loan, loan);
   H.validate(e.snapshot());
 });
 
@@ -135,9 +133,9 @@ test('第 52 周仍持有本金时结束再计一周利息；同周借还则利�
   must(held, 'end');
   const after = held.snapshot();
   assert.equal(after.status, 'ended');
-  assert.equal(after.loan.interestDue, before.loan.interestDue + weekly);
+  assert.equal(after.settlement.interestAfterAccrual, before.loan.interestDue + weekly);
   assert.equal(after.stats.loanInterestAccrued, before.stats.loanInterestAccrued + weekly);
-  assert.equal(after.loan.principal, 100000);
+  assert.equal(after.loan.principal, Math.max(0, 100000 - Math.max(0, before.cash - before.loan.interestDue - weekly)));
 
   const cleared = new H.Engine('loan-year-clear');
   toWeek(cleared, 52);
@@ -246,7 +244,7 @@ test('同一周没有刮刮乐次数上限', () => {
   H.validate(s);
 });
 
-test('存档键是 v11，v10 原文拒绝且不被覆盖', () => {
+test('存档键是 v12，v11 原文拒绝且不被覆盖', () => {
   const map = new Map();
   const store = {
     getItem: k => map.has(k) ? map.get(k) : null,
@@ -254,14 +252,14 @@ test('存档键是 v11，v10 原文拒绝且不被覆盖', () => {
     removeItem: k => map.delete(k)
   };
   const saves = new H.SaveAdapter(store);
-  assert.equal(saves.key, 'homeyear.save.v11');
+  assert.equal(saves.key, 'homeyear.save.v12');
   const e = new H.Engine('loan-save');
   const fresh = e.snapshot();
   const legacy = H.clone(fresh);
-  legacy.version = 10;
+  legacy.version = 11;
   const raw = JSON.stringify(legacy);
-  const original = 'v10-original-must-stay';
-  map.set('homeyear.save.v10', original);
+  const original = 'v11-original-must-stay';
+  map.set('homeyear.save.v11', original);
   const parsed = saves.parse(raw);
   assert.equal(parsed.ok, false);
   assert.equal(parsed.error, H.oldSaveNotice);
@@ -269,16 +267,17 @@ test('存档键是 v11，v10 原文拒绝且不被覆盖', () => {
   assert.equal(imported.ok, false);
   assert.equal(imported.error, H.oldSaveNotice);
   assert.deepEqual(e.snapshot(), fresh);
-  assert.equal(map.get('homeyear.save.v10'), original);
-  assert.equal(map.has('homeyear.save.v11'), false);
+  assert.equal(map.get('homeyear.save.v11'), original);
+  assert.equal(map.has('homeyear.save.v12'), false);
   assert.equal(saves.save(fresh).ok, true);
-  assert.equal(map.get('homeyear.save.v10'), original);
-  assert.equal(typeof map.get('homeyear.save.v11'), 'string');
+  assert.equal(map.get('homeyear.save.v11'), original);
+  assert.equal(typeof map.get('homeyear.save.v12'), 'string');
   map.delete(saves.key);
   const loaded = saves.load();
+  assert.equal(saves.oldRaw(), original);
   assert.equal(loaded.notice, H.oldSaveNotice);
   assert.equal(loaded.state, null);
-  assert.equal(map.get('homeyear.save.v10'), original);
+  assert.equal(map.get('homeyear.save.v11'), original);
 });
 
 let failed = 0;

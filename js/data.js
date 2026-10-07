@@ -2,7 +2,7 @@
   'use strict';
   const H = g.HomeYear = {};
   H.rules = {
-    version: '0.12', saveVersion: 11, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
+    version: '0.13', saveVersion: 12, initialCash: 300000, capacity: 20, weeks: 52, fee: 0.01,
     buybackNumer: 92, buybackDenom: 100, onSale: 8, replaceMin: 2, replaceMax: 3, maxAbsence: 3,
     headlineMoveBps: 800, revertRate: 0.15
   };
@@ -310,5 +310,5 @@
   H.migrationConfirm = '迁入会清空尚未结束的旧市场事件，并清空本周旧新闻。货架会按新规则重排。此后同一种子不会再走出旧规则的未来路径。已退出商品价格冻结，只能回收出售。现金、持仓成本、历史和住房仓储价不会被改写。本地 v2 原键不会被覆盖，原文写入独立备份键。拒绝则不写新档。';
   H.upgradeConfirm = '本周已有账目与行情、历史、普通事件及结算保留，不重放冲击。迁移后未来采用新事件规则，同一种子不会沿旧规则继续。原 v3 和 v2 键不会被覆盖，原文另存独立备份；取消不写新档。';
   H.oldSaveNotice = '内测规则更新，旧档不兼容，请开始新游戏';
-  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v11。请先导出损坏原文。确认替换？';
+  H.replaceDamagedConfirm = '当前新档已隔离。这一步会替换损坏的 v12。请先导出损坏原文。确认替换？';
 })(window);
